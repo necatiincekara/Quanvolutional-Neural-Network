@@ -1,0 +1,11 @@
+pennylane
+qiskit
+torch
+tensorflow
+matplotlib
+scikit-learn
+numpy
+tqdm
+tensorboard
+PyYAML
+gradio 
