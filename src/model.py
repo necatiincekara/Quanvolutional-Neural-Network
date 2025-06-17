@@ -96,7 +96,7 @@ class QuanvNet(nn.Module):
     def forward(self, x):
         x = self.quanv(x) 
         x = torch.relu(self.bn1(self.conv(x)))
-        x = x.view(-1, config.FC1_INPUT) # Flatten the tensor for the fully connected layer
+        x = x.reshape(-1, config.FC1_INPUT) # Flatten the tensor for the fully connected layer
         x = torch.relu(self.fc1(x))
         x = self.dropout(x) # Apply dropout before the final layer
         x = self.fc2(x)
