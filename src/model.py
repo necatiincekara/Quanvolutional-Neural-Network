@@ -17,14 +17,22 @@ dev = qml.device(config.QUANTUM_DEVICE, wires=config.N_QUBITS)
 @qml.qnode(dev, interface='torch', diff_method='backprop')
 def quanv_circuit(inputs, weights):
     """
-    The quantum circuit for the quanvolutional layer.
-    It applies a layer of RY gates parameterized by input data,
-    followed by a layer of entangling gates with trainable weights.
+    A more expressive quantum circuit for the quanvolutional layer.
+    It uses angle embedding for inputs and layers of Rotations and CNOTs.
+    This structure allows the model to learn more complex functions.
     """
-    for i in range(config.N_QUBITS):
-        qml.RY(inputs[i], wires=i)
+    # Encode input data from the image patch
+    qml.AngleEmbedding(inputs, wires=range(config.N_QUBITS))
     
-    qml.templates.layers.BasicEntanglerLayers(weights, wires=range(config.N_QUBITS))
+    # Add trainable layers
+    for layer_weights in weights:
+        # Layer of rotation gates
+        for i in range(config.N_QUBITS):
+            qml.Rot(layer_weights[i, 0], layer_weights[i, 1], layer_weights[i, 2], wires=i)
+        
+        # Entangling layer (circular CNOTs)
+        for i in range(config.N_QUBITS):
+            qml.CNOT(wires=[i, (i + 1) % config.N_QUBITS])
     
     return [qml.expval(qml.PauliZ(i)) for i in range(config.N_QUBITS)]
 
@@ -35,48 +43,34 @@ def quanv_circuit(inputs, weights):
 class QuanvLayer(nn.Module):
     """
     The Quanvolutional Layer that applies the quantum circuit to image patches.
+    This version is vectorized to leverage GPU parallelism.
     """
     def __init__(self, n_qubits):
         super(QuanvLayer, self).__init__()
         self.n_qubits = n_qubits
-        weight_shapes = {"weights": (1, self.n_qubits)}
+        # Updated weight shapes for the new circuit: (2 layers, n_qubits, 3 params per Rot gate)
+        weight_shapes = {"weights": (2, n_qubits, 3)}
         self.qlayer = qml.qnn.TorchLayer(quanv_circuit, weight_shapes)
 
     def forward(self, x):
-        batch_size, channels, height, width = x.size()
-        # The quantum circuit expects a 2x2 patch, which has 4 features.
-        # This matches n_qubits=4.
-        kernel_size = 2
+        # The vectorized forward pass logic from the previous step is assumed to be here
+        # and remains unchanged. This is a placeholder for brevity.
+        patches = x.unfold(2, 2, 2).unfold(3, 2, 2)
+        batch_size, channels, out_h, out_w, _, _ = patches.size()
         
-        out_components = []
-        for b in range(batch_size):
-            # Process each image in the batch individually
-            x_image = x[b]
-            
-            # Apply the quantum circuit to each 2x2 patch of the image
-            # Unfold extracts sliding local blocks from a batched input tensor.
-            patches = x_image.unfold(1, kernel_size, kernel_size).unfold(2, kernel_size, kernel_size)
-            patches = patches.contiguous().view(channels, -1, kernel_size, kernel_size)
-            
-            q_results = []
-            # Iterate over patches
-            for c in range(patches.shape[0]):
-                for p in range(patches.shape[1]):
-                    patch = patches[c, p, :, :].flatten()
-                    q_out = self.qlayer(patch)
-                    q_results.append(q_out)
-            
-            # Reshape the quantum results into a feature map
-            out_image = torch.stack(q_results).view(channels, height // kernel_size, width // kernel_size, self.n_qubits)
-            out_image = out_image.permute(0, 3, 1, 2).contiguous()
-            out_components.append(out_image)
-            
-        final_out = torch.stack(out_components)
+        patches = patches.reshape(batch_size, channels, out_h * out_w, -1)
+        patches = patches.permute(0, 2, 1, 3).reshape(-1, self.n_qubits)
         
-        # The output of qlayer is (n_qubits), so we create n_qubits channels.
-        # We merge the original channel dim with the qubit dim.
-        final_out = final_out.view(batch_size, -1, height // kernel_size, width // kernel_size)
-        return final_out
+        processed_patches = self.qlayer(patches)
+        
+        final_shape = (batch_size, out_h * out_w, channels, self.n_qubits)
+        processed_patches = processed_patches.view(final_shape)
+        
+        processed_patches = processed_patches.permute(0, 2, 3, 1) 
+        
+        processed_patches = processed_patches.reshape(batch_size, channels * self.n_qubits, out_h, out_w)
+        
+        return processed_patches
 
 # -----------------
 # Full Hybrid Model
@@ -86,19 +80,24 @@ class QuanvNet(nn.Module):
     """
     The main Quanvolutional Neural Network model, combining the
     quantum layer with classical convolutional and fully connected layers.
+    Includes Batch Normalization and Dropout for improved training.
     """
     def __init__(self, n_qubits=config.N_QUBITS, num_classes=config.NUM_CLASSES):
         super(QuanvNet, self).__init__()
         self.quanv = QuanvLayer(n_qubits=n_qubits)
-        # After the QuanvLayer, we have `n_qubits` feature maps (channels).
-        self.conv = nn.Conv2d(n_qubits, 16, kernel_size=config.CONV_KERNEL_SIZE)
+        # After the QuanvLayer, we have `channels * n_qubits` feature maps.
+        # Assuming input has 1 channel from our dataset loader.
+        self.conv = nn.Conv2d(1 * n_qubits, 16, kernel_size=config.CONV_KERNEL_SIZE)
+        self.bn1 = nn.BatchNorm2d(16)
         self.fc1 = nn.Linear(config.FC1_INPUT, config.FC1_OUTPUT)
+        self.dropout = nn.Dropout(0.5)
         self.fc2 = nn.Linear(config.FC1_OUTPUT, num_classes)
 
     def forward(self, x):
         x = self.quanv(x) 
-        x = torch.relu(self.conv(x))
+        x = torch.relu(self.bn1(self.conv(x)))
         x = x.view(-1, config.FC1_INPUT) # Flatten the tensor for the fully connected layer
         x = torch.relu(self.fc1(x))
+        x = self.dropout(x) # Apply dropout before the final layer
         x = self.fc2(x)
         return x 

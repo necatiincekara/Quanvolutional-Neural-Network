@@ -5,6 +5,7 @@ Main training script for the Quanvolutional Neural Network.
 import torch
 import torch.nn as nn
 from tqdm import tqdm
+import os
 from src import config
 from src.model import QuanvNet
 from src.dataset import get_dataloaders
@@ -72,6 +73,11 @@ def main():
     """
     set_seeds(config.RANDOM_SEED)
     
+    # Create a directory for saving models if it doesn't exist
+    os.makedirs("models", exist_ok=True)
+    best_model_path = "models/best_quanv_net.pth"
+    best_val_accuracy = 0.0
+
     # Get data loaders
     # Note: This will fail if the Drive path is not mounted in the environment.
     # In Colab, you must mount your Google Drive first.
@@ -93,6 +99,8 @@ def main():
     model = QuanvNet().to(config.DEVICE)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
+    # Add a learning rate scheduler
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.NUM_EPOCHS)
     
     print(f"Starting training on device: {config.DEVICE}")
     print(f"Model Architecture:\n{model}")
@@ -106,8 +114,20 @@ def main():
         val_loss, val_accuracy = evaluate(model, val_loader, criterion, config.DEVICE, "Validation")
         print(f"Epoch {epoch+1} Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_accuracy:.2f}%")
         
+        # Save the model if it has the best validation accuracy so far
+        if val_accuracy > best_val_accuracy:
+            best_val_accuracy = val_accuracy
+            torch.save(model.state_dict(), best_model_path)
+            print(f"✨ New best model saved with accuracy: {val_accuracy:.2f}%")
+
+        # Step the scheduler
+        scheduler.step()
+        
     # Final evaluation on the test set
     print("\n--- Final Evaluation on Test Set ---")
+    # Load the best model for final evaluation
+    model.load_state_dict(torch.load(best_model_path))
+    print("Loaded best model for final testing.")
     test_loss, test_accuracy = evaluate(model, test_loader, criterion, config.DEVICE, "Test")
     print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.2f}%")
     print("\nTraining finished.")

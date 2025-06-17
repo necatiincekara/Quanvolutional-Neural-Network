@@ -41,7 +41,7 @@ VALIDATION_SPLIT = 0.1
 # --- Quantum Device Configuration ---
 # Use 'default.qubit' for CPU simulation
 # Use 'lightning.gpu' for GPU simulation if pennylane-lightning-gpu is installed
-QUANTUM_DEVICE = 'default.qubit' 
+QUANTUM_DEVICE = 'lightning.gpu'
 
 # --- Reproducibility ---
 RANDOM_SEED = 42
