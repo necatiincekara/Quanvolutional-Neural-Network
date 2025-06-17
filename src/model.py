@@ -5,7 +5,7 @@ Quantum and classical model definitions for the Quanvolutional Neural Network.
 import torch
 import torch.nn as nn
 import pennylane as qml
-from src import config
+from . import config
 
 # -----------------
 # Quantum Components

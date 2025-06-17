@@ -6,9 +6,9 @@ import torch
 import torch.nn as nn
 from tqdm import tqdm
 import os
-from src import config
-from src.model import QuanvNet
-from src.dataset import get_dataloaders
+from . import config
+from .model import QuanvNet
+from .dataset import get_dataloaders
 
 def set_seeds(seed):
     """Sets random seeds for reproducibility."""

@@ -8,7 +8,7 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import TensorDataset, DataLoader, random_split
 from pennylane import numpy as np
-from src import config
+from . import config
 
 def load_images_from_folder(folder_path, tags, image_size):
     """
