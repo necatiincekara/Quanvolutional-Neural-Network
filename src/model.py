@@ -14,7 +14,7 @@ from . import config
 # Define the quantum device
 dev = qml.device(config.QUANTUM_DEVICE, wires=config.N_QUBITS)
 
-@qml.qnode(dev, interface='torch', diff_method='backprop')
+@qml.qnode(dev, interface='torch', diff_method='adjoint')
 def quanv_circuit(inputs, weights):
     """
     A more expressive quantum circuit for the quanvolutional layer.
