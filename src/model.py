@@ -67,8 +67,9 @@ class QuanvLayer(nn.Module):
         processed_patches = processed_patches.permute(0, 2, 3, 1) 
         
         processed_patches = processed_patches.reshape(batch_size, channels * self.n_qubits, out_h, out_w)
-        
-        return processed_patches
+
+        # Ensure the output is on the same device as the input
+        return processed_patches.to(x.device)
 
 # -----------------
 # Full Hybrid Model
