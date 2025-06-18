@@ -78,6 +78,9 @@ def main():
     """
     set_seeds(config.RANDOM_SEED)
     
+    # Create device object
+    device = torch.device(config.DEVICE)
+
     # Create a directory for saving models if it doesn't exist
     os.makedirs("models", exist_ok=True)
     best_model_path = "models/best_quanv_net.pth"
@@ -101,7 +104,7 @@ def main():
         return
 
     # Initialize model, loss, and optimizer
-    model = QuanvNet().to(config.DEVICE)
+    model = QuanvNet().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
     # Add a learning rate scheduler
@@ -109,16 +112,16 @@ def main():
     # GradScaler for mixed precision
     scaler = GradScaler()
     
-    print(f"Starting training on device: {config.DEVICE}")
+    print(f"Starting training on device: {device}")
     print(f"Model Architecture:\n{model}")
 
     # Training loop
     for epoch in range(config.NUM_EPOCHS):
         print(f"\n--- Epoch {epoch+1}/{config.NUM_EPOCHS} ---")
-        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, scaler, config.DEVICE)
+        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, scaler, device)
         print(f"Epoch {epoch+1} Training Loss: {train_loss:.4f}")
         
-        val_loss, val_accuracy = evaluate(model, val_loader, criterion, config.DEVICE, "Validation")
+        val_loss, val_accuracy = evaluate(model, val_loader, criterion, device, "Validation")
         print(f"Epoch {epoch+1} Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_accuracy:.2f}%")
         
         # Save the model if it has the best validation accuracy so far
@@ -135,7 +138,7 @@ def main():
     # Load the best model for final evaluation
     model.load_state_dict(torch.load(best_model_path))
     print("Loaded best model for final testing.")
-    test_loss, test_accuracy = evaluate(model, test_loader, criterion, config.DEVICE, "Test")
+    test_loss, test_accuracy = evaluate(model, test_loader, criterion, device, "Test")
     print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.2f}%")
     print("\nTraining finished.")
 
