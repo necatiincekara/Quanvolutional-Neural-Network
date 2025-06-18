@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 from tqdm import tqdm
 import os
+import argparse
 from torch.cuda.amp import autocast, GradScaler
 from . import config
 from .model import QuanvNet
@@ -81,9 +82,14 @@ def main():
     # Create device object
     device = torch.device(config.DEVICE)
 
-    # Create a directory for saving models if it doesn't exist
+    parser = argparse.ArgumentParser(description="Train or resume Quanvolutional NN")
+    parser.add_argument("--resume", action="store_true", help="Resume training from checkpoint")
+    args = parser.parse_args()
+
+    # directories and checkpoint paths
     os.makedirs("models", exist_ok=True)
     best_model_path = "models/best_quanv_net.pth"
+    ckpt_path = "models/checkpoint_latest.pth"
     best_val_accuracy = 0.0
 
     # Get data loaders
@@ -107,16 +113,25 @@ def main():
     model = QuanvNet().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
-    # Add a learning rate scheduler
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.NUM_EPOCHS)
-    # GradScaler for mixed precision
     scaler = GradScaler()
-    
+
+    start_epoch = 0
+    if args.resume and os.path.exists(ckpt_path):
+        print(f"Resuming from checkpoint {ckpt_path}")
+        checkpoint = torch.load(ckpt_path, map_location=device)
+        model.load_state_dict(checkpoint["model_state"])
+        optimizer.load_state_dict(checkpoint["optim_state"])
+        scheduler.load_state_dict(checkpoint["scheduler_state"])
+        scaler.load_state_dict(checkpoint["scaler_state"])
+        start_epoch = checkpoint["epoch"] + 1
+        best_val_accuracy = checkpoint.get("best_val_accuracy", 0.0)
+
     print(f"Starting training on device: {device}")
     print(f"Model Architecture:\n{model}")
 
     # Training loop
-    for epoch in range(config.NUM_EPOCHS):
+    for epoch in range(start_epoch, config.NUM_EPOCHS):
         print(f"\n--- Epoch {epoch+1}/{config.NUM_EPOCHS} ---")
         train_loss = train_one_epoch(model, train_loader, criterion, optimizer, scaler, device)
         print(f"Epoch {epoch+1} Training Loss: {train_loss:.4f}")
@@ -132,6 +147,16 @@ def main():
 
         # Step the scheduler
         scheduler.step()
+        
+        # Save latest checkpoint
+        torch.save({
+            "epoch": epoch,
+            "model_state": model.state_dict(),
+            "optim_state": optimizer.state_dict(),
+            "scheduler_state": scheduler.state_dict(),
+            "scaler_state": scaler.state_dict(),
+            "best_val_accuracy": best_val_accuracy,
+        }, ckpt_path)
         
     # Final evaluation on the test set
     print("\n--- Final Evaluation on Test Set ---")
