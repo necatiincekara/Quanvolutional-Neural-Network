@@ -24,15 +24,13 @@ def quanv_circuit(inputs, weights):
     # Encode input data from the image patch
     qml.AngleEmbedding(inputs, wires=range(config.N_QUBITS))
     
-    # Add trainable layers
-    for layer_weights in weights:
-        # Layer of rotation gates
-        for i in range(config.N_QUBITS):
-            qml.Rot(layer_weights[i, 0], layer_weights[i, 1], layer_weights[i, 2], wires=i)
-        
-        # Entangling layer (circular CNOTs)
-        for i in range(config.N_QUBITS):
-            qml.CNOT(wires=[i, (i + 1) % config.N_QUBITS])
+    # Single trainable layer of Rot gates followed by nearest-neighbour entanglement
+    for i in range(config.N_QUBITS):
+        qml.Rot(weights[i, 0], weights[i, 1], weights[i, 2], wires=i)
+
+    # Nearest-neighbour CNOT chain (i -> i+1)
+    for i in range(config.N_QUBITS - 1):
+        qml.CNOT(wires=[i, i + 1])
     
     return [qml.expval(qml.PauliZ(i)) for i in range(config.N_QUBITS)]
 
@@ -48,8 +46,8 @@ class QuanvLayer(nn.Module):
     def __init__(self, n_qubits):
         super(QuanvLayer, self).__init__()
         self.n_qubits = n_qubits
-        # Updated weight shapes for the new circuit: (2 layers, n_qubits, 3 params per Rot gate)
-        weight_shapes = {"weights": (2, n_qubits, 3)}
+        # Updated weight shape for the simplified circuit: (n_qubits, 3)
+        weight_shapes = {"weights": (n_qubits, 3)}
         self.qlayer = qml.qnn.TorchLayer(quanv_circuit, weight_shapes)
 
     def forward(self, x):
@@ -84,19 +82,50 @@ class QuanvNet(nn.Module):
     """
     def __init__(self, n_qubits=config.N_QUBITS, num_classes=config.NUM_CLASSES):
         super(QuanvNet, self).__init__()
+        # 1) Classical pre-processing: Conv(1→4) + ReLU + 2×2 MaxPool ⇒ 32×32 → 16×16, channels 4
+        self.pre = nn.Sequential(
+            nn.Conv2d(1, 4, kernel_size=3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(2)
+        )
+
+        # 2) Quantum layer (operates on 4-channel 16×16 feature map)
         self.quanv = QuanvLayer(n_qubits=n_qubits)
-        # After the QuanvLayer, we have `channels * n_qubits` feature maps.
-        # Assuming input has 1 channel from our dataset loader.
-        self.conv = nn.Conv2d(1 * n_qubits, 16, kernel_size=config.CONV_KERNEL_SIZE)
-        self.bn1 = nn.BatchNorm2d(16)
-        self.fc1 = nn.Linear(config.FC1_INPUT, config.FC1_OUTPUT)
+
+        # 3) Deeper classical processing after quantum layer
+        in_channels_after_quanv = 4 * n_qubits  # Quanv merges channel & qubit dims
+        self.conv1 = nn.Conv2d(in_channels_after_quanv, 32, kernel_size=3, padding=1)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.pool = nn.MaxPool2d(2)  # 16×16 → 8×8 after Quanv; pool→4×4
+
+        # Determine flatten size dynamically
+        with torch.no_grad():
+            dummy = torch.zeros(1, 1, config.IMAGE_SIZE, config.IMAGE_SIZE)
+            dummy = self.pre(dummy)
+            dummy = self.quanv(dummy)
+            dummy = self.pool(torch.relu(self.bn2(self.conv2(torch.relu(self.bn1(self.conv1(dummy)))))))
+            flatten_dim = dummy.numel()
+
+        self.fc1 = nn.Linear(flatten_dim, config.FC1_OUTPUT)
         self.dropout = nn.Dropout(0.5)
         self.fc2 = nn.Linear(config.FC1_OUTPUT, num_classes)
 
     def forward(self, x):
-        x = self.quanv(x) 
-        x = torch.relu(self.bn1(self.conv(x)))
-        x = x.reshape(-1, config.FC1_INPUT) # Flatten the tensor for the fully connected layer
+        # 1) Classical pre-processing
+        x = self.pre(x)
+
+        # 2) Quantum feature extraction
+        x = self.quanv(x)
+
+        # 3) Classical convolutional stack
+        x = torch.relu(self.bn1(self.conv1(x)))
+        x = torch.relu(self.bn2(self.conv2(x)))
+        x = self.pool(x)
+
+        # Flatten and classify
+        x = x.reshape(x.size(0), -1)
         x = torch.relu(self.fc1(x))
         x = self.dropout(x) # Apply dropout before the final layer
         x = self.fc2(x)

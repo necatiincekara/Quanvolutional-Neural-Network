@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 from tqdm import tqdm
 import os
+from torch.cuda.amp import autocast, GradScaler
 from . import config
 from .model import QuanvNet
 from .dataset import get_dataloaders
@@ -16,7 +17,7 @@ def set_seeds(seed):
     torch.cuda.manual_seed_all(seed)
     # np.random.seed(seed) # PennyLane's numpy is already seeded in the notebook
 
-def train_one_epoch(model, train_loader, criterion, optimizer, device):
+def train_one_epoch(model, train_loader, criterion, optimizer, scaler, device):
     """
     Performs one full training pass over the training data.
     """
@@ -28,10 +29,13 @@ def train_one_epoch(model, train_loader, criterion, optimizer, device):
         images, labels = images.to(device), labels.to(device)
         
         optimizer.zero_grad()
-        outputs = model(images)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
+        with autocast(enabled=device.type=="cuda"):
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
         
         total_loss += loss.item()
         progress_bar.set_postfix(loss=loss.item())
@@ -52,8 +56,9 @@ def evaluate(model, data_loader, criterion, device, data_type="Validation"):
         for images, labels in progress_bar:
             images, labels = images.to(device), labels.to(device)
             
-            outputs = model(images)
-            loss = criterion(outputs, labels)
+            with autocast(enabled=device.type=="cuda"):
+                outputs = model(images)
+                loss = criterion(outputs, labels)
             total_loss += loss.item()
             
             _, predicted = torch.max(outputs.data, 1)
@@ -101,6 +106,8 @@ def main():
     optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
     # Add a learning rate scheduler
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.NUM_EPOCHS)
+    # GradScaler for mixed precision
+    scaler = GradScaler()
     
     print(f"Starting training on device: {config.DEVICE}")
     print(f"Model Architecture:\n{model}")
@@ -108,7 +115,7 @@ def main():
     # Training loop
     for epoch in range(config.NUM_EPOCHS):
         print(f"\n--- Epoch {epoch+1}/{config.NUM_EPOCHS} ---")
-        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, config.DEVICE)
+        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, scaler, config.DEVICE)
         print(f"Epoch {epoch+1} Training Loss: {train_loss:.4f}")
         
         val_loss, val_accuracy = evaluate(model, val_loader, criterion, config.DEVICE, "Validation")
