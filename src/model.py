@@ -7,6 +7,12 @@ import torch.nn as nn
 import pennylane as qml
 from . import config
 
+# Enable disk cache for compiled quantum kernels to speed up restarts
+try:
+    qml.transforms.dynamic_dispatch.enable_tape_cache()
+except AttributeError:
+    pass
+
 # -----------------
 # Quantum Components
 # -----------------
@@ -85,7 +91,7 @@ class QuanvNet(nn.Module):
         super(QuanvNet, self).__init__()
         # 1) Classical pre-processing: Conv(1→4) + ReLU + 2×2 MaxPool ⇒ 32×32 → 16×16, channels 4
         self.pre = nn.Sequential(
-            nn.Conv2d(1, 4, kernel_size=3, padding=1),
+            nn.Conv2d(1, 4, kernel_size=3, stride=2, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(2)
         )
@@ -96,9 +102,9 @@ class QuanvNet(nn.Module):
         # 3) Deeper classical processing after quantum layer
         in_channels_after_quanv = 4 * n_qubits  # Quanv merges channel & qubit dims
         self.conv1 = nn.Conv2d(in_channels_after_quanv, 32, kernel_size=3, padding=1)
-        self.bn1 = nn.BatchNorm2d(32)
+        self.gn1 = nn.GroupNorm(8, 32)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
-        self.bn2 = nn.BatchNorm2d(64)
+        self.gn2 = nn.GroupNorm(8, 64)
         self.pool = nn.MaxPool2d(2)  # 16×16 → 8×8 after Quanv; pool→4×4
 
         # Determine flatten size dynamically
@@ -106,7 +112,7 @@ class QuanvNet(nn.Module):
             dummy = torch.zeros(1, 1, config.IMAGE_SIZE, config.IMAGE_SIZE)
             dummy = self.pre(dummy)
             dummy = self.quanv(dummy)
-            dummy = self.pool(torch.relu(self.bn2(self.conv2(torch.relu(self.bn1(self.conv1(dummy)))))))
+            dummy = self.pool(torch.relu(self.gn2(self.conv2(torch.relu(self.gn1(self.conv1(dummy)))))))
             flatten_dim = dummy.numel()
 
         self.fc1 = nn.Linear(flatten_dim, config.FC1_OUTPUT)
@@ -121,8 +127,8 @@ class QuanvNet(nn.Module):
         x = self.quanv(x)
 
         # 3) Classical convolutional stack
-        x = torch.relu(self.bn1(self.conv1(x)))
-        x = torch.relu(self.bn2(self.conv2(x)))
+        x = torch.relu(self.gn1(self.conv1(x)))
+        x = torch.relu(self.gn2(self.conv2(x)))
         x = self.pool(x)
 
         # Flatten and classify

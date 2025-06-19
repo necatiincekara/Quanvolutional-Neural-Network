@@ -113,7 +113,16 @@ def main():
     model = QuanvNet().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config.NUM_EPOCHS)
+    # Warm-up then cosine schedule
+    total_steps = len(train_loader) * config.NUM_EPOCHS
+    warmup_steps = 200
+    def lr_lambda(step):
+        if step < warmup_steps:
+            return float(step) / float(max(1, warmup_steps))
+        progress = (step - warmup_steps) / float(max(1, total_steps - warmup_steps))
+        return 0.5 * (1.0 + torch.cos(torch.tensor(progress * 3.1415926535)))
+
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
     scaler = GradScaler()
 
     start_epoch = 0
