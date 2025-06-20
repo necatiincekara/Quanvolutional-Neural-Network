@@ -7,7 +7,7 @@ import torch.nn as nn
 from tqdm import tqdm
 import os
 import argparse
-from torch.cuda.amp import autocast, GradScaler
+from torch.amp import autocast, GradScaler
 from . import config
 from .model import QuanvNet
 from .dataset import get_dataloaders
@@ -30,7 +30,7 @@ def train_one_epoch(model, train_loader, criterion, optimizer, scaler, scheduler
         images, labels = images.to(device), labels.to(device)
         
         optimizer.zero_grad()
-        with autocast(enabled=device.type=="cuda"):
+        with autocast(device_type=device.type, enabled=device.type=="cuda"):
             outputs = model(images)
             loss = criterion(outputs, labels)
 
@@ -58,7 +58,7 @@ def evaluate(model, data_loader, criterion, device, data_type="Validation"):
         for images, labels in progress_bar:
             images, labels = images.to(device), labels.to(device)
             
-            with autocast(enabled=device.type=="cuda"):
+            with autocast(device_type=device.type, enabled=device.type=="cuda"):
                 outputs = model(images)
                 loss = criterion(outputs, labels)
             total_loss += loss.item()
@@ -113,21 +113,20 @@ def main():
     # Initialize model, loss, and optimizer
     model = QuanvNet().to(device)
     criterion = nn.CrossEntropyLoss()
-    #optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
-    # Warm-up then cosine schedule
-    #total_steps = len(train_loader) * config.NUM_EPOCHS
-    #warmup_steps = 200
-    #def lr_lambda(step):
-    #    if step < warmup_steps:
-    #        return float(step) / float(max(1, warmup_steps))
-    #    progress = (step - warmup_steps) / float(max(1, total_steps - warmup_steps))
-    #    return 0.5 * (1.0 + torch.cos(torch.tensor(progress * 3.1415926535)))
-
-    #scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
+    optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
     
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
-    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda _: 1.0)  # no-op
-    scaler = GradScaler()
+    # Warm-up then cosine schedule
+    total_steps = len(train_loader) * config.NUM_EPOCHS
+    warmup_steps = 200
+    def lr_lambda(step):
+        if step < warmup_steps:
+            return float(step) / float(max(1, warmup_steps))
+        progress = (step - warmup_steps) / float(max(1, total_steps - warmup_steps))
+        # Use torch.cos for tensor operations
+        return 0.5 * (1.0 + torch.cos(torch.tensor(progress * 3.1415926535, device=optimizer.param_groups[0]['params'][0].device)))
+
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
+    scaler = GradScaler(enabled=device.type=="cuda")
 
     start_epoch = 0
     if args.resume and os.path.exists(ckpt_path):

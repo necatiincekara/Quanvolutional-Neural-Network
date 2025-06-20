@@ -1,10 +1,17 @@
-gradio
-matplotlib
+# Core ML & DS libraries
 numpy
+scikit-learn
+tqdm
+
+# PyTorch
+torch
+torchvision
+
+# PennyLane QML
 pennylane
 pennylane-lightning[gpu]
+
+# Utilities
 PyYAML
-scikit-learn
-tensorboard
-torch
-tqdm 
+gradio
+tensorboard 
