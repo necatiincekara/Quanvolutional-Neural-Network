@@ -131,7 +131,7 @@ def main():
     
     # Warm-up then cosine schedule
     total_steps = len(train_loader) * config.NUM_EPOCHS
-    warmup_steps = 200
+    warmup_steps = 50
     def lr_lambda(step):
         if step < warmup_steps:
             return float(step) / float(max(1, warmup_steps))

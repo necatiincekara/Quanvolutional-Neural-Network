@@ -35,7 +35,7 @@ FC1_INPUT = 16 * CONV_OUTPUT_SIZE * CONV_OUTPUT_SIZE
 # --- Training Configuration ---
 BATCH_SIZE = 128
 NUM_EPOCHS = 5
-LEARNING_RATE = 0.0001
+LEARNING_RATE = 0.0005
 VALIDATION_SPLIT = 0.1
 
 # --- Quantum Device Configuration ---
