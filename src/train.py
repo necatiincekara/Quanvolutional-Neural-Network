@@ -18,7 +18,7 @@ def set_seeds(seed):
     torch.cuda.manual_seed_all(seed)
     # np.random.seed(seed) # PennyLane's numpy is already seeded in the notebook
 
-def train_one_epoch(model, train_loader, criterion, optimizer, scaler, device):
+def train_one_epoch(model, train_loader, criterion, optimizer, scaler, scheduler, device):
     """
     Performs one full training pass over the training data.
     """
@@ -37,6 +37,7 @@ def train_one_epoch(model, train_loader, criterion, optimizer, scaler, device):
         scaler.scale(loss).backward()
         scaler.step(optimizer)
         scaler.update()
+        scheduler.step()
         
         total_loss += loss.item()
         progress_bar.set_postfix(loss=loss.item())
@@ -142,7 +143,7 @@ def main():
     # Training loop
     for epoch in range(start_epoch, config.NUM_EPOCHS):
         print(f"\n--- Epoch {epoch+1}/{config.NUM_EPOCHS} ---")
-        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, scaler, device)
+        train_loss = train_one_epoch(model, train_loader, criterion, optimizer, scaler, scheduler, device)
         print(f"Epoch {epoch+1} Training Loss: {train_loss:.4f}")
         
         val_loss, val_accuracy = evaluate(model, val_loader, criterion, device, "Validation")
@@ -154,9 +155,6 @@ def main():
             torch.save(model.state_dict(), best_model_path)
             print(f"✨ New best model saved with accuracy: {val_accuracy:.2f}%")
 
-        # Step the scheduler
-        scheduler.step()
-        
         # Save latest checkpoint
         torch.save({
             "epoch": epoch,
