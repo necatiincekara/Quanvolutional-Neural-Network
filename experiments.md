@@ -96,3 +96,20 @@ This document serves as a log for the experiments conducted during the developme
     *   **Epoch 2 Validation Loss:** 3.6533
     *   **Epoch 2 Validation Accuracy:** 8.16%
 *   **Conclusion:** The experiment started with the highest initial validation accuracy to date (8.75%), suggesting a potentially effective set of hyperparameters. However, the accuracy slightly decreased in the second epoch, which could indicate that the learning rate is suboptimal or that the model is experiencing early instability. The run was terminated before a clear trend could be established, making the results inconclusive but valuable for future tuning attempts. Additionally, the log produced a `FutureWarning` for `torch.cuda.amp.autocast`, indicating a minor, non-critical dependency update is needed in `train.py`. 
+
+---
+
+## Experiment 06: V5 - Aggressive Optimization (4x4 Feature Map)
+
+*   **Date:** Latest run
+*   **Hypothesis:** Taking the optimization strategy from V4 further by reducing the feature map to 4x4 before the quantum layer will yield even greater performance gains, making experimentation near-instantaneous.
+*   **Model Configuration:**
+    *   **Pre-processing:** `pre` block modified to output a 4x4 feature map. ( `Conv(s=2)` -> `Conv(s=2)` -> `MaxPool(2)` )
+    *   All other settings are inherited from V5.
+*   **Performance Metrics:**
+    *   **Batch Time:** **~51 s/it**. A ~4x speed-up compared to V4, confirming the performance hypothesis.
+*   **Accuracy Metrics (Run interrupted after Epoch 1):**
+    *   **Epoch 1 Training Loss:** 3.9137
+    *   **Epoch 1 Validation Loss:** 3.8452
+    *   **Epoch 1 Validation Accuracy:** 2.04%
+*   **Conclusion:** **Failure.** While the performance gain was substantial and correctly predicted, the model's ability to learn was completely compromised. The validation accuracy dropped below random chance, indicating that the aggressive downsampling to 4x4 resulted in critical **information loss**. The features reaching the quantum layer were no longer sufficient for classification. This experiment proves that there is a lower limit to the spatial reduction strategy. 

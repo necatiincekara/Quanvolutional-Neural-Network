@@ -89,27 +89,28 @@ class QuanvNet(nn.Module):
     """
     def __init__(self, n_qubits=config.N_QUBITS, num_classes=config.NUM_CLASSES):
         super(QuanvNet, self).__init__()
-        # 1) Classical pre-processing: Downsample aggressively to reduce quantum workload.
-        # 32x32 -> Conv(s=2) -> 16x16 -> ReLU -> Conv(s=2) -> 8x8 -> MaxPool(2) -> 4x4
+        # 1) Classical pre-processing: Find a balance between performance and information preservation.
+        # 32x32 -> Conv(s=2) -> 16x16 -> Conv(s=2) -> 8x8 -> Conv(k=3) -> 6x6
         self.pre = nn.Sequential(
             nn.Conv2d(1, 4, kernel_size=3, stride=2, padding=1), # 32x32 -> 16x16
             nn.ReLU(inplace=True),
             nn.Conv2d(4, 4, kernel_size=3, stride=2, padding=1), # 16x16 -> 8x8
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2) # 8x8 -> 4x4
+            # Use a non-strided convolution to reduce dimensions from 8x8 to 6x6
+            nn.Conv2d(4, 4, kernel_size=3, stride=1, padding=0) # 8x8 -> 6x6
         )
 
-        # 2) Quantum layer (operates on 4-channel 4x4 feature map)
+        # 2) Quantum layer (operates on 4-channel 6x6 feature map)
         self.quanv = QuanvLayer(n_qubits=n_qubits)
 
         # 3) Deeper classical processing after quantum layer
         in_channels_after_quanv = 4 * n_qubits  # Quanv merges channel & qubit dims
-        # Input to conv1 is now 2x2 because QuanvLayer has a stride of 2
+        # Input to conv1 is now 3x3 because QuanvLayer has a stride of 2
         self.conv1 = nn.Conv2d(in_channels_after_quanv, 32, kernel_size=3, padding=1)
         self.gn1 = nn.GroupNorm(8, 32)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
         self.gn2 = nn.GroupNorm(8, 64)
-        self.pool = nn.MaxPool2d(2)  # 2x2 -> 1x1
+        self.pool = nn.MaxPool2d(2)
 
         # Determine flatten size dynamically
         with torch.no_grad():
