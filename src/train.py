@@ -27,12 +27,6 @@ def train_one_epoch(model, train_loader, criterion, optimizer, scaler, scheduler
     progress_bar = tqdm(train_loader, desc="Training", leave=False)
     
     for batch_idx, (images, labels) in enumerate(progress_bar):
-        # DEBUG blok — sadece ilk batch'te çalışsın
-        if epoch == 0 and batch_idx == 0:           # batch_idx sayacı ekleyeceğiz
-            with torch.no_grad():
-                q_out = model.quanv(images[:4])     # küçük bir örnek
-                print(f"[DEBUG] q_out std = {q_out.std():.2e}")
-        
         images, labels = images.to(device), labels.to(device)
         
         optimizer.zero_grad()
@@ -40,12 +34,21 @@ def train_one_epoch(model, train_loader, criterion, optimizer, scaler, scheduler
             outputs = model(images)
             loss = criterion(outputs, labels)
 
+        # Debug: print q_out.std for the first batch of each epoch
+        if batch_idx == 0:
+            with torch.no_grad():
+                q_out = model.quanv(images[:4]).detach()
+                print(f"[DEBUG] q_out std = {q_out.std():.2e}")
+
         scaler.scale(loss).backward()
-        if epoch == 0 and batch_idx == 0:
-            grad_mean = torch.mean(torch.stack([p.grad.abs().mean()
-                                                for p in model.parameters()
-                                                if p.grad is not None]))
+
+        # Debug: print gradient mean after backward on first batch
+        if batch_idx == 0:
+            grad_mean = torch.mean(torch.stack([
+                p.grad.abs().mean() for p in model.parameters() if p.grad is not None
+            ]))
             print(f"[DEBUG] grad |mean| = {grad_mean:.2e}")
+
         scaler.step(optimizer)
         scaler.update()
         scheduler.step()

@@ -202,7 +202,9 @@ This document serves as a log for the experiments conducted during the developme
             *   **Total Quantum Executions:** 9 per image (28.4x reduction vs V1).
         *   **Classical Post-processing:** Same structure as V4, adapted for the 6x6 input size.
 *   **Performance Metrics:**
-    *   **Batch Time:** TBD
+    *   **Batch Time:** ~117 seconds per iteration (≈43% faster than V4)
 *   **Accuracy Metrics:**
-    *   **Epoch 1 Validation Accuracy:** TBD
-*   **Conclusion:** TBD 
+    *   **Epoch 1 Training Loss:** 3.8467
+    *   **Epoch 1 Validation Loss:** 3.8173
+    *   **Epoch 1 Validation Accuracy:** 0.00%
+*   **Conclusion:** **Failure.** Although the training speed improved significantly, the model failed to learn (0 % accuracy). Diagnostics required to determine whether the quantum layer is "dead" (no signal) or gradients are vanishing due to learning-rate scheduling. 
