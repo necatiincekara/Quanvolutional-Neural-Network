@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- **Core Libraries:** This project uses `PennyLane` as the primary QML framework and `PyTorch` as the deep learning framework.
+- **Simulator:** For high performance, the `lightning.gpu` device should be preferred.
+- **Differentiation Method:** `diff_method='adjoint'` must be used for its compatibility and efficiency with `lightning.gpu`.
+- **Caching:** PennyLane's tape cache (`qml.enable_tape_cache(True)`) should be activated, especially to reduce JIT compilation times.
+- **Architectural Philosophy:** To lighten the workload of the quantum layer (`QuanvLayer`), a classical convolutional layer that reduces the quantum layer's input size (e.g., with `stride > 1`) should always be added before it. For details and rationale behind this approach, refer to the `@prd.md` document.
+
+
+

@@ -19,6 +19,8 @@
 
 This project was not a linear path. It was an iterative process of identifying bottlenecks and solving them. Understanding this journey is key to understanding the final architecture.
 
+> **Note:** A detailed log of the quantitative results for each experiment described below can be found in [`experiments.md`](./experiments.md).
+
 ### **V1: The Naive Implementation (Initial State)**
 
 *   **Architecture:** A single Jupyter/Colab notebook containing a simple Quanvolutional layer followed by a classical dense layer.

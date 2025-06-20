@@ -1,0 +1,17 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- **Reporting Style:** When asked to summarize or analyze results, always use a formal and academic tone.
+- **Data-Driven Approach:** Base all claims and conclusions on quantitative data from the `@experiments.md` file (training time, accuracy, loss, etc.).
+- **Reporting Structure:** When reporting the results of an experiment, follow this structure:
+    1.  **Hypothesis:** What was the purpose of the experiment? (e.g., "The hypothesis that adding a convolutional layer before the quantum layer would increase training speed was tested.")
+    2.  **Configuration:** What was the configuration (`config.py` settings) under which the experiment was run?
+    3.  **Results:** What numerical results were obtained? (e.g., "With the V3 configuration, the epoch time was reduced from 8 hours to 30 minutes.")
+    4.  **Conclusion:** What do these results mean? Was the hypothesis confirmed?
+
+- **New Experiment Design:** When asked to design a new experiment, propose adding it to the `experiments.md` file using the structure above.
+
+
+

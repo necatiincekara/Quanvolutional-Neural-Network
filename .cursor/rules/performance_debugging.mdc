@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When asked to analyze a performance or learning issue, follow these steps:
+
+1.  **Slowness Analysis:**
+    *   Check the training speed. If the slowness occurs only during the first epoch, mention that it is likely due to JIT (Just-In-Time) compilation from `PennyLane` and `PyTorch`.
+    *   If the slowness is persistent, check the input data size (number of `patches`) entering the quantum layer. Suggest modifying the model architecture to reduce the quantum workload (as in V3/V4 in `@prd.md` and `@experiments.md`).
+
+2.  **Learning Failure Analysis (Loss Not Decreasing):**
+    *   **Step 2a (Signal Check):** Propose checking the standard deviation of the quantum layer's output (`q_out.std()`). If this value is very low (e.g., below `1e-5`), indicate that the quantum circuit is "dead" and not producing a signal.
+    *   **Step 2b (Gradient Check):** Propose checking the mean absolute value of the model parameters' gradients (`p.grad.abs().mean()`). If the gradients are very small or `NaN`, indicate a potential issue with the learning rate or scheduler.
+    *   **Step 2c (Scheduler Check):** If custom schedulers like `LambdaLR` are used, check whether the `scheduler.step()` function is called at the end of **each batch** or **each epoch**. A call in the wrong place can completely halt learning.
+
+For examples of how these steps were applied in the past, refer to the `@experiments.md` document.
+
+
+

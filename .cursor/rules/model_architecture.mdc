@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- **General Structure:** The model must follow this sequence: `Classical Pre-processing Layers` -> `QuanvLayer` -> `Classical Post-processing Layers` -> `Classifier`.
+- **Normalization:** `GroupNorm` should be used instead of `BatchNorm2d` to increase stability, especially with small batch sizes.
+- **Dynamic Sizing:** The input size (`in_features`) of the `nn.Linear` layer following the `nn.Flatten` layer must be calculated dynamically with a helper function like `_get_conv_output`. This ensures the model is flexible to different input sizes.
+- **Reference Code:** Always refer to the `@src/model.py` file for the current and approved architecture.
+

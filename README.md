@@ -88,6 +88,7 @@ Quanvolutional-Neural-Network/
 │   ├── dataset.py        # Data loading and preprocessing
 │   ├── model.py          # Quantum circuit and hybrid model definition
 │   └── train.py          # Main training and evaluation script
+├── experiments.md        # Log of experiments and results
 ├── prd.md                # Product Requirements & Journey Document
 ├── requirements.txt      # Python dependencies
 └── README.md             # This file
