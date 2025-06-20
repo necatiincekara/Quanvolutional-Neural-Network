@@ -4,112 +4,205 @@ This document serves as a log for the experiments conducted during the developme
 
 ---
 
-## Experiment 01: Baseline Naive Implementation
+## Experiment 01: V1 - Baseline Naive Implementation
 
 *   **Date:** Initial phase
 *   **Hypothesis:** A quantum convolutional layer can be a drop-in replacement for a classical one, and a simple implementation is sufficient to test for a "quantum advantage."
 *   **Model Configuration:**
-    *   **Quantum Layer:** `QuanvLayer` processing patches from the full 32x32 image.
-    *   **Implementation:** Nested Python `for` loops for patching.
-    *   **Simulator:** PennyLane's `default.qubit` (CPU-based).
-    *   **Classical Part:** A single fully-connected layer for classification.
+    *   **General:**
+        *   **Batch Size:** 64
+        *   **Learning Rate:** 0.001 (nominal)
+        *   **Optimizer:** Adam
+        *   **Scheduler:** None
+    *   **Quantum Circuit (`quanv_circuit`):**
+        *   **Qubits (`N_QUBITS`):** 4
+        *   **Quantum Device:** `default.qubit` (CPU)
+        *   **Diff Method:** `parameter-shift`
+        *   **Structure:** Basic angle encoding with minimal trainable weights.
+    *   **Hybrid Architecture:**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:** None.
+        *   **Quantum Layer (`QuanvLayer`):**
+            *   Applies the quantum circuit directly to 2x2 patches of the 32x32 input.
+            *   **Implementation:** Nested Python `for` loops (non-vectorized).
+            *   **Total Quantum Executions:** 256 per image.
+        *   **Classical Post-processing:**
+            *   `nn.Flatten()`
+            *   `nn.Linear(in_features=1024, out_features=44)`
 *   **Performance Metrics:**
     *   **Epoch Time:** > 8 hours (estimated).
-    *   **Batch Time:** Not practically measurable due to extreme slowness.
 *   **Accuracy Metrics:**
-    *   **Validation Accuracy:** ~2.3% (equivalent to random guessing for 44 classes).
-    *   **Loss:** Stagnated around ~3.78.
-*   **Conclusion:** **Failure.** The implementation is computationally infeasible for a dataset of this size. The model shows no signs of learning. The initial hypothesis is rejected due to practical constraints.
+    *   **Validation Accuracy:** ~2.3% (random guess).
+*   **Conclusion:** **Failure.** Computationally infeasible. The model shows no signs of learning.
 
 ---
 
-## Experiment 02: Vectorization and GPU Acceleration
+## Experiment 02: V2 - Vectorization and GPU Acceleration
 
 *   **Date:** First optimization phase
-*   **Hypothesis:** The performance bottleneck can be solved by vectorizing the quantum layer to leverage GPU parallelism and by using a dedicated GPU-accelerated quantum simulator.
+*   **Hypothesis:** Vectorizing the quantum layer for GPU parallelism and using a GPU-accelerated simulator will solve the performance bottleneck.
 *   **Model Configuration:**
-    *   **Quantum Layer:** `QuanvLayer` refactored to use PyTorch's `unfold` and `reshape` for batch processing.
-    *   **Simulator:** `lightning.gpu` on an L4 GPU.
-    *   **Classical Part:** `Conv2d` + `BatchNorm` + `Linear` layers.
-    *   **Training:** Per-epoch LR scheduler implemented.
+    *   **General:**
+        *   **Batch Size:** 64
+        *   **Learning Rate:** 0.001
+        *   **Optimizer:** Adam
+        *   **Scheduler:** `LambdaLR` (Incorrectly stepped per-epoch).
+    *   **Quantum Circuit (`quanv_circuit`):**
+        *   **Qubits (`N_QUBITS`):** 4
+        *   **Quantum Device:** `lightning.gpu` (L4 GPU)
+        *   **Diff Method:** `adjoint`
+        *   **Structure:** Unchanged from V1.
+    *   **Hybrid Architecture:**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:** None.
+        *   **Quantum Layer (`QuanvLayer`):**
+            *   Vectorized implementation using PyTorch `unfold` and `reshape`.
+            *   Processes 256 patches in a single batch operation.
+        *   **Classical Post-processing:**
+            *   `nn.Conv2d(in_channels=4, out_channels=16, kernel_size=3)`
+            *   `nn.BatchNorm2d(16)`
+            *   `nn.Flatten()`
+            *   `nn.Linear(in_features=..., out_features=44)`
 *   **Performance Metrics:**
-    *   **Epoch Time:** ~8 hours (observed on L4 GPU).
+    *   **Epoch Time:** ~8 hours.
     *   **Batch Time:** ~573 seconds.
 *   **Accuracy Metrics:**
-    *   **Validation Accuracy:** ~3.3%. Still no significant learning.
-    *   **Loss:** Stagnated. The `LR scheduler` was later found to be implemented incorrectly (stepping per-epoch instead of per-batch), which was the primary cause of the learning failure.
-*   **Conclusion:** **Partial Success.** Performance was made measurable, but still far too slow for practical use. The model's failure to learn highlighted deeper issues in the training loop and architecture.
+    *   **Validation Accuracy:** ~3.3%. Still no significant learning due to the scheduler bug.
+*   **Conclusion:** **Partial Success.** Performance became measurable, but still too slow. The learning failure pointed to deeper issues.
 
 ---
 
-## Experiment 03: Architectural Optimization to Reduce Quantum Workload
+## Experiment 03: V3 - Architectural Optimization
 
 *   **Date:** Second optimization phase
-*   **Hypothesis:** The primary bottleneck is the sheer number of quantum circuit evaluations. Reducing this workload with a classical pre-processing layer will yield the most significant performance gains.
+*   **Hypothesis:** Reducing the quantum workload via classical pre-processing is the key to performance.
 *   **Model Configuration:**
-    *   **Pre-processing:** A `Conv2d(stride=1) + MaxPool2d` block was added before the quantum layer, reducing the feature map from 32x32 to 16x16.
-    *   **Quantum Layer:** Now processes 4x fewer patches.
-    *   **Classical Part:** Deepened with additional `Conv2d` layers.
-    *   **Simulator:** `lightning.gpu` on an L4 GPU.
+    *   **General:**
+        *   **Batch Size:** 64
+        *   **Learning Rate:** 0.001 (Tuned down during experiments)
+        *   **Optimizer:** Adam
+        *   **Scheduler:** `LambdaLR` (Correctly stepped per-batch).
+    *   **Quantum Circuit (`quanv_circuit`):**
+        *   **Qubits (`N_QUBITS`):** 4
+        *   **Quantum Device:** `lightning.gpu`
+        *   **Diff Method:** `adjoint`
+        *   **Structure:** `AngleEmbedding` -> `Rot` gates -> `CNOT` chain.
+    *   **Hybrid Architecture:**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:**
+            *   `nn.Conv2d(1, 4, kernel_size=3, stride=1, padding=1)`
+            *   `nn.MaxPool2d(kernel_size=2, stride=2)` # Output: 4x16x16
+        *   **Quantum Layer (`QuanvLayer`):**
+            *   Operates on the 16x16 feature map.
+            *   **Total Quantum Executions:** 64 per image (4x reduction).
+        *   **Classical Post-processing:**
+            *   Deeper CNN with multiple `Conv2d` and `GroupNorm` layers.
 *   **Performance Metrics:**
     *   **Epoch Time:** ~5.5 hours.
-    *   **Batch Time:** ~413 seconds.
 *   **Accuracy Metrics:**
-    *   **Epoch 1 Training Loss:** 3.7361
-    *   **Epoch 1 Validation Loss:** 3.6908
-    *   **Epoch 1 Validation Accuracy:** 6.41%
-*   **Conclusion:** **Success.** This was the breakthrough. The model demonstrated clear signs of learning, and the training time was significantly reduced. However, the epoch time was still too long for rapid experimentation. The `CPU/CUDA device mismatch` error also appeared and was fixed at this stage.
+    *   **Validation Accuracy:** 6.41% (first epoch).
+*   **Conclusion:** **Success.** The model learned, and training time improved. Still too slow for rapid iteration.
 
 ---
 
-## Experiment 04: Aggressive Optimization for Practical Training
+## Experiment 04: V4 - Aggressive Optimization
 
 *   **Date:** Final optimization phase
-*   **Hypothesis:** Further reducing the quantum patch count, increasing batch size for better GPU utilization, and stabilizing the training process will result in a practical and effective model.
+*   **Hypothesis:** Further reducing quantum patches and optimizing GPU usage will yield a practical model.
 *   **Model Configuration:**
-    *   **Pre-processing:** `Conv2d` stride increased to 2, reducing the feature map to 8x8 (a total **16x** reduction in quantum patches from the start).
-    *   **Batch Size:** Increased from 64 to 128.
-    *   **Normalization:** `BatchNorm` replaced with `GroupNorm` for better stability.
-    *   **Training:** Corrected per-batch LR scheduler with a warm-up phase. Enabled PennyLane's kernel disk cache.
-*   **Performance Metrics (Initial Run):**
-    *   **Epoch Time:** ~1.5 hours (projected).
-    *   **Batch Time:** ~208 seconds.
-*   **Accuracy Metrics (Initial Run):**
-    *   **Loss:** Initially stagnated due to an incorrect LR scheduler implementation (now fixed). After the fix, the loss shows a consistent downward trend.
-*   **Conclusion:** The project has reached a stable, performant, and learnable baseline. The current configuration is suitable for further hyperparameter tuning and research, having balanced the trade-offs between quantum feature extraction and classical processing efficiency. 
+    *   **General:**
+        *   **Batch Size:** 128
+        *   **Learning Rate:** 0.0001
+        *   **Optimizer:** Adam
+        *   **Scheduler:** `LambdaLR` with warmup, stepped per-batch.
+    *   **Quantum Circuit (`quanv_circuit`):**
+        *   **Qubits (`N_QUBITS`):** 4
+        *   **Quantum Device:** `lightning.gpu`
+        *   **Diff Method:** `adjoint`
+        *   **Structure:** Unchanged from V3.
+    *   **Hybrid Architecture:**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:**
+            *   `nn.Conv2d(1, 4, kernel_size=3, stride=2, padding=1)` # Output: 4x16x16
+            *   `nn.MaxPool2d(kernel_size=2, stride=2)` # Output: 4x8x8
+        *   **Quantum Layer (`QuanvLayer`):**
+            *   Operates on the 8x8 feature map.
+            *   **Total Quantum Executions:** 16 per image (16x reduction vs V1).
+        *   **Classical Post-processing:**
+            *   `nn.Conv2d(in_channels=16, ...)`
+            *   `nn.GroupNorm(...)`
+            *   `nn.MaxPool2d(2)`
+            *   `nn.Flatten()` -> `nn.Linear(...)` -> `nn.Dropout(0.5)` -> `nn.Linear(...)`
+*   **Performance Metrics:**
+    *   **Epoch Time:** ~1.5 hours.
+*   **Accuracy Metrics:**
+    *   Shows a consistent downward trend in loss.
+*   **Conclusion:** A stable, performant, and learnable baseline suitable for research.
 
 ---
 
-## Experiment 05: Hyperparameter Tuning on V4 Architecture
+## Experiment 05: V4.1 - Hyperparameter Tuning
 
 *   **Date:** Latest run
-*   **Hypothesis:** The stable V4 architecture serves as a baseline for hyperparameter tuning. This experiment tests a specific configuration with the goal of improving initial learning dynamics and peak accuracy.
+*   **Hypothesis:** The stable V4 architecture can be further improved with hyperparameter tuning.
 *   **Model Configuration:**
-    *   The configuration is assumed to be identical to Experiment 04 (V4), as no code changes were specified. This includes the `Conv2d` with `stride=2`, `GroupNorm`, and a batch size of 128, running on a GPU.
+    *   Identical to **Experiment 04 (V4)** in all aspects of architecture and quantum configuration. This experiment only varied training parameters.
 *   **Performance Metrics:**
-    *   **Batch Time:** ~205 seconds. This metric is consistent with the performance observed in Experiment 04, confirming that the computational workload remains the same.
+    *   **Batch Time:** ~205 seconds (consistent with V4).
 *   **Accuracy Metrics (Run interrupted):**
-    *   **Epoch 1 Training Loss:** 3.7841
-    *   **Epoch 1 Validation Loss:** 3.6937
     *   **Epoch 1 Validation Accuracy:** 8.75%
-    *   **Epoch 2 Training Loss:** 3.7254
-    *   **Epoch 2 Validation Loss:** 3.6533
     *   **Epoch 2 Validation Accuracy:** 8.16%
-*   **Conclusion:** The experiment started with the highest initial validation accuracy to date (8.75%), suggesting a potentially effective set of hyperparameters. However, the accuracy slightly decreased in the second epoch, which could indicate that the learning rate is suboptimal or that the model is experiencing early instability. The run was terminated before a clear trend could be established, making the results inconclusive but valuable for future tuning attempts. Additionally, the log produced a `FutureWarning` for `torch.cuda.amp.autocast`, indicating a minor, non-critical dependency update is needed in `train.py`. 
+*   **Conclusion:** Inconclusive but promising. The high initial accuracy suggests the potential of the V4 architecture, but the dip indicates a need for further LR/scheduler tuning.
 
 ---
 
-## Experiment 06: V5 - Aggressive Optimization (4x4 Feature Map)
+## Experiment 06: V5 - Information Bottleneck Test
 
 *   **Date:** Latest run
-*   **Hypothesis:** Taking the optimization strategy from V4 further by reducing the feature map to 4x4 before the quantum layer will yield even greater performance gains, making experimentation near-instantaneous.
+*   **Hypothesis:** Reducing the feature map to 4x4 before the quantum layer will maximize performance.
 *   **Model Configuration:**
-    *   **Pre-processing:** `pre` block modified to output a 4x4 feature map. ( `Conv(s=2)` -> `Conv(s=2)` -> `MaxPool(2)` )
-    *   All other settings are inherited from V5.
+    *   **General:** Based on V4 settings (Batch Size: 128, LR: 0.0001, etc.).
+    *   **Quantum Circuit (`quanv_circuit`):** Unchanged from V4.
+    *   **Hybrid Architecture:**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:**
+            *   `nn.Conv2d(1, 4, kernel_size=3, stride=2, padding=1)` # Output: 4x16x16
+            *   `nn.ReLU()`
+            *   `nn.Conv2d(4, 4, kernel_size=3, stride=2, padding=1)` # Output: 4x8x8
+            *   `nn.MaxPool2d(kernel_size=2, stride=2)` # Output: 4x4x4
+        *   **Quantum Layer (`QuanvLayer`):**
+            *   Operates on the tiny 4x4 feature map.
+            *   **Total Quantum Executions:** 4 per image (64x reduction vs V1).
+        *   **Classical Post-processing:** Same structure as V4, adapted for the smaller input size.
 *   **Performance Metrics:**
-    *   **Batch Time:** **~51 s/it**. A ~4x speed-up compared to V4, confirming the performance hypothesis.
-*   **Accuracy Metrics (Run interrupted after Epoch 1):**
-    *   **Epoch 1 Training Loss:** 3.9137
-    *   **Epoch 1 Validation Loss:** 3.8452
+    *   **Batch Time:** ~51 seconds (massive speedup).
+*   **Accuracy Metrics (Run interrupted):**
     *   **Epoch 1 Validation Accuracy:** 2.04%
-*   **Conclusion:** **Failure.** While the performance gain was substantial and correctly predicted, the model's ability to learn was completely compromised. The validation accuracy dropped below random chance, indicating that the aggressive downsampling to 4x4 resulted in critical **information loss**. The features reaching the quantum layer were no longer sufficient for classification. This experiment proves that there is a lower limit to the spatial reduction strategy. 
+*   **Conclusion:** **Failure.** Performance hypothesis confirmed, but the extreme spatial reduction created an information bottleneck, destroying the model's ability to learn. This establishes a lower bound on the pre-processing strategy.
+
+---
+
+## Experiment 07: V6 - Balanced Architecture (6x6 Feature Map)
+
+*   **Date:** Pending
+*   **Hypothesis:** A 6x6 feature map will provide a balance between the information preservation of V4 (8x8) and the speed of V5 (4x4), resulting in a model that both learns effectively and trains at a practical speed.
+*   **Model Configuration:**
+    *   **General:** Inherited from V5 (Batch Size: 128, LR: 0.0001, etc.).
+    *   **Quantum Circuit (`quanv_circuit`):** Unchanged from V4.
+    *   **Hybrid Architecture:**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:**
+            *   `nn.Conv2d(1, 4, kernel_size=3, stride=2, padding=1)` # Output: 4x16x16
+            *   `nn.ReLU()`
+            *   `nn.Conv2d(4, 4, kernel_size=3, stride=2, padding=1)` # Output: 4x8x8
+            *   `nn.ReLU()`
+            *   `nn.Conv2d(4, 4, kernel_size=3, stride=1, padding=0)` # Output: 4x6x6
+        *   **Quantum Layer (`QuanvLayer`):**
+            *   Operates on the 6x6 feature map.
+            *   **Total Quantum Executions:** 9 per image (28.4x reduction vs V1).
+        *   **Classical Post-processing:** Same structure as V4, adapted for the 6x6 input size.
+*   **Performance Metrics:**
+    *   **Batch Time:** TBD
+*   **Accuracy Metrics:**
+    *   **Epoch 1 Validation Accuracy:** TBD
+*   **Conclusion:** TBD 
