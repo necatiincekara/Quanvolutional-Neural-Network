@@ -127,6 +127,7 @@ def main():
     
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda _: 1.0)  # no-op
+    scaler = GradScaler()
 
     start_epoch = 0
     if args.resume and os.path.exists(ckpt_path):
