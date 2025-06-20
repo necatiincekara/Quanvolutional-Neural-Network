@@ -113,18 +113,20 @@ def main():
     # Initialize model, loss, and optimizer
     model = QuanvNet().to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
+    #optimizer = torch.optim.Adam(model.parameters(), lr=config.LEARNING_RATE)
     # Warm-up then cosine schedule
-    total_steps = len(train_loader) * config.NUM_EPOCHS
-    warmup_steps = 200
-    def lr_lambda(step):
-        if step < warmup_steps:
-            return float(step) / float(max(1, warmup_steps))
-        progress = (step - warmup_steps) / float(max(1, total_steps - warmup_steps))
-        return 0.5 * (1.0 + torch.cos(torch.tensor(progress * 3.1415926535)))
+    #total_steps = len(train_loader) * config.NUM_EPOCHS
+    #warmup_steps = 200
+    #def lr_lambda(step):
+    #    if step < warmup_steps:
+    #        return float(step) / float(max(1, warmup_steps))
+    #    progress = (step - warmup_steps) / float(max(1, total_steps - warmup_steps))
+    #    return 0.5 * (1.0 + torch.cos(torch.tensor(progress * 3.1415926535)))
 
-    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
-    scaler = GradScaler()
+    #scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
+    
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda _: 1.0)  # no-op
 
     start_epoch = 0
     if args.resume and os.path.exists(ckpt_path):
