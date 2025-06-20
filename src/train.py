@@ -30,7 +30,7 @@ def train_one_epoch(model, train_loader, criterion, optimizer, scaler, scheduler
         images, labels = images.to(device), labels.to(device)
         
         optimizer.zero_grad()
-        with autocast(device_type=device.type, enabled=device.type=="cuda"):
+        with torch.amp.autocast(device_type=device.type, dtype=torch.float16, enabled=device.type=="cuda"):
             outputs = model(images)
             loss = criterion(outputs, labels)
 
@@ -58,7 +58,7 @@ def evaluate(model, data_loader, criterion, device, data_type="Validation"):
         for images, labels in progress_bar:
             images, labels = images.to(device), labels.to(device)
             
-            with autocast(device_type=device.type, enabled=device.type=="cuda"):
+            with torch.amp.autocast(device_type=device.type, dtype=torch.float16, enabled=device.type=="cuda"):
                 outputs = model(images)
                 loss = criterion(outputs, labels)
             total_loss += loss.item()

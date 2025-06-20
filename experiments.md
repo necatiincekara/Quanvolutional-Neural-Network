@@ -77,3 +77,22 @@ This document serves as a log for the experiments conducted during the developme
 *   **Accuracy Metrics (Initial Run):**
     *   **Loss:** Initially stagnated due to an incorrect LR scheduler implementation (now fixed). After the fix, the loss shows a consistent downward trend.
 *   **Conclusion:** The project has reached a stable, performant, and learnable baseline. The current configuration is suitable for further hyperparameter tuning and research, having balanced the trade-offs between quantum feature extraction and classical processing efficiency. 
+
+---
+
+## Experiment 05: Hyperparameter Tuning on V4 Architecture
+
+*   **Date:** Latest run
+*   **Hypothesis:** The stable V4 architecture serves as a baseline for hyperparameter tuning. This experiment tests a specific configuration with the goal of improving initial learning dynamics and peak accuracy.
+*   **Model Configuration:**
+    *   The configuration is assumed to be identical to Experiment 04 (V4), as no code changes were specified. This includes the `Conv2d` with `stride=2`, `GroupNorm`, and a batch size of 128, running on a GPU.
+*   **Performance Metrics:**
+    *   **Batch Time:** ~205 seconds. This metric is consistent with the performance observed in Experiment 04, confirming that the computational workload remains the same.
+*   **Accuracy Metrics (Run interrupted):**
+    *   **Epoch 1 Training Loss:** 3.7841
+    *   **Epoch 1 Validation Loss:** 3.6937
+    *   **Epoch 1 Validation Accuracy:** 8.75%
+    *   **Epoch 2 Training Loss:** 3.7254
+    *   **Epoch 2 Validation Loss:** 3.6533
+    *   **Epoch 2 Validation Accuracy:** 8.16%
+*   **Conclusion:** The experiment started with the highest initial validation accuracy to date (8.75%), suggesting a potentially effective set of hyperparameters. However, the accuracy slightly decreased in the second epoch, which could indicate that the learning rate is suboptimal or that the model is experiencing early instability. The run was terminated before a clear trend could be established, making the results inconclusive but valuable for future tuning attempts. Additionally, the log produced a `FutureWarning` for `torch.cuda.amp.autocast`, indicating a minor, non-critical dependency update is needed in `train.py`. 
