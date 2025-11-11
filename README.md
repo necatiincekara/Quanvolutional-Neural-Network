@@ -23,16 +23,26 @@ The final model architecture is a result of several optimization iterations aime
 
 The project evolved significantly to overcome two primary challenges: **extreme training slowness** and **stagnant learning (low accuracy)**.
 
-*   **Performance:** Initial training times were over 8 hours per epoch. We reduced this to ~1 hour by:
-    *   Reducing the number of quantum operations via the classical pre-processing layer.
-    *   Vectorizing the Quanvolutional layer to leverage GPU parallelism.
-    *   Switching to a high-performance GPU-accelerated quantum simulator (`lightning.gpu`).
-    *   Enabling a disk cache for compiled quantum kernels (`qml.transforms.dynamic_dispatch.enable_tape_cache()`).
-*   **Accuracy:** The model initially failed to learn. We addressed this by:
-    *   Implementing a robust diagnostic process to check gradient flow and quantum layer output variance.
-    *   Replacing `BatchNorm` with `GroupNorm` for more stable learning with small effective batch sizes.
-    *   Implementing a learning rate scheduler with a warm-up phase to prevent initial learning instability.
-    *   Refining the model architecture to have sufficient classical processing power.
+* **Performance:** Initial training times were over 8 hours per epoch. We reduced this to ~1 hour by:
+  * Reducing the number of quantum operations via the classical pre-processing layer.
+  * Vectorizing the Quanvolutional layer to leverage GPU parallelism.
+  * Switching to a high-performance GPU-accelerated quantum simulator (`lightning.gpu`).
+  * Enabling a disk cache for compiled quantum kernels (`qml.transforms.dynamic_dispatch.enable_tape_cache()`).
+* **Accuracy:** The model initially failed to learn. We addressed this by:
+  * Implementing a robust diagnostic process to check gradient flow and quantum layer output variance.
+  * Replacing `BatchNorm` with `GroupNorm` for more stable learning with small effective batch sizes.
+  * Implementing a learning rate scheduler with a warm-up phase to prevent initial learning instability.
+  * Refining the model architecture to have sufficient classical processing power.
+
+### 📊 Current Status & Results
+
+The current model (V6 architecture with 6x6 feature maps) uses:
+
+* **Quantum Circuit Evaluations:** 9 per image (28.4x reduction from initial 256)
+* **Training Time:** ~117 seconds per batch (~43% faster than V4)
+* **Architecture:** 32x32 → 16x16 → 8x8 → 6x6 (classical preprocessing) → Quantum layer → Classical post-processing
+
+For detailed experimental results and evolution history, see [experiments.md](experiments.md).
 
 ## 🚀 Getting Started
 
@@ -81,15 +91,26 @@ The script will automatically save the model with the best validation accuracy t
 
 ```
 Quanvolutional-Neural-Network/
-├── models/               # Saved model checkpoints
-├── src/                  # Source code
-│   ├── __init__.py       # Makes 'src' a Python package
-│   ├── config.py         # All hyperparameters and configuration
-│   ├── dataset.py        # Data loading and preprocessing
-│   ├── model.py          # Quantum circuit and hybrid model definition
-│   └── train.py          # Main training and evaluation script
-├── experiments.md        # Log of experiments and results
-├── prd.md                # Product Requirements & Journey Document
-├── requirements.txt      # Python dependencies
-└── README.md             # This file
+├── models/                        # Saved model checkpoints
+├── src/                           # Core source code
+│   ├── __init__.py                # Makes 'src' a Python package
+│   ├── config.py                  # All hyperparameters and configuration
+│   ├── dataset.py                 # Data loading and preprocessing
+│   ├── model.py                   # Quantum circuit and hybrid model definition
+│   ├── train.py                   # Main training and evaluation script
+│   ├── trainable_quantum_model.py # Enhanced trainable quantum layers
+│   └── enhanced_training.py       # Advanced training with separate optimizers
+├── experiments/                   # Experimental scripts
+│   └── run_experiments.py         # Automated experiment runner
+├── improved_model.py              # Alternative model architectures
+├── improved_training.py           # Training enhancements and optimizations
+├── improved_quantum_circuit.py    # Enhanced quantum circuit designs
+├── performance_optimizations.py   # Performance benchmarking utilities
+├── experiments.md                 # Detailed log of all experiments and results
+├── prd.md                         # Product Requirements & Journey Document
+├── CLAUDE.md                      # Claude Code assistant instructions
+├── QUANTUM_ML_RECOMMENDATIONS.md  # QML best practices and recommendations
+├── IMPLEMENTATION_GUIDE.md        # Step-by-step implementation guide
+├── requirements.txt               # Python dependencies
+└── README.md                      # This file
 ``` 

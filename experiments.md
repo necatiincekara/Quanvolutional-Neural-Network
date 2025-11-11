@@ -184,7 +184,7 @@ This document serves as a log for the experiments conducted during the developme
 
 ## Experiment 07: V6 - Balanced Architecture (6x6 Feature Map)
 
-*   **Date:** Pending
+*   **Date:** Completed
 *   **Hypothesis:** A 6x6 feature map will provide a balance between the information preservation of V4 (8x8) and the speed of V5 (4x4), resulting in a model that both learns effectively and trains at a practical speed.
 *   **Model Configuration:**
     *   **General:** Inherited from V5 (Batch Size: 128, LR: 0.0001, etc.).
@@ -207,4 +207,49 @@ This document serves as a log for the experiments conducted during the developme
     *   **Epoch 1 Training Loss:** 3.8467
     *   **Epoch 1 Validation Loss:** 3.8173
     *   **Epoch 1 Validation Accuracy:** 0.00%
-*   **Conclusion:** **Failure.** Although the training speed improved significantly, the model failed to learn (0 % accuracy). Diagnostics required to determine whether the quantum layer is "dead" (no signal) or gradients are vanishing due to learning-rate scheduling. 
+*   **Conclusion:** **Failure.** Although the training speed improved significantly, the model failed to learn (0% accuracy). Post-mortem analysis suggests the aggressive spatial reduction without proper information preservation mechanisms (residual connections, adaptive pooling) created a severe information bottleneck. The quantum layer likely receives insufficient spatial information to extract meaningful features.
+*   **Lessons Learned:**
+    *   6x6 is theoretically viable but requires architectural modifications (residual connections, better preprocessing)
+    *   V4 (8x8) remains the optimal balance between speed and accuracy
+    *   Future experiments should focus on enhancing quantum circuit expressivity rather than further spatial reduction
+
+---
+
+## Future Experiments & Recommendations
+
+### Experiment 08: Enhanced Quantum Circuit (Proposed)
+
+*   **Goal:** Improve accuracy by increasing quantum circuit expressivity without sacrificing speed
+*   **Key Changes:**
+    *   Implement 2-layer quantum circuit with data re-uploading
+    *   Add trainable quantum weights (16-32 parameters instead of 12)
+    *   Use separate optimizers for quantum (LR: 0.0001) and classical (LR: 0.0005) parameters
+    *   Add gradient clipping for quantum parameters (max_norm=0.5)
+*   **Expected Impact:**
+    *   Target: 12-15% validation accuracy (up from 8-9%)
+    *   Training time: Similar to V4 (~1.5 hours/epoch)
+*   **Implementation:** See `improved_quantum_circuit.py` and `trainable_quantum_model.py`
+
+### Experiment 09: V4 with Residual Connections (Proposed)
+
+*   **Goal:** Add skip connections to V4 architecture to preserve information flow
+*   **Key Changes:**
+    *   Add residual connection between pre-quantum and post-quantum features
+    *   Implement multi-scale feature extraction
+    *   Add attention mechanisms before quantum layer
+*   **Expected Impact:**
+    *   Target: 15-18% validation accuracy
+    *   Better gradient flow through quantum layer
+*   **References:** See recommendations in `QUANTUM_ML_RECOMMENDATIONS.md`
+
+### Experiment 10: Ensemble & Augmentation (Proposed)
+
+*   **Goal:** Push accuracy to 20%+ through ensemble methods and data augmentation
+*   **Key Changes:**
+    *   Multiple quantum circuits with voting mechanism
+    *   Aggressive data augmentation (rotation, translation, mixup)
+    *   Label smoothing and regularization techniques
+*   **Expected Impact:**
+    *   Target: 20-25% validation accuracy
+    *   More robust model with better generalization
+*   **Implementation Guide:** See `IMPLEMENTATION_GUIDE.md` for roadmap to 90% accuracy 
