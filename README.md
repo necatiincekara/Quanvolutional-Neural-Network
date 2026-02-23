@@ -1,56 +1,96 @@
 # Hybrid Quantum-Classical Convolutional Neural Network for Ottoman-Turkish Character Recognition
 
-This project implements a hybrid neural network that combines classical convolutional layers with a quantum convolutional layer (Quanvolutional) to classify handwritten Ottoman-Turkish characters. The model is built using PyTorch and PennyLane, leveraging GPU acceleration for both classical and quantum components.
+A research-grade implementation of a hybrid quantum-classical neural network for classifying handwritten Ottoman-Turkish characters (44 classes). Built with PyTorch and PennyLane, leveraging GPU-accelerated quantum simulation and advanced training techniques.
+
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
+[![PennyLane](https://img.shields.io/badge/PennyLane-0.32+-green.svg)](https://pennylane.ai/)
 
 ## 📝 Project Overview
 
-The goal of this project is to explore the potential of quantum machine learning (QML) in a real-world computer vision task. Handwritten character recognition for historical scripts like Ottoman-Turkish presents unique challenges due to high intra-class variance and complex character shapes. This hybrid model uses a quantum circuit as a feature extractor, aiming to capture complex correlations that might be challenging for classical CNNs alone.
+This project explores quantum machine learning (QML) for handwritten character recognition in historical scripts. Ottoman-Turkish characters present unique challenges due to high intra-class variance and complex morphology. Our hybrid architecture uses quantum circuits as trainable feature extractors, targeting quantum advantages in feature correlation learning.
 
-### 🏛️ Model Architecture
+**Research Goal**: Achieve ≥90% accuracy by evolving from fixed quantum layers (82% baseline from master's thesis) to fully trainable quantum circuits with advanced architectural innovations.
 
-The final model architecture is a result of several optimization iterations aimed at balancing performance and accuracy.
+### 🏛️ Current Best Architecture (V4)
 
-1.  **Classical Pre-processing:** The input image (32x32) is first passed through a classical `Conv2d` layer with a stride of 2, followed by a `MaxPool2d` layer. This block acts as an efficient feature summarizer, reducing the spatial dimensions to 8x8 while increasing the feature channels. This significantly reduces the number of quantum circuit evaluations needed in the next step.
-2.  **Quantum Convolutional Layer (`QuanvLayer`):** The 8x8 feature map is processed by a vectorized Quanvolutional layer.
-    *   **Patching:** The feature map is divided into 2x2 patches.
-    *   **Quantum Circuit:** Each patch's data is encoded into a 4-qubit quantum circuit using `AngleEmbedding`. A trainable layer of `Rot` (rotation) gates, followed by an entangling layer of `CNOT` gates, processes the quantum state.
-    *   **Measurement:** The expectation value of the Pauli-Z operator for each qubit is measured, yielding a 4-element feature vector for each patch.
-    *   **Vectorization:** This entire process is heavily vectorized to run all patches for a batch in parallel on the GPU, minimizing slow Python loops.
-3.  **Classical Post-processing:** The output from the quantum layer is treated as a new feature map and is passed through a deeper classical CNN stack, consisting of multiple `Conv2d`, `GroupNorm`, and `MaxPool2d` layers, to learn higher-level features.
-4.  **Classification Head:** A final `Linear` layer with a `Dropout` layer classifies the features into one of the 44 character classes.
+Our model has evolved through 6 major iterations. **V4 provides the optimal balance** between training speed and accuracy:
 
-### 🧪 Journey & Key Optimizations
+```
+Input (32×32 grayscale)
+    ↓
+[Classical Preprocessing]
+    Conv2d(1→4, stride=2) → 16×16
+    MaxPool2d(2) → 8×8
+    ↓
+[Quantum Layer - 4 qubits]
+    16 patches (2×2 each)
+    AngleEmbedding → Rot gates → CNOT chain
+    16 quantum circuit evaluations/image
+    ↓
+[Classical Postprocessing]
+    Conv2d(16→32) + GroupNorm
+    Conv2d(32→64) + GroupNorm
+    MaxPool2d(2)
+    ↓
+[Classification Head]
+    Linear(64*features → 64)
+    Dropout(0.5)
+    Linear(64 → 44)
+```
 
-The project evolved significantly to overcome two primary challenges: **extreme training slowness** and **stagnant learning (low accuracy)**.
+**Key Components**:
+- **Vectorized Quantum Layer**: Batched processing of all image patches on GPU
+- **GroupNorm**: Stable training with small effective batch sizes
+- **Mixed Precision Training**: AMP for GPU efficiency
+- **Per-Batch LR Scheduling**: Warmup + cosine annealing
 
-* **Performance:** Initial training times were over 8 hours per epoch. We reduced this to ~1 hour by:
-  * Reducing the number of quantum operations via the classical pre-processing layer.
-  * Vectorizing the Quanvolutional layer to leverage GPU parallelism.
-  * Switching to a high-performance GPU-accelerated quantum simulator (`lightning.gpu`).
-  * Enabling a disk cache for compiled quantum kernels (`qml.transforms.dynamic_dispatch.enable_tape_cache()`).
-* **Accuracy:** The model initially failed to learn. We addressed this by:
-  * Implementing a robust diagnostic process to check gradient flow and quantum layer output variance.
-  * Replacing `BatchNorm` with `GroupNorm` for more stable learning with small effective batch sizes.
-  * Implementing a learning rate scheduler with a warm-up phase to prevent initial learning instability.
-  * Refining the model architecture to have sufficient classical processing power.
+### 🧪 Evolution & Performance Benchmarks
 
-### 📊 Current Status & Results
+| Version | Feature Map | Quantum Calls | Epoch Time | Accuracy | Status |
+|---------|------------|---------------|------------|----------|---------|
+| V1 | 32×32 | 256 | >8h | 2.3% | ❌ Infeasible |
+| V2 | 32×32 (vec) | 256 | ~8h | 3.3% | ❌ Scheduler bug |
+| V3 | 16×16 | 64 | ~5.5h | 6.41% | ⚠️ Learning |
+| **V4** | **8×8** | **16** | **~1.5h** | **8.75%** | **✅ Stable** |
+| V5 | 4×4 | 4 | ~51s/batch | 2.04% | ❌ Info bottleneck |
+| V6 | 6×6 | 9 | ~117s/batch | 0.00% | ❌ Gradient vanish |
 
-The current model (V6 architecture with 6x6 feature maps) uses:
+**Key Achievements**:
+- ✅ **93.75% reduction** in quantum evaluations (256→16)
+- ✅ **Vectorized implementation** enabling GPU parallelism
+- ✅ **Stable training** with gradient flow diagnostics
+- ✅ **Disk caching** for compiled quantum kernels
 
-* **Quantum Circuit Evaluations:** 9 per image (28.4x reduction from initial 256)
-* **Training Time:** ~117 seconds per batch (~43% faster than V4)
-* **Architecture:** 32x32 → 16x16 → 8x8 → 6x6 (classical preprocessing) → Quantum layer → Classical post-processing
+**Critical Findings**:
+- 🔴 **V6 failure**: Faster (43%) but gradient collapse prevents learning
+- 🔴 **Information bottleneck**: <8×8 feature maps lose critical spatial information
+- 🟡 **Circuit expressivity**: Single-layer limits model capacity
 
-For detailed experimental results and evolution history, see [experiments.md](experiments.md).
+### 📊 Current Status & Next Steps
+
+**Stable Baseline**: V4 (8×8 feature maps, 8.75% accuracy, 1.5h/epoch)
+
+**Immediate Priorities** (see [docs/AUDIT_REPORT.md](docs/AUDIT_REPORT.md)):
+1. **V7** (Week 1-2): Gradient stabilization → Target 25% accuracy
+2. **V8** (Week 3-4): Multi-scale processing → Target 40% accuracy
+3. **V9** (Week 5-6): Selective quantum → Target 60% accuracy
+4. **V10** (Week 7-8): Trainable quantum → Target 90% accuracy
+
+For detailed experimental results, see [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | For implementation roadmap, see [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-*   Python 3.9+
-*   An NVIDIA GPU with CUDA support
-*   Git
+**Recommended Setup** (see [docs/COMPUTING_RESOURCES_2025.md](docs/COMPUTING_RESOURCES_2025.md) for details):
+
+*   **Python 3.12.x** (or 3.13.x) - Full PyTorch 2.6+ and PennyLane 0.43+ support
+*   **Google Colab Pro** with A100 GPU (CUDA 12.1) - Essential for quantum training
+*   **VS Code** with Google Colab extension - Seamless local development + cloud execution
+*   **Git** for version control
+
+**Important**: M4 Mac Mini lacks CUDA support - cannot run `lightning.gpu` quantum simulator. Use Colab Pro for training.
 
 ### ⚙️ Installation
 
@@ -91,26 +131,29 @@ The script will automatically save the model with the best validation accuracy t
 
 ```
 Quanvolutional-Neural-Network/
-├── models/                        # Saved model checkpoints
 ├── src/                           # Core source code
-│   ├── __init__.py                # Makes 'src' a Python package
-│   ├── config.py                  # All hyperparameters and configuration
-│   ├── dataset.py                 # Data loading and preprocessing
-│   ├── model.py                   # Quantum circuit and hybrid model definition
-│   ├── train.py                   # Main training and evaluation script
-│   ├── trainable_quantum_model.py # Enhanced trainable quantum layers
-│   └── enhanced_training.py       # Advanced training with separate optimizers
+│   ├── config.py                  # Hyperparameters and paths
+│   ├── dataset.py                 # Ottoman character data loading
+│   ├── model.py                   # Base quantum-classical hybrid (V4/V6)
+│   ├── train.py                   # Training pipeline with AMP
+│   ├── trainable_quantum_model.py # Enhanced trainable circuits
+│   └── enhanced_training.py       # Advanced training framework
+├── docs/                          # Documentation
+│   ├── AUDIT_REPORT.md            # Comprehensive codebase audit
+│   ├── EXPERIMENTS.md             # Detailed experimental log (V1-V6)
+│   ├── IMPLEMENTATION_GUIDE.md    # Step-by-step development guide
+│   ├── QUANTUM_ML_RECOMMENDATIONS.md  # QML best practices
+│   ├── RESEARCH_ROADMAP.md        # Publication roadmap
+│   ├── TRAINING_PLATFORM_GUIDE.md # Colab/Mac setup guides
+│   └── COLAB_SETUP.md             # Google Colab configuration
 ├── experiments/                   # Experimental scripts
-│   └── run_experiments.py         # Automated experiment runner
-├── improved_model.py              # Alternative model architectures
-├── improved_training.py           # Training enhancements and optimizations
-├── improved_quantum_circuit.py    # Enhanced quantum circuit designs
-├── performance_optimizations.py   # Performance benchmarking utilities
-├── experiments.md                 # Detailed log of all experiments and results
-├── prd.md                         # Product Requirements & Journey Document
-├── CLAUDE.md                      # Claude Code assistant instructions
-├── QUANTUM_ML_RECOMMENDATIONS.md  # QML best practices and recommendations
-├── IMPLEMENTATION_GUIDE.md        # Step-by-step implementation guide
+│   └── run_experiments.py         # Automated ablation studies
+├── improved_model.py              # Alternative architectures
+├── improved_training.py           # Training optimizations
+├── improved_quantum_circuit.py    # Enhanced circuit designs
+├── performance_optimizations.py   # Benchmarking utilities
+├── models/                        # Saved checkpoints (created at runtime)
+├── CLAUDE.md                      # AI assistant instructions
 ├── requirements.txt               # Python dependencies
 └── README.md                      # This file
 ``` 

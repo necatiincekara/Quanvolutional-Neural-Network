@@ -1,17 +1,89 @@
-# Core ML & DS libraries
-numpy
-scikit-learn
-tqdm
+# Hybrid Quantum-Classical Neural Network Dependencies
+# Last Updated: November 16, 2025
+# Python Version: 3.12.x (recommended) or 3.13.x
+# Platform: Google Colab Pro (A100 GPU) or local development
 
-# PyTorch
-torch
-torchvision
+# ============================================
+# Core ML & Deep Learning (Nov 2025)
+# ============================================
+# PyTorch 2.6+ with Python 3.12/3.13 support and CUDA 12.1
+torch>=2.6.0
+torchvision>=0.21.0
 
-# PennyLane QML
-pennylane
-pennylane-lightning[gpu]
+# ============================================
+# Quantum Machine Learning
+# ============================================
+# PennyLane 0.43+ with Python 3.12/3.13 wheels
+pennylane>=0.43.0
 
-# Utilities
-PyYAML
-gradio
-tensorboard 
+# GPU-accelerated quantum simulator (CUDA required)
+# Only for Google Colab / NVIDIA GPU systems
+# For M4 Mac: Use default.qubit (CPU simulator)
+pennylane-lightning-gpu>=0.43.0; platform_system != "Darwin"
+
+# ============================================
+# Scientific Computing
+# ============================================
+numpy>=1.26.0,<2.0.0  # NumPy 2.0 may break compatibility
+scipy>=1.11.0
+
+# ============================================
+# Machine Learning Utilities
+# ============================================
+scikit-learn>=1.5.0
+matplotlib>=3.9.0
+tqdm>=4.66.0
+
+# ============================================
+# Data Processing
+# ============================================
+opencv-python>=4.10.0  # For image preprocessing
+Pillow>=10.4.0
+
+# ============================================
+# Experiment Tracking & Visualization
+# ============================================
+tensorboard>=2.17.0
+wandb>=0.18.0  # Weights & Biases for experiment tracking (recommended)
+
+# ============================================
+# Configuration & Utilities
+# ============================================
+PyYAML>=6.0.1
+python-dotenv>=1.0.0  # For environment variables
+
+# ============================================
+# Development Tools (Optional)
+# ============================================
+# Uncomment for development:
+# pytest>=8.3.0
+# black>=24.8.0
+# flake8>=7.1.0
+# ipykernel>=6.29.0  # For Jupyter notebooks
+# jupyter>=1.1.0
+
+# ============================================
+# Google Colab Specific (Auto-installed)
+# ============================================
+# These are pre-installed in Colab, no need to install manually:
+# - google-colab
+# - torch (with CUDA)
+# - torchvision
+
+# ============================================
+# Platform-Specific Notes
+# ============================================
+#
+# GOOGLE COLAB PRO (RECOMMENDED):
+# - Use A100 GPU runtime
+# - CUDA 12.1 pre-installed
+# - Install with: pip install -r requirements.txt
+#
+# M4 MAC MINI (LIMITED):
+# - CUDA NOT AVAILABLE
+# - Use default.qubit (CPU simulator)
+# - Install torch with MPS support:
+#   pip install torch torchvision
+# - Skip pennylane-lightning-gpu
+#
+# See docs/COMPUTING_RESOURCES_2025.md for detailed setup 

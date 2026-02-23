@@ -31,9 +31,11 @@ This is a Hybrid Quantum-Classical Convolutional Neural Network implementation f
 
 #### Experiments & Documentation
 - `experiments/run_experiments.py`: Automated experiment runner for ablation studies
-- `experiments.md`: Detailed log of all experimental results
-- `QUANTUM_ML_RECOMMENDATIONS.md`: Best practices and optimization recommendations
-- `IMPLEMENTATION_GUIDE.md`: Step-by-step guide for achieving 90% accuracy target
+- `docs/AUDIT_REPORT.md`: Comprehensive codebase audit and development roadmap
+- `docs/EXPERIMENTS.md`: Detailed log of all experimental results (V1-V6)
+- `docs/QUANTUM_ML_RECOMMENDATIONS.md`: Best practices and optimization recommendations
+- `docs/IMPLEMENTATION_GUIDE.md`: Step-by-step guide for V7-V10 development
+- `docs/RESEARCH_ROADMAP.md`: Publication strategy and research timeline
 
 ## Common Development Commands
 
@@ -74,11 +76,17 @@ The quantum layer has been heavily optimized through multiple iterations:
 - **Mixed Precision**: AMP (Automatic Mixed Precision) enabled for GPU training
 - **Checkpointing**: Saves best model to `models/best_quanv_net.pth` and latest state to `models/checkpoint_latest.pth`
 
-### Performance Benchmarks
-- Original implementation (V1): >8 hours per epoch, 256 quantum evaluations/image
-- V4 architecture (8x8 feature maps): ~1.5 hours per epoch, 16 quantum evaluations/image
-- V6 architecture (6x6 feature maps): ~117 seconds/batch, 9 quantum evaluations/image (~43% faster than V4)
-- Key optimization: From 256 to 9 quantum circuit evaluations per image (28.4x reduction)
+### Performance Benchmarks & Current Status
+
+| Version | Feature Map | Quantum Calls | Epoch Time | Accuracy | Status |
+|---------|------------|---------------|------------|----------|---------|
+| V1 | 32×32 | 256 | >8h | 2.3% | ❌ Infeasible |
+| V4 | 8×8 | 16 | ~1.5h | 8.75% | ✅ **Stable Baseline** |
+| V6 | 6×6 | 9 | ~117s/batch | 0.00% | ❌ Gradient vanishing |
+
+**Current Best**: V4 (93.75% reduction in quantum evaluations from V1)
+**Critical Issue**: V6 achieves 43% speedup but suffers from complete gradient collapse
+**Next Steps**: V7 gradient stabilization (see docs/AUDIT_REPORT.md)
 
 ### Dataset Configuration
 The model expects Ottoman character images organized in folders by class label. Default paths point to Google Drive locations (see `config.py`). When running locally, update:
@@ -114,5 +122,25 @@ The repository tracks multiple experimental architectures (V1-V6) with different
 - **Slow first epoch**: Quantum kernel compilation happens on first run; subsequent epochs are faster due to disk caching
 - **Learning stagnation**: Check gradient flow diagnostics and ensure learning rate scheduler is stepped per batch
 - **Memory issues**: Reduce batch size or feature map dimensions before quantum layer
-- **V6 learning failure (0% accuracy)**: Extreme spatial reduction (4x4) creates information bottleneck; 6x6 is minimum viable size
-- **Barren plateaus**: Use separate learning rates for quantum (0.0001) and classical (0.0005) parameters
+- **V6 gradient vanishing (0% accuracy)**: Aggressive spatial reduction without gradient stabilization causes complete gradient collapse; requires residual connections and gradient scaling (V7 solution)
+- **Information bottleneck**: Feature maps <8×8 lose critical spatial information; V4 (8×8) is current optimal
+- **Barren plateaus**: Use separate learning rates for quantum (0.001) and classical (0.005) parameters with gradient clipping
+
+### Development Priorities (2025)
+
+**Immediate** (Week 1-2):
+- Implement V7 gradient stabilization techniques
+- Add gradient monitoring to all training loops
+- Set up Weights & Biases experiment tracking
+
+**Short-term** (Month 1):
+- Achieve 25% accuracy with V7
+- Implement V8 multi-scale processing
+- Complete comprehensive ablation studies
+
+**Medium-term** (Month 2-3):
+- Deploy V9 selective quantum processing (target: 60% accuracy)
+- Implement V10 fully trainable quantum circuits (target: 90% accuracy)
+- Prepare publication materials
+
+For detailed roadmap, see `docs/AUDIT_REPORT.md` and `docs/IMPLEMENTATION_GUIDE.md`
