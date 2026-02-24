@@ -1,6 +1,6 @@
 """
-Enhanced Training Pipeline for Trainable Quantum-Classical Hybrid Model
-Targets 90% accuracy improvement from 82% baseline with fixed quantum layers
+Enhanced Training Pipeline for V7 Trainable Quantum-Classical Hybrid Model
+Separate quantum/classical optimizers, gradient monitoring, label smoothing, mixup
 """
 
 import torch
@@ -13,290 +13,339 @@ from tqdm import tqdm
 import os
 import json
 from datetime import datetime
+import matplotlib
+matplotlib.use('Agg')  # Non-interactive backend
 import matplotlib.pyplot as plt
 
 from . import config
 from .trainable_quantum_model import create_enhanced_model
 from .dataset import get_dataloaders
 
+
 class QuantumAwareOptimizer:
     """
-    Custom optimizer wrapper that handles quantum and classical parameters separately
-    Critical for achieving 90% accuracy target
+    Custom optimizer wrapper that handles quantum and classical parameters separately.
+    Quantum parameters need lower LR and gentler gradient clipping.
     """
-    def __init__(self, model, quantum_lr=0.001, classical_lr=0.005, quantum_momentum=0.9):
-        # Separate parameters
+    def __init__(self, model, train_loader, num_epochs,
+                 quantum_lr=0.001, classical_lr=0.005):
+        # Separate quantum vs classical parameters
         self.quantum_params = []
         self.classical_params = []
-        
+
         for name, param in model.named_parameters():
-            if 'quanv' in name or 'quantum' in name:
+            if 'quanv' in name or 'quantum' in name or 'gradient_scale' in name:
                 self.quantum_params.append(param)
             else:
                 self.classical_params.append(param)
-        
-        # Create separate optimizers
+
+        print(f"Quantum params: {sum(p.numel() for p in self.quantum_params)}")
+        print(f"Classical params: {sum(p.numel() for p in self.classical_params)}")
+
+        # Quantum optimizer: Adam with conservative settings
         self.quantum_optimizer = optim.Adam(
             self.quantum_params,
             lr=quantum_lr,
-            betas=(quantum_momentum, 0.999),
+            betas=(0.9, 0.999),
             eps=1e-8,
             weight_decay=1e-5
         )
-        
+
+        # Classical optimizer: AdamW with standard settings
         self.classical_optimizer = optim.AdamW(
             self.classical_params,
             lr=classical_lr,
             weight_decay=1e-4
         )
-        
-        # Learning rate schedulers
+
+        # Compute total training steps for schedulers
+        total_steps = len(train_loader) * num_epochs
+
+        # Quantum: cosine annealing with warm restarts
         self.quantum_scheduler = CosineAnnealingWarmRestarts(
             self.quantum_optimizer,
-            T_0=10,
+            T_0=max(10, num_epochs // 5),
             T_mult=2,
             eta_min=1e-6
         )
-        
-        self.classical_scheduler = optim.lr_scheduler.OneCycleLR(
+
+        # Classical: cosine annealing (safe, no total_steps overflow)
+        self.classical_scheduler = optim.lr_scheduler.CosineAnnealingLR(
             self.classical_optimizer,
-            max_lr=classical_lr,
-            total_steps=1000,
-            pct_start=0.1
+            T_max=num_epochs,
+            eta_min=1e-6
         )
-    
+
     def zero_grad(self):
         self.quantum_optimizer.zero_grad()
         self.classical_optimizer.zero_grad()
-    
+
     def step(self):
-        # Gradient clipping for quantum parameters
+        # Gradient clipping
         torch.nn.utils.clip_grad_norm_(self.quantum_params, max_norm=0.5)
         torch.nn.utils.clip_grad_norm_(self.classical_params, max_norm=1.0)
-        
+
         self.quantum_optimizer.step()
         self.classical_optimizer.step()
-    
-    def scheduler_step(self):
-        self.quantum_scheduler.step()
+
+    def scheduler_step(self, epoch):
+        self.quantum_scheduler.step(epoch)
         self.classical_scheduler.step()
 
+
 class GradientMonitor:
-    """
-    Monitors gradient flow through quantum and classical layers
-    Essential for diagnosing training issues
-    """
+    """Monitors gradient flow through quantum and classical layers"""
     def __init__(self, model):
         self.model = model
         self.gradient_history = {
             'quantum': [],
             'classical': []
         }
-    
+
     def log_gradients(self):
         quantum_grads = []
         classical_grads = []
-        
+
         for name, param in self.model.named_parameters():
             if param.grad is not None:
                 grad_norm = param.grad.norm().item()
-                if 'quanv' in name or 'quantum' in name:
+                if 'quanv' in name or 'quantum' in name or 'gradient_scale' in name:
                     quantum_grads.append(grad_norm)
                 else:
                     classical_grads.append(grad_norm)
-        
+
         if quantum_grads:
             self.gradient_history['quantum'].append(np.mean(quantum_grads))
         if classical_grads:
             self.gradient_history['classical'].append(np.mean(classical_grads))
-    
+
     def check_gradient_health(self):
         """Check for vanishing or exploding gradients"""
+        issues = []
         if len(self.gradient_history['quantum']) > 0:
             recent_quantum = np.mean(self.gradient_history['quantum'][-10:])
             if recent_quantum < 1e-6:
-                print("⚠️ Warning: Quantum gradients may be vanishing")
+                issues.append(f"Quantum gradients vanishing: {recent_quantum:.2e}")
             elif recent_quantum > 10:
-                print("⚠️ Warning: Quantum gradients may be exploding")
-        
+                issues.append(f"Quantum gradients exploding: {recent_quantum:.2e}")
+
+        if len(self.gradient_history['classical']) > 0:
+            recent_classical = np.mean(self.gradient_history['classical'][-10:])
+            if recent_classical < 1e-6:
+                issues.append(f"Classical gradients vanishing: {recent_classical:.2e}")
+
+        for issue in issues:
+            print(f"  WARNING: {issue}")
+
         return self.gradient_history
+
 
 class EnhancedTrainer:
     """
-    Advanced training logic for quantum-classical hybrid model
-    Implements strategies to achieve 90% accuracy from 82% baseline
+    V7 training pipeline with:
+    - Separate quantum/classical optimizers
+    - Gradient monitoring
+    - Label smoothing
+    - Mixup augmentation
+    - Early stopping
+    - Checkpoint management
     """
-    def __init__(self, model, device, experiment_name="enhanced_quantum"):
+    def __init__(self, model, train_loader, val_loader, device,
+                 num_epochs=50, experiment_name="v7_enhanced"):
         self.model = model.to(device)
         self.device = device
+        self.num_epochs = num_epochs
         self.experiment_name = experiment_name
-        
+
         # Create experiment directory
         self.exp_dir = f"experiments/{experiment_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         os.makedirs(self.exp_dir, exist_ok=True)
-        
-        # Initialize components
-        self.optimizer = QuantumAwareOptimizer(model)
+        os.makedirs("models", exist_ok=True)
+
+        # Initialize optimizer with correct total_steps
+        self.optimizer = QuantumAwareOptimizer(
+            model, train_loader, num_epochs,
+            quantum_lr=0.001, classical_lr=0.005
+        )
         self.gradient_monitor = GradientMonitor(model)
         self.scaler = GradScaler(enabled=device.type == "cuda")
-        
-        # Loss with label smoothing for better generalization
+
+        # Label smoothing loss
         self.criterion = LabelSmoothingCrossEntropy(smoothing=0.1)
-        
+
         # Training history
         self.history = {
-            'train_loss': [],
-            'train_acc': [],
-            'val_loss': [],
-            'val_acc': [],
-            'quantum_grads': [],
-            'classical_grads': []
+            'train_loss': [], 'train_acc': [],
+            'val_loss': [], 'val_acc': [],
         }
-        
+
         self.best_val_acc = 0.0
         self.patience_counter = 0
-    
+
     def train_epoch(self, train_loader, epoch):
-        """
-        Single epoch training with enhanced techniques
-        """
         self.model.train()
         total_loss = 0.0
         correct = 0
         total = 0
-        
-        progress_bar = tqdm(train_loader, desc=f"Epoch {epoch}")
-        
+
+        progress_bar = tqdm(train_loader, desc=f"Epoch {epoch}", leave=False)
+
         for batch_idx, (images, labels) in enumerate(progress_bar):
             images, labels = images.to(self.device), labels.to(self.device)
-            
-            # Apply mixup augmentation (50% chance)
+
+            # Mixup augmentation (50% chance)
             if np.random.random() > 0.5:
                 images, labels_a, labels_b, lam = mixup_data(images, labels)
             else:
                 labels_a, labels_b, lam = labels, labels, 1.0
-            
+
             self.optimizer.zero_grad()
-            
-            # Forward pass with mixed precision
-            with autocast(device_type=self.device.type, dtype=torch.float16, enabled=self.device.type == "cuda"):
+
+            # Forward pass
+            with autocast(device_type=self.device.type, dtype=torch.float16,
+                          enabled=self.device.type == "cuda"):
                 outputs = self.model(images)
-                loss = lam * self.criterion(outputs, labels_a) + (1 - lam) * self.criterion(outputs, labels_b)
-            
+                loss = lam * self.criterion(outputs, labels_a) + \
+                       (1 - lam) * self.criterion(outputs, labels_b)
+
             # Backward pass
             self.scaler.scale(loss).backward()
-            
+
+            # Debug: log gradient info on first batch
+            if batch_idx == 0:
+                self._log_debug_info(epoch)
+
             # Log gradients periodically
             if batch_idx % 10 == 0:
                 self.gradient_monitor.log_gradients()
-            
-            # Optimizer step
+
+            # Unscale before clipping, then step
             self.scaler.unscale_(self.optimizer.quantum_optimizer)
             self.scaler.unscale_(self.optimizer.classical_optimizer)
             self.optimizer.step()
             self.scaler.update()
-            
-            # Update metrics
+
+            # Metrics
             total_loss += loss.item()
             _, predicted = outputs.max(1)
             total += labels.size(0)
-            correct += predicted.eq(labels_a).sum().item() * lam + predicted.eq(labels_b).sum().item() * (1 - lam)
-            
-            # Update progress bar
+            correct += (predicted.eq(labels_a).sum().item() * lam +
+                        predicted.eq(labels_b).sum().item() * (1 - lam))
+
             progress_bar.set_postfix({
                 'loss': f"{loss.item():.4f}",
                 'acc': f"{100. * correct / total:.2f}%"
             })
-        
-        # Step schedulers
-        self.optimizer.scheduler_step()
-        
+
+        # Step epoch-level schedulers
+        self.optimizer.scheduler_step(epoch)
+
         return total_loss / len(train_loader), 100. * correct / total
-    
+
+    def _log_debug_info(self, epoch):
+        """Log quantum layer diagnostics on first batch of each epoch"""
+        # Quantum output statistics
+        with torch.no_grad():
+            for name, param in self.model.named_parameters():
+                if 'gradient_scale' in name:
+                    print(f"  [DEBUG] gradient_scale = {param.item():.4f}")
+
+        # Gradient statistics
+        q_grads, c_grads = [], []
+        for name, param in self.model.named_parameters():
+            if param.grad is not None:
+                norm = param.grad.norm().item()
+                if 'quanv' in name or 'quantum' in name:
+                    q_grads.append(norm)
+                else:
+                    c_grads.append(norm)
+
+        if q_grads:
+            print(f"  [DEBUG] quantum grad mean={np.mean(q_grads):.2e}, "
+                  f"max={max(q_grads):.2e}")
+        if c_grads:
+            print(f"  [DEBUG] classical grad mean={np.mean(c_grads):.2e}, "
+                  f"max={max(c_grads):.2e}")
+
     def validate(self, val_loader):
-        """
-        Validation with comprehensive metrics
-        """
         self.model.eval()
         total_loss = 0.0
         correct = 0
         total = 0
-        
+
         with torch.no_grad():
-            for images, labels in tqdm(val_loader, desc="Validation"):
+            for images, labels in tqdm(val_loader, desc="Validation", leave=False):
                 images, labels = images.to(self.device), labels.to(self.device)
-                
-                with autocast(device_type=self.device.type, dtype=torch.float16, enabled=self.device.type == "cuda"):
+
+                with autocast(device_type=self.device.type, dtype=torch.float16,
+                              enabled=self.device.type == "cuda"):
                     outputs = self.model(images)
                     loss = self.criterion(outputs, labels)
-                
+
                 total_loss += loss.item()
                 _, predicted = outputs.max(1)
                 total += labels.size(0)
                 correct += predicted.eq(labels).sum().item()
-        
+
         return total_loss / len(val_loader), 100. * correct / total
-    
-    def train(self, train_loader, val_loader, num_epochs=100, target_accuracy=90.0):
-        """
-        Full training loop with early stopping and checkpointing
-        """
-        print(f"Starting training: Target accuracy = {target_accuracy}%")
-        print(f"Baseline accuracy = 82% (fixed quantum layer)")
-        print(f"Experiment directory: {self.exp_dir}")
-        
-        for epoch in range(1, num_epochs + 1):
-            # Training phase
+
+    def train(self, train_loader, val_loader, target_accuracy=25.0):
+        """Full training loop"""
+        print(f"\n{'='*50}")
+        print(f"V7 ENHANCED TRAINING")
+        print(f"{'='*50}")
+        print(f"Target accuracy: {target_accuracy}%")
+        print(f"V4 baseline: 8.75%")
+        print(f"Experiment: {self.exp_dir}")
+        print(f"Device: {self.device}")
+        print(f"Epochs: {self.num_epochs}")
+        print(f"{'='*50}\n")
+
+        for epoch in range(1, self.num_epochs + 1):
+            print(f"\n--- Epoch {epoch}/{self.num_epochs} ---")
+
             train_loss, train_acc = self.train_epoch(train_loader, epoch)
-            
-            # Validation phase
             val_loss, val_acc = self.validate(val_loader)
-            
-            # Check gradient health
+
+            # Gradient health check
             self.gradient_monitor.check_gradient_health()
-            
+
             # Update history
             self.history['train_loss'].append(train_loss)
             self.history['train_acc'].append(train_acc)
             self.history['val_loss'].append(val_loss)
             self.history['val_acc'].append(val_acc)
-            
-            # Log progress
-            print(f"\nEpoch {epoch}/{num_epochs}")
-            print(f"Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%")
-            print(f"Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f}%")
-            print(f"Best Val Acc: {self.best_val_acc:.2f}%")
-            print(f"Progress toward target: {val_acc:.2f}% / {target_accuracy}%")
-            
+
+            print(f"  Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%")
+            print(f"  Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f}%")
+
             # Save best model
             if val_acc > self.best_val_acc:
                 self.best_val_acc = val_acc
                 self.patience_counter = 0
-                self.save_checkpoint(epoch, val_acc)
-                print(f"✨ New best model saved: {val_acc:.2f}%")
-                
-                # Check if target reached
+                self._save_checkpoint(epoch, val_acc)
+                print(f"  NEW BEST: {val_acc:.2f}%")
+
                 if val_acc >= target_accuracy:
-                    print(f"🎉 Target accuracy {target_accuracy}% achieved!")
+                    print(f"\n  TARGET {target_accuracy}% ACHIEVED!")
                     break
             else:
                 self.patience_counter += 1
-            
+
             # Early stopping
             if self.patience_counter >= 15:
-                print("Early stopping triggered")
+                print("\n  Early stopping triggered")
                 break
-            
-            # Save training curves periodically
+
+            # Plot curves every 5 epochs
             if epoch % 5 == 0:
-                self.plot_training_curves()
-        
-        # Final summary
-        self.print_final_summary()
+                self._plot_training_curves()
+
+        self._print_final_summary(target_accuracy)
         return self.best_val_acc
-    
-    def save_checkpoint(self, epoch, val_acc):
-        """Save model checkpoint with metadata"""
+
+    def _save_checkpoint(self, epoch, val_acc):
+        """Save model checkpoint"""
         checkpoint = {
             'epoch': epoch,
             'model_state_dict': self.model.state_dict(),
@@ -305,80 +354,81 @@ class EnhancedTrainer:
             'val_acc': val_acc,
             'history': self.history
         }
-        
-        path = os.path.join(self.exp_dir, f'checkpoint_acc_{val_acc:.2f}.pth')
-        torch.save(checkpoint, path)
-        
+
+        # Save to experiment dir and as latest best
+        torch.save(checkpoint, os.path.join(self.exp_dir, 'best_model.pth'))
+        torch.save(checkpoint, 'models/best_v7_model.pth')
+
         # Save metadata
         metadata = {
             'experiment_name': self.experiment_name,
             'epoch': epoch,
             'val_accuracy': val_acc,
-            'baseline_accuracy': 82.0,
-            'improvement': val_acc - 82.0,
-            'target_accuracy': 90.0,
-            'progress_percentage': (val_acc - 82.0) / (90.0 - 82.0) * 100
+            'v4_baseline': 8.75,
+            'improvement_over_v4': val_acc - 8.75,
         }
-        
         with open(os.path.join(self.exp_dir, 'metadata.json'), 'w') as f:
             json.dump(metadata, f, indent=2)
-    
-    def plot_training_curves(self):
+
+    def _plot_training_curves(self):
         """Generate training curve plots"""
         fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-        
-        # Loss curves
-        axes[0, 0].plot(self.history['train_loss'], label='Train Loss')
-        axes[0, 0].plot(self.history['val_loss'], label='Val Loss')
+
+        # Loss
+        axes[0, 0].plot(self.history['train_loss'], label='Train')
+        axes[0, 0].plot(self.history['val_loss'], label='Val')
         axes[0, 0].set_xlabel('Epoch')
         axes[0, 0].set_ylabel('Loss')
         axes[0, 0].legend()
-        axes[0, 0].set_title('Loss Curves')
-        
-        # Accuracy curves
-        axes[0, 1].plot(self.history['train_acc'], label='Train Acc')
-        axes[0, 1].plot(self.history['val_acc'], label='Val Acc')
-        axes[0, 1].axhline(y=82, color='r', linestyle='--', label='Baseline (82%)')
-        axes[0, 1].axhline(y=90, color='g', linestyle='--', label='Target (90%)')
+        axes[0, 0].set_title('Loss')
+
+        # Accuracy
+        axes[0, 1].plot(self.history['train_acc'], label='Train')
+        axes[0, 1].plot(self.history['val_acc'], label='Val')
+        axes[0, 1].axhline(y=8.75, color='r', linestyle='--', label='V4 Baseline (8.75%)')
+        axes[0, 1].axhline(y=25, color='g', linestyle='--', label='V7 Target (25%)')
         axes[0, 1].set_xlabel('Epoch')
         axes[0, 1].set_ylabel('Accuracy (%)')
         axes[0, 1].legend()
-        axes[0, 1].set_title('Accuracy Curves')
-        
+        axes[0, 1].set_title('Accuracy')
+
         # Gradient norms
-        if self.gradient_monitor.gradient_history['quantum']:
-            axes[1, 0].plot(self.gradient_monitor.gradient_history['quantum'], label='Quantum')
-            axes[1, 0].plot(self.gradient_monitor.gradient_history['classical'], label='Classical')
-            axes[1, 0].set_xlabel('Iteration')
+        qh = self.gradient_monitor.gradient_history
+        if qh['quantum']:
+            axes[1, 0].plot(qh['quantum'], label='Quantum', alpha=0.7)
+            axes[1, 0].plot(qh['classical'], label='Classical', alpha=0.7)
+            axes[1, 0].set_xlabel('Log Step')
             axes[1, 0].set_ylabel('Gradient Norm')
             axes[1, 0].set_yscale('log')
             axes[1, 0].legend()
             axes[1, 0].set_title('Gradient Flow')
-        
-        # Improvement tracking
-        improvements = [acc - 82.0 for acc in self.history['val_acc']]
+
+        # Improvement over V4
+        improvements = [acc - 8.75 for acc in self.history['val_acc']]
         axes[1, 1].plot(improvements)
-        axes[1, 1].axhline(y=8, color='g', linestyle='--', label='Target Improvement (8%)')
+        axes[1, 1].axhline(y=16.25, color='g', linestyle='--', label='V7 Target (+16.25%)')
+        axes[1, 1].axhline(y=0, color='r', linestyle='--', alpha=0.3)
         axes[1, 1].set_xlabel('Epoch')
-        axes[1, 1].set_ylabel('Improvement over Baseline (%)')
+        axes[1, 1].set_ylabel('Improvement over V4 (%)')
         axes[1, 1].legend()
-        axes[1, 1].set_title('Improvement Tracking')
-        
+        axes[1, 1].set_title('Progress')
+
         plt.tight_layout()
-        plt.savefig(os.path.join(self.exp_dir, 'training_curves.png'))
+        plt.savefig(os.path.join(self.exp_dir, 'training_curves.png'), dpi=100)
         plt.close()
-    
-    def print_final_summary(self):
-        """Print final training summary"""
-        print("\n" + "="*50)
+
+    def _print_final_summary(self, target_accuracy):
+        print(f"\n{'='*50}")
         print("TRAINING SUMMARY")
-        print("="*50)
-        print(f"Baseline Accuracy (Fixed Quantum): 82.00%")
-        print(f"Best Validation Accuracy: {self.best_val_acc:.2f}%")
-        print(f"Improvement: {self.best_val_acc - 82.0:.2f}%")
-        print(f"Target Achievement: {(self.best_val_acc - 82.0) / 8.0 * 100:.1f}% of goal")
-        print(f"Experiment saved to: {self.exp_dir}")
-        print("="*50)
+        print(f"{'='*50}")
+        print(f"V4 Baseline Accuracy: 8.75%")
+        print(f"Best Val Accuracy: {self.best_val_acc:.2f}%")
+        print(f"Improvement over V4: {self.best_val_acc - 8.75:+.2f}%")
+        print(f"Target ({target_accuracy}%): "
+              f"{'ACHIEVED' if self.best_val_acc >= target_accuracy else 'NOT YET'}")
+        print(f"Experiment: {self.exp_dir}")
+        print(f"{'='*50}")
+
 
 # -----------------
 # Utility Functions
@@ -389,13 +439,14 @@ class LabelSmoothingCrossEntropy(nn.Module):
     def __init__(self, smoothing=0.1):
         super(LabelSmoothingCrossEntropy, self).__init__()
         self.smoothing = smoothing
-    
+
     def forward(self, pred, target):
-        n_classes = pred.size(-1)
         log_pred = torch.log_softmax(pred, dim=-1)
-        loss = -log_pred.gather(dim=-1, index=target.unsqueeze(1)).squeeze(1)
+        nll_loss = -log_pred.gather(dim=-1, index=target.unsqueeze(1)).squeeze(1)
         smooth_loss = -log_pred.mean(dim=-1)
-        return (1 - self.smoothing) * loss + self.smoothing * smooth_loss
+        loss = (1 - self.smoothing) * nll_loss + self.smoothing * smooth_loss
+        return loss.mean()
+
 
 def mixup_data(x, y, alpha=0.2):
     """Mixup data augmentation"""
@@ -406,35 +457,39 @@ def mixup_data(x, y, alpha=0.2):
     y_a, y_b = y, y[index]
     return mixed_x, y_a, y_b, lam
 
-def run_enhanced_training(circuit_type='data_reuploading', num_epochs=100):
+
+def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50):
     """
-    Main function to run enhanced training
-    
+    Main entry point for V7 enhanced training.
+
     Args:
-        circuit_type: Type of quantum circuit to use
-        num_epochs: Maximum number of training epochs
-    
+        circuit_type: 'strongly_entangling', 'data_reuploading', or 'hardware_efficient'
+        num_epochs: Maximum training epochs
+
     Returns:
-        Best validation accuracy achieved
+        (best_val_acc, test_acc) tuple
     """
-    # Set device
     device = torch.device(config.DEVICE)
-    
+
     # Load data
     train_loader, val_loader, test_loader = get_dataloaders()
-    
-    # Create model
+
+    # Create V7 model
     model = create_enhanced_model(circuit_type=circuit_type, num_classes=config.NUM_CLASSES)
-    
+
     # Create trainer
-    trainer = EnhancedTrainer(model, device, experiment_name=f"quantum_{circuit_type}")
-    
-    # Train model
-    best_acc = trainer.train(train_loader, val_loader, num_epochs=num_epochs, target_accuracy=90.0)
-    
-    # Test evaluation
-    print("\nEvaluating on test set...")
+    trainer = EnhancedTrainer(
+        model, train_loader, val_loader, device,
+        num_epochs=num_epochs,
+        experiment_name=f"v7_{circuit_type}"
+    )
+
+    # Train
+    best_acc = trainer.train(train_loader, val_loader, target_accuracy=25.0)
+
+    # Final test evaluation
+    print("\nFinal evaluation on test set...")
     test_loss, test_acc = trainer.validate(test_loader)
     print(f"Test Accuracy: {test_acc:.2f}%")
-    
+
     return best_acc, test_acc

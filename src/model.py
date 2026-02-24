@@ -83,24 +83,22 @@ class QuanvLayer(nn.Module):
 
 class QuanvNet(nn.Module):
     """
-    The main Quanvolutional Neural Network model, combining the
-    quantum layer with classical convolutional and fully connected layers.
-    Includes Batch Normalization and Dropout for improved training.
+    V4 Stable Baseline: Quanvolutional Neural Network.
+    Uses 8x8 feature maps before quantum layer (proven optimal).
+    V6 (6x6) was reverted due to gradient collapse (0% accuracy).
     """
     def __init__(self, n_qubits=config.N_QUBITS, num_classes=config.NUM_CLASSES):
         super(QuanvNet, self).__init__()
-        # 1) Classical pre-processing: Find a balance between performance and information preservation.
-        # 32x32 -> Conv(s=2) -> 16x16 -> Conv(s=2) -> 8x8 -> Conv(k=3) -> 6x6
+        # 1) Classical pre-processing: 32x32 -> 16x16 -> 8x8
+        # V4 architecture (stable, 8.75% accuracy)
         self.pre = nn.Sequential(
             nn.Conv2d(1, 4, kernel_size=3, stride=2, padding=1), # 32x32 -> 16x16
             nn.ReLU(inplace=True),
             nn.Conv2d(4, 4, kernel_size=3, stride=2, padding=1), # 16x16 -> 8x8
             nn.ReLU(inplace=True),
-            # Use a non-strided convolution to reduce dimensions from 8x8 to 6x6
-            nn.Conv2d(4, 4, kernel_size=3, stride=1, padding=0) # 8x8 -> 6x6
         )
 
-        # 2) Quantum layer (operates on 4-channel 6x6 feature map)
+        # 2) Quantum layer (operates on 4-channel 8x8 feature map -> 4x4 output)
         self.quanv = QuanvLayer(n_qubits=n_qubits)
 
         # 3) Deeper classical processing after quantum layer

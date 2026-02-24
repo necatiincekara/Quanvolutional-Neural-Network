@@ -1,12 +1,24 @@
 """
 Configuration file for the Quanvolutional Neural Network model.
+Auto-detects platform (Mac vs Colab) and configures accordingly.
 """
 
 import torch
+import os
+import platform
+
+# --- Platform Detection ---
+IS_COLAB = os.path.exists('/content')
+IS_MAC = platform.system() == 'Darwin'
 
 # --- Dataset Configuration ---
-TRAIN_PATH = '/content/drive/MyDrive/set/train'
-TEST_PATH = '/content/drive/MyDrive/set/test'
+if IS_COLAB:
+    TRAIN_PATH = '/content/drive/MyDrive/set/train'
+    TEST_PATH = '/content/drive/MyDrive/set/test'
+else:
+    # Local development - update these paths to your local dataset location
+    TRAIN_PATH = os.environ.get('QUANV_TRAIN_PATH', 'data/train')
+    TEST_PATH = os.environ.get('QUANV_TEST_PATH', 'data/test')
 TAGS = {
     '01': 'elif', '02': 'be', '03': 'te', '04': 'se', '05': 'cim', 
     '06': 'ha', '07': 'hı', '08': 'dal', '09': 'zel', '10': 'ra', 
@@ -39,12 +51,19 @@ LEARNING_RATE = 0.0005
 VALIDATION_SPLIT = 0.1
 
 # --- Quantum Device Configuration ---
-# Use 'default.qubit' for CPU simulation
-# Use 'lightning.gpu' for GPU simulation if pennylane-lightning-gpu is installed
-QUANTUM_DEVICE = 'lightning.gpu'
+# Auto-detect: 'lightning.gpu' on Colab (CUDA), 'default.qubit' on Mac/CPU
+if IS_COLAB and torch.cuda.is_available():
+    QUANTUM_DEVICE = 'lightning.gpu'
+else:
+    QUANTUM_DEVICE = 'default.qubit'
 
 # --- Reproducibility ---
 RANDOM_SEED = 42
 
 # --- Device Configuration ---
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu" 
+if torch.cuda.is_available():
+    DEVICE = "cuda"
+elif IS_MAC and torch.backends.mps.is_available():
+    DEVICE = "cpu"  # MPS not fully compatible with PennyLane, use CPU
+else:
+    DEVICE = "cpu"

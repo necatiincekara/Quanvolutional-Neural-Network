@@ -1,30 +1,28 @@
 # Hybrid Quantum-Classical Neural Network Dependencies
-# Last Updated: November 16, 2025
+# Last Updated: February 2026
 # Python Version: 3.12.x (recommended) or 3.13.x
-# Platform: Google Colab Pro (A100 GPU) or local development
+# Platform: Google Colab Pro (A100 GPU) or M4 Mac (development)
 
 # ============================================
-# Core ML & Deep Learning (Nov 2025)
+# Core ML & Deep Learning
 # ============================================
-# PyTorch 2.6+ with Python 3.12/3.13 support and CUDA 12.1
 torch>=2.6.0
 torchvision>=0.21.0
 
 # ============================================
 # Quantum Machine Learning
 # ============================================
-# PennyLane 0.43+ with Python 3.12/3.13 wheels
-pennylane>=0.43.0
+pennylane>=0.44.0
 
 # GPU-accelerated quantum simulator (CUDA required)
 # Only for Google Colab / NVIDIA GPU systems
-# For M4 Mac: Use default.qubit (CPU simulator)
+# M4 Mac automatically uses default.qubit (CPU simulator)
 pennylane-lightning-gpu>=0.43.0; platform_system != "Darwin"
 
 # ============================================
 # Scientific Computing
 # ============================================
-numpy>=1.26.0,<2.0.0  # NumPy 2.0 may break compatibility
+numpy>=2.0.0  # PennyLane 0.44 requires NumPy 2.x
 scipy>=1.11.0
 
 # ============================================
@@ -37,53 +35,30 @@ tqdm>=4.66.0
 # ============================================
 # Data Processing
 # ============================================
-opencv-python>=4.10.0  # For image preprocessing
+opencv-python-headless>=4.10.0  # headless = no GUI deps
 Pillow>=10.4.0
 
 # ============================================
 # Experiment Tracking & Visualization
 # ============================================
 tensorboard>=2.17.0
-wandb>=0.18.0  # Weights & Biases for experiment tracking (recommended)
+wandb>=0.18.0
 
 # ============================================
 # Configuration & Utilities
 # ============================================
 PyYAML>=6.0.1
-python-dotenv>=1.0.0  # For environment variables
+python-dotenv>=1.0.0
 
 # ============================================
-# Development Tools (Optional)
-# ============================================
-# Uncomment for development:
-# pytest>=8.3.0
-# black>=24.8.0
-# flake8>=7.1.0
-# ipykernel>=6.29.0  # For Jupyter notebooks
-# jupyter>=1.1.0
-
-# ============================================
-# Google Colab Specific (Auto-installed)
-# ============================================
-# These are pre-installed in Colab, no need to install manually:
-# - google-colab
-# - torch (with CUDA)
-# - torchvision
-
-# ============================================
-# Platform-Specific Notes
+# Platform Notes
 # ============================================
 #
-# GOOGLE COLAB PRO (RECOMMENDED):
-# - Use A100 GPU runtime
-# - CUDA 12.1 pre-installed
-# - Install with: pip install -r requirements.txt
+# GOOGLE COLAB PRO (Training):
+#   pip install -r requirements.txt
+#   Uses lightning.gpu + CUDA (auto-detected)
 #
-# M4 MAC MINI (LIMITED):
-# - CUDA NOT AVAILABLE
-# - Use default.qubit (CPU simulator)
-# - Install torch with MPS support:
-#   pip install torch torchvision
-# - Skip pennylane-lightning-gpu
-#
-# See docs/COMPUTING_RESOURCES_2025.md for detailed setup 
+# M4 MAC MINI (Development):
+#   pip install -r requirements.txt
+#   Uses default.qubit CPU (auto-detected)
+#   Skip pennylane-lightning-gpu (excluded via platform marker)

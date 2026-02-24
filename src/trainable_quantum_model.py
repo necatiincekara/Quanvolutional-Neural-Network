@@ -1,6 +1,7 @@
 """
-Enhanced Trainable Quantum-Classical Hybrid Model for 90% Accuracy Target
-Building upon the 82% baseline with fixed quantum layers from master's thesis
+Enhanced Trainable Quantum-Classical Hybrid Model (V7)
+Gradient-stabilized architecture targeting 25%+ accuracy
+Building upon V4 stable baseline (8x8 feature maps, 8.75% accuracy)
 """
 
 import torch
@@ -10,10 +11,13 @@ import numpy as np
 from . import config
 
 # Enable quantum compilation cache
-qml.transforms.dynamic_dispatch.enable_tape_cache()
+try:
+    qml.transforms.dynamic_dispatch.enable_tape_cache()
+except AttributeError:
+    pass
 
 # -----------------
-# Enhanced Quantum Circuits with Multiple Parameterization Strategies
+# Quantum Device Factory
 # -----------------
 
 def create_quantum_device(n_qubits=4):
@@ -21,77 +25,78 @@ def create_quantum_device(n_qubits=4):
     return qml.device(
         config.QUANTUM_DEVICE,
         wires=n_qubits,
-        shots=None,  # Use exact expectation values for training stability
-        batch_obs=True  # Enable batched observations
     )
+
+# -----------------
+# Quantum Circuit Strategies
+# -----------------
 
 # Strategy 1: Strongly Entangling Layers (Best for gradient flow)
 @qml.qnode(create_quantum_device(), interface='torch', diff_method='adjoint')
 def strongly_entangling_circuit(inputs, weights):
     """
-    Strongly entangling circuit with multiple layers for expressivity
-    Achieves better gradient flow than simple circuits
+    Strongly entangling circuit with multiple layers for expressivity.
+    Achieves better gradient flow than simple circuits.
     """
     n_qubits = 4
-    n_layers = 3  # Optimal depth based on literature
-    
+
     # Input encoding with angle embedding
     qml.AngleEmbedding(inputs, wires=range(n_qubits))
-    
+
     # Strongly entangling layers
     qml.StronglyEntanglingLayers(weights, wires=range(n_qubits))
-    
-    # Return expectation values
+
     return [qml.expval(qml.PauliZ(i)) for i in range(n_qubits)]
 
 # Strategy 2: Data Re-uploading Circuit (Best for accuracy)
 @qml.qnode(create_quantum_device(), interface='torch', diff_method='adjoint')
 def data_reuploading_circuit(inputs, weights):
     """
-    Data re-uploading strategy for enhanced expressivity
-    Re-encodes data at each layer to increase model capacity
+    Data re-uploading strategy for enhanced expressivity.
+    Re-encodes data at each layer to increase model capacity.
     """
     n_qubits = 4
     n_layers = 2
-    
+
     for layer in range(n_layers):
         # Re-upload data at each layer
         qml.AngleEmbedding(inputs, wires=range(n_qubits))
-        
+
         # Parameterized rotation layer
         for i in range(n_qubits):
             qml.RY(weights[layer, i, 0], wires=i)
             qml.RZ(weights[layer, i, 1], wires=i)
-        
+
         # Entangling layer with circular connectivity
         for i in range(n_qubits):
             qml.CNOT(wires=[i, (i + 1) % n_qubits])
-        
+
         # Additional rotation layer for expressivity
         for i in range(n_qubits):
             qml.RY(weights[layer, i, 2], wires=i)
-    
+
     return [qml.expval(qml.PauliZ(i)) for i in range(n_qubits)]
 
 # Strategy 3: Hardware Efficient Ansatz (Best for NISQ devices)
 @qml.qnode(create_quantum_device(), interface='torch', diff_method='adjoint')
 def hardware_efficient_circuit(inputs, weights):
     """
-    Hardware-efficient ansatz optimized for near-term quantum devices
-    Balances expressivity with circuit depth
+    Hardware-efficient ansatz optimized for near-term quantum devices.
+    Uses AngleEmbedding (4 inputs for 4 qubits) instead of AmplitudeEmbedding
+    which would require 2^4=16 inputs.
     """
     n_qubits = 4
     n_layers = 2
-    
-    # Amplitude encoding for better information density
-    qml.AmplitudeEmbedding(inputs, wires=range(n_qubits), normalize=True, pad_with=0.0)
-    
+
+    # Angle encoding (matches 4-value patch input)
+    qml.AngleEmbedding(inputs, wires=range(n_qubits))
+
     for layer in range(n_layers):
         # Single-qubit rotations
         for i in range(n_qubits):
             qml.RX(weights[layer, i, 0], wires=i)
             qml.RY(weights[layer, i, 1], wires=i)
-        
+
         # Entangling gates with alternating patterns
         if layer % 2 == 0:
             for i in range(0, n_qubits - 1, 2):
@@ -100,7 +105,7 @@ def hardware_efficient_circuit(inputs, weights):
             for i in range(1, n_qubits - 1, 2):
                 qml.CZ(wires=[i, i + 1])
             qml.CZ(wires=[n_qubits - 1, 0])  # Circular boundary
-    
+
     return [qml.expval(qml.PauliZ(i)) for i in range(n_qubits)]
 
 # -----------------
@@ -109,15 +114,18 @@ def hardware_efficient_circuit(inputs, weights):
 
 class TrainableQuanvLayer(nn.Module):
     """
-    Fully trainable quantum convolutional layer with multiple circuit options
-    Implements gradient stabilization and parameter initialization strategies
+    Fully trainable quantum convolutional layer with gradient stabilization.
+    Key improvements over base QuanvLayer:
+    - Multiple circuit strategies
+    - Learnable gradient scaling
+    - Variance-preserving initialization (anti-barren plateau)
     """
     def __init__(self, n_qubits=4, circuit_type='data_reuploading', n_layers=2):
         super(TrainableQuanvLayer, self).__init__()
         self.n_qubits = n_qubits
         self.n_layers = n_layers
         self.circuit_type = circuit_type
-        
+
         # Select circuit and define weight shapes
         if circuit_type == 'strongly_entangling':
             self.circuit = strongly_entangling_circuit
@@ -131,136 +139,151 @@ class TrainableQuanvLayer(nn.Module):
             weight_shapes = {"weights": (n_layers, n_qubits, 2)}
         else:
             raise ValueError(f"Unknown circuit type: {circuit_type}")
-        
+
         # Create quantum layer
         self.qlayer = qml.qnn.TorchLayer(self.circuit, weight_shapes)
-        
+
         # Initialize with variance-preserving strategy
         self._initialize_quantum_weights()
-        
-        # Gradient scaling factor (learned)
+
+        # Learnable gradient scaling factor for stability
         self.gradient_scale = nn.Parameter(torch.ones(1) * 0.1)
-    
+
     def _initialize_quantum_weights(self):
         """
-        Initialize quantum weights using variance-preserving strategy
-        Critical for avoiding barren plateaus
+        Initialize quantum weights to avoid barren plateaus.
+        Uses small uniform initialization around zero.
         """
         with torch.no_grad():
             for name, param in self.qlayer.named_parameters():
                 if 'weight' in name:
-                    # Use smaller initialization for quantum parameters
-                    nn.init.normal_(param, mean=0.0, std=0.01)
-    
+                    # Small random initialization - not too small to avoid barren plateau
+                    nn.init.uniform_(param, -0.1, 0.1)
+
     def forward(self, x):
-        """
-        Forward pass with gradient scaling for stability
-        """
-        # Extract patches (same as before)
+        # Extract 2x2 patches with stride 2
         patches = x.unfold(2, 2, 2).unfold(3, 2, 2)
         batch_size, channels, out_h, out_w, _, _ = patches.size()
-        
-        # Reshape for quantum processing
+
+        # Reshape: (batch*patches, n_qubits)
         patches = patches.reshape(batch_size, channels, out_h * out_w, -1)
         patches = patches.permute(0, 2, 1, 3).reshape(-1, self.n_qubits)
-        
-        # Process through quantum circuit with gradient scaling
+
+        # Quantum processing with gradient scaling
         processed_patches = self.qlayer(patches) * self.gradient_scale
-        
-        # Reshape back
+
+        # Reshape back: (batch, channels*n_qubits, out_h, out_w)
         final_shape = (batch_size, out_h * out_w, channels, self.n_qubits)
         processed_patches = processed_patches.view(final_shape)
         processed_patches = processed_patches.permute(0, 2, 3, 1)
-        processed_patches = processed_patches.reshape(batch_size, channels * self.n_qubits, out_h, out_w)
-        
+        processed_patches = processed_patches.reshape(
+            batch_size, channels * self.n_qubits, out_h, out_w
+        )
+
         return processed_patches.to(x.device)
 
 # -----------------
-# Enhanced Hybrid Model for 90% Accuracy Target
+# V7: Gradient-Stabilized Hybrid Model
 # -----------------
 
 class EnhancedQuanvNet(nn.Module):
     """
-    Enhanced quantum-classical hybrid model targeting 90% accuracy
-    Improvements over 82% baseline:
-    1. Trainable quantum parameters (vs fixed)
-    2. Residual connections for gradient flow
-    3. Attention mechanisms for feature selection
-    4. Multi-scale processing
+    V7 Enhanced quantum-classical hybrid model.
+
+    Key improvements over V4 (8.75% accuracy):
+    1. Trainable quantum parameters (vs fixed in V4)
+    2. Residual connections around quantum layer for gradient flow
+    3. Channel attention for quantum feature selection
+    4. GroupNorm throughout (stable with small batch sizes)
+    5. Learnable skip connection weight
+
+    Architecture: 32x32 -> 16x16 -> 8x8 -> [Quantum 4x4] -> CNN -> 44 classes
+    Feature map: 8x8 (proven optimal in V4, avoids V6 gradient collapse)
     """
     def __init__(self, n_qubits=4, num_classes=44, circuit_type='data_reuploading'):
         super(EnhancedQuanvNet, self).__init__()
-        
-        # Classical preprocessing with residual blocks
+
+        # Classical preprocessing: 32x32 -> 8x8 with 4 channels
+        # Uses GroupNorm for stability with small effective batch sizes
         self.pre = nn.Sequential(
-            nn.Conv2d(1, 8, kernel_size=3, stride=2, padding=1),  # 32->16
-            nn.BatchNorm2d(8),
-            nn.ReLU(inplace=True),
+            nn.Conv2d(1, 8, kernel_size=3, stride=2, padding=1),   # 32->16
+            nn.GroupNorm(4, 8),
+            nn.GELU(),
             ResidualBlock(8, 8),
-            nn.Conv2d(8, 4, kernel_size=3, stride=2, padding=1),  # 16->8
-            nn.BatchNorm2d(4),
-            nn.ReLU(inplace=True)
+            nn.Conv2d(8, 4, kernel_size=3, stride=2, padding=1),   # 16->8
+            nn.GroupNorm(2, 4),
+            nn.GELU()
         )
-        
-        # Trainable quantum layer (key difference from 82% baseline)
+
+        # Trainable quantum layer on 8x8 feature map -> 4x4 output
+        # 16 quantum circuit evaluations per image (same as V4)
         self.quanv = TrainableQuanvLayer(
             n_qubits=n_qubits,
             circuit_type=circuit_type,
             n_layers=2
         )
-        
-        # Attention gate for quantum features
-        self.attention = SelfAttention(channels=16)  # 4 * n_qubits
-        
-        # Enhanced classical processing
+
+        # Quantum output channels: 4 channels * 4 qubits = 16
+        quanv_out_channels = 4 * n_qubits
+
+        # Channel attention for quantum features
+        self.attention = ChannelAttention(quanv_out_channels)
+
+        # Post-quantum classical processing
         self.post = nn.Sequential(
-            nn.Conv2d(16, 32, kernel_size=3, padding=1),
-            nn.BatchNorm2d(32),
-            nn.ReLU(inplace=True),
+            nn.Conv2d(quanv_out_channels, 32, kernel_size=3, padding=1),
+            nn.GroupNorm(8, 32),
+            nn.GELU(),
             ResidualBlock(32, 32),
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True),
+            nn.GroupNorm(8, 64),
+            nn.GELU(),
             nn.AdaptiveAvgPool2d(2)
         )
-        
-        # Classification head with dropout
+
+        # Classification head
         self.classifier = nn.Sequential(
             nn.Linear(64 * 4, 128),
-            nn.ReLU(inplace=True),
+            nn.GELU(),
             nn.Dropout(0.5),
             nn.Linear(128, 64),
-            nn.ReLU(inplace=True),
+            nn.GELU(),
             nn.Dropout(0.3),
             nn.Linear(64, num_classes)
         )
-        
-        # Skip connection weight (learnable)
+
+        # Learnable skip connection weight (starts small)
         self.skip_weight = nn.Parameter(torch.tensor(0.1))
-    
+
+        # Adapter to match pre_features (4ch) to quantum output (16ch) for residual
+        self.skip_adapter = nn.Conv2d(4, quanv_out_channels, kernel_size=1, bias=False)
+
     def forward(self, x):
-        # Preprocessing
+        # 1) Classical preprocessing: (B,1,32,32) -> (B,4,8,8)
         pre_features = self.pre(x)
-        
-        # Quantum processing with skip connection
+
+        # 2) Quantum processing: (B,4,8,8) -> (B,16,4,4)
         quantum_features = self.quanv(pre_features)
-        
-        # Apply attention to quantum features
+
+        # 3) Channel attention
         quantum_features = self.attention(quantum_features)
-        
-        # Residual connection if shapes match
-        if quantum_features.shape[1] == pre_features.shape[1] * 4:
-            # Expand pre_features to match quantum_features channels
-            pre_expanded = pre_features.repeat(1, 4, 1, 1)
-            quantum_features = quantum_features + self.skip_weight * pre_expanded
-        
-        # Post-processing
+
+        # 4) Residual connection: adapt pre_features spatially and channel-wise
+        #    pre_features is (B,4,8,8), quantum_features is (B,16,4,4)
+        #    Downsample pre_features to match quantum spatial dims
+        pre_downsampled = nn.functional.adaptive_avg_pool2d(
+            pre_features, quantum_features.shape[2:]
+        )
+        pre_adapted = self.skip_adapter(pre_downsampled)
+        quantum_features = quantum_features + self.skip_weight * pre_adapted
+
+        # 5) Classical post-processing
         features = self.post(quantum_features)
-        
-        # Classification
-        features = features.view(features.size(0), -1)
+
+        # 6) Classification
+        features = features.reshape(features.size(0), -1)
         output = self.classifier(features)
-        
+
         return output
 
 # -----------------
@@ -268,47 +291,43 @@ class EnhancedQuanvNet(nn.Module):
 # -----------------
 
 class ResidualBlock(nn.Module):
-    """Residual block for better gradient flow"""
+    """Residual block with GroupNorm for gradient flow stability"""
     def __init__(self, in_channels, out_channels):
         super(ResidualBlock, self).__init__()
         self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
-        self.bn1 = nn.BatchNorm2d(out_channels)
+        self.gn1 = nn.GroupNorm(min(4, out_channels), out_channels)
         self.conv2 = nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1)
-        self.bn2 = nn.BatchNorm2d(out_channels)
-        self.relu = nn.ReLU(inplace=True)
-    
+        self.gn2 = nn.GroupNorm(min(4, out_channels), out_channels)
+
     def forward(self, x):
         residual = x
-        out = self.relu(self.bn1(self.conv1(x)))
-        out = self.bn2(self.conv2(out))
+        out = nn.functional.gelu(self.gn1(self.conv1(x)))
+        out = self.gn2(self.conv2(out))
         out = out + residual
-        return self.relu(out)
+        return nn.functional.gelu(out)
 
-class SelfAttention(nn.Module):
-    """Self-attention mechanism for quantum feature selection"""
-    def __init__(self, channels):
-        super(SelfAttention, self).__init__()
-        self.query = nn.Conv2d(channels, channels // 8, kernel_size=1)
-        self.key = nn.Conv2d(channels, channels // 8, kernel_size=1)
-        self.value = nn.Conv2d(channels, channels, kernel_size=1)
-        self.gamma = nn.Parameter(torch.zeros(1))
-    
+
+class ChannelAttention(nn.Module):
+    """
+    Squeeze-and-Excitation style channel attention.
+    More stable than spatial self-attention for small feature maps.
+    """
+    def __init__(self, channels, reduction=4):
+        super(ChannelAttention, self).__init__()
+        mid = max(channels // reduction, 4)
+        self.squeeze = nn.AdaptiveAvgPool2d(1)
+        self.excite = nn.Sequential(
+            nn.Linear(channels, mid),
+            nn.GELU(),
+            nn.Linear(mid, channels),
+            nn.Sigmoid()
+        )
+
     def forward(self, x):
-        batch_size, channels, height, width = x.size()
-        
-        # Compute attention
-        proj_query = self.query(x).view(batch_size, -1, width * height).permute(0, 2, 1)
-        proj_key = self.key(x).view(batch_size, -1, width * height)
-        energy = torch.bmm(proj_query, proj_key)
-        attention = torch.softmax(energy, dim=-1)
-        
-        proj_value = self.value(x).view(batch_size, -1, width * height)
-        out = torch.bmm(proj_value, attention.permute(0, 2, 1))
-        out = out.view(batch_size, channels, height, width)
-        
-        # Apply attention with learnable weight
-        out = self.gamma * out + x
-        return out
+        b, c, _, _ = x.size()
+        w = self.squeeze(x).view(b, c)
+        w = self.excite(w).view(b, c, 1, 1)
+        return x * w
 
 # -----------------
 # Model Factory
@@ -316,14 +335,14 @@ class SelfAttention(nn.Module):
 
 def create_enhanced_model(circuit_type='data_reuploading', num_classes=44):
     """
-    Factory function to create enhanced model with specified circuit type
-    
+    Factory function to create V7 enhanced model.
+
     Args:
         circuit_type: 'strongly_entangling', 'data_reuploading', or 'hardware_efficient'
-        num_classes: Number of output classes
-    
+        num_classes: Number of output classes (44 for Ottoman characters)
+
     Returns:
-        Enhanced quantum-classical hybrid model
+        EnhancedQuanvNet model instance
     """
     return EnhancedQuanvNet(
         n_qubits=4,
