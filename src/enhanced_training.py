@@ -151,16 +151,21 @@ class EnhancedTrainer:
     - Checkpoint management
     """
     def __init__(self, model, train_loader, val_loader, device,
-                 num_epochs=50, experiment_name="v7_enhanced"):
+                 num_epochs=50, experiment_name="v7_enhanced",
+                 drive_backup_path=None):
         self.model = model.to(device)
         self.device = device
         self.num_epochs = num_epochs
         self.experiment_name = experiment_name
+        self.drive_backup_path = drive_backup_path
 
         # Create experiment directory
         self.exp_dir = f"experiments/{experiment_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         os.makedirs(self.exp_dir, exist_ok=True)
         os.makedirs("models", exist_ok=True)
+
+        if drive_backup_path:
+            os.makedirs(drive_backup_path, exist_ok=True)
 
         # Initialize optimizer with correct total_steps
         self.optimizer = QuantumAwareOptimizer(
@@ -289,8 +294,75 @@ class EnhancedTrainer:
 
         return total_loss / len(val_loader), 100. * correct / total
 
-    def train(self, train_loader, val_loader, target_accuracy=25.0):
-        """Full training loop"""
+    def save_latest_checkpoint(self, epoch, val_acc):
+        """Save latest checkpoint for resume (every epoch), also to Drive if configured"""
+        import shutil
+        checkpoint = {
+            'epoch': epoch,
+            'model_state_dict': self.model.state_dict(),
+            'optimizer_quantum': self.optimizer.quantum_optimizer.state_dict(),
+            'optimizer_classical': self.optimizer.classical_optimizer.state_dict(),
+            'scheduler_quantum': self.optimizer.quantum_scheduler.state_dict(),
+            'scheduler_classical': self.optimizer.classical_scheduler.state_dict(),
+            'scaler': self.scaler.state_dict(),
+            'val_acc': val_acc,
+            'best_val_acc': self.best_val_acc,
+            'patience_counter': self.patience_counter,
+            'history': self.history
+        }
+        path = 'models/checkpoint_latest_v7.pth'
+        torch.save(checkpoint, path)
+
+        # Also backup to Drive (survives runtime restart)
+        if self.drive_backup_path:
+            drive_ckpt = os.path.join(self.drive_backup_path, 'checkpoint_latest_v7.pth')
+            shutil.copy(path, drive_ckpt)
+            print(f"  [CHECKPOINT] Epoch {epoch} -> local + Drive")
+        else:
+            print(f"  [CHECKPOINT] Epoch {epoch} -> {path}")
+
+    def load_checkpoint(self, checkpoint_path='models/checkpoint_latest_v7.pth'):
+        """Load checkpoint for resuming training. Checks Drive backup if local not found."""
+        # Try local first, then Drive backup
+        if not os.path.exists(checkpoint_path) and self.drive_backup_path:
+            drive_ckpt = os.path.join(self.drive_backup_path, 'checkpoint_latest_v7.pth')
+            if os.path.exists(drive_ckpt):
+                import shutil
+                shutil.copy(drive_ckpt, checkpoint_path)
+                print(f"  Restored checkpoint from Drive: {drive_ckpt}")
+
+        if not os.path.exists(checkpoint_path):
+            print("  No checkpoint found, starting from scratch.")
+            return 0
+
+        print(f"\nResuming from checkpoint: {checkpoint_path}")
+        checkpoint = torch.load(checkpoint_path, map_location=self.device, weights_only=False)
+
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        self.optimizer.quantum_optimizer.load_state_dict(checkpoint['optimizer_quantum'])
+        self.optimizer.classical_optimizer.load_state_dict(checkpoint['optimizer_classical'])
+
+        if 'scheduler_quantum' in checkpoint:
+            self.optimizer.quantum_scheduler.load_state_dict(checkpoint['scheduler_quantum'])
+        if 'scheduler_classical' in checkpoint:
+            self.optimizer.classical_scheduler.load_state_dict(checkpoint['scheduler_classical'])
+        if 'scaler' in checkpoint:
+            self.scaler.load_state_dict(checkpoint['scaler'])
+
+        self.best_val_acc = checkpoint.get('best_val_acc', 0.0)
+        self.patience_counter = checkpoint.get('patience_counter', 0)
+        self.history = checkpoint.get('history', self.history)
+        start_epoch = checkpoint['epoch']
+
+        print(f"  Resumed at epoch {start_epoch}, best_val_acc={self.best_val_acc:.2f}%")
+        return start_epoch
+
+    def train(self, train_loader, val_loader, target_accuracy=25.0, resume=False):
+        """Full training loop with optional resume"""
+        start_epoch = 0
+        if resume:
+            start_epoch = self.load_checkpoint()
+
         print(f"\n{'='*50}")
         print(f"V7 ENHANCED TRAINING")
         print(f"{'='*50}")
@@ -298,10 +370,10 @@ class EnhancedTrainer:
         print(f"V4 baseline: 8.75%")
         print(f"Experiment: {self.exp_dir}")
         print(f"Device: {self.device}")
-        print(f"Epochs: {self.num_epochs}")
+        print(f"Epochs: {start_epoch+1} -> {self.num_epochs}")
         print(f"{'='*50}\n")
 
-        for epoch in range(1, self.num_epochs + 1):
+        for epoch in range(start_epoch + 1, self.num_epochs + 1):
             print(f"\n--- Epoch {epoch}/{self.num_epochs} ---")
 
             train_loss, train_acc = self.train_epoch(train_loader, epoch)
@@ -332,6 +404,9 @@ class EnhancedTrainer:
             else:
                 self.patience_counter += 1
 
+            # Save latest checkpoint every epoch (for resume)
+            self.save_latest_checkpoint(epoch, val_acc)
+
             # Early stopping
             if self.patience_counter >= 15:
                 print("\n  Early stopping triggered")
@@ -345,7 +420,8 @@ class EnhancedTrainer:
         return self.best_val_acc
 
     def _save_checkpoint(self, epoch, val_acc):
-        """Save model checkpoint"""
+        """Save best model checkpoint"""
+        import shutil
         checkpoint = {
             'epoch': epoch,
             'model_state_dict': self.model.state_dict(),
@@ -358,6 +434,11 @@ class EnhancedTrainer:
         # Save to experiment dir and as latest best
         torch.save(checkpoint, os.path.join(self.exp_dir, 'best_model.pth'))
         torch.save(checkpoint, 'models/best_v7_model.pth')
+
+        # Also backup best model to Drive
+        if self.drive_backup_path:
+            shutil.copy('models/best_v7_model.pth',
+                        os.path.join(self.drive_backup_path, 'best_v7_model.pth'))
 
         # Save metadata
         metadata = {
@@ -458,13 +539,16 @@ def mixup_data(x, y, alpha=0.2):
     return mixed_x, y_a, y_b, lam
 
 
-def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50):
+def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
+                          resume=False, drive_backup_path=None):
     """
     Main entry point for V7 enhanced training.
 
     Args:
         circuit_type: 'strongly_entangling', 'data_reuploading', or 'hardware_efficient'
         num_epochs: Maximum training epochs
+        resume: If True, resume from latest checkpoint
+        drive_backup_path: If set, checkpoints are also saved to Drive (survives restarts)
 
     Returns:
         (best_val_acc, test_acc) tuple
@@ -481,11 +565,12 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50):
     trainer = EnhancedTrainer(
         model, train_loader, val_loader, device,
         num_epochs=num_epochs,
-        experiment_name=f"v7_{circuit_type}"
+        experiment_name=f"v7_{circuit_type}",
+        drive_backup_path=drive_backup_path
     )
 
-    # Train
-    best_acc = trainer.train(train_loader, val_loader, target_accuracy=25.0)
+    # Train (with optional resume)
+    best_acc = trainer.train(train_loader, val_loader, target_accuracy=25.0, resume=resume)
 
     # Final test evaluation
     print("\nFinal evaluation on test set...")
