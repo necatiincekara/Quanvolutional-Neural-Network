@@ -169,6 +169,9 @@ class TrainableQuanvLayer(nn.Module):
         patches = patches.reshape(batch_size, channels, out_h * out_w, -1)
         patches = patches.permute(0, 2, 1, 3).reshape(-1, self.n_qubits)
 
+        # Force float32 for quantum circuit (AMP float16 causes NaN)
+        patches = patches.float()
+
         # Quantum processing with gradient scaling
         processed_patches = self.qlayer(patches) * self.gradient_scale
 

@@ -28,7 +28,7 @@ class QuantumAwareOptimizer:
     Quantum parameters need lower LR and gentler gradient clipping.
     """
     def __init__(self, model, train_loader, num_epochs,
-                 quantum_lr=0.001, classical_lr=0.005):
+                 quantum_lr=0.0005, classical_lr=0.002):
         # Separate quantum vs classical parameters
         self.quantum_params = []
         self.classical_params = []
@@ -81,10 +81,9 @@ class QuantumAwareOptimizer:
         self.classical_optimizer.zero_grad()
 
     def step(self):
-        # Gradient clipping
+        """Direct step (used when NOT using GradScaler)"""
         torch.nn.utils.clip_grad_norm_(self.quantum_params, max_norm=0.5)
         torch.nn.utils.clip_grad_norm_(self.classical_params, max_norm=1.0)
-
         self.quantum_optimizer.step()
         self.classical_optimizer.step()
 
@@ -120,13 +119,13 @@ class GradientMonitor:
             self.gradient_history['classical'].append(np.mean(classical_grads))
 
     def check_gradient_health(self):
-        """Check for vanishing or exploding gradients"""
+        """Check for vanishing or exploding gradients (on unscaled values)"""
         issues = []
         if len(self.gradient_history['quantum']) > 0:
             recent_quantum = np.mean(self.gradient_history['quantum'][-10:])
-            if recent_quantum < 1e-6:
+            if recent_quantum < 1e-7:
                 issues.append(f"Quantum gradients vanishing: {recent_quantum:.2e}")
-            elif recent_quantum > 10:
+            elif recent_quantum > 1.0:
                 issues.append(f"Quantum gradients exploding: {recent_quantum:.2e}")
 
         if len(self.gradient_history['classical']) > 0:
@@ -216,18 +215,25 @@ class EnhancedTrainer:
             # Backward pass
             self.scaler.scale(loss).backward()
 
-            # Debug: log gradient info on first batch
+            # Unscale gradients first
+            self.scaler.unscale_(self.optimizer.quantum_optimizer)
+            self.scaler.unscale_(self.optimizer.classical_optimizer)
+
+            # Debug: log UNSCALED gradient info on first batch
             if batch_idx == 0:
                 self._log_debug_info(epoch)
 
-            # Log gradients periodically
+            # Log unscaled gradients periodically
             if batch_idx % 10 == 0:
                 self.gradient_monitor.log_gradients()
 
-            # Unscale before clipping, then step
-            self.scaler.unscale_(self.optimizer.quantum_optimizer)
-            self.scaler.unscale_(self.optimizer.classical_optimizer)
-            self.optimizer.step()
+            # Clip gradients (on unscaled values)
+            torch.nn.utils.clip_grad_norm_(self.optimizer.quantum_params, max_norm=0.5)
+            torch.nn.utils.clip_grad_norm_(self.optimizer.classical_params, max_norm=1.0)
+
+            # Step through scaler (skips update if inf/nan gradients)
+            self.scaler.step(self.optimizer.quantum_optimizer)
+            self.scaler.step(self.optimizer.classical_optimizer)
             self.scaler.update()
 
             # Metrics
