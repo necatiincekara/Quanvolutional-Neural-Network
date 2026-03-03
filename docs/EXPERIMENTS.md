@@ -215,6 +215,67 @@ This document serves as a log for the experiments conducted during the developme
 
 ---
 
+## Experiment 08: V7 - Gradient-Stabilized Trainable Quantum Model
+
+*   **Date:** March 2, 2026
+*   **Hypothesis:** Making quantum parameters fully trainable with gradient stabilization techniques (residual connections, gradient scaling, channel attention) will overcome V6's gradient collapse while exceeding V4's 8.75% accuracy.
+*   **Model Configuration:**
+    *   **General:**
+        *   **Batch Size:** 128
+        *   **Learning Rate:** Quantum: 0.0005, Classical: 0.002 (separate optimizers)
+        *   **Optimizer:** Adam (quantum) + AdamW (classical)
+        *   **Scheduler:** CosineAnnealingWarmRestarts (quantum), CosineAnnealingLR (classical)
+        *   **Loss:** LabelSmoothingCrossEntropy (smoothing=0.1) + Mixup (alpha=0.2)
+    *   **Quantum Circuit (`data_reuploading_circuit`):**
+        *   **Qubits (`N_QUBITS`):** 4
+        *   **Quantum Device:** `lightning.gpu` (A100 80GB)
+        *   **Diff Method:** `adjoint`
+        *   **Structure:** 2-layer data re-uploading with AngleEmbedding, Rot gates, CNOT ring topology
+        *   **Trainable Parameters:** 25 (vs 12 fixed in V1-V6)
+    *   **Hybrid Architecture (EnhancedQuanvNet):**
+        *   **Input:** 32x32 grayscale image.
+        *   **Classical Pre-processing:**
+            *   `Conv2d(1, 8, stride=2)` + GroupNorm + GELU → 16x16
+            *   `ResidualBlock(8, 8)` (identity skip connection)
+            *   `Conv2d(8, 4, stride=2)` + GroupNorm + GELU → 8x8
+        *   **Quantum Layer (`TrainableQuanvLayer`):**
+            *   Operates on 8x8 feature map (V4 optimal size).
+            *   2x2 patches with stride 2 → 16 quantum executions per image.
+            *   **Gradient scaling:** Learnable `gradient_scale` parameter (init=0.1)
+            *   **Output:** 16 channels (4 input channels × 4 qubits)
+        *   **Skip Connection:**
+            *   `Conv2d(4→16, 1x1)` adapter for classical features
+            *   Learnable `skip_weight` parameter (init=0.1)
+            *   `quantum_out + skip_weight * adapted_classical`
+        *   **Channel Attention:** SE-block style (squeeze-excitation)
+        *   **Classical Post-processing:**
+            *   `Conv2d(16, 32, kernel=3)` + GroupNorm + GELU
+            *   `Conv2d(32, 64, kernel=3)` + GroupNorm + GELU + Dropout(0.3)
+            *   AdaptiveAvgPool2d(1) → Linear(64, 44)
+        *   **Total Parameters:** 87,798 (25 quantum + 87,773 classical)
+*   **Run 1 Results (NaN Failure):**
+    *   **Epoch 1 Batch 1:** gradient_scale=0.1, quantum grad mean=2.09e+02 (SCALED), classical grad mean=1.59e+03 (SCALED)
+    *   **Epoch 1 Final:** Train Loss: **NaN**, Train Acc: 5.91%, Val Acc: 3.50%
+    *   **Epoch 2-3:** All NaN — model completely corrupted
+    *   **Test Accuracy:** 4.29% (random noise, meaningless)
+    *   **Duration:** 6 hours 55 minutes (3 epochs)
+*   **Root Cause Analysis (NaN):**
+    1.  **AMP Float16 Overflow:** PyTorch Automatic Mixed Precision cast quantum layer inputs to float16. PennyLane quantum circuits require float32 precision — float16 caused numerical overflow in gradient computation, producing NaN.
+    2.  **Incorrect GradScaler Usage:** `optimizer.step()` was called directly instead of `scaler.step()`. When AMP's GradScaler detects inf/NaN gradients, `scaler.step()` skips the weight update. Direct `optimizer.step()` applied NaN gradients to model weights, irreversibly corrupting all parameters.
+    3.  **Misleading Gradient Diagnostics:** Debug output logged SCALED gradients (inflated by GradScaler's scale factor of ~65536) but compared against UNSCALED thresholds. Reported "quantum grad mean=2.09e+02" appeared alarming but actual unscaled value was ~0.003 (healthy).
+    4.  **Learning Rate Propagation Bug:** `QuantumAwareOptimizer` defaults were lowered to (0.0005, 0.002) but `EnhancedTrainer.__init__` passed old values (0.001, 0.005), overriding the fix.
+*   **Fixes Applied:**
+    *   Added `patches = patches.float()` before quantum circuit — forces float32 regardless of AMP context
+    *   Replaced `optimizer.step()` with `scaler.step(quantum_optimizer)` + `scaler.step(classical_optimizer)`
+    *   Moved gradient logging after `scaler.unscale_()` — now reports true gradient magnitudes
+    *   Fixed LR propagation: EnhancedTrainer passes quantum_lr=0.0005, classical_lr=0.002
+    *   Updated gradient health thresholds for unscaled values (vanishing: <1e-7, exploding: >1.0)
+*   **Run 2 Results:** PENDING (awaiting re-run with fixes)
+*   **Conclusion:** The architecture and gradient flow are theoretically sound (CPU testing showed healthy gradients across all 3 circuit types). The NaN failure was purely an engineering bug in the training pipeline (AMP + GradScaler interaction), not an architectural or quantum-related issue. The fix is minimal and targeted. Re-run expected to show actual learning.
+*   **Key Insight for Publication:** This failure demonstrates the non-trivial engineering challenges of integrating quantum circuits into standard deep learning pipelines. AMP, a routine optimization in classical deep learning, is incompatible with quantum circuit backpropagation without explicit precision management — a finding relevant to the hybrid quantum-classical ML community.
+
+---
+
 ## Future Experiments & Recommendations
 
 ### Experiment 08: Enhanced Quantum Circuit (Proposed)
