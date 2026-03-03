@@ -169,7 +169,7 @@ class EnhancedTrainer:
         # Initialize optimizer with correct total_steps
         self.optimizer = QuantumAwareOptimizer(
             model, train_loader, num_epochs,
-            quantum_lr=0.001, classical_lr=0.005
+            quantum_lr=0.0005, classical_lr=0.002
         )
         self.gradient_monitor = GradientMonitor(model)
         self.scaler = GradScaler(enabled=device.type == "cuda")
