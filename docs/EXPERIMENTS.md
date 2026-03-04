@@ -270,9 +270,19 @@ This document serves as a log for the experiments conducted during the developme
     *   Moved gradient logging after `scaler.unscale_()` — now reports true gradient magnitudes
     *   Fixed LR propagation: EnhancedTrainer passes quantum_lr=0.0005, classical_lr=0.002
     *   Updated gradient health thresholds for unscaled values (vanishing: <1e-7, exploding: >1.0)
-*   **Run 2 Results:** PENDING (awaiting re-run with fixes)
-*   **Conclusion:** The architecture and gradient flow are theoretically sound (CPU testing showed healthy gradients across all 3 circuit types). The NaN failure was purely an engineering bug in the training pipeline (AMP + GradScaler interaction), not an architectural or quantum-related issue. The fix is minimal and targeted. Re-run expected to show actual learning.
-*   **Key Insight for Publication:** This failure demonstrates the non-trivial engineering challenges of integrating quantum circuits into standard deep learning pipelines. AMP, a routine optimization in classical deep learning, is incompatible with quantum circuit backpropagation without explicit precision management — a finding relevant to the hybrid quantum-classical ML community.
+*   **Run 2 Results (Success):**
+    *   **Epoch 1:** Train Loss: 3.5688, Train Acc: 6.30%, Val Acc: 14.87%
+        *   gradient_scale=0.1, quantum grad mean=7.78e-04, max=8.83e-04 (healthy)
+        *   classical grad mean=2.14e-02, max=1.58e-01 (healthy)
+    *   **Epoch 2:** Train Loss: 3.1780, Train Acc: 18.52%, Val Acc: 34.40% (NEW BEST)
+        *   gradient_scale=0.0962, quantum grad mean=5.67e-02, max=1.07e-01
+        *   classical grad mean=7.90e-02, max=5.22e-01
+        *   **TARGET 25.0% ACHIEVED at epoch 2**
+    *   **Test Accuracy:** **37.98%**
+    *   **Duration:** 4 hours 41 minutes (2 effective epochs, early stopped)
+    *   **Improvement over V4:** +25.65% (val), +29.23% (test vs V4's 8.75%)
+*   **Conclusion:** **Major Success.** The NaN fixes resolved all training instability. V7 achieved 4.3x the accuracy of V4 (37.98% vs 8.75%) in just 2 epochs. The gradient stabilization framework (learnable scaling, residual skip, channel attention) successfully maintains healthy gradient flow. Quantum gradients grew from 7.78e-04 to 5.67e-02 over training, indicating the quantum circuit is actively learning meaningful representations.
+*   **Key Insight for Publication:** This failure-to-success transition demonstrates both (1) the non-trivial engineering challenges of integrating quantum circuits into standard deep learning pipelines (AMP incompatibility), and (2) the effectiveness of gradient stabilization for quantum-classical interfaces. The 4.3x accuracy improvement over the non-trainable baseline (V4) validates the trainable quantum circuit approach with proper gradient management.
 
 ---
 

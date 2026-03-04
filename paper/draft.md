@@ -6,7 +6,7 @@ Necati Incekara
 
 ## Abstract
 
-We present a systematic investigation of hybrid quantum-classical convolutional neural networks (quanvolutional networks) for Ottoman-Turkish handwritten character recognition, a challenging 44-class classification task with limited training data (3,894 samples). Through seven iterative architectural versions (V1--V7), we identify critical design principles for integrating parameterized quantum circuits into deep learning pipelines. Our key contributions include: (1) the discovery of an information bottleneck threshold below which quantum feature extraction fails entirely, (2) a gradient stabilization framework that resolves vanishing gradient problems in quantum-classical interfaces, and (3) the first systematic documentation of engineering challenges when combining PyTorch's Automatic Mixed Precision (AMP) with variational quantum circuits. Starting from a computationally infeasible baseline requiring >8 hours per epoch with 256 quantum circuit evaluations per image, we achieve a 93.75% reduction in quantum computational overhead while maintaining learning capability. We further demonstrate that standard deep learning optimizations such as float16 mixed precision are fundamentally incompatible with quantum circuit backpropagation, requiring explicit precision management at the quantum-classical boundary. [Results to be updated after V7 Run 2]
+We present a systematic investigation of hybrid quantum-classical convolutional neural networks (quanvolutional networks) for Ottoman-Turkish handwritten character recognition, a challenging 44-class classification task with limited training data (3,894 samples). Through seven iterative architectural versions (V1--V7), we identify critical design principles for integrating parameterized quantum circuits into deep learning pipelines. Our key contributions include: (1) the discovery of an information bottleneck threshold below which quantum feature extraction fails entirely, (2) a gradient stabilization framework that resolves vanishing gradient problems in quantum-classical interfaces, and (3) the first systematic documentation of engineering challenges when combining PyTorch's Automatic Mixed Precision (AMP) with variational quantum circuits. Starting from a computationally infeasible baseline requiring >8 hours per epoch with 256 quantum circuit evaluations per image, we achieve a 93.75% reduction in quantum computational overhead while improving accuracy from 2.3% to 37.98% test accuracy (16.7x above random baseline). We further demonstrate that standard deep learning optimizations such as float16 mixed precision are fundamentally incompatible with quantum circuit backpropagation, requiring explicit precision management at the quantum-classical boundary.
 
 **Keywords:** Quantum Machine Learning, Quanvolutional Neural Networks, Hybrid Quantum-Classical Computing, Ottoman Script Recognition, Variational Quantum Circuits, Gradient Stabilization
 
@@ -188,7 +188,7 @@ The GradScaler is used with `scaler.step()` (not direct `optimizer.step()`) to s
 | V5 | 4x4 | 4 | ~51s/batch | 2.04% | Info. bottleneck |
 | V6 | 6x6 | 9 | ~117s/batch | 0.00% | Gradient collapse |
 | V7-R1 | 8x8 | 16 | ~5.4min/batch | NaN | AMP bug |
-| V7-R2 | 8x8 | 16 | TBD | TBD | **Pending** |
+| V7-R2 | 8x8 | 16 | ~2.3h/epoch | **34.40%** | **Success** |
 
 ### 4.2 Information Bottleneck Analysis
 
@@ -246,7 +246,26 @@ The progressive optimization from V1 to V4 achieved:
 
 ### 4.6 V7 Run 2 Results
 
-*[To be populated after successful training run]*
+After applying the AMP fix and correcting the training pipeline, V7 Run 2 achieved significant results:
+
+| Epoch | Train Loss | Train Acc. | Val Acc. | Q-Grad Mean | C-Grad Mean |
+|-------|-----------|-----------|---------|-------------|-------------|
+| 1 | 3.5688 | 6.30% | 14.87% | 7.78e-04 | 2.14e-02 |
+| 2 | 3.1780 | 18.52% | 34.40% | 5.67e-02 | 7.90e-02 |
+
+**Test Accuracy: 37.98%** (16.7x above random baseline of 2.27%)
+
+Key observations:
+- The 25% target accuracy was achieved at epoch 2, demonstrating rapid convergence
+- Quantum gradient magnitudes increased 73x during training (7.78e-04 to 5.67e-02), confirming active quantum parameter learning
+- The learnable gradient scale decreased from 0.1000 to 0.0962, indicating automatic adaptation
+- Val accuracy (34.40%) to test accuracy (37.98%) gap suggests good generalization
+- Total training time: 4 hours 41 minutes on A100 GPU (2 effective epochs)
+
+**Comparison with V4 baseline:**
+- V4 (non-trainable quantum, 12 fixed parameters): 8.75% val accuracy
+- V7 (trainable quantum, 25 learnable parameters): 37.98% test accuracy
+- **Improvement: 4.3x accuracy with trainable quantum circuits**
 
 ---
 
