@@ -576,7 +576,7 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
     )
 
     # Train (with optional resume)
-    best_acc = trainer.train(train_loader, val_loader, target_accuracy=25.0, resume=resume)
+    best_acc = trainer.train(train_loader, val_loader, target_accuracy=60.0, resume=resume)
 
     # Final test evaluation
     print("\nFinal evaluation on test set...")
