@@ -17,8 +17,8 @@ if IS_COLAB:
     TEST_PATH = '/content/drive/MyDrive/set/test'
 else:
     # Local development - update these paths to your local dataset location
-    TRAIN_PATH = os.environ.get('QUANV_TRAIN_PATH', 'data/train')
-    TEST_PATH = os.environ.get('QUANV_TEST_PATH', 'data/test')
+    TRAIN_PATH = os.environ.get('QUANV_TRAIN_PATH', 'set/train')
+    TEST_PATH = os.environ.get('QUANV_TEST_PATH', 'set/test')
 TAGS = {
     '01': 'elif', '02': 'be', '03': 'te', '04': 'se', '05': 'cim', 
     '06': 'ha', '07': 'hı', '08': 'dal', '09': 'zel', '10': 'ra', 
