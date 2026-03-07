@@ -89,6 +89,8 @@ def train(model, train_loader, val_loader, test_loader, args):
     optimizer = torch.optim.AdamW(model.parameters(), lr=0.002, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
     criterion = LabelSmoothingCrossEntropy(smoothing=0.1)
+    patience_counter = 0
+    patience_limit = 15  # early stop if no improvement for 15 epochs
 
     total_params = sum(p.numel() for p in model.parameters())
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -146,9 +148,12 @@ def train(model, train_loader, val_loader, test_loader, args):
 
         if val_acc > best_val_acc:
             best_val_acc = val_acc
+            patience_counter = 0
             os.makedirs("models", exist_ok=True)
             torch.save(model.state_dict(), f"models/best_ablation_{args.model}.pth")
             print(f"  NEW BEST: {val_acc:.2f}%")
+        else:
+            patience_counter += 1
 
         results["epochs"].append({
             "epoch": epoch,
@@ -157,6 +162,10 @@ def train(model, train_loader, val_loader, test_loader, args):
             "val_loss": round(val_loss, 4),
             "val_acc": round(val_acc, 2),
         })
+
+        if patience_counter >= patience_limit:
+            print(f"  Early stopping at epoch {epoch} (no improvement for {patience_limit} epochs)")
+            break
 
     # ---- Test ----
     print("\nFinal test evaluation...")
@@ -198,7 +207,7 @@ def main():
     parser = argparse.ArgumentParser(description="Ablation training (local, no quantum)")
     parser.add_argument("--model", required=True, choices=["classical_conv", "param_linear"],
                         help="Which ablation model to train")
-    parser.add_argument("--epochs", type=int, default=9, help="Number of epochs")
+    parser.add_argument("--epochs", type=int, default=50, help="Number of epochs")
     parser.add_argument("--test", action="store_true", help="Quick test: 1 batch only")
     args = parser.parse_args()
 
