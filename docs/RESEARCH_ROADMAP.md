@@ -1,5 +1,10 @@
 # Quantum Neural Network Research Roadmap
-## From Fixed to Trainable Quantum Layers: Achieving 90% Accuracy for Publication
+## Historical Roadmap: From Fixed to Trainable Quantum Layers
+
+> Status note, March 22, 2026:
+> This document is now historical and reflects an older "90% accuracy / broad Q1" strategy.
+> For the current publication assessment and realistic submission strategy, use
+> `docs/PUBLICATION_STRATEGY_2026-03-22.md` as the up-to-date reference.
 
 ### Research Timeline & Architecture Evolution
 

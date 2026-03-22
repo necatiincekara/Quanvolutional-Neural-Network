@@ -1,12 +1,12 @@
 """
 Ablation Models for Paper — Classical baselines using V7 architecture.
 
-Three variants:
-  A) ClassicalBaselineNet  — Conv2d(4,16, k=2, s=2) replaces quantum layer
-  D) ParamMatchedLinearNet — 25-param linear layer replaces quantum layer
-  B) NonTrainableQuantumNet — V7 with frozen quantum parameters
+Four variants:
+  A) ClassicalBaselineNet        — Conv2d(4,16, k=2, s=2) replaces quantum layer
+  D) ParamMatchedLinearNet       — 25-param linear layer replaces quantum layer
+  B) NonTrainableQuantumClassicalNet — Henderson-style: trains on pre-computed quantum features
 
-All share identical pre-processing and post-processing with EnhancedQuanvNet (V7).
+All share identical post-processing with EnhancedQuanvNet (V7).
 """
 
 import torch
@@ -191,3 +191,42 @@ class ParamMatchedLinearNet(nn.Module):
         features = features + self.skip_weight * self.skip_adapter(pre_down)
         features = self.post(features)
         return self.classifier(features.reshape(features.size(0), -1))
+
+
+# -----------------
+# Experiment B: Henderson-Style Non-Trainable Quantum
+# Classical network trained on pre-computed quantum features
+# -----------------
+
+class NonTrainableQuantumClassicalNet(nn.Module):
+    """Classical network trained on Henderson-style pre-computed quantum features.
+
+    Henderson et al. (2020) approach: quantum circuit applied ONCE to all images
+    as preprocessing, results cached to disk, then classical network trains on
+    cached quantum features. No quantum computation during training.
+
+    Input: pre-computed quantum features (B, n_filters*4, 16, 16)
+    where n_filters random quantum circuits each produce 4 channels from 2x2 patches.
+    """
+    def __init__(self, in_channels=16, num_classes=44):
+        super().__init__()
+        # Spatial reduction: 16x16 -> 4x4 (matching V7 quantum output spatial dims)
+        # Lightweight: in_channels -> 8 -> 16 to keep param count near V7's ~87,800
+        self.reduce = nn.Sequential(
+            nn.Conv2d(in_channels, 8, kernel_size=3, stride=2, padding=1),  # 16->8
+            nn.GroupNorm(4, 8),
+            nn.GELU(),
+            nn.Conv2d(8, 16, kernel_size=3, stride=2, padding=1),  # 8->4
+            nn.GroupNorm(4, 16),
+            nn.GELU(),
+        )
+        # Same post-processing as V7 from (16, 4, 4) onward
+        self.attention = ChannelAttention(16)
+        self.post = _make_postprocessing(16)
+        self.classifier = _make_classifier(num_classes)
+
+    def forward(self, x):
+        x = self.reduce(x)
+        x = self.attention(x)
+        x = self.post(x)
+        return self.classifier(x.reshape(x.size(0), -1))

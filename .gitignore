@@ -1,7 +1,40 @@
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+
+# Python caches and coverage
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+
+# Virtualenv and local env files
 venv/
 .env
+.python-version
+
+# Training artifacts
 models/
 *.pth
+*.pt
+*.ckpt
+runs/
+wandb/
+logs/
+experiments/quantum_cache/
+
+# Local datasets and personal writing artifacts
+set/
+/Necati*Master Thesis.pdf
+/Necati*Master Thesis.docx
+
+# Agent and editor local state
+.claude/settings.local.json
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
