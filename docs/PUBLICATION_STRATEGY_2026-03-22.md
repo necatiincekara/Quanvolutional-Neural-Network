@@ -8,6 +8,8 @@ This document records the realistic publication status of the study and the stra
 
 As the repository stands today, this work is **not yet strong enough for a broad-scope Q1 AI or computer vision journal**.
 
+It is still **worth publishing**, but not in its current narrative form. The publishable value is in the benchmark discipline, negative-result honesty, hybrid-QML engineering lessons, and thesis-to-reproducible-study evolution, not in an unsupported raw "quantum wins" story.
+
 It is **potentially publishable** in one of two ways:
 
 1. as a **specialized QML paper** centered on rigorous failure analysis, fair benchmarking, and engineering lessons for hybrid quantum-classical training, or
@@ -277,8 +279,8 @@ Relevant sources:
 
 - Expert Systems with Applications aims and scope: `https://www.sciencedirect.com/journal/expert-systems-with-applications`
 - Machine Learning with Applications aims and scope: `https://www.sciencedirect.com/journal/machine-learning-with-applications`
+- SCImago category example showing broad AI Q1 venue context: `https://www.scimagojr.com/journalrank.php?category=1702&country=GB&ord=desc&order=cd`
+- SCImago category example for Quantum Machine Intelligence: `https://www.scimagojr.com/journalrank.php?category=2614&country=DE`
+- SCImago category example for Journal on Computing and Cultural Heritage: `https://www.scimagojr.com/diamond/journalrank.php?category=1206&country=OECD&type=j`
 - Quantum Machine Intelligence example article discussing limited but well-defined QML investigations: `https://link.springer.com/article/10.1007/s42484-024-00200-0`
 - Practical quantum advantage framework: `https://www.nature.com/articles/s42005-024-01552-6`
-- ACM Journal on Computing and Cultural Heritage scope context:
-  - `https://www.acm.org/articles/people-of-acm/2017/karina-rodriguez`
-  - `https://www.acm.org/articles/membernet/2012/membernet-01262012`

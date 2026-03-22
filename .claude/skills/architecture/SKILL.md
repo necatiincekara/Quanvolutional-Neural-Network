@@ -1,6 +1,6 @@
 ---
 name: architecture
-description: Model mimarisi tasarla veya analiz et. V7-V10 roadmap'ine gore yeni versiyon tasarimi, katman analizi, parametre hesaplama.
+description: Model mimarisi tasarla veya analiz et. Mevcut OCR-QML calismasinda trainable, non-trainable ve classical baseline yollarini guncel duruma gore ele al.
 disable-model-invocation: true
 allowed-tools:
   - Read
@@ -14,39 +14,33 @@ allowed-tools:
 
 # Model Architecture Design
 
-Yeni model versiyonu tasarla veya mevcut mimariyi analiz et.
+Bu skill tarihsel V7-V10 hedeflerini oldugu gibi tekrar etmek icin degil, mevcut repo gercegine gore mimari karar vermek icin kullanilir.
 
 ## Adimlar
 
-1. **Mevcut mimarileri oku**:
-   - `src/model.py` (V4/V6 base)
-   - `src/trainable_quantum_model.py` (V7+ trainable)
-   - `improved_model.py` (attention, multi-scale)
-   - `docs/IMPLEMENTATION_GUIDE.md` (V7-V10 roadmap)
+1. Once su dosyalari incele:
+   - `src/model.py`
+   - `src/trainable_quantum_model.py`
+   - `src/ablation_models.py`
+   - `train_ablation_local.py`
+   - `docs/PUBLICATION_STRATEGY_2026-03-22.md`
+2. Islem turunu belirle:
+   - `analyze`: mevcut mimariyi acikla, bottleneck ve parametre dagilimini ver
+   - `hqnn2`: tezdeki HQNN-II faithful reproduction planla
+   - `baseline`: guclu classical baseline ekle
+   - `trainable`: trainable quantum yolunda iyilestirme planla
+3. Tasarimda su sorulara cevap ver:
+   - Bu degisiklik adil karsilastirma mi sagliyor?
+   - Parametre ve veri butcesi makul mu?
+   - Yayin stratejisine hizmet ediyor mu?
+4. Cikti olarak sun:
+   - kisa mimari diagrami
+   - beklenen avantaj / risk
+   - parametre etkisi
+   - egitim maliyeti tahmini
 
-2. **Islem sec** (`$ARGUMENTS` veya sor):
+## Notlar
 
-### analyze - Mimari Analiz
-- Katman yapisi diagrami, parametre sayilari, bottleneck tespiti
-
-### v7 - Gradient Stabilization (Hedef: 25%)
-- Residual connections, gradient scaling, layer normalization
-
-### v8 - Multi-Scale Processing (Hedef: 40%)
-- Birden fazla olcekte feature extraction, attention mechanism
-
-### v9 - Selective Quantum (Hedef: 60%)
-- Gating ile quantum/classical secimi, bilgi iceren patch'lerde quantum
-
-### v10 - Fully Trainable (Hedef: 90%)
-- Tam egitimli quantum, data re-uploading, hardware-efficient ansatz
-
-3. **Tasarla**: PyTorch model sinifi, forward pass, parametre sayisi, memory tahmini
-4. **Diagram olustur**:
-```
-Input (1,32,32) -> [Conv2d+GN+GELU+Pool] -> (16,16,16)
-  -> [Conv2d+GN+GELU+Pool] -> (32,8,8)
-  -> [QuanvLayer 4q] + [Residual Skip] -> (1,8,8)
-  -> [Conv+FC] -> (44,)
-```
-5. **Onaylanirsa implementasyonu baslat**
+- "Quantum advantage" varsayma.
+- Mimari oneriyi current-best classical baseline'lara gore degerlendir.
+- Tezle devam edilecekse HQNN-II ile bugunku Henderson-style non-trainable modeli karistirma.

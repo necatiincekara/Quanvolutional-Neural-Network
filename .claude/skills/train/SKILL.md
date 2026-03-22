@@ -1,6 +1,6 @@
 ---
 name: train
-description: Training yonetimi - modeli sifirdan egit veya checkpoint'tan devam et. Quantum device, epoch sayisi, model versiyonu secimi yapar.
+description: Training yonetimi. Base, V7 trainable ve yerel ablation akislari arasinda dogru yolu sec ve calistir.
 disable-model-invocation: true
 allowed-tools:
   - Bash
@@ -13,30 +13,34 @@ allowed-tools:
 
 # Training Management
 
-Kullanici training baslatmak veya devam ettirmek istiyor.
-
 ## Adimlar
 
-1. **Konfigurasyonu oku**: `src/config.py` dosyasini oku, mevcut ayarlari anla
-2. **Checkpoint kontrolu**: `models/` klasorunde `best_quanv_net.pth` ve `checkpoint_latest.pth` var mi kontrol et
-3. **Kullaniciya sor**:
-   - Sifirdan mi, checkpoint'tan mi devam?
-   - Model versiyonu: V4 base (`src/model.py`), V7+ trainable (`src/trainable_quantum_model.py`), enhanced (`src/enhanced_training.py`)
-   - Quantum device: `default.qubit` (CPU/Mac) veya `lightning.gpu` (Colab/GPU)
-   - Epoch sayisi
-4. **Config guncelle**: Gerekirse `src/config.py` dosyasini duzenle
-5. **Training baslat**:
-   - Base: `python -m src.train` veya `python -m src.train --resume`
-   - Enhanced: `python -m src.enhanced_training`
-6. **Izle ve raporla**: Loss, accuracy, quantum output std, gradient durumu
+1. Aktif hedefi belirle:
+   - `base`: `python -m src.train`
+   - `v7`: `python train_v7.py`
+   - `ablation`: `python train_ablation_local.py ...`
+2. Once ilgili kod yolunu oku:
+   - `src/config.py`
+   - `src/model.py` veya `src/trainable_quantum_model.py`
+   - gerekiyorsa `src/enhanced_training.py` ve `src/ablation_models.py`
+3. Checkpoint ve mevcut sonuc dosyalarini kontrol et.
+4. Platformu dogru sec:
+   - M4 Mac: `default.qubit`, yerel ablation veya smoke test
+   - Colab GPU: V7 trainable veya pahali quantum egitimleri
+5. Egitimden sonra:
+   - sonucu `experiments/*.json` veya ilgili loga yaz
+   - paper claim etkisini kisaca belirt
 
-## Platform Notlari
+## Hedefe Gore Notlar
 
-- M4 Mac'te `lightning.gpu` KULLANILAMAZ - sadece `default.qubit`
-- Mixed precision (AMP) sadece CUDA GPU'da calisir
-- Ilk epoch yavas (quantum kernel derleme), sonrakiler hizlanir
-- Gradient vanishing gorulurse `/gradient-check` oner
+- Henderson-style non-trainable quantum yerelde cache + training olarak kosabilir.
+- V7 trainable quantum compute-agir bir yol; lokal M4 icin birincil hedef degildir.
+- Faithful HQNN-II reproduction, mevcut Henderson-style modelle ayni sey degildir.
 
-## Arguman
+## Ornekler
 
-`$ARGUMENTS` ile parametre verilebilir: "resume", "v7", "5 epoch", "cpu" vb.
+```bash
+python train_ablation_local.py --model classical_conv --epochs 50
+python train_ablation_local.py --model non_trainable_quantum --epochs 50
+python train_v7.py
+```

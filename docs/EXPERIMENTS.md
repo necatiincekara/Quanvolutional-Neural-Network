@@ -2,6 +2,11 @@
 
 This document serves as a log for the experiments conducted during the development of the Hybrid Quantum-Classical CNN. It tracks the evolution of the model, detailing the configuration, performance metrics, and accuracy results at each major stage. This log is intended for academic and research purposes.
 
+> Status note, March 22, 2026:
+> This file is still useful as the detailed experiment history, but it is no longer the safest single-source summary of the study.
+> Later local ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
+> For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
+
 ---
 
 ## Experiment 01: V1 - Baseline Naive Implementation

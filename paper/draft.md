@@ -1,5 +1,10 @@
 # Gradient-Stabilized Quanvolutional Neural Networks for Ottoman-Turkish Handwritten Character Recognition
 
+> Editorial status note, March 22, 2026:
+> This draft reflects the V7-centered manuscript state and predates the strongest local ablation results now present in the repository.
+> Current repo evidence indicates that matched classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
+> Before using this draft for submission, reconcile claims against `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/EXPERIMENTS.md`, and `experiments/*.json`.
+
 ## Authors
 
 Necati Incekara

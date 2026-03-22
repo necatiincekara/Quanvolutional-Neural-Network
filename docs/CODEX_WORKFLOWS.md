@@ -75,8 +75,9 @@ Sen bana son Claude session'unu verdiginde bu repoda onerilen ilerleme sirasi su
 
 1. `./scripts/codex-study-status.sh`
 2. `./scripts/codex-paper-audit.sh`
-3. gerekirse `paper_writer` ile hedefli draft duzeltmesi
-4. `README.md`, `docs/EXPERIMENTS.md` ve `paper/draft.md` arasinda son senkronizasyon
+3. `docs/PUBLICATION_STRATEGY_2026-03-22.md` ile hedef yayin rotasini sabitle
+4. gerekirse `paper_writer` ile hedefli draft duzeltmesi
+5. `README.md`, `docs/EXPERIMENTS.md` ve `paper/draft.md` arasinda son senkronizasyon
 
 ## 6. Neden Bunlar Eklendi
 

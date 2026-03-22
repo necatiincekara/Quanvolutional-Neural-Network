@@ -58,6 +58,7 @@ Bu nedenle sadece "Claude dosyalarini kopyalama" yaklasimi kullanilmadi. Bunun y
 Codex bu repoda asagidaki sekilde kullanilmali:
 
 - Durum raporu, README guncellemesi veya tez/paper metni yazmadan once `reconcile-results` kullan.
+- Yayin ve makale yonu icin varsayilan referans `docs/PUBLICATION_STRATEGY_2026-03-22.md` olmali.
 - Quantum circuit veya trainable quanvolution incelemesinde `review-circuit` ve gerekirse `quantum_ml_reviewer` agent'ini kullan.
 - Sonuclar birbiriyle celisiyorsa once `experiments/*.json`, checkpoint'ler ve notebook ciktilarina bak; sonra anlatim belgelerine gec.
 - `README.md`, `CLAUDE.md` ve `docs/AUDIT_REPORT.md` dosyalarini varsayilan gercek kaynak gibi kabul etme.

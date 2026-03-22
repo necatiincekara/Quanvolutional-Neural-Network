@@ -1,6 +1,6 @@
 ---
 name: compare
-description: Farkli model versiyonlarini, circuit tasarimlarini veya konfigurasyonlari karsilastir. Performans tablolari ve analiz uretir.
+description: Model, circuit veya egitim konfigurasyonlarini guncel sonuclara gore karsilastir. Tarihsel anlatidan degil, artefaktlardan ilerler.
 disable-model-invocation: true
 allowed-tools:
   - Read
@@ -9,31 +9,32 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# Model Version Comparison
-
-Farkli model versiyonlarini ve konfigurasyonlarini karsilastir.
+# Model Comparison
 
 ## Adimlar
 
-1. **Veri topla**: `docs/EXPERIMENTS.md`, `CLAUDE.md` benchmark tablosu, model dosyalari
-2. **Karsilastirma tipini belirle** (`$ARGUMENTS` veya sor):
-   - `versions` / `v4 v6`: Versiyon karsilastirmasi
-   - `circuits`: Circuit tasarim karsilastirmasi
-   - `architectures`: Model mimari karsilastirmasi
-   - `all`: Genel karsilastirma
+1. Once guncel kaynaklari oku:
+   - `experiments/*.json`
+   - `docs/EXPERIMENTS.md`
+   - `paper/draft.md`
+   - `CLAUDE.md` veya `AGENTS.md`
+2. Karsilastirma tipini belirle:
+   - `current`: bugunku en guclu modeller
+   - `quantum`: trainable vs non-trainable quantum
+   - `thesis`: thesis HQNN/CNN sonuclari vs repo sonuclari
+   - `architecture`: mimari trade-off
+3. Su tabloyu olustur:
 
-3. **Karsilastirma tablosu olustur**:
-
-```
-| Metrik           | V4 (Base) | V6 (Reduced) | V7 (Stable) |
-|------------------|-----------|--------------|-------------|
-| Feature Map      | 8x8       | 6x6          | 8x8         |
-| Quantum Calls    | 16        | 9            | 16          |
-| Circuit Type     | fixed     | fixed        | trainable   |
-| Epoch Time       | ~1.5h     | ~117s/batch  | TBD         |
-| Accuracy         | 8.75%     | 0.00%        | TBD         |
-| Gradient Status  | stable    | vanishing    | TBD         |
+```text
+| Model | Test Acc | Val Acc | Params | Compute Cost | Not |
 ```
 
-4. **Analiz**: Accuracy vs speed trade-off, gradient stability, mimari etkiler
-5. **Oneri**: Sonraki adimlar ve ilgili skill'ler (`/train`, `/architecture`)
+4. Yorumda su ayrimi acik yap:
+   - current factual result
+   - historical claim
+   - unsupported / stale claim
+
+## Notlar
+
+- `CLAUDE.md` benchmark tablosunu tek kaynak kabul etme.
+- Metrik celiskisinde `experiments/*.json` daha ustundur.
