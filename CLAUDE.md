@@ -42,6 +42,11 @@ When results disagree, use this order:
   - `src/enhanced_training.py`
   - `train_v7.py`
   - `train_ablation_local.py`
+- Publication benchmark training:
+  - `train_thesis_models.py`
+  - `src/thesis_models.py`
+  - `src/benchmark_protocol.py`
+  - `src/benchmark_training.py`
 - Data:
   - `src/dataset.py`
   - `src/config.py`
@@ -53,6 +58,8 @@ When results disagree, use this order:
 - Publication planning:
   - `docs/PUBLICATION_STRATEGY_2026-03-22.md`
   - `docs/RESEARCH_ROADMAP.md`
+  - `docs/BENCHMARK_MATRIX_2026-03-22.md`
+  - `docs/BENCHMARK_SUMMARY.md`
 
 ## Important Repo Caveats
 
@@ -80,6 +87,12 @@ python train_v7.py
 
 # Local ablations
 python train_ablation_local.py --help
+
+# Thesis-faithful publication benchmarks
+python train_thesis_models.py --help
+
+# Aggregate benchmark tables
+python scripts/aggregate_benchmarks.py
 
 # Quick non-trainable quantum smoke test
 python train_ablation_local.py --model non_trainable_quantum --test

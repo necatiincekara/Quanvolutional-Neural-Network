@@ -22,7 +22,10 @@ Bu skill tarihsel V7-V10 hedeflerini oldugu gibi tekrar etmek icin degil, mevcut
    - `src/model.py`
    - `src/trainable_quantum_model.py`
    - `src/ablation_models.py`
+   - `src/thesis_models.py`
+   - `src/benchmark_protocol.py`
    - `train_ablation_local.py`
+   - `train_thesis_models.py`
    - `docs/PUBLICATION_STRATEGY_2026-03-22.md`
 2. Islem turunu belirle:
    - `analyze`: mevcut mimariyi acikla, bottleneck ve parametre dagilimini ver

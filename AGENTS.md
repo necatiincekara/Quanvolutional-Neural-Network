@@ -52,10 +52,11 @@ When results disagree, use this priority order:
 
 - Core models: `src/model.py`, `src/trainable_quantum_model.py`
 - Training: `src/train.py`, `src/enhanced_training.py`, `train_v7.py`, `train_ablation_local.py`
+- Publication benchmark training: `train_thesis_models.py`, `src/thesis_models.py`, `src/benchmark_protocol.py`, `src/benchmark_training.py`
 - Data: `src/dataset.py`, `src/config.py`
 - Results: `docs/EXPERIMENTS.md`, `experiments/*.json`, `paper/draft.md`, `train_v7_colab.ipynb`
 - Historical guidance: `CLAUDE.md`, `docs/AUDIT_REPORT.md`, `docs/IMPLEMENTATION_GUIDE.md`
-- Publication planning: `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/RESEARCH_ROADMAP.md`
+- Publication planning: `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/RESEARCH_ROADMAP.md`, `docs/BENCHMARK_MATRIX_2026-03-22.md`, `docs/BENCHMARK_SUMMARY.md`
 - Codex integration: `.codex/config.toml`, `.codex/agents/*.toml`, `.agents/skills/*/SKILL.md`
 
 ## Repo-Specific Skills
@@ -88,6 +89,8 @@ Prefer the repository skills when the task matches:
 - Base training: `python -m src.train`
 - Enhanced V7 training: `python train_v7.py`
 - Local ablations: `python train_ablation_local.py --help`
+- Thesis-faithful benchmark models: `python train_thesis_models.py --help`
+- Aggregate benchmark tables: `python scripts/aggregate_benchmarks.py`
 - Codex non-interactive study status: `./scripts/codex-study-status.sh`
 - Codex paper audit: `./scripts/codex-paper-audit.sh`
 - Codex circuit review: `./scripts/codex-circuit-review.sh src/trainable_quantum_model.py`

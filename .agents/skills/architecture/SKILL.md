@@ -13,7 +13,10 @@ Use this skill when the task is to design a new model version or analyze an exis
 2. Inspect the relevant implementation files:
    - `src/model.py`
    - `src/trainable_quantum_model.py`
+   - `src/thesis_models.py`
+   - `src/benchmark_protocol.py`
    - `src/enhanced_training.py`
+   - `train_ablation_local.py` or `train_thesis_models.py`
    - `improved_model.py` if the task touches alternative designs
 3. Reconcile the design against current study reality:
    - local ablations currently outperform the documented V7 result

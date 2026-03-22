@@ -4,6 +4,11 @@
 
 This document records the realistic publication status of the study and the strategy required to turn it into a publishable paper.
 
+Operational benchmark tracking now lives alongside this strategy in:
+
+- `docs/BENCHMARK_MATRIX_2026-03-22.md`
+- `docs/BENCHMARK_SUMMARY.md`
+
 ## 1. Short Verdict
 
 As the repository stands today, this work is **not yet strong enough for a broad-scope Q1 AI or computer vision journal**.

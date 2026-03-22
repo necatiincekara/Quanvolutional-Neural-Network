@@ -1,0 +1,62 @@
+[
+  {
+    "model": "V4_historical_reference",
+    "family": "historical-reference",
+    "source": "historical-docs",
+    "runs": 1,
+    "best_val_acc_mean": 8.75,
+    "best_val_acc_std": 0.0,
+    "test_acc_mean": null,
+    "test_acc_std": null,
+    "total_params": null,
+    "notes": "Historical non-trainable baseline reference."
+  },
+  {
+    "model": "V7_trainable_quantum_documented",
+    "family": "trainable-quantum-case-study",
+    "source": "docs/notebook",
+    "runs": 1,
+    "best_val_acc_mean": 67.35,
+    "best_val_acc_std": 0.0,
+    "test_acc_mean": 65.02,
+    "test_acc_std": 0.0,
+    "total_params": 87798,
+    "notes": "Documented stabilized V7 result from docs/notebook output."
+  },
+  {
+    "model": "classical_conv",
+    "family": "current-local",
+    "source": "repo-local-ablation",
+    "runs": 1,
+    "best_val_acc_mean": 84.5,
+    "best_val_acc_std": 0.0,
+    "test_acc_mean": 82.62,
+    "test_acc_std": 0.0,
+    "total_params": 88045,
+    "notes": ""
+  },
+  {
+    "model": "non_trainable_quantum",
+    "family": "current-local",
+    "source": "repo-local-ablation",
+    "runs": 1,
+    "best_val_acc_mean": 88.89,
+    "best_val_acc_std": 0.0,
+    "test_acc_mean": 80.47,
+    "test_acc_std": 0.0,
+    "total_params": 88488,
+    "notes": ""
+  },
+  {
+    "model": "param_linear",
+    "family": "current-local",
+    "source": "repo-local-ablation",
+    "runs": 1,
+    "best_val_acc_mean": 88.3,
+    "best_val_acc_std": 0.0,
+    "test_acc_mean": 81.76,
+    "test_acc_std": 0.0,
+    "total_params": 87798,
+    "notes": ""
+  }
+]

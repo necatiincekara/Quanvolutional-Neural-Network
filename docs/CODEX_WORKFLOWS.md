@@ -48,6 +48,7 @@ Tekrar tekrar prompt yazmamak icin su script'ler eklendi:
 ./scripts/codex-paper-audit.sh
 ./scripts/codex-circuit-review.sh
 ./scripts/codex-circuit-review.sh src/model.py
+python scripts/aggregate_benchmarks.py
 ```
 
 Bu script'ler `codex exec` kullanir, uygun profili secip `--include-plan-tool` ve web search destegi ile calisir.
