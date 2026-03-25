@@ -161,6 +161,7 @@ def main():
             "cache_metadata": cache_metadata,
         },
     )
+    results["run_id"] = paths["run_id"]
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 

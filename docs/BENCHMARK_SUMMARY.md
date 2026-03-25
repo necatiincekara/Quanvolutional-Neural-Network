@@ -6,15 +6,23 @@ Auto-generated from `experiments/*.json` plus documented reference rows.
 
 | Model | Source | Runs | Best Val | Test | Params | Notes |
 |---|---|---:|---:|---:|---:|---|
-| classical_conv | repo-local-ablation | 1 | 84.50 ± 0.00 | 82.62 ± 0.00 | 88045 | - |
-| non_trainable_quantum | repo-local-ablation | 1 | 88.89 ± 0.00 | 80.47 ± 0.00 | 88488 | - |
-| param_linear | repo-local-ablation | 1 | 88.30 ± 0.00 | 81.76 ± 0.00 | 87798 | - |
+| classical_conv | repo-local-ablation | 3 | 86.26 ± 1.76 | 81.40 ± 1.06 | 88045 | - |
+| non_trainable_quantum | repo-local-ablation | 3 | 85.77 ± 0.94 | 80.40 ± 0.69 | 88488 | - |
+| param_linear | repo-local-ablation | 3 | 86.45 ± 0.61 | 81.12 ± 2.27 | 87798 | - |
 
 ## historical-reference
 
 | Model | Source | Runs | Best Val | Test | Params | Notes |
 |---|---|---:|---:|---:|---:|---|
 | V4_historical_reference | historical-docs | 1 | 8.75 ± 0.00 | - | - | Historical non-trainable baseline reference. |
+
+## thesis-faithful
+
+| Model | Source | Runs | Best Val | Test | Params | Notes |
+|---|---|---:|---:|---:|---:|---|
+| thesis_cnn3 | thesis-faithful | 3 | 85.38 ± 0.77 | 79.33 ± 1.26 | 769804 | CNN-III thesis reproduction candidate. |
+| thesis_cnniiii | thesis-faithful | 3 | 92.11 ± 0.30 | 85.26 ± 0.97 | 1378124 | CNN-IIII best thesis classical model with augmentation. |
+| thesis_hqnn2 | thesis-faithful | 3 | 83.72 ± 2.23 | 78.61 ± 0.69 | 248428 | 2-qubit non-entangled quantum preprocessing with 2 filters producing 4 channels. Spatial implementation chosen to match the reported parameter count (248,428). |
 
 ## trainable-quantum-case-study
 

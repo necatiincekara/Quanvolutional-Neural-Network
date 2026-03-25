@@ -7,6 +7,28 @@ This document serves as a log for the experiments conducted during the developme
 > Later local ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
 > For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
 
+## Publication Protocol v1 Reproductions
+
+*   **Date:** March 23, 2026
+*   **Purpose:** Re-run thesis-faithful reference models under the unified `publication_v1` protocol with deterministic split handling and artifact-backed JSON outputs.
+*   **Validated Results:**
+    *   **`thesis_cnn3`** (`experiments/publication_thesis_cnn3_seed42_split42.json`)
+        *   **Best Validation Accuracy:** `85.96%`
+        *   **Test Accuracy:** `77.90%`
+        *   **Runtime:** `45.26s` on `mac-cpu`
+        *   **Comparison to Thesis Table:** below the thesis `CNN-III` reference (`83.05%` test) by `5.15` points.
+    *   **`thesis_hqnn2`** (`experiments/publication_thesis_hqnn2_seed42_split42.json`)
+        *   **Best Validation Accuracy:** `84.21%`
+        *   **Test Accuracy:** `78.33%`
+        *   **Runtime:** `18.73s` on `mac-cpu` for the classifier training stage; the one-time quantum cache/precompute step is tracked separately and is not included in `runtime_seconds`
+        *   **Comparison to Thesis Table:** below the thesis `HQNN-II` reference (`82.40%` test) by `4.07` points.
+    *   **`thesis_cnniiii`** (`experiments/publication_thesis_cnniiii_seed42_split42.json`)
+        *   **Best Validation Accuracy:** `92.40%`
+        *   **Test Accuracy:** `85.19%`
+        *   **Runtime:** `1458.77s` on `mac-cpu`
+        *   **Comparison to Thesis Table:** above the thesis `CNN-IIII` reference (`83.69%` test) by `1.50` points.
+*   **Current Conclusion:** The thesis-faithful reproductions now split into two groups. `thesis_cnn3` now stands at `79.33 ± 1.26` test accuracy after three local seeds and remains below the thesis `83.05%` reference, `thesis_hqnn2` stands at `78.61 ± 0.69` test accuracy after three local seeds and also remains below the thesis `82.40%` reference, and `thesis_cnniiii` exceeds its thesis reference and is currently the strongest thesis-faithful result. After three local seeds, `thesis_cnniiii` stands at `85.26 ± 0.97` test accuracy, with all three runs above the thesis `83.69%` reference. On the current-local publication_v1 side, `classical_conv` now stands at `81.40 ± 1.06` test accuracy after three seeds, `param_linear` stands at `81.12 ± 2.27`, and `non_trainable_quantum` now stands at `80.40 ± 0.69` after three seeds. Even so, the thesis-faithful family must remain analytically separate from the current Henderson-style local non-trainable quantum baseline and from the smaller matched-parameter local ablation family.
+
 ---
 
 ## Experiment 01: V1 - Baseline Naive Implementation

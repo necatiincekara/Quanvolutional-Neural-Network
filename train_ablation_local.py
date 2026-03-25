@@ -285,6 +285,7 @@ def main():
         params=params,
         extra=extra,
     )
+    results["run_id"] = paths["run_id"]
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=0.002, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)

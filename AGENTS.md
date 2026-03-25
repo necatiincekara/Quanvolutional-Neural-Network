@@ -26,11 +26,15 @@ When results disagree, use this priority order:
 ## Current Known Study Status
 
 - Documented stabilized V7 result: about `67.35%` best validation and `65.02%` test accuracy in repo docs/notebook outputs.
-- Stronger local ablation test results currently exist:
-  - `classical_conv`: `82.62%` test
-  - `param_linear`: `81.76%` test
-  - `non_trainable_quantum`: `80.47%` test
-- Therefore, the current repo evidence supports a stronger "hybrid QML engineering and stabilization" story than a clean "quantum advantage" story.
+- Multi-seed benchmark status now exists for all M4-feasible thesis-faithful and current-local core models:
+  - `thesis_cnniiii`: `85.26 ± 0.97` test
+  - `classical_conv`: `81.40 ± 1.06` test
+  - `param_linear`: `81.12 ± 2.27` test
+  - `non_trainable_quantum`: `80.40 ± 0.69` test
+  - `thesis_cnn3`: `79.33 ± 1.26` test
+  - `thesis_hqnn2`: `78.61 ± 0.69` test
+- Therefore, the current repo evidence supports a stronger "fair benchmark + hybrid QML engineering and stabilization" story than a clean "quantum advantage" story.
+- The main unresolved benchmark item is a fresh artifact-backed rerun for the trainable V7 path, likely on Colab rather than local Mac hardware.
 
 ## Important Repo Caveats
 

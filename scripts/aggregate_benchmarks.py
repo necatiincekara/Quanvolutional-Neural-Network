@@ -48,6 +48,17 @@ LEGACY_MODEL_DEFAULTS = {
 }
 
 
+def synthetic_run_key(data, path: str) -> str:
+    run_id = data.get("run_id")
+    if run_id:
+        return run_id
+    model = data.get("model", "unknown")
+    train_seed = data.get("train_seed", "na")
+    split_seed = data.get("split_seed", "na")
+    protocol_version = data.get("protocol_version", "legacy")
+    return f"{model}__{protocol_version}__seed{train_seed}__split{split_seed}"
+
+
 def load_result_files():
     records = []
     dedupe = {}
@@ -59,7 +70,7 @@ def load_result_files():
         defaults = LEGACY_MODEL_DEFAULTS.get(data["model"], {})
         data.setdefault("source", defaults.get("source", "unknown"))
         data.setdefault("family", defaults.get("family", "unknown"))
-        key = data.get("run_id", path)
+        key = synthetic_run_key(data, path)
         preferred = dedupe.get(key)
         if preferred is None or ("_seed" in path and "_seed" not in preferred["__path"]):
             data["__path"] = path

@@ -1,9 +1,16 @@
-# Gradient-Stabilized Quanvolutional Neural Networks for Ottoman-Turkish Handwritten Character Recognition
+# Fair Benchmarking and Engineering Lessons for Quanvolutional Neural Networks on Ottoman-Turkish Handwritten Character Recognition
 
-> Editorial status note, March 22, 2026:
-> This draft reflects the V7-centered manuscript state and predates the strongest local ablation results now present in the repository.
-> Current repo evidence indicates that matched classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
-> Before using this draft for submission, reconcile claims against `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/EXPERIMENTS.md`, and `experiments/*.json`.
+> Editorial status note, March 25, 2026:
+> This draft still reflects the older V7-centered manuscript state and is not submission-ready in its current form.
+> The current benchmark picture is now:
+> - `thesis_cnniiii`: `85.26 ± 0.97` test
+> - `classical_conv`: `81.40 ± 1.06` test
+> - `param_linear`: `81.12 ± 2.27` test
+> - `non_trainable_quantum`: `80.40 ± 0.69` test
+> - `thesis_hqnn2`: `78.61 ± 0.69` test
+> - documented `V7 trainable quantum`: `65.02%` test
+> Therefore the paper must now be rewritten as a fair benchmark + engineering-lessons manuscript, not as a V7 accuracy-win manuscript.
+> Before using this draft for submission, reconcile claims against `docs/SUBMISSION_BENCHMARK_2026-03-25.md`, `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/EXPERIMENTS.md`, and `experiments/*.json`.
 
 ## Authors
 
@@ -13,7 +20,7 @@ Necati Incekara
 
 ## Abstract
 
-We present a systematic investigation of hybrid quantum-classical convolutional neural networks (quanvolutional networks) for Ottoman-Turkish handwritten character recognition, a challenging 44-class classification task with limited training data (3,894 samples). Through seven iterative architectural versions (V1--V7), we identify critical design principles for integrating parameterized quantum circuits into deep learning pipelines. Our key contributions include: (1) the empirical discovery of an information bottleneck threshold below which quantum feature extraction fails entirely, (2) a gradient stabilization framework combining learnable scaling, residual connections, and channel attention that resolves vanishing gradient problems in quantum-classical interfaces, and (3) the first systematic documentation of an incompatibility between PyTorch Automatic Mixed Precision (AMP) and variational quantum circuit backpropagation. Starting from a computationally infeasible baseline requiring >8 hours per epoch with 256 quantum circuit evaluations per image, we achieve a 93.75% reduction in quantum computational overhead. With our gradient-stabilized trainable architecture (V7), we reach **65.02% test accuracy** after 9 epochs---28.6x above the random baseline of 2.27% and 7.4x above the non-trainable quanvolutional baseline (V4: 8.75%). We further demonstrate that float16 mixed precision is fundamentally incompatible with quantum circuit backpropagation, and provide a minimal one-line fix with broad implications for the hybrid QML community.
+We present a reproducible benchmark extension of a master's-thesis study on quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a difficult 44-class low-data task with 3,894 grayscale samples. The study combines two complementary views of the problem: thesis-faithful model reproductions and current-local matched-budget ablations. Across multi-seed evaluation, the strongest reproduced evidence currently favors classical baselines rather than quantum variants. In the thesis-faithful family, the strongest reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, while the best reproduced thesis-faithful quantum baseline, `thesis_hqnn2`, reaches **78.61 ± 0.69%**. In the current-local matched-budget family, `classical_conv` reaches **81.40 ± 1.06%**, `param_linear` reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. We therefore do not claim a quantum advantage on this task. Instead, the scientific value of the work lies in three contributions: (1) a fair comparative benchmark that separates thesis-faithful and matched-budget families, (2) a trainable-quantum engineering case-study showing how information bottlenecks, gradient collapse, and optimizer/precision mistakes affect hybrid training, and (3) the documentation of a practical incompatibility between PyTorch AMP float16 autocasting and variational quantum circuit backpropagation at the quantum boundary. The stabilized V7 trainable model remains useful as an engineering result, reaching **65.02%** documented test accuracy while exposing concrete design rules for hybrid quantum-classical pipelines.
 
 **Keywords:** Quantum Machine Learning, Quanvolutional Neural Networks, Hybrid Quantum-Classical Computing, Ottoman Script Recognition, Variational Quantum Circuits, Gradient Stabilization, Barren Plateaus
 
@@ -29,17 +36,30 @@ We apply quanvolutional neural networks to Ottoman-Turkish handwritten character
 
 ### 1.1 Contributions
 
-Our contributions are threefold:
+Our contributions are fourfold:
 
-1. **Information Bottleneck Characterization.** We empirically establish that quantum convolutional layers require a minimum spatial resolution in their input feature maps. Through systematic ablation (V4--V6), we show that 8x8 feature maps sustain learning while 6x6 maps cause complete gradient collapse (0% accuracy) and 4x4 maps degrade below random baseline---regardless of circuit expressivity. This finding provides concrete design guidance for hybrid QML practitioners.
+1. **Reproducible Benchmark Structure.** We organize the study into two analytically separate families: thesis-faithful reproductions and current-local matched-budget ablations. This prevents misleading direct comparisons between differently sized or differently motivated models and yields an artifact-backed benchmark picture for the repository.
 
-2. **Gradient Stabilization Framework.** We propose a combination of learnable gradient scaling, residual skip connections, and channel attention mechanisms that stabilize gradient flow through the quantum-classical interface. This framework transforms a completely non-learning architecture (V6: 0%) into one that achieves 65.02% test accuracy (V7), demonstrating that gradient collapse is an architectural deficiency---not an inherent property of quantum backpropagation.
+2. **Negative-Result Benchmark Evidence.** We show that the strongest reproduced evidence on this 44-class task currently favors classical baselines. The best thesis-faithful model is classical (`thesis_cnniiii`), and the best current-local matched-budget model is also classical (`classical_conv`). This makes the work more honest and more informative than a selective "quantum win" narrative.
 
-3. **AMP--PennyLane Incompatibility Documentation.** We identify and document a previously unreported failure mode: PyTorch's Automatic Mixed Precision (AMP), a standard optimization in modern deep learning, causes catastrophic numerical overflow when float16-cast inputs enter variational quantum circuit backpropagation via adjoint differentiation. We provide a minimal fix (explicit float32 casting at the quantum boundary) with broad implications for hybrid QML pipelines.
+3. **Information Bottleneck and Gradient Stabilization Analysis.** Through the V1--V7 trainable-quantum path, we identify an empirical spatial threshold below which quantum feature extraction collapses, and we show that learnable scaling, residual routing, and channel attention are sufficient to transform a non-learning hybrid architecture into a trainable one.
 
-### 1.2 Paper Organization
+4. **AMP--PennyLane Incompatibility Documentation.** We identify and document a concrete failure mode in which PyTorch AMP float16 autocasting corrupts variational quantum circuit backpropagation unless float32 is restored at the quantum boundary and optimizer stepping remains GradScaler-aware.
 
-Section 2 reviews related work. Section 3 describes our methodology. Section 4 presents experimental results across seven architectural versions. Section 5 discusses findings. Section 6 concludes with future directions.
+### 1.2 Relation To The Thesis
+
+This paper should be read as a continuation and formalization of the master's-thesis study, not as a repudiation of it. The thesis established the dataset framing, the OCR problem formulation, and the initial CNN/HQNN comparison space. The present paper extends that foundation in four ways:
+
+1. it re-runs key thesis models under a unified and reproducible protocol,
+2. it separates thesis-faithful reproductions from newer matched-budget ablations,
+3. it adds multi-seed reporting instead of relying on single highlighted runs, and
+4. it incorporates the later V1--V7 engineering path for trainable quantum layers.
+
+Under this framing, the thesis remains scientifically valuable as the origin of the task definition and the first model family, while the paper provides the stricter reproducibility, benchmarking, and engineering analysis needed for publication.
+
+### 1.3 Paper Organization
+
+Section 2 reviews related work. Section 3 describes the dataset, architectures, and training pipelines. Section 4 presents the benchmark results, separating thesis-faithful reproductions, current-local matched-budget ablations, and the trainable-quantum engineering case-study. Section 5 discusses the scientific implications of the benchmark picture. Section 6 concludes with realistic publication takeaways and future work.
 
 ---
 
@@ -47,21 +67,27 @@ Section 2 reviews related work. Section 3 describes our methodology. Section 4 p
 
 ### 2.1 Quanvolutional Neural Networks
 
-Henderson et al. [3] introduced quanvolutional neural networks, demonstrating that random (non-trainable) quantum circuits can serve as feature extractors when combined with classical neural network layers. The original work used random circuit parameters, motivating subsequent investigation of trainable variants [4]. Hur et al. [4] explored quantum convolutional neural networks for classical data classification, showing that trainable circuits can improve upon random feature extractors in certain regimes.
+Henderson et al. [3] introduced quanvolutional neural networks, demonstrating that random non-trainable quantum circuits can be used as fixed feature extractors before a classical classifier. That formulation remains important because it motivates the non-trainable preprocessing baselines used both in our thesis-faithful reproductions and in our current-local Henderson-style comparisons. Later work such as Hur et al. [4] explored trainable quantum convolutional variants for classical data classification, opening the question of whether learned quantum parameters provide a practical benefit over random or classical replacements.
 
-Recent work has raised critical questions about quantum advantage claims in the classical simulation regime. Bowles et al. [11] demonstrated that for many benchmarks where quantum models were claimed to outperform classical methods, carefully tuned classical counterparts achieve equivalent or superior performance. Our work adopts the honest methodology advocated by this line of research.
+Our study differs from most one-family quanvolution papers in that it does not treat all quantum models as interchangeable. Instead, it distinguishes between: (1) thesis-faithful reproductions of earlier CNN/HQNN designs, (2) current-local matched-budget ablations designed for fair comparison, and (3) a trainable-quantum engineering case-study. This separation is necessary because different quanvolutional setups answer different scientific questions.
 
-### 2.2 Quantum Circuit Training Challenges
+### 2.2 Benchmarking, Reproducibility, and Quantum Claims
 
-The barren plateau phenomenon [7] poses a fundamental challenge for training parameterized quantum circuits: gradient magnitudes decrease exponentially with system size, making optimization intractable for large circuits. For shallow 4-qubit circuits as used in this work, barren plateaus are less severe but still present [8]. Data re-uploading [10] has been proposed as a circuit design strategy to increase expressibility without increasing qubit count, which we adopt as our primary circuit architecture.
+Recent work has raised critical questions about quantum-advantage claims in the classical simulation regime. Bowles et al. [11] showed that several claimed quantum improvements disappear when stronger or more carefully tuned classical baselines are used. This criticism is especially relevant for small-data image classification tasks, where modest implementation differences can dominate the apparent contribution of a quantum block.
 
-### 2.3 Hybrid Classical-Quantum Training Pipelines
+Our paper adopts this more conservative benchmark philosophy. Instead of asking only whether a quantum model can beat a weak historical baseline, we ask a stricter question: what remains true after multi-seed reruns, artifact-backed reporting, family separation, and comparison against matched classical alternatives? This places the present work closer to a reproducibility and failure-analysis contribution than to a pure performance-claim paper.
 
-The engineering challenges of hybrid quantum-classical training are less studied than the theoretical aspects. Mixed precision training---a standard optimization in classical deep learning using float16 computations with float32 master weights---has not been systematically studied in hybrid quantum pipelines. Our work documents the first known failure mode arising from this interaction.
+### 2.3 Quantum Circuit Training and Hybrid Engineering
 
-### 2.4 Ottoman Script Recognition
+The barren plateau phenomenon [7] poses a fundamental challenge for training parameterized quantum circuits: gradient magnitudes can decrease sharply with system size and circuit structure, making optimization difficult. For shallow 4-qubit circuits as used in this work, barren plateaus are less severe but optimization pathologies still remain [8]. Data re-uploading [10] has been proposed as a circuit design strategy to increase expressibility without increasing qubit count, which we adopt as the primary trainable circuit family in the V7 line.
+
+The engineering side of hybrid classical-quantum training is much less standardized than the theoretical side. Mixed precision training, optimizer scheduling, gradient scaling, and skip-routing are routine concerns in classical deep learning but remain underreported in hybrid pipelines. Our work contributes in this space by treating the V1--V7 line as an explicit engineering study: which design choices make quanvolution trainable, which ones cause collapse, and which precision assumptions silently break the entire run.
+
+### 2.4 Ottoman Script Recognition and Thesis Context
 
 Ottoman-Turkish handwriting recognition is an active research area given the historical significance of Ottoman documents [9]. Classical deep learning approaches have achieved moderate success on limited datasets. The script's 44 character classes with significant intra-class variation and limited training data (~88 samples/class average) present challenges representative of real-world QML deployment scenarios with data-scarce settings.
+
+This paper builds directly on a master's-thesis study conducted on the same OCR problem. The thesis established the task framing and the initial CNN/HQNN comparison space; the present work extends it by introducing reproducible reruns, multi-seed reporting, stricter model-family separation, and a trainable-quantum engineering analysis. In that sense, the thesis is the foundation of the paper rather than a discarded precursor.
 
 *[References [9] and [11] to be completed with full citations]*
 
@@ -71,21 +97,49 @@ Ottoman-Turkish handwriting recognition is an active research area given the his
 
 ### 3.1 Dataset
 
-The Ottoman-Turkish Handwritten Character Dataset consists of 3,894 grayscale images across 44 character classes. Each image is 32x32 pixels. The dataset is split into 3,428 training images and 466 test images (~88%/12% split). The validation set is derived from the training set.
+The Ottoman-Turkish Handwritten Character Dataset consists of 32x32 grayscale character images across 44 classes. The original directory structure contains 3,428 training files and 466 test files. Under the current parser, one malformed training filename is skipped, so the effective loaded benchmark uses 3,427 training samples and 466 test samples. The original thesis train/test separation is preserved rather than re-sampled from scratch, allowing direct continuity between thesis-era results and the present paper.
 
 | Property | Value |
 |----------|-------|
 | Classes | 44 Ottoman-Turkish characters |
-| Total samples | 3,894 |
-| Training set | 3,428 images |
+| Total files | 3,894 |
+| Effective loaded train set | 3,427 images |
 | Test set | 466 images |
 | Image dimensions | 32x32 grayscale |
 | Avg. samples/class | ~88 (training) |
 | Random baseline | 2.27% (1/44) |
 
+The class distribution is substantially imbalanced, so the benchmark should be interpreted as a challenging small-data heritage OCR problem rather than as a balanced large-scale vision benchmark. This is one reason we report multi-seed performance and keep benchmark families analytically separate.
+
+#### 3.1.1 Publication Protocol
+
+To support reproducibility, the publication benchmark uses the following rules:
+
+- the thesis train/test split remains fixed,
+- validation is derived deterministically from the training split,
+- runs are tracked with explicit train seed and split seed,
+- key benchmark rows are reported with three seeds,
+- artifact-backed JSON logs are treated as the primary result source.
+
+#### 3.1.2 Benchmark Families
+
+The methodology separates three families of evidence:
+
+1. **Thesis-faithful reproductions:** reruns of the thesis-era CNN/HQNN models under the current publication protocol.
+2. **Current-local matched-budget ablations:** smaller local models designed to compare classical replacements against non-trainable quantum preprocessing under similar parameter budgets.
+3. **Trainable-quantum engineering case-study:** the V1--V7 development path used to study gradient flow, bottlenecks, and precision failures.
+
+This separation is methodologically important. A thesis-faithful HQNN model and a current-local Henderson-style non-trainable quantum baseline are both "quantum" models, but they do not answer the same question and should not be merged into a single ranking row.
+
 ### 3.2 Quantum Circuit Design
 
-We employ a 4-qubit parameterized quantum circuit (PQC) as the core computational unit of the quanvolutional layer. The primary circuit uses the data re-uploading strategy [10]:
+We employ small parameterized quantum circuits as the core computational units of the quanvolutional blocks. Different benchmark families use different circuit roles:
+
+- thesis-faithful HQNN models use fixed non-trainable quantum preprocessing,
+- current-local Henderson-style baselines use cached non-trainable quantum filters,
+- the V7 engineering line uses a 4-qubit trainable circuit with data re-uploading.
+
+The primary trainable circuit uses the data re-uploading strategy [10]:
 
 #### 3.2.1 Data Re-uploading Circuit (Primary)
 
@@ -109,6 +163,8 @@ Uses PennyLane's `StronglyEntanglingLayers` template with 3 layers, providing 36
 RY and RZ rotations with CZ entangling gates: 16 trainable parameters. Designed for compatibility with near-term NISQ devices.
 
 ### 3.3 Hybrid Architecture: V7 (EnhancedQuanvNet)
+
+The V7 architecture is described in detail because it is the main trainable-quantum engineering case-study in the paper. It is not the strongest benchmark model overall, but it is the most informative architecture for analyzing how trainable quanvolution behaves under realistic optimization constraints.
 
 #### 3.3.1 Classical Preprocessing
 
@@ -199,18 +255,50 @@ Using `optimizer.step()` directly (bypassing `scaler.step()`) caused irreversibl
 
 ### 3.5 Computational Infrastructure
 
-- **Primary training:** NVIDIA L4 GPU (Google Colab Pro, ~2-3 compute units/hour)
-- **Initial runs:** NVIDIA A100-SXM4-80GB (Google Colab Pro, ~7-8 units/hour)
-- **Development:** Apple M4 Mac Mini (CPU, `default.qubit`)
+- **Primary trainable-quantum training:** NVIDIA L4 GPU (Google Colab Pro, ~2-3 compute units/hour)
+- **Initial exploratory runs:** NVIDIA A100-SXM4-80GB (Google Colab Pro, ~7-8 units/hour)
+- **Reproducibility and benchmark reruns:** Apple M4 Mac Mini (CPU, `default.qubit`) for all M4-feasible thesis-faithful and matched-budget models
 - **Quantum simulator:** PennyLane `lightning.gpu` with adjoint differentiation
 - **Framework:** PyTorch 2.x, PennyLane 0.44, NumPy ≥ 2.0
-- **Batch size:** 128; **Epochs:** 9
+- **Batch size / epochs:** configuration depends on benchmark family; the documented V7 case-study shown in this paper uses batch size 128 and 9 epochs
 
 ---
 
 ## 4. Experimental Results
 
-### 4.1 Architectural Evolution Summary
+### 4.1 Benchmark Snapshot
+
+The benchmark picture must be read in three layers rather than as a single flat leaderboard:
+
+1. **Thesis-faithful family:** reproductions of the thesis-era classical and quantum models.
+2. **Current-local matched-budget family:** smaller parameter-matched ablations designed for fair local comparison.
+3. **Trainable-quantum case-study:** the V1--V7 engineering path, which is valuable scientifically even though it is not the strongest benchmark family.
+
+### 4.2 Thesis-Faithful Family
+
+| Model | Runs | Best Val | Test | Params | Interpretation |
+|-------|---:|---:|---:|---:|---|
+| `thesis_cnniiii` | 3 | **92.11 ± 0.30** | **85.26 ± 0.97** | 1,378,124 | strongest thesis-faithful reproduction; above thesis table reference |
+| `thesis_cnn3` | 3 | 85.38 ± 0.77 | 79.33 ± 1.26 | 769,804 | weaker classical thesis-faithful anchor |
+| `thesis_hqnn2` | 3 | 83.72 ± 2.23 | 78.61 ± 0.69 | 248,428 | best thesis-faithful quantum reproduction, but below `thesis_cnniiii` and below thesis table reference |
+
+This family is the most relevant when asking whether the thesis-era quantum claim remains competitive under reproducible reruns. The answer is mixed: `thesis_hqnn2` remains competitive with `thesis_cnn3`, but the strongest thesis-faithful reproduced evidence clearly favors the classical `thesis_cnniiii` model.
+
+### 4.3 Current-Local Matched-Budget Family
+
+| Model | Runs | Best Val | Test | Params | Interpretation |
+|-------|---:|---:|---:|---:|---|
+| `classical_conv` | 3 | 86.26 ± 1.76 | **81.40 ± 1.06** | 88,045 | strongest matched-budget local model by mean test accuracy |
+| `param_linear` | 3 | **86.45 ± 0.61** | 81.12 ± 2.27 | 87,798 | matched classical replacement, nearly tied with `classical_conv` on mean test |
+| `non_trainable_quantum` | 3 | 85.77 ± 0.94 | 80.40 ± 0.69 | 88,488 | stable Henderson-style non-trainable quantum baseline, but not the strongest local model |
+
+This family asks a narrower question: if the parameter budget is kept close to the current V7-style local models, do quantum layers beat classical replacements? Under the present `publication_v1` protocol, the answer is no. The Henderson-style non-trainable quantum baseline is stable, but it does not exceed the strongest classical matched-budget alternatives.
+
+### 4.4 Trainable-Quantum Engineering Case-Study
+
+The V1--V7 line remains scientifically useful, but it should be interpreted as an engineering case-study rather than as the main benchmark winner. Its value lies in showing what failed, what became trainable, and why.
+
+#### 4.4.1 Architectural Evolution Summary
 
 | Version | Feature Map | Q-Calls/img | Epoch Time | Best Val Acc. | Outcome |
 |---------|------------|-------------|------------|--------------|---------|
@@ -221,11 +309,11 @@ Using `optimizer.step()` directly (bypassing `scaler.step()`) caused irreversibl
 | V5 | 4×4 | 4 | ~51s/batch | 2.04% | Information bottleneck |
 | V6 | 6×6 | 9 | ~117s/batch | 0.00% | Gradient collapse |
 | V7-Run1 | 8×8 | 16 | ~5.4min/batch | NaN | AMP float16 bug |
-| **V7-Run2** | **8×8** | **16** | **~2.3h/epoch** | **67.35%** | **✓ Target achieved** |
+| **V7-Run2** | **8×8** | **16** | **~2.3h/epoch** | **67.35%** | **stabilized trainable-quantum case-study** |
 
-### 4.2 V7 Full Training Curve
+#### 4.4.2 V7 Full Training Curve
 
-Complete epoch-by-epoch results for V7 (data_reuploading circuit, L4 GPU):
+Complete epoch-by-epoch documented results for V7 (data_reuploading circuit, L4 GPU):
 
 | Epoch | Train Loss | Train Acc. | Val Acc. | Q-Grad Mean | C-Grad Mean | gradient_scale α |
 |-------|-----------|-----------|---------|-------------|-------------|-----------------|
@@ -239,17 +327,13 @@ Complete epoch-by-epoch results for V7 (data_reuploading circuit, L4 GPU):
 | 8 | ~2.20 | ~46% | 58.31% | 4.50e-02 | 2.74e-01 | 0.0883 |
 | 9 | 2.0757 | 55.98% | **67.35%** | 2.88e-01 | 1.70e-01 | 0.0878 |
 
-**Final Test Accuracy: 65.02%** (28.6× above random baseline; 7.4× above V4 non-trainable baseline)
+**Documented test accuracy:** `65.02%`
 
-**Key training dynamics:**
-- Quantum gradient magnitudes span three orders of magnitude across training (7.78e-04 to 3.01e-01), confirming active PQC parameter learning
-- The learnable gradient scale α decreases monotonically (0.1000 → 0.0878), indicating automatic calibration of quantum output magnitude
-- Val accuracy growth rate accelerates after epoch 7, suggesting the quantum circuit reaches a productive parameter regime ("warm-up" phase)
-- Total wall time: ~20 hours on L4 GPU (9 epochs × ~2.2h/epoch)
+The V7 result is not competitive with the strongest reproduced classical baselines, but it remains informative because it demonstrates that trainable hybrid quanvolution can be stabilized and meaningfully optimized after multiple failed versions.
 
-### 4.3 Information Bottleneck Analysis
+### 4.5 Information Bottleneck Analysis
 
-Systematic reduction of feature map dimensions reveals a critical spatial threshold:
+Systematic reduction of feature-map dimensions reveals a critical spatial threshold:
 
 | Feature Map | Spatial Values/Channel | Q-Calls/img | Val Acc. | Gradient Status |
 |------------|----------------------|-------------|---------|----------------|
@@ -261,7 +345,7 @@ Systematic reduction of feature map dimensions reveals a critical spatial thresh
 
 This establishes an empirical lower bound on classical preprocessing aggressiveness in hybrid architectures: faster quantum evaluation (fewer spatial patches) comes at the cost of information bottleneck failure below the threshold.
 
-### 4.4 Gradient Flow Analysis
+### 4.6 Gradient Flow Analysis
 
 #### V6 Failure Case (6×6 Feature Maps)
 
@@ -274,7 +358,7 @@ This establishes an empirical lower bound on classical preprocessing aggressiven
 
 Quantum gradient magnitude across all 9 epochs ranged from 7.78e-04 to 3.01e-01. The growth pattern (from negligible in epoch 1 to substantial in epochs 3-4 and 9) suggests a characteristic "cold start" dynamics in variational quantum circuits within hybrid architectures---the quantum circuit requires initial warm-up epochs before meaningful gradient signal propagates. This phenomenon warrants further investigation.
 
-### 4.5 AMP--PennyLane Incompatibility
+### 4.7 AMP--PennyLane Incompatibility
 
 **Mechanism:** Under PyTorch AMP autocast, the forward pass automatically downcasts tensor operations to float16. The PennyLane quantum circuit processes these float16 inputs during unitary evolution in a 2^4=16 dimensional Hilbert space. Adjoint differentiation computes quantum gradients via matrix inversion of the unitary; float16 precision is insufficient for this operation, causing overflow.
 
@@ -295,7 +379,7 @@ scaler.step(quantum_optimizer)    # in training loop, not optimizer.step()
 
 **Diagnostic note:** GradScaler inflates gradient magnitudes by its scale factor (~65,536). Debug outputs of "quantum grad mean=2.09e+02" in Run 1 appeared alarming but represented unscaled magnitude ~0.003 (healthy). Moving gradient logging after `scaler.unscale_()` is essential for accurate diagnostics in hybrid AMP pipelines.
 
-### 4.6 Quantum Computational Efficiency
+### 4.8 Quantum Computational Efficiency
 
 | Transition | Technique | Q-Call Reduction | Epoch Speedup |
 |-----------|-----------|-----------------|---------------|
@@ -304,67 +388,81 @@ scaler.step(quantum_optimizer)    # in training loop, not optimizer.step()
 | V3→V4 | Aggressive preprocessing (16→8) | 75% | ~73% |
 | **V1→V4/V7** | **Combined** | **93.75%** | **>80%** |
 
-### 4.7 Ablation Studies
-
-*[To be populated after classical baseline and non-trainable ablation experiments]*
+### 4.9 Comparative Interpretation
 
 | Variant | Quantum Params | Val Acc. | Test Acc. | Notes |
 |---------|---------------|---------|---------|-------|
 | V4 (non-trainable, old arch.) | 0 trainable | 8.75% | — | Original baseline |
-| V7 (trainable, data_reuploading) | 25 | **67.35%** | **65.02%** | Primary result |
-| Classical Conv2d equivalent | 0 | TBD | TBD | Pending Experiment A |
-| Non-trainable V7 arch. | 0 trainable | TBD | TBD | Pending Experiment B |
-| Parameter-matched linear (25 params) | 0 | TBD | TBD | Pending Experiment D |
+| V7 (trainable, data_reuploading) | 25 | 67.35% | 65.02% | stabilized engineering case-study, not current benchmark leader |
+| `classical_conv` | 0 | 86.26 ± 1.76 | **81.40 ± 1.06** | strongest current-local matched-budget baseline |
+| `non_trainable_quantum` | 0 trainable | 85.77 ± 0.94 | 80.40 ± 0.69 | Henderson-style cached quantum baseline |
+| `param_linear` | 0 | **86.45 ± 0.61** | 81.12 ± 2.27 | matched classical replacement for the quantum block |
+| `thesis_hqnn2` | 0 trainable | 83.72 ± 2.23 | 78.61 ± 0.69 | best thesis-faithful quantum reproduction |
+| `thesis_cnniiii` | 0 | **92.11 ± 0.30** | **85.26 ± 0.97** | strongest thesis-faithful reproduced model |
 
 ---
 
 ## 5. Discussion
 
-### 5.1 The Quantum Preprocessing Trade-off
+### 5.1 What The Benchmark Now Shows
 
-Our experiments reveal a fundamental design tension in hybrid quantum-classical architectures: reducing quantum computational overhead through classical preprocessing simultaneously reduces spatial information available to the quantum feature extractor. The 8×8 threshold we identify suggests a minimum "information density" requirement for 4-qubit circuits to function as meaningful feature extractors on a 44-class problem.
+The most important scientific update in the repository is no longer the V4-to-V7 jump alone. The stronger conclusion is that, once the benchmark is organized fairly and run with multi-seed reporting, the strongest reproduced evidence currently favors classical baselines. This is true in both benchmark families considered here:
 
-This finding has practical implications beyond Ottoman script: hybrid QML designers face a constrained optimization between (a) computational feasibility (fewer quantum circuit calls) and (b) information sufficiency (enough spatial content for the quantum layer to discriminate). The threshold location likely depends on qubit count, circuit expressivity, and task complexity---relationships warranting future systematic study.
+- in the thesis-faithful family, `thesis_cnniiii` clearly exceeds `thesis_hqnn2`,
+- in the current-local matched-budget family, `classical_conv` and `param_linear` both slightly exceed the Henderson-style non-trainable quantum baseline on mean test accuracy.
 
-### 5.2 Engineering Challenges in Hybrid Pipelines
+This does not make the quantum experiments uninformative. It simply constrains the valid claim: the current evidence supports an honest comparative benchmark and engineering analysis, not a quantum-win narrative.
 
-The AMP incompatibility documents an underreported category of hybrid QML challenges: the precision mismatch between mature classical frameworks (optimized for float16/bfloat16) and quantum simulators (requiring float32/float64). This is not a limitation of PennyLane specifically but a fundamental property of quantum circuit simulation: unitary matrix operations in Hilbert space require higher precision than typical neural network operations.
+### 5.2 The Quantum Preprocessing Trade-off
 
-Our recommendation for all hybrid QML practitioners: maintain explicit float32 casting at every quantum-classical boundary, and always use GradScaler-aware optimizer stepping (`scaler.step()`) rather than direct optimizer calls when combining AMP with quantum layers.
+Our experiments still reveal a fundamental design tension in hybrid quantum-classical architectures: reducing quantum computational overhead through classical preprocessing simultaneously reduces the spatial information available to the quantum feature extractor. The 8×8 threshold identified in the V4--V7 path suggests a minimum information density requirement for 4-qubit circuits on this 44-class task.
 
-### 5.3 Trainable vs. Non-Trainable Quantum Circuits
+This finding has practical value beyond Ottoman script recognition. Hybrid QML designers must balance:
 
-The V4-to-V7 improvement (8.75% → 67.35% val accuracy) demonstrates that trainable quantum parameters substantially improve performance over random/fixed circuits in our setting. However, this comparison conflates two factors: (1) trainability of quantum parameters, and (2) architectural improvements (residual connections, GroupNorm, gradient scaling). Experiment B (non-trainable V7 architecture) will disentangle these contributions and is necessary before definitive claims about trainability benefit can be made.
+1. computational feasibility, which favors fewer quantum evaluations, and
+2. information sufficiency, which favors larger pre-quantum feature maps.
 
-### 5.4 The "Cold Start" Phenomenon in Quantum Training
+### 5.3 Engineering Challenges In Hybrid Pipelines
 
-An unexpected observation in our training dynamics is the non-monotonic quantum gradient magnitude across epochs: very small in epoch 1 (7.78e-04), growing substantially by epoch 3 (3.01e-01), fluctuating in epochs 5-8, then resurging in epoch 9 (2.88e-01). This pattern---absent in typical classical training---may reflect the geometry of variational quantum circuit parameter landscapes: the circuit requires an initial phase to "locate" a productive gradient region before meaningful learning commences. This "quantum cold start" phenomenon, if reproducible, has implications for warm-up strategies in hybrid training.
+The AMP incompatibility documents an underreported class of hybrid-QML failures: modern classical optimization defaults are not always safe when a variational quantum circuit sits inside the forward and backward path. In this study, float16 autocasting at the quantum boundary was sufficient to destroy the trainable V7 run until explicit float32 restoration and GradScaler-aware optimizer stepping were enforced.
 
-### 5.5 Limitations and Scope
+Our recommendation for hybrid QML practitioners is therefore concrete:
 
-1. **No quantum advantage claimed:** We do not claim computational or statistical advantage over classical methods. The ablation experiments (Section 4.7, pending) will determine whether the quantum component contributes beyond a classical equivalent.
+1. maintain explicit float32 casting at quantum boundaries,
+2. treat optimizer stepping and gradient logging carefully under AMP,
+3. verify gradient health empirically rather than assuming that shallow circuits will train cleanly.
 
-2. **Simulator-based evaluation:** All experiments use classical quantum simulators (`lightning.gpu`). Real quantum hardware introduces noise, gate errors, and decoherence not captured here.
+### 5.4 Why Thesis-Faithful Reproduction Still Matters
 
-3. **Single dataset and circuit family:** Results are specific to Ottoman character recognition with data re-uploading circuits. Generalization requires multi-dataset and multi-architecture evaluation.
+The repository now contains two distinct quantum baselines: the current-local Henderson-style cached baseline and the thesis-faithful HQNN-II reproduction. Keeping them separate is essential. They differ in architecture, parameter count, and motivation, so combining them into a single "quantum" row would be scientifically misleading.
 
-4. **Small qubit count:** 4-qubit circuits may represent a regime too small for quantum expressivity advantages to manifest. Scaling to 8+ qubits may reveal qualitatively different behavior.
+The thesis-faithful path matters because it answers a narrower historical question: does the thesis-era best quantum baseline remain credible under modern reproducible reruns? Our current answer is that it remains competitive with one weaker thesis-era classical reference (`thesis_cnn3`), but it does not surpass the strongest reproduced thesis-faithful classical model.
+
+This interpretation should not be misread as "the thesis was wrong." A more accurate reading is that the thesis identified a promising comparison space, while the paper extends it with stricter protocols, clearer family separation, and more demanding evidence standards. Under those stricter rules, some thesis-era headline numbers are not recovered exactly, but the thesis remains the scientific foundation of the present study.
+
+### 5.5 Limitations And Scope
+
+1. **No quantum advantage claimed.** The current benchmark picture does not support a claim that quantum variants outperform the strongest reproduced classical baselines on this dataset.
+
+2. **Simulator-based evaluation.** All quantum experiments rely on classical simulation. This is acceptable for methodology research, but it prevents any hardware-side performance claim.
+
+3. **Single dataset.** Results remain specific to Ottoman handwritten character recognition. A second dataset, low-data scaling study, or robustness axis would materially strengthen the paper.
+
+4. **Trainable-quantum artifact gap.** The V7 result is currently documented from prior runs, but a fresh artifact-backed rerun would still improve the paper if that case-study remains central.
 
 ---
 
 ## 6. Conclusion
 
-We have presented a systematic investigation of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, evolving through seven architectural versions to identify critical design principles. Starting from a computationally infeasible naive implementation (V1: >8h/epoch, 2.3% accuracy), we reach a gradient-stabilized trainable architecture (V7) achieving **65.02% test accuracy**---a 28.6× improvement above random chance and 7.4× above the non-trainable quanvolutional baseline.
+We presented a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition. The strongest current evidence in the repository favors classical baselines rather than quantum variants: the best thesis-faithful reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, and the strongest current-local matched-budget model is `classical_conv` with **81.40 ± 1.06%**. The thesis-faithful quantum reproduction `thesis_hqnn2` reaches **78.61 ± 0.69%**, while the documented stabilized trainable V7 case-study reaches **65.02%**.
 
-Our key findings provide concrete guidance for hybrid QML practitioners:
+The paper therefore should not claim quantum superiority. Its value lies elsewhere:
 
-1. **Information bottleneck threshold:** Maintain ≥8×8 spatial feature maps before quantum layers in 4-qubit hybrid CNNs processing 32×32 images for multi-class recognition.
+1. **Fair benchmark evidence:** classical baselines remain stronger under the current reproduced evidence.
+2. **Engineering lessons:** trainable hybrid quanvolution can be stabilized, but only when information flow, gradient routing, and precision boundaries are handled carefully.
+3. **Negative-result clarity:** honest separation of thesis-faithful and matched-budget benchmark families prevents misleading conclusions.
 
-2. **Gradient stabilization is essential:** Learnable gradient scaling + residual skip connections + channel attention transforms a completely non-learning architecture (0% accuracy) into a functional one, demonstrating that quantum gradient collapse is architectural---not fundamental.
-
-3. **AMP requires explicit management:** Float32 casting at quantum boundaries and GradScaler-aware optimizer stepping are non-negotiable for stable hybrid training. Violating either causes irreversible model corruption within one epoch.
-
-Future work will: (1) complete ablation studies isolating quantum layer contributions, (2) extend evaluation to benchmark datasets (MNIST, Arabic handwriting) for cross-domain comparison, (3) assess circuit type sensitivity (strongly entangling vs. hardware-efficient), and (4) investigate the quantum "cold start" dynamics observed in gradient magnitude evolution.
+Future work should focus on strengthening the benchmark rather than chasing an unsupported generic quantum-advantage claim: (1) add at least one stronger modern classical baseline, (2) add one broader validation axis such as low-data scaling or a second dataset, and (3) obtain a fresh artifact-backed rerun for the trainable V7 path if the engineering case-study is to remain prominent in the final submission.
 
 ---
 

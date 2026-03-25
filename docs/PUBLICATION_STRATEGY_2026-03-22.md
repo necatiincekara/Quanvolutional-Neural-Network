@@ -26,15 +26,17 @@ The current repository evidence does **not** support a strong "quantum advantage
 
 ### 2.1 The strongest current result is not quantum
 
-Current local evidence:
+Current repository evidence after the unified `publication_v1` benchmark pass:
 
 | Model | Test Accuracy | Status |
 |---|---:|---|
-| Classical Conv baseline | 82.62% | current best test in repo |
-| Param-matched linear baseline | 81.76% | strong matched classical baseline |
-| Henderson-style non-trainable quantum | 80.47% | implemented local ablation |
-| Thesis HQNN-II | 82.40% | best thesis quantum model |
-| V7 trainable quantum | 65.02% | documented stabilized trainable result |
+| `thesis_cnniiii` | **85.26 ± 0.97** | strongest thesis-faithful reproduction |
+| `classical_conv` | **81.40 ± 1.06** | strongest current-local matched-budget model |
+| `param_linear` | 81.12 ± 2.27 | strong matched classical replacement |
+| `non_trainable_quantum` | 80.40 ± 0.69 | current-local Henderson-style non-trainable quantum |
+| `thesis_cnn3` | 79.33 ± 1.26 | thesis-faithful classical pairwise reference |
+| `thesis_hqnn2` | 78.61 ± 0.69 | best thesis-faithful quantum reproduction |
+| `V7 trainable quantum` | 65.02% | documented stabilized trainable result |
 
 This means the present paper cannot credibly argue that the trainable or non-trainable quantum path outperforms matched classical baselines.
 
@@ -54,13 +56,12 @@ That is interesting and publishable in a niche or domain-aware venue, but it is 
 
 ### 2.4 Statistical rigor is still below top-tier expectations
 
-Missing or incomplete elements include:
+Still missing or incomplete elements include:
 
-- multi-seed runs with mean and standard deviation
 - confidence intervals or significance tests
-- a fairer unified split protocol across all ablations
 - stronger modern classical baselines
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
+- a fresh artifact-backed rerun for the trainable V7 path if that result is to remain central in the paper
 
 ### 2.5 There is no hardware or computational advantage argument yet
 
@@ -164,19 +165,20 @@ The following are the highest-priority missing pieces.
 
 The paper, README, thesis comparisons, and experiment logs must all reflect the same current truth:
 
-- current local best test result is classical
-- current local non-trainable quantum is 80.47%
-- thesis best HQNN is 82.40%
+- the strongest thesis-faithful reproduced model is classical (`thesis_cnniiii = 85.26 ± 0.97`)
+- the strongest current-local matched-budget model is classical (`classical_conv = 81.40 ± 1.06`)
+- current-local Henderson-style non-trainable quantum is `80.40 ± 0.69`
+- thesis-faithful HQNN-II reproduction is `78.61 ± 0.69`
 - V7 trainable quantum is not the best current model
 
 ### 6.2 Reproduce the thesis-best quantum baseline faithfully
 
-At minimum, implement and evaluate a faithful reproduction of thesis HQNN-II as a separate model.
+Completed at the repository level: a faithful reproduction path for thesis HQNN-II now exists and has been evaluated as a separate model.
 
 Why this matters:
 
 - the current Henderson-style non-trainable quantum ablation is **not** the same architecture as thesis HQNN-II
-- without this, the paper cannot honestly say whether the thesis-best non-trainable quantum baseline was surpassed
+- current evidence shows that the thesis-faithful HQNN-II reproduction remains below the strongest classical thesis-faithful anchor
 
 ### 6.3 Add stronger classical baselines
 
@@ -228,14 +230,18 @@ Goal: produce a credible Q2 / specialized-journal manuscript without waiting for
 Steps:
 
 1. synchronize claims across paper and docs
-2. reproduce thesis HQNN-II
-3. run 3-seed comparisons for:
+2. use the now-completed 3-seed comparisons for:
    - thesis HQNN-II
+   - thesis CNN-III
+   - thesis CNN-IIII
    - current Henderson-style non-trainable quantum
    - classical_conv
    - param_linear
-   - V7 trainable quantum if feasible
+3. rerun V7 trainable quantum only if a fresh artifact-backed case-study result is needed
 4. rewrite the paper around trustworthy comparative evidence
+
+Operational note:
+if local Mac runs can answer a benchmark question, prefer them and preserve Colab compute units for trainable-quantum confirmation or later extension studies.
 
 This is the shortest realistic publication path.
 

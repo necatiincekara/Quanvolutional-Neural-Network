@@ -1,0 +1,413 @@
+{
+  "model": "thesis_hqnn2",
+  "source": "thesis-faithful",
+  "family": "thesis-faithful",
+  "train_seed": 44,
+  "split_seed": 42,
+  "protocol_version": "publication_v1",
+  "platform": "mac-cpu",
+  "params": {
+    "total": 248428,
+    "trainable": 248428
+  },
+  "total_params": 248428,
+  "trainable_params": 248428,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 3.5636,
+      "train_acc": 5.28,
+      "val_loss": 3.3858,
+      "val_acc": 7.31
+    },
+    {
+      "epoch": 2,
+      "train_loss": 3.2194,
+      "train_acc": 12.93,
+      "val_loss": 2.9231,
+      "val_acc": 16.96
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.6946,
+      "train_acc": 22.72,
+      "val_loss": 2.3707,
+      "val_acc": 35.09
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.1612,
+      "train_acc": 36.92,
+      "val_loss": 1.888,
+      "val_acc": 43.86
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.7934,
+      "train_acc": 46.16,
+      "val_loss": 1.7661,
+      "val_acc": 51.75
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.5819,
+      "train_acc": 52.35,
+      "val_loss": 1.5469,
+      "val_acc": 53.22
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.4191,
+      "train_acc": 56.6,
+      "val_loss": 1.4057,
+      "val_acc": 55.85
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.2908,
+      "train_acc": 59.51,
+      "val_loss": 1.3954,
+      "val_acc": 56.14
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.1994,
+      "train_acc": 62.17,
+      "val_loss": 1.4053,
+      "val_acc": 57.89
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.1521,
+      "train_acc": 63.57,
+      "val_loss": 1.1662,
+      "val_acc": 64.33
+    },
+    {
+      "epoch": 11,
+      "train_loss": 1.0001,
+      "train_acc": 69.37,
+      "val_loss": 1.2076,
+      "val_acc": 65.2
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.959,
+      "train_acc": 69.85,
+      "val_loss": 1.0906,
+      "val_acc": 68.71
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.8726,
+      "train_acc": 73.52,
+      "val_loss": 1.0869,
+      "val_acc": 69.59
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.8634,
+      "train_acc": 72.51,
+      "val_loss": 1.0131,
+      "val_acc": 70.47
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.7589,
+      "train_acc": 75.72,
+      "val_loss": 0.9949,
+      "val_acc": 71.93
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.7518,
+      "train_acc": 76.05,
+      "val_loss": 1.0312,
+      "val_acc": 69.3
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.7353,
+      "train_acc": 77.5,
+      "val_loss": 0.9171,
+      "val_acc": 70.76
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.6601,
+      "train_acc": 79.77,
+      "val_loss": 0.9818,
+      "val_acc": 73.1
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.6929,
+      "train_acc": 77.18,
+      "val_loss": 0.9094,
+      "val_acc": 74.85
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.6162,
+      "train_acc": 80.52,
+      "val_loss": 0.8716,
+      "val_acc": 74.56
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.6002,
+      "train_acc": 81.3,
+      "val_loss": 0.832,
+      "val_acc": 73.68
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.5334,
+      "train_acc": 82.92,
+      "val_loss": 0.8841,
+      "val_acc": 75.44
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.5387,
+      "train_acc": 82.46,
+      "val_loss": 0.8243,
+      "val_acc": 76.02
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.4941,
+      "train_acc": 84.8,
+      "val_loss": 0.7827,
+      "val_acc": 77.78
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.4968,
+      "train_acc": 83.92,
+      "val_loss": 0.9746,
+      "val_acc": 73.98
+    },
+    {
+      "epoch": 26,
+      "train_loss": 0.4829,
+      "train_acc": 83.89,
+      "val_loss": 0.7768,
+      "val_acc": 75.15
+    },
+    {
+      "epoch": 27,
+      "train_loss": 0.4576,
+      "train_acc": 85.19,
+      "val_loss": 0.8587,
+      "val_acc": 74.56
+    },
+    {
+      "epoch": 28,
+      "train_loss": 0.4298,
+      "train_acc": 85.54,
+      "val_loss": 0.7707,
+      "val_acc": 76.9
+    },
+    {
+      "epoch": 29,
+      "train_loss": 0.3867,
+      "train_acc": 87.81,
+      "val_loss": 0.8116,
+      "val_acc": 78.36
+    },
+    {
+      "epoch": 30,
+      "train_loss": 0.4129,
+      "train_acc": 86.42,
+      "val_loss": 0.7317,
+      "val_acc": 76.9
+    },
+    {
+      "epoch": 31,
+      "train_loss": 0.3986,
+      "train_acc": 86.97,
+      "val_loss": 0.7562,
+      "val_acc": 78.36
+    },
+    {
+      "epoch": 32,
+      "train_loss": 0.4331,
+      "train_acc": 86.39,
+      "val_loss": 0.808,
+      "val_acc": 76.02
+    },
+    {
+      "epoch": 33,
+      "train_loss": 0.4351,
+      "train_acc": 85.71,
+      "val_loss": 0.7577,
+      "val_acc": 77.19
+    },
+    {
+      "epoch": 34,
+      "train_loss": 0.3442,
+      "train_acc": 88.88,
+      "val_loss": 0.7579,
+      "val_acc": 78.65
+    },
+    {
+      "epoch": 35,
+      "train_loss": 0.3183,
+      "train_acc": 89.24,
+      "val_loss": 0.7082,
+      "val_acc": 80.7
+    },
+    {
+      "epoch": 36,
+      "train_loss": 0.287,
+      "train_acc": 90.57,
+      "val_loss": 0.7764,
+      "val_acc": 80.12
+    },
+    {
+      "epoch": 37,
+      "train_loss": 0.312,
+      "train_acc": 89.34,
+      "val_loss": 0.723,
+      "val_acc": 78.65
+    },
+    {
+      "epoch": 38,
+      "train_loss": 0.2582,
+      "train_acc": 91.25,
+      "val_loss": 0.7337,
+      "val_acc": 81.29
+    },
+    {
+      "epoch": 39,
+      "train_loss": 0.2464,
+      "train_acc": 91.44,
+      "val_loss": 0.7259,
+      "val_acc": 79.53
+    },
+    {
+      "epoch": 40,
+      "train_loss": 0.2593,
+      "train_acc": 90.92,
+      "val_loss": 0.7716,
+      "val_acc": 77.49
+    },
+    {
+      "epoch": 41,
+      "train_loss": 0.2389,
+      "train_acc": 92.09,
+      "val_loss": 0.7504,
+      "val_acc": 79.53
+    },
+    {
+      "epoch": 42,
+      "train_loss": 0.2208,
+      "train_acc": 92.51,
+      "val_loss": 0.7688,
+      "val_acc": 78.65
+    },
+    {
+      "epoch": 43,
+      "train_loss": 0.2353,
+      "train_acc": 91.83,
+      "val_loss": 0.8499,
+      "val_acc": 78.07
+    },
+    {
+      "epoch": 44,
+      "train_loss": 0.2042,
+      "train_acc": 93.23,
+      "val_loss": 0.8405,
+      "val_acc": 78.07
+    },
+    {
+      "epoch": 45,
+      "train_loss": 0.2038,
+      "train_acc": 93.13,
+      "val_loss": 0.8435,
+      "val_acc": 77.19
+    },
+    {
+      "epoch": 46,
+      "train_loss": 0.1831,
+      "train_acc": 94.0,
+      "val_loss": 0.8376,
+      "val_acc": 80.12
+    },
+    {
+      "epoch": 47,
+      "train_loss": 0.2185,
+      "train_acc": 92.45,
+      "val_loss": 0.7926,
+      "val_acc": 79.53
+    },
+    {
+      "epoch": 48,
+      "train_loss": 0.2057,
+      "train_acc": 93.13,
+      "val_loss": 0.7968,
+      "val_acc": 78.65
+    },
+    {
+      "epoch": 49,
+      "train_loss": 0.18,
+      "train_acc": 93.91,
+      "val_loss": 0.8156,
+      "val_acc": 80.41
+    },
+    {
+      "epoch": 50,
+      "train_loss": 0.1664,
+      "train_acc": 94.39,
+      "val_loss": 0.9262,
+      "val_acc": 78.07
+    }
+  ],
+  "dataset_sizes": {
+    "train": 3085,
+    "val": 342,
+    "test": 466
+  },
+  "thesis_reference": {
+    "val_acc": 86.88,
+    "test_acc": 82.4
+  },
+  "notes": "2-qubit non-entangled quantum preprocessing with 2 filters producing 4 channels. Spatial implementation chosen to match the reported parameter count (248,428).",
+  "cache_metadata": {
+    "cache_payload": {
+      "namespace": "thesis_hqnn2",
+      "protocol_version": "publication_v1",
+      "image_size": 32,
+      "train_path": "/Users/necatiincekara/Dev/Quanvolutional-Neural-Network/set/train",
+      "test_path": "/Users/necatiincekara/Dev/Quanvolutional-Neural-Network/set/test",
+      "seed": 44,
+      "qubits": 2,
+      "filters": 2,
+      "patch_size": 2,
+      "stride": 2,
+      "encoding": "AmplitudeEmbedding(4->2q)",
+      "circuit": "RY+RZ",
+      "assumption": "Quantum feature tensor is 4x16x16 (2 filters x 2 expvals)."
+    },
+    "cache_key": "a15f4c96df0c1bbb",
+    "notes": "2-qubit non-entangled quantum preprocessing with 2 filters producing 4 channels. Spatial implementation chosen to match the reported parameter count (248,428).",
+    "train_shape": [
+      3427,
+      4,
+      16,
+      16
+    ],
+    "test_shape": [
+      466,
+      4,
+      16,
+      16
+    ]
+  },
+  "best_val_acc": 81.29,
+  "test_loss": 1.0916,
+  "test_acc": 78.11,
+  "runtime_seconds": 19.58,
+  "runtime_minutes": 0.33
+}
