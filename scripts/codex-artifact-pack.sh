@@ -2,13 +2,8 @@
 set -eu
 
 ROOT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-TARGET=${1:-src/trainable_quantum_model.py}
 
-if [ "$#" -gt 0 ]; then
-  shift
-fi
-
-PROMPT="Use the review-circuit skill. Review the quantum or hybrid block in $TARGET with repository context. Lead with concrete findings, then give the smallest defensible improvements."
+PROMPT='Use the artifact-pack and paper-sync skills. Refresh advisor/share/submission artifacts from current repo truth without introducing stale claims. Include Word exports when shareable Markdown documents are touched.'
 
 if [ "$#" -gt 0 ]; then
   PROMPT="$PROMPT Additional user focus: $*"

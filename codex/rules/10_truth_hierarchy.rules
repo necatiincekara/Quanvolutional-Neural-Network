@@ -1,0 +1,13 @@
+# Codex rules are shell approval guardrails, not general writing-policy logic.
+# Truth-hierarchy enforcement for paper/docs lives in AGENTS, hooks, and skills.
+#
+# This file protects commands that regenerate or package benchmark truth.
+
+prefix_rule(
+    pattern = ["python", "scripts/aggregate_benchmarks.py"],
+    decision = "prompt",
+    justification = "Benchmark aggregation can change the repo's summary-of-truth outputs; review before allowing outside the sandbox.",
+    match = [
+        "python scripts/aggregate_benchmarks.py",
+    ],
+)

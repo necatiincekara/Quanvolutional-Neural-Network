@@ -4,10 +4,10 @@ V7 Training Entry Point
 Run on Google Colab with A100 GPU for best performance.
 
 Usage:
-    python train_v7.py                          # Default: data_reuploading, 3 epochs
-    python train_v7.py --epochs 5               # More epochs
-    python train_v7.py --circuit strongly_entangling
-    python train_v7.py --circuit hardware_efficient
+    python train_v7.py
+    python train_v7.py --epochs 10 --resume
+    python train_v7.py --train-path /content/local_data/train --test-path /content/local_data/test
+    python train_v7.py --drive-backup-path /content/drive/MyDrive/quanv_results/v7
 """
 
 import argparse
@@ -22,12 +22,25 @@ def main():
                         help='Quantum circuit type')
     parser.add_argument('--epochs', type=int, default=3,
                         help='Number of training epochs (default: 3)')
-    parser.add_argument('--target', type=float, default=25.0,
-                        help='Target validation accuracy (default: 25.0)')
+    parser.add_argument('--target', type=float, default=60.0,
+                        help='Target validation accuracy (default: 60.0)')
+    parser.add_argument('--resume', action='store_true',
+                        help='Resume from latest local or Drive-backed checkpoint')
+    parser.add_argument('--drive-backup-path', type=str, default=None,
+                        help='Optional Drive path for persistent checkpoint backup')
+    parser.add_argument('--train-path', type=str, default=None,
+                        help='Override training dataset path')
+    parser.add_argument('--test-path', type=str, default=None,
+                        help='Override test dataset path')
     args = parser.parse_args()
 
     # Environment info
     from src import config
+    if args.train_path:
+        config.TRAIN_PATH = args.train_path
+    if args.test_path:
+        config.TEST_PATH = args.test_path
+
     print("=" * 60)
     print("V7 ENHANCED QUANTUM TRAINING")
     print("=" * 60)
@@ -37,6 +50,10 @@ def main():
     print(f"Circuit Type:    {args.circuit}")
     print(f"Epochs:          {args.epochs}")
     print(f"Target Accuracy: {args.target}%")
+    print(f"Resume:          {args.resume}")
+    print(f"Train Path:      {config.TRAIN_PATH}")
+    print(f"Test Path:       {config.TEST_PATH}")
+    print(f"Drive Backup:    {args.drive_backup_path or 'disabled'}")
 
     if torch.cuda.is_available():
         print(f"GPU:             {torch.cuda.get_device_name(0)}")
@@ -53,6 +70,9 @@ def main():
         except ImportError:
             pass
 
+    if args.drive_backup_path:
+        os.makedirs(args.drive_backup_path, exist_ok=True)
+
     # Check dataset exists
     if not os.path.exists(config.TRAIN_PATH):
         print(f"\nERROR: Training data not found at: {config.TRAIN_PATH}")
@@ -65,7 +85,10 @@ def main():
     from src.enhanced_training import run_enhanced_training
     best_acc, test_acc = run_enhanced_training(
         circuit_type=args.circuit,
-        num_epochs=args.epochs
+        num_epochs=args.epochs,
+        target_accuracy=args.target,
+        resume=args.resume,
+        drive_backup_path=args.drive_backup_path,
     )
 
     elapsed = time.time() - start_time

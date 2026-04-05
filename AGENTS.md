@@ -6,7 +6,7 @@ Repository instructions for Codex working in this study.
 
 This repository tracks a hybrid quantum-classical OCR study for Ottoman-Turkish handwritten character recognition. It contains both historical planning material and newer experimental artifacts. Do not assume the oldest narrative docs are still correct.
 
-As of March 22, 2026:
+As of April 5, 2026:
 
 - `src/model.py` and `src/train.py` are the older V4/V6 baseline path.
 - `src/trainable_quantum_model.py`, `src/enhanced_training.py`, and `train_v7.py` are the newer stabilized trainable-quantum path.
@@ -35,6 +35,7 @@ When results disagree, use this priority order:
   - `thesis_hqnn2`: `78.61 ± 0.69` test
 - Therefore, the current repo evidence supports a stronger "fair benchmark + hybrid QML engineering and stabilization" story than a clean "quantum advantage" story.
 - The main unresolved benchmark item is a fresh artifact-backed rerun for the trainable V7 path, likely on Colab rather than local Mac hardware.
+- The repo now includes nested `AGENTS.md`, repo-local hooks, repo-local shell rules, and a broader Codex workflow layer for audit, triage, roadmap, and artifact-pack work.
 
 ## Important Repo Caveats
 
@@ -47,6 +48,10 @@ When results disagree, use this priority order:
 ## Preferred Working Style In This Repo
 
 - Reconcile artifacts before writing status reports, paper text, or README updates.
+- Treat command rules, hooks, and AGENTS instructions as different layers:
+  - `AGENTS.md` and nested `AGENTS.md` files define repo behavior
+  - hooks add lightweight runtime reminders and context
+  - `codex/rules/*.rules` are command-approval guardrails, not writing-policy logic
 - For architecture work, inspect both the base path and the trainable-quantum path before proposing changes.
 - For scientific summaries, use exact dates and exact metric sources.
 - For current-vs-historical comparisons, explicitly label which claims are current and which are legacy.
@@ -62,6 +67,8 @@ When results disagree, use this priority order:
 - Historical guidance: `CLAUDE.md`, `docs/AUDIT_REPORT.md`, `docs/IMPLEMENTATION_GUIDE.md`
 - Publication planning: `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/RESEARCH_ROADMAP.md`, `docs/BENCHMARK_MATRIX_2026-03-22.md`, `docs/BENCHMARK_SUMMARY.md`
 - Codex integration: `.codex/config.toml`, `.codex/agents/*.toml`, `.agents/skills/*/SKILL.md`
+- Scoped instructions: `paper/AGENTS.md`, `docs/AGENTS.md`, `src/AGENTS.md`
+- Codex safety layer: `.codex/hooks.json`, `.codex/hooks/*`, `codex/rules/*.rules`
 
 ## Repo-Specific Skills
 
@@ -73,6 +80,10 @@ Prefer the repository skills when the task matches:
 - `review-circuit`: quantum circuit review with the custom QML reviewer agent
 - `performance-debug`: slowness, dead quantum signal, scheduler mistakes, or learning collapse analysis
 - `paper-sync`: synchronize `paper/draft.md`, docs, and study claims before writing or editing the paper
+- `codex-audit`: audit official Codex capabilities against the repo's integration
+- `benchmark-triage`: choose the next benchmark or training task from current evidence
+- `roadmap-sync`: derive a next-phase plan from benchmark truth and publication strategy
+- `artifact-pack`: prepare advisor/share/submission packs without stale claims
 - `experiment`: run or plan an experiment and document it
 - `log-result`: update result logs after verification
 - `train`: training orchestration
@@ -87,6 +98,8 @@ Prefer the repository skills when the task matches:
 - `result_reconciler`: read-only artifact reconciler for "what is actually true right now?"
 - `paper_consistency_reviewer`: read-only reviewer for stale or unsupported claims in paper/docs
 - `paper_writer`: write-focused academic drafting agent for `paper/draft.md` and closely related study docs
+- `workflow_architect`: read-only reviewer for Codex integration, hooks, rules, profiles, and repo workflow coverage
+- `benchmark_strategist`: read-only planner for benchmark order, platform choice, compute cost, and paper impact
 
 ## Practical Commands
 
@@ -98,6 +111,13 @@ Prefer the repository skills when the task matches:
 - Codex non-interactive study status: `./scripts/codex-study-status.sh`
 - Codex paper audit: `./scripts/codex-paper-audit.sh`
 - Codex circuit review: `./scripts/codex-circuit-review.sh src/trainable_quantum_model.py`
+- Codex capability audit: `./scripts/codex-capability-audit.sh`
+- Codex workflow gap audit: `./scripts/codex-gap-audit.sh`
+- Codex benchmark triage: `./scripts/codex-benchmark-triage.sh`
+- Codex roadmap plan: `./scripts/codex-roadmap-plan.sh`
+- Codex Colab handoff: `./scripts/codex-colab-handoff.sh`
+- Codex artifact pack: `./scripts/codex-artifact-pack.sh`
+- Codex model benchmark: `./scripts/codex-model-benchmark.sh`
 - Review local changes: use Codex `/review`
 - Generate or refresh project instructions: use Codex `/init` only if you are intentionally regenerating this file
 
@@ -107,9 +127,13 @@ Prefer the repository skills when the task matches:
 - `paper`: high-rigor paper drafting and claim checks
 - `review`: read-only audit mode for repo review and circuit inspection
 - `fast_local`: lighter local iteration when you do not need maximum reasoning depth
+- `benchmark`: benchmark triage, result reconciliation, and experiment planning
+- `colab`: Colab handoff and remote training orchestration planning
 
 ## Codex-Specific Notes
 
 - Trust the repository so project-scoped `.codex/` settings load.
+- If hooks are enabled, treat them as lightweight reminders, not as substitutes for reconciliation.
+- If command-approval rules trigger, remember they are shell safety guardrails rather than scientific truth checks.
 - If a session is not behaving as expected, check `/status` and `/debug-config`.
 - If the user asks for a Turkish study report, prefer `reconcile-results` first and then write the report in Turkish.

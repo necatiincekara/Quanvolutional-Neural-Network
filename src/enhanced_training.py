@@ -546,13 +546,15 @@ def mixup_data(x, y, alpha=0.2):
 
 
 def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
-                          resume=False, drive_backup_path=None):
+                          target_accuracy=60.0, resume=False,
+                          drive_backup_path=None):
     """
     Main entry point for V7 enhanced training.
 
     Args:
         circuit_type: 'strongly_entangling', 'data_reuploading', or 'hardware_efficient'
         num_epochs: Maximum training epochs
+        target_accuracy: Validation target used for early stop / success reporting
         resume: If True, resume from latest checkpoint
         drive_backup_path: If set, checkpoints are also saved to Drive (survives restarts)
 
@@ -576,7 +578,12 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
     )
 
     # Train (with optional resume)
-    best_acc = trainer.train(train_loader, val_loader, target_accuracy=60.0, resume=resume)
+    best_acc = trainer.train(
+        train_loader,
+        val_loader,
+        target_accuracy=target_accuracy,
+        resume=resume,
+    )
 
     # Final test evaluation
     print("\nFinal evaluation on test set...")

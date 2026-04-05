@@ -1,0 +1,20 @@
+# Codex rules are shell approval guardrails. Paper-claim discipline itself is enforced
+# by AGENTS, hooks, and the paper-sync/reconcile-results workflow.
+
+prefix_rule(
+    pattern = ["./scripts/codex-artifact-pack.sh"],
+    decision = "prompt",
+    justification = "Artifact-pack refresh can republish shareable paper/docs outputs; confirm that claims were reconciled first.",
+    match = [
+        "./scripts/codex-artifact-pack.sh",
+    ],
+)
+
+prefix_rule(
+    pattern = ["./scripts/export_docx.sh"],
+    decision = "prompt",
+    justification = "Exporting Word copies is safe but often follows claim-bearing doc edits; confirm narrative files are already synchronized.",
+    match = [
+        "./scripts/export_docx.sh paper/draft.md",
+    ],
+)

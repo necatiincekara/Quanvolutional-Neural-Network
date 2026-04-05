@@ -2,6 +2,13 @@
 
 **Tarih:** 22 Mart 2026
 
+> Durum notu, 5 Nisan 2026:
+> Bu belge ilk entegrasyon kararlarini kaydeder, ancak artik tek basina guncel operasyon dokumani degildir.
+> Guncel capability ve operating model referanslari:
+> - `docs/CODEX_CAPABILITY_AUDIT_2026-04-05.md`
+> - `docs/CODEX_GAP_ANALYSIS_2026-04-05.md`
+> - `docs/CODEX_OPERATING_MODEL_2026-04-05.md`
+
 Bu dokuman, bu repodaki Claude Code odakli yapilarin Codex karsiliklarini ve bu proje icin alinmis entegrasyon kararlarini ozetler.
 
 ## 1. Resmi Ozellik Eslemesi
@@ -12,14 +19,15 @@ Bu dokuman, bu repodaki Claude Code odakli yapilarin Codex karsiliklarini ve bu 
 | Proje skill'leri | `.claude/skills/<name>/SKILL.md` | `.agents/skills/<name>/SKILL.md` | Mevcut Claude skill'leri Codex bicimine tasindi ve proje gercegine gore guncellendi. |
 | Ozel agent/subagent tanimlari | `.claude/agents/*.md` | `.codex/agents/*.toml` | `quantum_ml_reviewer` yeniden yazildi, ek olarak sonuc mutabakati ve belge tutarliligi agent'lari eklendi. |
 | Proje ayarlari / izin mantigi | `.claude/settings.local.json` | `.codex/config.toml` | Codex icin repo-scoped config eklendi. Makineye ozel trust/permission detaylari kullanici tarafinda kalmali. |
+| Dizine ozel talimat katmani | Claude'da cogu ekipte tek `CLAUDE.md` agirlikli | Nested `AGENTS.md` | Artik `paper/`, `docs/`, `src/` altinda daraltilmis talimat katmani kullaniliyor. |
 | Slash command: ajanlar | `/agents` | `/agent` | Birebir ayni degil ama amac ayni: aktif subagent thread'lerini kullanmak ve degistirmek. |
 | Slash command: izinler | `/permissions` | `/permissions` | Dogrudan karsilik var. |
 | Slash command: review | `/review` | `/review` | Dogrudan karsilik var. |
 | Slash command: status | `/status` | `/status` | Dogrudan karsilik var. |
 | Slash command: init | `/init` | `/init` | Dogrudan karsilik var; Codex tarafinda `AGENTS.md` iskelesi uretir. |
 | Slash command: mcp | `/mcp` | `/mcp` | Dogrudan karsilik var. |
-| Komut kurallari / approval policy | Claude permissions + project settings | `codex/rules/*.rules` + `config.toml` approval/sandbox ayarlari | Resmi destek var, fakat repo-portable olmadigi icin bu ilk entegrasyonda commitlemedim; gerektiginde ekip politikasi olarak eklenmeli. |
-| Hook sistemi | Claude hooks | Net repo-local 1:1 karsilik yok | Bu repoda hooks yerine `AGENTS.md` + skills + subagents + gerekirse dis otomasyon onerildi. |
+| Komut kurallari / approval policy | Claude permissions + project settings | `codex/rules/*.rules` + `config.toml` approval/sandbox ayarlari | Artik repo-local shell guardrail katmani aktif. Not: rules, genel yazi/paper politikasi degil; komut onay ve shell guvenlik katmanidir. |
+| Hook sistemi | Claude hooks | `.codex/hooks.json` + hook command script'leri | Artik repo-local hooks aktif kullanim adayidir. Hooks, hafif reminder/context katmanidir; `AGENTS.md` ve skill'lerin yerine gecmez. |
 | Ozel slash command'ler | `.claude/commands/` | Codex'te ayni ana desen belgelerde vurgulanmiyor | Bu repoda `.claude/commands/` zaten yok; komut ihtiyaclari skill yapisina tasindi. |
 
 ## 2. Bu Projede Yapilan Codex Katmanlari
@@ -27,14 +35,25 @@ Bu dokuman, bu repodaki Claude Code odakli yapilarin Codex karsiliklarini ve bu 
 Eklenen yapilar:
 
 - `AGENTS.md`
+- `paper/AGENTS.md`
+- `docs/AGENTS.md`
+- `src/AGENTS.md`
 - `.codex/config.toml`
 - `.codex/agents/quantum-ml-reviewer.toml`
 - `.codex/agents/result-reconciler.toml`
 - `.codex/agents/paper-consistency-reviewer.toml`
 - `.codex/agents/paper-writer.toml`
+- `.codex/agents/workflow-architect.toml`
+- `.codex/agents/benchmark-strategist.toml`
+- `.codex/hooks.json`
+- `.codex/hooks/*`
+- `codex/rules/*.rules`
 - `.agents/skills/*`
 - `scripts/codex-*.sh`
 - `docs/CODEX_WORKFLOWS.md`
+- `docs/CODEX_CAPABILITY_AUDIT_2026-04-05.md`
+- `docs/CODEX_GAP_ANALYSIS_2026-04-05.md`
+- `docs/CODEX_OPERATING_MODEL_2026-04-05.md`
 
 Yeni Codex katmani iki temel probleme gore tasarlandi:
 
@@ -92,14 +111,17 @@ Yararli Codex komutlari:
 - `/review`
 - `/agent`
 
-## 6. Hook Konusu
+## 6. Nisan 2026 Duzeltmesi: Hooks Ve Rules
 
-Claude Code hooks resmi olarak mevcut. 22 Mart 2026 itibariyla Codex belgelerinde buna tam repo-local birebir denk dusen, ayni gelistirici akisina sahip bir sistem bu entegrasyon icin temel arac olarak dokumante edilmiyor. Bu repoda hook davranislari yerine su katmanlar tercih edildi:
+Ilk entegrasyon dokumani hooks ve rules katmanini fazla ihtiyatli ve eksik anlatiyordu. Guncel durumda bu repo icin izlenen dogru ayrim su:
 
-- `AGENTS.md` ile kalici repo talimatlari
-- `.agents/skills` ile gorev odakli davranis paketleri
-- `.codex/agents` ile dar ve uzman subagent'ler
-- gerektiginde harici script veya CI otomasyonu
+- `AGENTS.md` ve nested `AGENTS.md`: proje davranisi ve bilimsel dogruluk katmani
+- skills: gorev paketleri
+- subagents: dar uzman inceleme/drafting katmani
+- hooks: hafif runtime reminder/context katmani
+- `codex/rules/*.rules`: shell komut guvenligi ve approval guardrail katmani
+
+Dolayisiyla hooks artik "yok" degil; aktif kullanim adayi. Rules da artik "ileride bakilabilir" degil; aktif repo-local shell guvenlik katmani olarak eklenmistir.
 
 ## 7. Resmi Kaynaklar
 

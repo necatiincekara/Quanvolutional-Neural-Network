@@ -1,0 +1,20 @@
+# Codex rules cannot enforce benchmark semantics directly, but they can add friction
+# around commands that generate or refresh summary tables where family-mixing mistakes matter.
+
+prefix_rule(
+    pattern = ["./scripts/codex-benchmark-triage.sh"],
+    decision = "prompt",
+    justification = "Benchmark triage should preserve thesis-faithful vs current-local family separation; confirm the run is intentional.",
+    match = [
+        "./scripts/codex-benchmark-triage.sh",
+    ],
+)
+
+prefix_rule(
+    pattern = ["./scripts/codex-roadmap-plan.sh"],
+    decision = "prompt",
+    justification = "Roadmap generation should use the current benchmark hierarchy; confirm after summaries are up to date.",
+    match = [
+        "./scripts/codex-roadmap-plan.sh",
+    ],
+)

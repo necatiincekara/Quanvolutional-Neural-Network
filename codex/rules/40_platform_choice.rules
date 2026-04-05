@@ -1,0 +1,30 @@
+# Platform-choice guardrails for expensive or sensitive runs.
+
+prefix_rule(
+    pattern = ["python", "train_v7.py"],
+    decision = "prompt",
+    justification = "The trainable V7 path is a Colab-first workload; prefer L4/A100 and verify the run is worth the compute before allowing it outside the sandbox.",
+    match = [
+        "python train_v7.py",
+        "python train_v7.py --epochs 10 --circuit data_reuploading",
+    ],
+)
+
+prefix_rule(
+    pattern = ["python", "train_ablation_local.py", "--model", "non_trainable_quantum"],
+    decision = "prompt",
+    justification = "The cached non-trainable quantum path is Mac-feasible but long. Confirm that this rerun is necessary before allowing it outside the sandbox.",
+    match = [
+        "python train_ablation_local.py --model non_trainable_quantum --epochs 50",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "forbidden",
+    justification = "Hard resets are disallowed in this study repo. Reconcile or inspect artifacts instead of deleting state.",
+    match = [
+        "git reset --hard",
+        "git reset --hard HEAD",
+    ],
+)

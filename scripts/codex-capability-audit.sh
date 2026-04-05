@@ -2,13 +2,8 @@
 set -eu
 
 ROOT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-TARGET=${1:-src/trainable_quantum_model.py}
 
-if [ "$#" -gt 0 ]; then
-  shift
-fi
-
-PROMPT="Use the review-circuit skill. Review the quantum or hybrid block in $TARGET with repository context. Lead with concrete findings, then give the smallest defensible improvements."
+PROMPT='Use the codex-audit skill and the workflow_architect agent. Audit official Codex capabilities against this repository''s current Codex integration. Produce a dated capability matrix that separates already-used, underused, missing, and unnecessary features. Ground capability claims in official OpenAI Codex docs only.'
 
 if [ "$#" -gt 0 ]; then
   PROMPT="$PROMPT Additional user focus: $*"
