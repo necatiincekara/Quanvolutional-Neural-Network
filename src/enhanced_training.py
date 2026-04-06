@@ -405,6 +405,9 @@ class EnhancedTrainer:
                 print(f"  NEW BEST: {val_acc:.2f}%")
 
                 if val_acc >= target_accuracy:
+                    # Persist a resumable checkpoint for the exact target-hit epoch
+                    # before breaking out of training.
+                    self.save_latest_checkpoint(epoch, val_acc)
                     print(f"\n  TARGET {target_accuracy}% ACHIEVED!")
                     break
             else:
