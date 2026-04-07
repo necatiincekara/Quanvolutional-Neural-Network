@@ -6,13 +6,21 @@ A research-grade implementation of a hybrid quantum-classical neural network for
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
 [![PennyLane](https://img.shields.io/badge/PennyLane-0.32+-green.svg)](https://pennylane.ai/)
 
+> Status note, April 7, 2026:
+> This README still contains historical V4/V6-era narrative sections below. For the current benchmark truth, use `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `docs/PUBLICATION_STRATEGY_2026-03-22.md`.
+> The current strongest reproduced evidence favors classical baselines rather than quantum variants:
+> - `thesis_cnniiii`: `85.26 ± 0.97` test
+> - `classical_conv`: `81.40 ± 1.06` test
+> - `V7 trainable quantum` fresh Colab rerun: `72.53%` test
+> Treat the rest of this README primarily as historical background unless it is re-verified against current artifacts.
+
 ## 📝 Project Overview
 
 This project explores quantum machine learning (QML) for handwritten character recognition in historical scripts. Ottoman-Turkish characters present unique challenges due to high intra-class variance and complex morphology. Our hybrid architecture uses quantum circuits as trainable feature extractors, targeting quantum advantages in feature correlation learning.
 
 **Research Goal**: Achieve ≥90% accuracy by evolving from fixed quantum layers (82% baseline from master's thesis) to fully trainable quantum circuits with advanced architectural innovations.
 
-### 🏛️ Current Best Architecture (V4)
+### 🏛️ Historical Architecture Snapshot (V4/V6 Path)
 
 Our model has evolved through 6 major iterations. **V4 provides the optimal balance** between training speed and accuracy:
 
@@ -67,7 +75,7 @@ Input (32×32 grayscale)
 - 🔴 **Information bottleneck**: <8×8 feature maps lose critical spatial information
 - 🟡 **Circuit expressivity**: Single-layer limits model capacity
 
-### 📊 Current Status & Next Steps
+### 📊 Legacy Status & Roadmap Snapshot
 
 **Stable Baseline**: V4 (8×8 feature maps, 8.75% accuracy, 1.5h/epoch)
 

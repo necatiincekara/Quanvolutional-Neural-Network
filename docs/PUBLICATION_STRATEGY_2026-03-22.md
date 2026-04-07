@@ -26,7 +26,7 @@ The current repository evidence does **not** support a strong "quantum advantage
 
 ### 2.1 The strongest current result is not quantum
 
-Current repository evidence after the unified `publication_v1` benchmark pass:
+Current repository evidence after the unified `publication_v1` benchmark pass and the fresh April 2026 Colab V7 rerun:
 
 | Model | Test Accuracy | Status |
 |---|---:|---|
@@ -36,7 +36,8 @@ Current repository evidence after the unified `publication_v1` benchmark pass:
 | `non_trainable_quantum` | 80.40 ± 0.69 | current-local Henderson-style non-trainable quantum |
 | `thesis_cnn3` | 79.33 ± 1.26 | thesis-faithful classical pairwise reference |
 | `thesis_hqnn2` | 78.61 ± 0.69 | best thesis-faithful quantum reproduction |
-| `V7 trainable quantum` | 65.02% | documented stabilized trainable result |
+| `V7 trainable quantum rerun` | 72.53% | fresh Colab L4 rerun, still below strongest classical anchors |
+| `V7 trainable quantum (older documented)` | 65.02% | historical documented stabilized result |
 
 This means the present paper cannot credibly argue that the trainable or non-trainable quantum path outperforms matched classical baselines.
 
@@ -61,7 +62,7 @@ Still missing or incomplete elements include:
 - confidence intervals or significance tests
 - stronger modern classical baselines
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
-- a fresh artifact-backed rerun for the trainable V7 path if that result is to remain central in the paper
+- the actual synced Colab artifact files for the fresh V7 rerun inside the local repo workspace
 
 ### 2.5 There is no hardware or computational advantage argument yet
 
@@ -237,11 +238,11 @@ Steps:
    - current Henderson-style non-trainable quantum
    - classical_conv
    - param_linear
-3. rerun V7 trainable quantum only if a fresh artifact-backed case-study result is needed
+3. do not schedule another V7 seed by default; first sync the finished rerun artifacts and update the paper from that result
 4. rewrite the paper around trustworthy comparative evidence
 
 Operational note:
-if local Mac runs can answer a benchmark question, prefer them and preserve Colab compute units for trainable-quantum confirmation or later extension studies.
+the trainable-quantum confirmation has now been obtained once on Colab L4. Remaining Colab budget is about `145` computing units, so further remote runs should be treated as exceptional rather than routine.
 
 This is the shortest realistic publication path.
 
@@ -271,10 +272,10 @@ That is much stronger and more defensible than:
 
 ## 9. Immediate Action List
 
-1. Update the paper claim hierarchy to match the current repo evidence.
-2. Implement and evaluate faithful thesis HQNN-II reproduction.
-3. Normalize the ablation protocol across classical and quantum baselines.
-4. Run multi-seed evaluation for the shortlist.
+1. Sync the actual Colab `models/` and `experiments/v7_*` artifacts into the repo workspace.
+2. Reconcile the fresh V7 rerun row against `docs/EXPERIMENTS.md`, `docs/BENCHMARK_SUMMARY.md`, and `paper/draft.md`.
+3. Finalize the benchmark-first paper wording and submission packet from the now-complete benchmark hierarchy.
+4. Delay any additional Colab training unless it clearly changes reviewer risk enough to justify the remaining `145` computing units.
 5. Decide whether the paper will follow the QML-insight route or the OCR/heritage route.
 
 ## 10. Source Notes

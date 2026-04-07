@@ -1,0 +1,96 @@
+{
+  "model": "V7_trainable_quantum_rerun",
+  "source": "colab-l4-user-log",
+  "family": "trainable-quantum-case-study",
+  "protocol_version": "colab_confirmatory_v1",
+  "platform": "colab-l4-gpu",
+  "run_id": "v7_trainable_quantum_rerun__20260406_l4",
+  "notes": "Fresh Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace.",
+  "params": {
+    "quantum": 25,
+    "classical": 87773,
+    "total": 87798
+  },
+  "total_params": 87798,
+  "trainable_params": 87798,
+  "circuit_type": "data_reuploading",
+  "epochs_requested": 10,
+  "resume_used": true,
+  "resume_start_epoch": 4,
+  "target_accuracy": 90.0,
+  "best_val_acc": 72.89,
+  "test_acc": 72.53,
+  "runtime_seconds": 47100,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 3.5086,
+      "train_acc": 9.33,
+      "val_loss": 3.0266,
+      "val_acc": 23.62
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.955,
+      "train_acc": 24.55,
+      "val_loss": 2.4649,
+      "val_acc": 41.69
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.589,
+      "train_acc": 35.57,
+      "val_loss": 2.0754,
+      "val_acc": 50.15
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.3812,
+      "train_acc": 42.34,
+      "val_loss": 1.9586,
+      "val_acc": 57.43
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.1245,
+      "train_acc": 53.84,
+      "val_loss": 1.7661,
+      "val_acc": 64.43
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.9752,
+      "train_acc": 60.14,
+      "val_loss": 1.6684,
+      "val_acc": 67.06
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.8574,
+      "train_acc": 62.84,
+      "val_loss": 1.6077,
+      "val_acc": 69.97
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.7413,
+      "train_acc": 68.64,
+      "val_loss": 1.5461,
+      "val_acc": 72.3
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.8931,
+      "train_acc": 64.72,
+      "val_loss": 1.5403,
+      "val_acc": 72.89
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.796,
+      "train_acc": 68.08,
+      "val_loss": 1.5327,
+      "val_acc": 72.89
+    }
+  ]
+}

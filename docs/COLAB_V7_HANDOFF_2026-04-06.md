@@ -2,8 +2,12 @@
 
 **Date:** April 6, 2026
 
-This document is the operational handoff for the next heavy scientific task in the repo:
-a fresh artifact-backed rerun of the trainable V7 path on Google Colab.
+This document is the operational handoff for the trainable V7 Colab path.
+
+> Update, April 7, 2026:
+> One fresh L4 rerun has already been completed successfully at `72.89%` best validation and `72.53%` test accuracy.
+> Remaining Colab budget is approximately `145` computing units.
+> Therefore this document should now be read mainly as a resume / recovery / artifact-sync reference, not as an instruction to start another default Colab run.
 
 ## 1. Goal
 
@@ -58,13 +62,26 @@ python train_v7.py \
   --test-path /content/local_data/test
 ```
 
-Resume from latest checkpoint:
+Resume from latest checkpoint for the same target regime:
 
 ```bash
 python train_v7.py \
   --circuit data_reuploading \
   --epochs 10 \
   --target 60 \
+  --resume \
+  --drive-backup-path /content/drive/MyDrive/quanv_results/v7 \
+  --train-path /content/local_data/train \
+  --test-path /content/local_data/test
+```
+
+Continue past an earlier `--target 60` stop without starting from scratch:
+
+```bash
+python train_v7.py \
+  --circuit data_reuploading \
+  --epochs 10 \
+  --target 90 \
   --resume \
   --drive-backup-path /content/drive/MyDrive/quanv_results/v7 \
   --train-path /content/local_data/train \
@@ -112,6 +129,8 @@ After the Colab run finishes:
    - a trainable-quantum engineering case-study
    - not the benchmark leader
 
+At the current repository state, this post-run reconciliation is still incomplete: the benchmark tables and paper already reflect the fresh rerun metrics, and the Drive-backed checkpoint files are now synced locally, but the remote `experiments/v7_*` directory has not yet been recovered into the local repo workspace.
+
 ## 8. Stop Conditions
 
 Stop after the first clean artifact-backed rerun if any of the following hold:
@@ -120,4 +139,4 @@ Stop after the first clean artifact-backed rerun if any of the following hold:
 - checkpoints and metadata are captured correctly
 - the new result does not materially change the current benchmark hierarchy
 
-Only consider extra V7 seeds after this first rerun if the new run is both stable and paper-relevant.
+Only consider extra V7 seeds after this first rerun if the new run is both stable and paper-relevant, and if the expected value clearly justifies the remaining `145` CU budget. The current default is to spend zero additional Colab units until artifact sync and manuscript tightening are complete.

@@ -32,7 +32,8 @@ Use this file together with:
 
 | Model | Runs | Test | Best Val | Params | Interpretation |
 |---|---:|---:|---:|---:|---|
-| `V7_trainable_quantum_documented` | 1 documented | 65.02 | 67.35 | 87,798 | useful engineering case-study, not current benchmark leader |
+| `V7_trainable_quantum_rerun` | 1 fresh rerun | 72.53 | 72.89 | 87,798 | improved trainable-quantum engineering case-study, still not current benchmark leader; Drive-backed checkpoint files are now synced locally |
+| `V7_trainable_quantum_documented` | 1 documented | 65.02 | 67.35 | 87,798 | older documented trainable result retained for historical comparison |
 
 ## 2. Safe Claim Hierarchy
 
@@ -46,6 +47,7 @@ These are the strongest claims currently supported by repository artifacts.
    - information bottleneck threshold
    - gradient stabilization
    - AMP / float16 incompatibility at the quantum boundary
+   - reproducible Colab rerun to `72.53%` test without NaN failure
 
 ## 3. Claims To Avoid
 
@@ -81,9 +83,10 @@ Before submission, the draft should be rewritten so that:
 
 ## 6. Remaining High-Value Work
 
-The most valuable next steps are:
+The most valuable next steps are now:
 
-1. rewrite `paper/draft.md` around the benchmark hierarchy above,
-2. add at least one stronger modern classical baseline if submission ambition remains Q1/Q2-broad,
-3. run a confirmatory Colab rerun for `V7` only if the paper still needs a fresh artifact-backed trainable-quantum result,
-4. add significance intervals/tests if reviewers are expected to push on variance.
+1. sync the remote `experiments/v7_*` directory back into the repo workspace if it is still recoverable, so the rerun is represented by more than checkpoints plus the reconciled log-backed JSON row,
+2. rewrite and tighten `paper/draft.md` around the benchmark hierarchy above,
+3. refresh submission-facing summary documents and Word exports,
+4. only then consider one stronger modern classical baseline if the expected reviewer-risk reduction justifies the remaining `145` Colab computing units,
+5. add significance intervals/tests if reviewers are expected to push on variance.

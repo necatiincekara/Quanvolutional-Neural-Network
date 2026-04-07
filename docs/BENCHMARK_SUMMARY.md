@@ -29,3 +29,4 @@ Auto-generated from `experiments/*.json` plus documented reference rows.
 | Model | Source | Runs | Best Val | Test | Params | Notes |
 |---|---|---:|---:|---:|---:|---|
 | V7_trainable_quantum_documented | docs/notebook | 1 | 67.35 ± 0.00 | 65.02 ± 0.00 | 87798 | Documented stabilized V7 result from docs/notebook output. |
+| V7_trainable_quantum_rerun | colab-l4-user-log | 1 | 72.89 ± 0.00 | 72.53 ± 0.00 | 87798 | Fresh Colab rerun reconciled from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally; the remote `experiments/v7_*` directory is still missing. |

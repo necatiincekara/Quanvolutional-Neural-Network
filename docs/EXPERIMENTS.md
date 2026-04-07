@@ -7,6 +7,23 @@ This document serves as a log for the experiments conducted during the developme
 > Later local ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
 > For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
 
+## V7 Confirmatory Colab Rerun
+
+*   **Date:** April 6, 2026 run, reconciled into the repo on April 7, 2026
+*   **Purpose:** Obtain a fresh artifact-backed rerun of the trainable V7 path on Colab after the publication benchmark sprint, replacing the repo's older documented V7-only narrative with a current run on the same stabilized code path.
+*   **Platform:** `colab-l4-gpu`
+*   **Circuit:** `data_reuploading`
+*   **Requested Epochs:** `10`
+*   **Resume Behavior:** The rerun resumed from the Drive-backed latest checkpoint at epoch `4`, then continued through epoch `10`.
+*   **Validated Results:** (`experiments/v7_trainable_quantum_rerun_20260406_l4.json`)
+    *   **Best Validation Accuracy:** `72.89%`
+    *   **Test Accuracy:** `72.53%`
+    *   **Runtime:** `13h 05m`
+    *   **Parameters:** `87,798` total (`25` quantum + `87,773` classical)
+    *   **Artifact Status:** The current local JSON row is still reconciled from the user-captured Colab terminal log, but the Drive-backed checkpoint files have now been synced into the local repo workspace. The remaining missing artifact is the remote `experiments/v7_*` folder and any richer metadata inside it.
+*   **Comparison to Older Documented V7 Row:** This rerun improves over the older documented V7 result (`67.35%` best validation, `65.02%` test) by `+5.54` validation points and `+7.51` test points.
+*   **Current Conclusion:** This rerun materially improves the trainable-quantum engineering result and confirms that the stabilized V7 path can train cleanly on Colab with Drive-backed checkpoints. However, it still does not overturn the benchmark hierarchy: `thesis_cnniiii` (`85.26 ± 0.97` test), `classical_conv` (`81.40 ± 1.06`), `param_linear` (`81.12 ± 2.27`), and `non_trainable_quantum` (`80.40 ± 0.69`) remain stronger on test accuracy. Therefore the V7 line should still be framed as a trainable-quantum engineering case-study rather than the benchmark leader.
+
 ## Publication Protocol v1 Reproductions
 
 *   **Date:** March 23, 2026

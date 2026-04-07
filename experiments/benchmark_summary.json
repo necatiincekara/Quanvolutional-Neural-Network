@@ -24,6 +24,18 @@
     "notes": "Documented stabilized V7 result from docs/notebook output."
   },
   {
+    "model": "V7_trainable_quantum_rerun",
+    "family": "trainable-quantum-case-study",
+    "source": "colab-l4-user-log",
+    "runs": 1,
+    "best_val_acc_mean": 72.89,
+    "best_val_acc_std": 0.0,
+    "test_acc_mean": 72.53,
+    "test_acc_std": 0.0,
+    "total_params": 87798,
+    "notes": "Fresh Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace."
+  },
+  {
     "model": "classical_conv",
     "family": "current-local",
     "source": "repo-local-ablation",
