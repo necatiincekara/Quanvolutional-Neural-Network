@@ -4,9 +4,9 @@
 
 This document is the operational handoff for the trainable V7 Colab path.
 
-> Update, April 7, 2026:
+> Update, April 23, 2026:
 > One fresh L4 rerun has already been completed successfully at `72.89%` best validation and `72.53%` test accuracy.
-> Remaining Colab budget is approximately `145` computing units.
+> Remaining Colab budget is approximately `245` computing units.
 > Therefore this document should now be read mainly as a resume / recovery / artifact-sync reference, not as an instruction to start another default Colab run.
 
 ## 1. Goal
@@ -139,4 +139,4 @@ Stop after the first clean artifact-backed rerun if any of the following hold:
 - checkpoints and metadata are captured correctly
 - the new result does not materially change the current benchmark hierarchy
 
-Only consider extra V7 seeds after this first rerun if the new run is both stable and paper-relevant, and if the expected value clearly justifies the remaining `145` CU budget. The current default is to spend zero additional Colab units until artifact sync and manuscript tightening are complete.
+Only consider extra V7 seeds after this first rerun if the new run is both stable and paper-relevant, and if the expected value clearly justifies the remaining `245` CU budget. The current default is to spend zero additional Colab units until artifact sync and manuscript tightening are complete.

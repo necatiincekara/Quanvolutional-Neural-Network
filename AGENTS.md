@@ -62,6 +62,7 @@ When results disagree, use this priority order:
 - Core models: `src/model.py`, `src/trainable_quantum_model.py`
 - Training: `src/train.py`, `src/enhanced_training.py`, `train_v7.py`, `train_ablation_local.py`
 - Publication benchmark training: `train_thesis_models.py`, `src/thesis_models.py`, `src/benchmark_protocol.py`, `src/benchmark_training.py`
+- Modern stronger baselines: `train_modern_baselines.py`, `src/modern_baselines.py`
 - Data: `src/dataset.py`, `src/config.py`
 - Results: `docs/EXPERIMENTS.md`, `experiments/*.json`, `paper/draft.md`, `train_v7_colab.ipynb`
 - Historical guidance: `CLAUDE.md`, `docs/AUDIT_REPORT.md`, `docs/IMPLEMENTATION_GUIDE.md`
@@ -107,6 +108,7 @@ Prefer the repository skills when the task matches:
 - Enhanced V7 training: `python train_v7.py`
 - Local ablations: `python train_ablation_local.py --help`
 - Thesis-faithful benchmark models: `python train_thesis_models.py --help`
+- Modern classical baselines: `python train_modern_baselines.py --help`
 - Aggregate benchmark tables: `python scripts/aggregate_benchmarks.py`
 - Codex non-interactive study status: `./scripts/codex-study-status.sh`
 - Codex paper audit: `./scripts/codex-paper-audit.sh`

@@ -24,6 +24,21 @@ This document serves as a log for the experiments conducted during the developme
 *   **Comparison to Older Documented V7 Row:** This rerun improves over the older documented V7 result (`67.35%` best validation, `65.02%` test) by `+5.54` validation points and `+7.51` test points.
 *   **Current Conclusion:** This rerun materially improves the trainable-quantum engineering result and confirms that the stabilized V7 path can train cleanly on Colab with Drive-backed checkpoints. However, it still does not overturn the benchmark hierarchy: `thesis_cnniiii` (`85.26 ± 0.97` test), `classical_conv` (`81.40 ± 1.06`), `param_linear` (`81.12 ± 2.27`), and `non_trainable_quantum` (`80.40 ± 0.69`) remain stronger on test accuracy. Therefore the V7 line should still be framed as a trainable-quantum engineering case-study rather than the benchmark leader.
 
+## Modern Classical Upper-Bound Baseline
+
+*   **Date:** April 22-23, 2026
+*   **Purpose:** Add a reviewer-proof stronger classical baseline beyond the thesis-faithful CNN family and the smaller matched-budget local baselines.
+*   **Model:** `resnet18_cifar_gray`
+*   **Family:** `modern-classical`
+*   **Platform:** `mac-cpu`
+*   **Architecture:** `torchvision` ResNet18 adapted for `32x32` grayscale input with a CIFAR-style stem and no aggressive max-pooling.
+*   **Validated Results:** (`experiments/publication_resnet18_cifar_gray_seed42_split42.json`, `...seed43...`, `...seed44...`)
+    *   **Seed 42:** `92.69%` best validation, `87.55%` test, `42.51m`
+    *   **Seed 43:** `93.27%` best validation, `89.06%` test, `35.08m`
+    *   **Seed 44:** `92.98%` best validation, `87.77%` test, `32.54m`
+    *   **3-seed summary:** `92.98 ± 0.29%` best validation, `88.13 ± 0.82%` test
+*   **Current Conclusion:** This baseline is now the strongest reproduced model in the repository. It does not invalidate the thesis-faithful analysis; instead it establishes a separate modern-classical upper bound that strengthens the paper's reviewer-resilience by showing that the study has been benchmarked against a materially stronger contemporary classical vision model.
+
 ## Publication Protocol v1 Reproductions
 
 *   **Date:** March 23, 2026

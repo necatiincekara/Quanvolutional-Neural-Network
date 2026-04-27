@@ -31,6 +31,7 @@ Current repository evidence after the unified `publication_v1` benchmark pass an
 | Model | Test Accuracy | Status |
 |---|---:|---|
 | `thesis_cnniiii` | **85.26 ± 0.97** | strongest thesis-faithful reproduction |
+| `resnet18_cifar_gray` | **88.13 ± 0.82** | stronger modern classical upper bound on the same fixed split |
 | `classical_conv` | **81.40 ± 1.06** | strongest current-local matched-budget model |
 | `param_linear` | 81.12 ± 2.27 | strong matched classical replacement |
 | `non_trainable_quantum` | 80.40 ± 0.69 | current-local Henderson-style non-trainable quantum |
@@ -60,9 +61,9 @@ That is interesting and publishable in a niche or domain-aware venue, but it is 
 Still missing or incomplete elements include:
 
 - confidence intervals or significance tests
-- stronger modern classical baselines
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
 - the actual synced Colab artifact files for the fresh V7 rerun inside the local repo workspace
+- a broader validation axis such as low-data scaling or a second dataset
 
 ### 2.5 There is no hardware or computational advantage argument yet
 
@@ -183,10 +184,13 @@ Why this matters:
 
 ### 6.3 Add stronger classical baselines
 
-Required additions:
+Completed addition:
 
-- at least one modern compact CNN baseline
-- at least one transfer-learning or stronger vision baseline if computationally feasible
+- one modern compact CNN baseline now exists: `resnet18_cifar_gray = 88.13 ± 0.82` test over three seeds
+
+Still optional:
+
+- one transfer-learning or stronger vision baseline if reviewer pressure justifies it
 - matched-parameter comparisons where relevant
 
 The goal is not to make quantum look better. The goal is to make reviewer objections weaker.
@@ -242,7 +246,7 @@ Steps:
 4. rewrite the paper around trustworthy comparative evidence
 
 Operational note:
-the trainable-quantum confirmation has now been obtained once on Colab L4. Remaining Colab budget is about `145` computing units, so further remote runs should be treated as exceptional rather than routine.
+the trainable-quantum confirmation has now been obtained once on Colab L4, and the stronger modern classical upper bound has been completed locally. Remaining Colab budget is about `245` computing units, so further remote runs should still be treated as exceptional rather than routine.
 
 This is the shortest realistic publication path.
 
@@ -275,7 +279,7 @@ That is much stronger and more defensible than:
 1. Sync the actual Colab `models/` and `experiments/v7_*` artifacts into the repo workspace.
 2. Reconcile the fresh V7 rerun row against `docs/EXPERIMENTS.md`, `docs/BENCHMARK_SUMMARY.md`, and `paper/draft.md`.
 3. Finalize the benchmark-first paper wording and submission packet from the now-complete benchmark hierarchy.
-4. Delay any additional Colab training unless it clearly changes reviewer risk enough to justify the remaining `145` computing units.
+4. Delay any additional Colab training unless it clearly changes reviewer risk enough to justify the remaining `245` computing units.
 5. Decide whether the paper will follow the QML-insight route or the OCR/heritage route.
 
 ## 10. Source Notes

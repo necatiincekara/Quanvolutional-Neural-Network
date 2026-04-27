@@ -72,6 +72,18 @@
     "notes": ""
   },
   {
+    "model": "resnet18_cifar_gray",
+    "family": "modern-classical",
+    "source": "modern-baseline",
+    "runs": 3,
+    "best_val_acc_mean": 92.98,
+    "best_val_acc_std": 0.29,
+    "test_acc_mean": 88.13,
+    "test_acc_std": 0.82,
+    "total_params": 11190252,
+    "notes": "Reviewer-proof stronger classical baseline: torchvision ResNet18 adapted to 32x32 grayscale inputs with a CIFAR-style stem."
+  },
+  {
     "model": "thesis_cnn3",
     "family": "thesis-faithful",
     "source": "thesis-faithful",

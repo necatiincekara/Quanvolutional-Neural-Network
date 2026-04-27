@@ -4,22 +4,23 @@
 
 This document is the post-upgrade master plan for the study. It assumes the current benchmark truth remains unchanged and uses the upgraded Codex layer to reduce ambiguity in the next research phase.
 
-> Update, April 7, 2026:
-> The fresh Colab V7 confirmatory rerun has now been completed successfully at `72.89%` best validation and `72.53%` test accuracy.
-> Remaining Colab budget is approximately `145` computing units.
-> Default policy is now low-compute mode: do not start another Colab training run unless it changes the paper decision boundary.
+> Update, April 23, 2026:
+> The fresh Colab V7 confirmatory rerun remains complete at `72.89%` best validation and `72.53%` test accuracy.
+> The stronger modern classical baseline `resnet18_cifar_gray` has now completed three local seeds at `88.13 ± 0.82%` test accuracy.
+> Remaining Colab budget is approximately `245` computing units.
+> Default policy is still conservative: do not start another Colab training run unless it changes the paper decision boundary.
 
 ## 1. Immediate Operating Sequence
 
 These are the next exact actions, in order:
 
-1. **Sync the remaining fresh V7 rerun artifacts from Drive/Colab into the local repo**
-   - Goal: complete the artifact picture by recovering the remote `experiments/v7_*` folder, since the Drive-backed checkpoint files are now already synced locally.
+1. **Reconcile the completed `resnet18_cifar_gray` three-seed result into all benchmark-facing documents**
+   - Goal: keep the new modern classical upper bound separated from thesis-faithful and matched-budget families while making the reviewer-proof benchmark picture explicit.
    - Platform: local + Drive
    - Paper impact: high
 
-2. **Reconcile the synced artifacts against the local benchmark tables**
-   - Goal: keep `experiments/*.json`, `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `paper/draft.md` aligned.
+2. **Finish the remaining V7 artifact sync and reconciliation**
+   - Goal: keep `experiments/*.json`, `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `paper/draft.md` aligned, and recover the remote `experiments/v7_*` folder if it is still accessible.
    - Platform: local
    - Paper impact: high
 
@@ -62,11 +63,11 @@ Finish a credible Q2 / specialized-QML submission without implying unsupported q
    - Tools: `codex-artifact-pack.sh`, `export_docx.sh`
    - Paper impact: medium
 
-4. **Optional stronger compact classical baseline**
-   - Candidate: `resnet18_cifar_gray`
-   - Platform: M4 first if feasible, Colab only if absolutely necessary
+4. **Optional next empirical extension**
+   - Candidate: a low-data shortlist pilot before any second dataset or extra V7 seed
+   - Platform: M4 first, Colab only if absolutely necessary
    - Paper impact: medium to high
-   - Stop condition: skip if the reviewer-risk reduction does not justify the implementation cost or the remaining `145` CU budget
+   - Stop condition: skip if the reviewer-risk reduction does not justify the implementation cost or the remaining `245` CU budget
 
 ## 3. Track B — Stronger Research Route
 
@@ -106,7 +107,7 @@ Execution rule:
 
 - Keep Mac work for M4-feasible benchmark and documentation tasks.
 - The V7 confirmatory rerun is already complete; treat it as the last default Colab training spend unless new evidence justifies more.
-- Current remaining budget is approximately `145` computing units.
+- Current remaining budget is approximately `245` computing units.
 - Do not spend additional Colab units on work already completed under the publication benchmark protocol.
 - Prefer zero-CU work now: artifact sync, reconciliation, manuscript tightening, and submission package cleanup.
 - Delay broader extension work until the rerun artifacts are synced and the manuscript is updated.
@@ -117,7 +118,7 @@ Stop expanding the trainable-quantum branch if:
 
 - the fresh V7 rerun remains clearly below the strongest classical anchors, and
 - the paper contribution is already defensible as a benchmark + engineering paper without more V7 seeds
-- or the expected information gain does not justify spending the remaining `145` CU budget
+- or the expected information gain does not justify spending the remaining `245` CU budget
 
 Stop expanding the publication benchmark if:
 
@@ -130,4 +131,5 @@ Until new evidence changes it, the repo should operate under this conclusion:
 
 - strongest thesis-faithful evidence: `thesis_cnniiii`
 - strongest current-local matched-budget evidence: `classical_conv`
+- strongest modern classical upper bound: `resnet18_cifar_gray`
 - strongest current trainable-quantum value: engineering insight, not benchmark leadership

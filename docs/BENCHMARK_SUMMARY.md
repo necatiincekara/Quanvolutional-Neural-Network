@@ -16,6 +16,12 @@ Auto-generated from `experiments/*.json` plus documented reference rows.
 |---|---|---:|---:|---:|---:|---|
 | V4_historical_reference | historical-docs | 1 | 8.75 ± 0.00 | - | - | Historical non-trainable baseline reference. |
 
+## modern-classical
+
+| Model | Source | Runs | Best Val | Test | Params | Notes |
+|---|---|---:|---:|---:|---:|---|
+| resnet18_cifar_gray | modern-baseline | 3 | 92.98 ± 0.29 | 88.13 ± 0.82 | 11190252 | Reviewer-proof stronger classical baseline: torchvision ResNet18 adapted to 32x32 grayscale inputs with a CIFAR-style stem. |
+
 ## thesis-faithful
 
 | Model | Source | Runs | Best Val | Test | Params | Notes |
@@ -29,4 +35,4 @@ Auto-generated from `experiments/*.json` plus documented reference rows.
 | Model | Source | Runs | Best Val | Test | Params | Notes |
 |---|---|---:|---:|---:|---:|---|
 | V7_trainable_quantum_documented | docs/notebook | 1 | 67.35 ± 0.00 | 65.02 ± 0.00 | 87798 | Documented stabilized V7 result from docs/notebook output. |
-| V7_trainable_quantum_rerun | colab-l4-user-log | 1 | 72.89 ± 0.00 | 72.53 ± 0.00 | 87798 | Fresh Colab rerun reconciled from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally; the remote `experiments/v7_*` directory is still missing. |
+| V7_trainable_quantum_rerun | colab-l4-user-log | 1 | 72.89 ± 0.00 | 72.53 ± 0.00 | 87798 | Fresh Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace. |

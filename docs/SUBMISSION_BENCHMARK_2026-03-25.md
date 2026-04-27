@@ -35,6 +35,12 @@ Use this file together with:
 | `V7_trainable_quantum_rerun` | 1 fresh rerun | 72.53 | 72.89 | 87,798 | improved trainable-quantum engineering case-study, still not current benchmark leader; Drive-backed checkpoint files are now synced locally |
 | `V7_trainable_quantum_documented` | 1 documented | 65.02 | 67.35 | 87,798 | older documented trainable result retained for historical comparison |
 
+### 1.4 Modern-classical upper bound
+
+| Model | Runs | Test | Best Val | Params | Interpretation |
+|---|---:|---:|---:|---:|---|
+| `resnet18_cifar_gray` | 3 | **88.13 ± 0.82** | **92.98 ± 0.29** | 11,190,252 | reviewer-proof stronger classical upper bound; useful for rebutting claims that the benchmark lacks a modern vision baseline |
+
 ## 2. Safe Claim Hierarchy
 
 These are the strongest claims currently supported by repository artifacts.
@@ -42,8 +48,9 @@ These are the strongest claims currently supported by repository artifacts.
 1. The repository now supports a **reproducible benchmark story**, not a quantum-win story.
 2. In the current-local matched-budget family, **classical baselines outperform the current Henderson-style non-trainable quantum baseline on mean test accuracy**.
 3. In the thesis-faithful family, **the strongest reproduced model is classical (`thesis_cnniiii`)**.
-4. The thesis-faithful quantum reproduction (`thesis_hqnn2`) is competitive with `thesis_cnn3`, but it does **not** surpass the strongest classical thesis-faithful model.
-5. V7 remains valuable as a **hybrid-QML engineering and stabilization case-study**:
+4. A stronger modern classical upper bound now also exists: `resnet18_cifar_gray` reaches **88.13 ± 0.82%** test accuracy on the same fixed split.
+5. The thesis-faithful quantum reproduction (`thesis_hqnn2`) is competitive with `thesis_cnn3`, but it does **not** surpass the strongest classical thesis-faithful model.
+6. V7 remains valuable as a **hybrid-QML engineering and stabilization case-study**:
    - information bottleneck threshold
    - gradient stabilization
    - AMP / float16 incompatibility at the quantum boundary
@@ -88,5 +95,5 @@ The most valuable next steps are now:
 1. sync the remote `experiments/v7_*` directory back into the repo workspace if it is still recoverable, so the rerun is represented by more than checkpoints plus the reconciled log-backed JSON row,
 2. rewrite and tighten `paper/draft.md` around the benchmark hierarchy above,
 3. refresh submission-facing summary documents and Word exports,
-4. only then consider one stronger modern classical baseline if the expected reviewer-risk reduction justifies the remaining `145` Colab computing units,
-5. add significance intervals/tests if reviewers are expected to push on variance.
+4. add significance intervals/tests if reviewers are expected to push on variance,
+5. only then consider a low-data pilot or another narrowly justified extension if it materially improves reviewer resilience and is worth spending part of the remaining `245` Colab computing units.
