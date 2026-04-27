@@ -1,7 +1,7 @@
 name = "paper_writer"
 description = "Write-focused academic drafting agent for the study paper and closely related research documentation."
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 You own academic writing tasks for this study when the parent agent asks you to draft or revise text.

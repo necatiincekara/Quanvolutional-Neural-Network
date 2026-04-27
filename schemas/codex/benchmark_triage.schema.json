@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Benchmark Triage",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "next_tasks", "compute_policy", "stop_conditions"],
+  "properties": {
+    "summary": {"type": "string"},
+    "next_tasks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "compute_policy": {"type": "string"},
+    "stop_conditions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

@@ -12,6 +12,8 @@ import numpy as np
 from tqdm import tqdm
 import os
 import json
+import re
+import time
 from datetime import datetime
 import matplotlib
 matplotlib.use('Agg')  # Non-interactive backend
@@ -20,6 +22,7 @@ import matplotlib.pyplot as plt
 from . import config
 from .trainable_quantum_model import create_enhanced_model
 from .dataset import get_dataloaders
+from .benchmark_protocol import get_platform_label, summarize_model_params, write_json
 
 
 class QuantumAwareOptimizer:
@@ -185,6 +188,7 @@ class EnhancedTrainer:
 
         self.best_val_acc = 0.0
         self.patience_counter = 0
+        self.resume_start_epoch = 0
 
     def train_epoch(self, train_loader, epoch):
         self.model.train()
@@ -359,6 +363,7 @@ class EnhancedTrainer:
         self.patience_counter = checkpoint.get('patience_counter', 0)
         self.history = checkpoint.get('history', self.history)
         start_epoch = checkpoint['epoch']
+        self.resume_start_epoch = start_epoch
 
         print(f"  Resumed at epoch {start_epoch}, best_val_acc={self.best_val_acc:.2f}%")
         return start_epoch
@@ -548,9 +553,111 @@ def mixup_data(x, y, alpha=0.2):
     return mixed_x, y_a, y_b, lam
 
 
+def _safe_artifact_label(value):
+    """Return a stable lowercase label for artifact filenames and run ids."""
+    return re.sub(r"[^a-z0-9]+", "_", str(value).lower()).strip("_")
+
+
+def default_v7_result_json_path(circuit_type, platform_label=None, timestamp=None):
+    timestamp = timestamp or datetime.now().strftime("%Y%m%d_%H%M%S")
+    platform_label = platform_label or get_platform_label()
+    safe_platform = _safe_artifact_label(platform_label) or "unknown_platform"
+    safe_circuit = _safe_artifact_label(circuit_type) or "unknown_circuit"
+    return os.path.join(
+        "experiments",
+        f"v7_trainable_quantum_{safe_circuit}_{timestamp}_{safe_platform}.json",
+    )
+
+
+def _history_as_epochs(history):
+    epoch_count = max((len(values) for values in history.values()), default=0)
+    rows = []
+    for idx in range(epoch_count):
+        row = {"epoch": idx + 1}
+        for key in ("train_loss", "train_acc", "val_loss", "val_acc"):
+            values = history.get(key, [])
+            if idx < len(values):
+                row[key] = round(float(values[idx]), 4 if "loss" in key else 2)
+        rows.append(row)
+    return rows
+
+
+def _write_v7_result_json(
+    *,
+    trainer,
+    model,
+    circuit_type,
+    num_epochs,
+    target_accuracy,
+    resume,
+    best_val_acc,
+    test_loss,
+    test_acc,
+    runtime_seconds,
+    result_json_path=None,
+):
+    platform_label = get_platform_label()
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    result_json_path = result_json_path or default_v7_result_json_path(
+        circuit_type,
+        platform_label=platform_label,
+        timestamp=timestamp,
+    )
+    params = summarize_model_params(model)
+    quantum_params = sum(p.numel() for p in trainer.optimizer.quantum_params)
+    classical_params = sum(p.numel() for p in trainer.optimizer.classical_params)
+    run_id = (
+        "v7_trainable_quantum"
+        f"__v7_enhanced_v1__{_safe_artifact_label(circuit_type)}"
+        f"__{timestamp}__{_safe_artifact_label(platform_label)}"
+    )
+
+    payload = {
+        "model": "V7_trainable_quantum",
+        "source": "v7-enhanced-training",
+        "family": "trainable-quantum-case-study",
+        "protocol_version": "v7_enhanced_v1",
+        "platform": platform_label,
+        "run_id": run_id,
+        "circuit_type": circuit_type,
+        "experiment_dir": trainer.exp_dir,
+        "notes": (
+            "Automatically emitted by src.enhanced_training after final test "
+            "evaluation. Keep this trainable-quantum case-study row separate "
+            "from thesis-faithful, current-local, and modern-classical families."
+        ),
+        "params": {
+            "quantum": quantum_params,
+            "classical": classical_params,
+            "total": params["total"],
+        },
+        "total_params": params["total"],
+        "trainable_params": params["trainable"],
+        "epochs_requested": num_epochs,
+        "epochs_completed": len(trainer.history.get("val_acc", [])),
+        "target_accuracy": target_accuracy,
+        "resume_used": bool(resume),
+        "resume_start_epoch": trainer.resume_start_epoch if resume else 0,
+        "best_val_acc": round(float(best_val_acc), 2),
+        "test_loss": round(float(test_loss), 4),
+        "test_acc": round(float(test_acc), 2),
+        "runtime_seconds": round(float(runtime_seconds), 2),
+        "runtime_minutes": round(float(runtime_seconds) / 60.0, 2),
+        "epochs": _history_as_epochs(trainer.history),
+        "artifacts": {
+            "best_model": "models/best_v7_model.pth",
+            "latest_checkpoint": "models/checkpoint_latest_v7.pth",
+        },
+    }
+    write_json(result_json_path, payload)
+    print(f"V7 result JSON saved to {result_json_path}")
+    return result_json_path
+
+
 def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
                           target_accuracy=60.0, resume=False,
-                          drive_backup_path=None):
+                          drive_backup_path=None,
+                          result_json_path=None):
     """
     Main entry point for V7 enhanced training.
 
@@ -560,10 +667,12 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
         target_accuracy: Validation target used for early stop / success reporting
         resume: If True, resume from latest checkpoint
         drive_backup_path: If set, checkpoints are also saved to Drive (survives restarts)
+        result_json_path: Optional top-level experiment JSON path for aggregation
 
     Returns:
         (best_val_acc, test_acc) tuple
     """
+    start_time = time.time()
     device = torch.device(config.DEVICE)
 
     # Load data
@@ -592,5 +701,18 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
     print("\nFinal evaluation on test set...")
     test_loss, test_acc = trainer.validate(test_loader)
     print(f"Test Accuracy: {test_acc:.2f}%")
+    _write_v7_result_json(
+        trainer=trainer,
+        model=model,
+        circuit_type=circuit_type,
+        num_epochs=num_epochs,
+        target_accuracy=target_accuracy,
+        resume=resume,
+        best_val_acc=best_acc,
+        test_loss=test_loss,
+        test_acc=test_acc,
+        runtime_seconds=time.time() - start_time,
+        result_json_path=result_json_path,
+    )
 
     return best_acc, test_acc

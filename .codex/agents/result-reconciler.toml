@@ -1,7 +1,7 @@
 name = "result_reconciler"
 description = "Read-only artifact reconciler that determines the current factual study status from code, logs, checkpoints, notebooks, and papers."
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
 sandbox_mode = "read-only"
 developer_instructions = """
 Your job is to answer: what is actually true in this repository right now?

@@ -89,7 +89,7 @@ Codex bu repoda asagidaki sekilde kullanilmali:
 - V7 trainable-quantum hattinin var oldugu
 - Yerel ablation sonuclarinin V7 dokumante sonucundan daha iyi oldugu
 - `experiments/run_experiments.py` dosyasinin stale oldugu
-- `train_v7.py --target` akisinin tam baglanmadigi
+- `train_v7.py --target` akisinin artik baglandigi ve gelecekteki V7 kosulari icin aggregate-compatible JSON ciktisi eklendigi
 - veri yukleyicinin hatali isimlendirilmis bir dosyayi atladigi
 
 Bu bilgiler, gelecekteki Codex oturumlarinin ayni eski varsayimlara geri donmesini engellemek icin ozellikle eklendi.

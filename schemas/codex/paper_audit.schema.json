@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Paper Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "findings", "minimum_corrections", "residual_risk"],
+  "properties": {
+    "summary": {"type": "string"},
+    "findings": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "minimum_corrections": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "residual_risk": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

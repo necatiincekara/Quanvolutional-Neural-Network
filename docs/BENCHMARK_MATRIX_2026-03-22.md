@@ -39,6 +39,7 @@ This means the immediate next training steps should stay on the Mac unless a new
 | `param_linear` | repo-local + publication_v1 rerun | 25-param matched replacement | 87.13 | 83.69 | 87,798 | reproduced three times | current 3-seed summary is `81.12 ± 2.27` test; strongest single seed reaches `83.69%` |
 | `non_trainable_quantum` | repo-local + publication_v1 rerun | Henderson-style cached quantum | 86.84 | 80.90 | 88,488 | reproduced three times | current 3-seed summary is `80.40 ± 0.69` test; runtime excludes the one-time quantum cache/precompute stage |
 | `resnet18_cifar_gray` | modern-baseline + publication_v1 rerun | stronger modern classical baseline | 93.27 | 89.06 | 11,190,252 | reproduced three times | current 3-seed summary is `88.13 ± 0.82` test; reviewer-proof modern classical upper bound on the same fixed split |
+| `V7 trainable quantum rerun` | colab-l4-user-log + local checkpoints | trainable quantum | 72.89 | 72.53 | 87,798 | rerun complete | April 2026 fresh Colab rerun; still below strongest classical anchors; local checkpoints are synced, but remote `experiments/v7_*` metadata remains a provenance gap |
 | `V7 trainable quantum` | docs/notebook | trainable quantum | 67.35 | 65.02 | 87,798 | documented | engineering case study, not benchmark winner |
 | `V4` | historical docs | old non-trainable | 8.75 | - | historical | historical | no longer a sufficient main reference |
 | `CNN-III` | thesis + local reproduction | classical | 85.96 | 80.26 | 769,804 | reproduced three times | current 3-seed summary is `79.33 ± 1.26` test; all local runs remain below the thesis reference (`83.05%`) |
@@ -57,7 +58,7 @@ This means the immediate next training steps should stay on the Mac unless a new
 | P1 | `classical_conv` rerun | protocol-v1 deterministic multi-seed benchmark | 3 | M4 | `train_ablation_local.py --model classical_conv` |
 | P1 | `param_linear` rerun | protocol-v1 deterministic multi-seed benchmark | 3 | M4 | `train_ablation_local.py --model param_linear` |
 | P1 | `non_trainable_quantum` rerun | protocol-v1 deterministic multi-seed benchmark | 3 | M4 | `train_ablation_local.py --model non_trainable_quantum` |
-| P1 | `V7 trainable quantum` rerun | confirmatory reproducible trainable-quantum case | 1 now | Colab L4/A100 only | `train_v7.py` |
+| P1 | `V7 trainable quantum` artifact sync | close provenance gap for completed trainable-quantum rerun | 0 new runs | local + Drive/Colab artifact recovery | `./scripts/codex-colab-handoff.sh` |
 | P2 | `thesis_hqnn3` | entanglement ablation | 1-3 | M4/Colab | `train_thesis_models.py --model thesis_hqnn3` |
 | P2 | low-data shortlist | 10/25/50/100% train fractions | 3 | M4 + selective GPU | not implemented yet |
 | P2 | transfer-learning classical upper bound | only if reviewer pressure justifies it | 1-3 | Colab only if justified | not implemented |
@@ -95,5 +96,6 @@ python train_modern_baselines.py --model resnet18_cifar_gray --seed 42 --split-s
 1. Treat `resnet18_cifar_gray` as the current reviewer-proof modern classical upper bound and keep it analytically separate from thesis-faithful and matched-budget families.
 2. Keep Colab in reserve; do not spend the current `245` CU budget on work that is already M4-feasible.
 3. Tighten the paper and submission-facing documents around the now-complete benchmark picture.
-4. If additional empirical work is still needed, prefer a low-data pilot on the Mac before any new Colab training.
-5. Only consider extra Colab experiments if they are likely to change reviewer risk more than they consume compute budget.
+4. Recover or explicitly mark the missing remote `experiments/v7_*` metadata before considering any new V7 run.
+5. If additional empirical work is still needed, prefer a low-data pilot on the Mac before any new Colab training.
+6. Only consider extra Colab experiments if they are likely to change reviewer risk more than they consume compute budget.

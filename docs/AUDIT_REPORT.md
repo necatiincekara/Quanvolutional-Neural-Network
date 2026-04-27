@@ -1,6 +1,11 @@
 # Comprehensive Codebase Audit & Development Roadmap
 ## Hybrid Quanvolutional Neural Network
 
+> Status note, April 27, 2026:
+> This audit is historical V4/V6-era planning material. Do not use it as the current benchmark source of truth.
+> For current artifact-backed results, use `experiments/*.json`, `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `paper/draft.md`.
+> Current evidence favors classical baselines overall: `resnet18_cifar_gray = 88.13 ± 0.82` test, `thesis_cnniiii = 85.26 ± 0.97`, and `classical_conv = 81.40 ± 1.06`; V7 remains an engineering case-study at `72.53%` test.
+
 **Date**: November 16, 2025
 **Auditor**: Claude Opus 4.1 (Quantum-AI Engineering Analysis)
 **Project**: Ottoman-Turkish Handwritten Character Recognition (44 classes)

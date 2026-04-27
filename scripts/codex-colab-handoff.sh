@@ -10,7 +10,4 @@ if [ "$#" -gt 0 ]; then
 fi
 
 exec codex --search \
-  -c 'model_reasoning_effort="medium"' \
-  -c 'plan_mode_reasoning_effort="medium"' \
-  -c 'mcp_servers={}' \
-  exec -m gpt-5.4-mini -s read-only -C "$ROOT_DIR" --include-plan-tool "$PROMPT"
+  exec -p colab -s read-only -C "$ROOT_DIR" --include-plan-tool "$PROMPT"

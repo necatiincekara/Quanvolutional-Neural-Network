@@ -8,6 +8,7 @@ Usage:
     python train_v7.py --epochs 10 --resume
     python train_v7.py --train-path /content/local_data/train --test-path /content/local_data/test
     python train_v7.py --drive-backup-path /content/drive/MyDrive/quanv_results/v7
+    python train_v7.py --result-json experiments/v7_trainable_quantum_manual.json
 """
 
 import argparse
@@ -32,6 +33,8 @@ def main():
                         help='Override training dataset path')
     parser.add_argument('--test-path', type=str, default=None,
                         help='Override test dataset path')
+    parser.add_argument('--result-json', type=str, default=None,
+                        help='Optional top-level experiment JSON output path')
     args = parser.parse_args()
 
     # Environment info
@@ -54,6 +57,7 @@ def main():
     print(f"Train Path:      {config.TRAIN_PATH}")
     print(f"Test Path:       {config.TEST_PATH}")
     print(f"Drive Backup:    {args.drive_backup_path or 'disabled'}")
+    print(f"Result JSON:     {args.result_json or 'auto'}")
 
     if torch.cuda.is_available():
         print(f"GPU:             {torch.cuda.get_device_name(0)}")
@@ -89,6 +93,7 @@ def main():
         target_accuracy=args.target,
         resume=args.resume,
         drive_backup_path=args.drive_backup_path,
+        result_json_path=args.result_json,
     )
 
     elapsed = time.time() - start_time

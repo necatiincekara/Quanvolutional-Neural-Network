@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Study Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "current_truth", "stale_claims", "open_gaps", "next_actions"],
+  "properties": {
+    "summary": {"type": "string"},
+    "current_truth": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "stale_claims": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "open_gaps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

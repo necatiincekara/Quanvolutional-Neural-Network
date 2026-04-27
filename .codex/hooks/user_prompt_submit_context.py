@@ -12,7 +12,7 @@ def build_context(prompt: str) -> str | None:
     if any(token in lowered for token in ["quantum advantage", "advantage", "best model", "winner"]):
         notes.append("Current repository evidence does not support a generic quantum-advantage claim.")
     if any(token in lowered for token in ["train_v7", "colab", "rerun", "benchmark", "next run"]):
-        notes.append("Heavy trainable-quantum work should prefer Colab; redundant Mac-side reruns are usually lower value than the V7 confirmatory rerun.")
+        notes.append("The V7 confirmatory rerun is complete; prioritize artifact provenance cleanup over redundant trainable-quantum reruns.")
 
     if not notes:
         return None

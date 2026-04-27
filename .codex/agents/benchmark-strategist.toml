@@ -1,7 +1,7 @@
 name = "benchmark_strategist"
 description = "Read-only planner for benchmark order, platform choice, compute cost, and publication impact in this study."
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
 sandbox_mode = "read-only"
 developer_instructions = """
 Your job is to decide the next most valuable benchmark or training move for this study.

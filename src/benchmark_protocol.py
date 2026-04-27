@@ -189,7 +189,9 @@ def result_paths(
 
 
 def ensure_parent_dir(path: str) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
 
 
 def write_json(path: str, payload: Dict[str, Any]) -> None:

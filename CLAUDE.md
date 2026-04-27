@@ -6,12 +6,12 @@ This file provides project guidance for Claude Code when working in this reposit
 
 This repository contains a hybrid quantum-classical OCR study for Ottoman-Turkish handwritten character recognition. It includes both historical thesis-era material and newer post-thesis experimental artifacts. Do not assume the oldest planning documents still reflect the current scientific status.
 
-As of March 22, 2026:
+As of April 27, 2026:
 
 - `src/model.py` and `src/train.py` represent the older V4/V6-style path.
 - `src/trainable_quantum_model.py`, `src/enhanced_training.py`, and `train_v7.py` represent the newer stabilized trainable-quantum path.
-- Local ablation artifacts currently outperform the documented V7 result on test accuracy.
-- The current repo evidence supports a stronger "hybrid QML engineering and failure-analysis" story than a clean "quantum advantage" story.
+- Multi-seed classical artifacts currently outperform the trainable and non-trainable quantum variants on test accuracy.
+- The current repo evidence supports a stronger "fair benchmark + hybrid QML engineering and failure-analysis" story than a clean "quantum advantage" story.
 
 ## Source Of Truth Order
 
@@ -25,12 +25,14 @@ When results disagree, use this order:
 
 ## Current Known Results
 
-- Documented stabilized V7 result: about `67.35%` best validation and `65.02%` test accuracy
-- Stronger local ablations currently exist:
-  - `classical_conv`: `82.62%` test
-  - `param_linear`: `81.76%` test
-  - `non_trainable_quantum`: `80.47%` test
-- Thesis-best quantum result is `HQNN-II` at `82.40%`, but the current Henderson-style non-trainable ablation is not a faithful reproduction of that thesis model
+- Modern-classical upper bound: `resnet18_cifar_gray` at `88.13 ± 0.82` test and `92.98 ± 0.29` best validation.
+- Strongest thesis-faithful reproduction: `thesis_cnniiii` at `85.26 ± 0.97` test.
+- Current-local matched-budget results:
+  - `classical_conv`: `81.40 ± 1.06` test
+  - `param_linear`: `81.12 ± 2.27` test
+  - `non_trainable_quantum`: `80.40 ± 0.69` test
+- Trainable-quantum case study: fresh V7 Colab rerun at `72.89%` best validation and `72.53%` test; older documented V7 remains `67.35%` best validation and `65.02%` test.
+- Thesis-best quantum result was `HQNN-II` at `82.40%` in the thesis table, but the current thesis-faithful reproduction `thesis_hqnn2` is `78.61 ± 0.69` and should be kept separate from the Henderson-style current-local non-trainable quantum ablation.
 
 ## High-Value Files
 
@@ -42,6 +44,9 @@ When results disagree, use this order:
   - `src/enhanced_training.py`
   - `train_v7.py`
   - `train_ablation_local.py`
+- Modern classical baselines:
+  - `train_modern_baselines.py`
+  - `src/modern_baselines.py`
 - Publication benchmark training:
   - `train_thesis_models.py`
   - `src/thesis_models.py`

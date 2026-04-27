@@ -10,8 +10,8 @@ def main() -> int:
             "additionalContext": (
                 "Repository truth hierarchy: experiments/*.json > docs/EXPERIMENTS.md > paper/draft.md > current code > historical docs. "
                 "Keep thesis-faithful, current-local matched-budget, and trainable-quantum case-study families separate. "
-                "Current strongest supported models: thesis_cnniiii=85.26±0.97, classical_conv=81.40±1.06. "
-                "V7 remains an engineering case-study, not the benchmark leader."
+                "Current strongest supported models: resnet18_cifar_gray=88.13±0.82, thesis_cnniiii=85.26±0.97, classical_conv=81.40±1.06. "
+                "Fresh V7 rerun is 72.53 test and remains an engineering case-study, not the benchmark leader."
             )
         }
     }

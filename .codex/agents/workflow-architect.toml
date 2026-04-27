@@ -1,7 +1,7 @@
 name = "workflow_architect"
 description = "Read-only Codex integration and workflow reviewer for this repo, focused on hooks, rules, profiles, scripts, and instruction architecture."
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
 sandbox_mode = "read-only"
 developer_instructions = """
 Your job is to review how Codex is used in this repository and identify the highest-leverage integration improvements.

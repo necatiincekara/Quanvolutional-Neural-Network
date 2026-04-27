@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Capability Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "already_used", "underused", "missing", "not_worth_using"],
+  "properties": {
+    "summary": {"type": "string"},
+    "already_used": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "underused": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "missing": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "not_worth_using": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

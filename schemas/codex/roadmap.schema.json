@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Roadmap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "tracks", "next_actions", "assumptions"],
+  "properties": {
+    "summary": {"type": "string"},
+    "tracks": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

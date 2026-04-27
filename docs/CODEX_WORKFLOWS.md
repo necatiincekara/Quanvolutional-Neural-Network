@@ -8,6 +8,9 @@
 > - `docs/CODEX_GAP_ANALYSIS_2026-04-05.md`
 > - `docs/CODEX_OPERATING_MODEL_2026-04-05.md`
 > - `docs/NEXT_PHASE_MASTER_PLAN_2026-04-05.md`
+>
+> Durum notu, 27 Nisan 2026:
+> Yuksek-rigor status, paper audit, benchmark triage, roadmap, capability audit ve gap audit script'leri artik `deep` profilini ve JSON schema ciktilarini kullanir. Capability/gap audit akislari MCP'yi zorla kapatmaz.
 
 Bu belge, bu repoda Codex'i daha etkili kullanmak icin eklenen yeni calisma modlarini ve tekrar kullanilabilir komutlari ozetler.
 
@@ -33,12 +36,17 @@ Bu eklemelerin amaci, ayni repoda arastirma, debugging ve makale yazimini ayri a
 
 - `paper`
   - makale ve tez duzeltmeleri
-  - yuksek reasoning
+  - `gpt-5.5` + `xhigh` reasoning
   - `live` web search
   - daha noro akademik dil icin `personality = "none"`
 - `review`
   - read-only audit ve teknik inceleme
+  - `gpt-5.5` + `xhigh` reasoning
   - repo icinde risk arama, circuit review, status audit
+- `deep`
+  - artifact reconciliation, workflow audit, paper audit ve benchmark planning gibi yuksek-rigor non-interactive isler
+  - `gpt-5.5` + `xhigh` reasoning
+  - `live` web search
 - `fast_local`
   - daha hizli yerel iterasyon
   - orta seviye reasoning
@@ -46,6 +54,7 @@ Bu eklemelerin amaci, ayni repoda arastirma, debugging ve makale yazimini ayri a
   - benchmark triage
   - result reconciliation
   - experiment planning
+  - `gpt-5.5` + `xhigh` reasoning
 - `colab`
   - Colab handoff
   - remote training orchestration planning
@@ -76,10 +85,10 @@ Tekrar tekrar prompt yazmamak icin aktif script katmani:
 python scripts/aggregate_benchmarks.py
 ```
 
-Bu script'ler `codex exec` kullanir. Nisan 2026 itibariyla mevcut yerel CLI ile
-non-interactive `exec` her zaman repo-ici profile adlarini otomatik yuklemedigi icin,
-script'ler gerekli model, reasoning ve sandbox ayarlarini explicit CLI flag'leriyle pinler.
-Bu yuzden script-first kullanim, dogrudan `codex exec -p ...` kullanimindan daha guvenlidir.
+Bu script'ler `codex exec` kullanir. 27 Nisan 2026 itibariyla yuksek-rigor script'ler
+repo-local `deep` profilini kullanir ve onemli denetim ciktilarini `schemas/codex/*.schema.json`
+ile makine-okunabilir hale getirir. Script-first kullanim hala onerilir; cunku dogru profil,
+sandbox ve schema ayarini tek giris noktasinda toplar.
 
 ## 4. Etkili Interactive Akis
 

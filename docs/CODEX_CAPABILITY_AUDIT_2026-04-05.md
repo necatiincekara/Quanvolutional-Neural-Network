@@ -4,6 +4,9 @@
 
 This document audits current Codex capabilities against the repository's actual integration layer. It is the authoritative capability baseline for future Codex changes in this repo.
 
+> Update, April 27, 2026:
+> High-rigor Codex workflows now use `gpt-5.5` with `xhigh` reasoning through the `deep`, `paper`, `review`, and `benchmark` profiles. Recurring audit/triage scripts now use `--output-schema`, and capability/gap audits no longer force MCP off.
+
 ## 1. Summary
 
 The repo already uses the core Codex surfaces well enough to support serious research work:
@@ -94,13 +97,14 @@ These capabilities are real, but not central to the current repo strategy:
 
 Current defaults after this sprint:
 
-- `paper`: `gpt-5.4`
-- `review`: `gpt-5.4`
-- `benchmark`: `gpt-5.4`
+- `paper`: `gpt-5.5` / `xhigh`
+- `review`: `gpt-5.5` / `xhigh`
+- `deep`: `gpt-5.5` / `xhigh`
+- `benchmark`: `gpt-5.5` / `xhigh`
 - `fast_local`: `gpt-5.4-mini`
 - `colab`: `gpt-5.4-mini`
 
-This is a conservative default. A dedicated benchmark script now exists to compare:
+This keeps high-rigor research workflows on the strongest configured model while preserving lighter local and Colab handoff profiles. A dedicated benchmark script still exists to compare:
 
 - `gpt-5.4`
 - `gpt-5.3-codex`

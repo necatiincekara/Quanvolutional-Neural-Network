@@ -1,11 +1,11 @@
-model = "gpt-5.4"
-model_reasoning_effort = "high"
-review_model = "gpt-5.4"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+review_model = "gpt-5.5"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 web_search = "live"
 personality = "pragmatic"
-plan_mode_reasoning_effort = "high"
+plan_mode_reasoning_effort = "xhigh"
 file_opener = "vscode"
 project_doc_fallback_filenames = ["CLAUDE.md"]
 project_doc_max_bytes = 65536
@@ -22,21 +22,29 @@ max_threads = 4
 max_depth = 1
 
 [profiles.paper]
-model = "gpt-5.4"
-model_reasoning_effort = "high"
-plan_mode_reasoning_effort = "high"
-review_model = "gpt-5.4"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+plan_mode_reasoning_effort = "xhigh"
+review_model = "gpt-5.5"
 web_search = "live"
 personality = "none"
 
 [profiles.review]
-model = "gpt-5.4"
-model_reasoning_effort = "high"
-plan_mode_reasoning_effort = "high"
-review_model = "gpt-5.4"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+plan_mode_reasoning_effort = "xhigh"
+review_model = "gpt-5.5"
 web_search = "cached"
 personality = "pragmatic"
 sandbox_mode = "read-only"
+
+[profiles.deep]
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+plan_mode_reasoning_effort = "xhigh"
+review_model = "gpt-5.5"
+web_search = "live"
+personality = "pragmatic"
 
 [profiles.fast_local]
 model = "gpt-5.4-mini"
@@ -47,10 +55,10 @@ web_search = "cached"
 personality = "pragmatic"
 
 [profiles.benchmark]
-model = "gpt-5.4"
-model_reasoning_effort = "high"
-plan_mode_reasoning_effort = "high"
-review_model = "gpt-5.4"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+plan_mode_reasoning_effort = "xhigh"
+review_model = "gpt-5.5"
 web_search = "cached"
 personality = "pragmatic"
 

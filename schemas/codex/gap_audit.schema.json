@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex Gap Audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "gaps", "recommendations", "priorities"],
+  "properties": {
+    "summary": {"type": "string"},
+    "gaps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "priorities": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

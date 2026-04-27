@@ -6,11 +6,11 @@ Repository instructions for Codex working in this study.
 
 This repository tracks a hybrid quantum-classical OCR study for Ottoman-Turkish handwritten character recognition. It contains both historical planning material and newer experimental artifacts. Do not assume the oldest narrative docs are still correct.
 
-As of April 5, 2026:
+As of April 27, 2026:
 
 - `src/model.py` and `src/train.py` are the older V4/V6 baseline path.
 - `src/trainable_quantum_model.py`, `src/enhanced_training.py`, and `train_v7.py` are the newer stabilized trainable-quantum path.
-- Local ablation artifacts currently outperform the documented V7 result on test accuracy.
+- Multi-seed classical artifacts currently outperform the documented and rerun V7 trainable-quantum results on test accuracy.
 - Several human-written docs still describe V4 as the current best model. Treat that as historical unless re-verified.
 
 ## Source Of Truth Order
@@ -26,7 +26,9 @@ When results disagree, use this priority order:
 ## Current Known Study Status
 
 - Documented stabilized V7 result: about `67.35%` best validation and `65.02%` test accuracy in repo docs/notebook outputs.
-- Multi-seed benchmark status now exists for all M4-feasible thesis-faithful and current-local core models:
+- Fresh V7 rerun status: `72.89%` best validation and `72.53%` test accuracy from the April 2026 Colab L4 rerun; local checkpoints are synced, but the remote `experiments/v7_*` metadata folder remains a provenance gap.
+- Multi-seed benchmark status now exists for all M4-feasible thesis-faithful, current-local, and modern-classical core models:
+  - `resnet18_cifar_gray`: `88.13 ± 0.82` test, `92.98 ± 0.29` best validation
   - `thesis_cnniiii`: `85.26 ± 0.97` test
   - `classical_conv`: `81.40 ± 1.06` test
   - `param_linear`: `81.12 ± 2.27` test
@@ -34,14 +36,14 @@ When results disagree, use this priority order:
   - `thesis_cnn3`: `79.33 ± 1.26` test
   - `thesis_hqnn2`: `78.61 ± 0.69` test
 - Therefore, the current repo evidence supports a stronger "fair benchmark + hybrid QML engineering and stabilization" story than a clean "quantum advantage" story.
-- The main unresolved benchmark item is a fresh artifact-backed rerun for the trainable V7 path, likely on Colab rather than local Mac hardware.
+- The main unresolved V7 item is artifact provenance cleanup for the missing remote `experiments/v7_*` metadata folder, not a default new training run.
 - The repo now includes nested `AGENTS.md`, repo-local hooks, repo-local shell rules, and a broader Codex workflow layer for audit, triage, roadmap, and artifact-pack work.
 
 ## Important Repo Caveats
 
 - `README.md`, `CLAUDE.md`, and `docs/AUDIT_REPORT.md` are partially stale relative to post-November 2025 results.
 - `experiments/run_experiments.py` is stale relative to the current `EnhancedTrainer` API.
-- `train_v7.py` exposes `--target`, but the current enhanced training path does not thread that value through.
+- `train_v7.py` threads `--target` through and now emits aggregate-compatible future V7 JSON rows; the existing V7 rerun JSON still notes that it was reconstructed from a user-captured Colab log.
 - The dataset loader skips malformed filenames with unknown label codes. One known file in `set/train` resolves to label code `00` and is ignored.
 - Preserve `.claude/*` files. Codex integration in this repo is additive, not a replacement for Claude workflows.
 

@@ -6,7 +6,7 @@ import sys
 def system_message(command: str) -> str | None:
     lowered = command.lower()
 
-    if any(token in lowered for token in ["train_thesis_models.py", "train_ablation_local.py", "train_v7.py"]):
+    if any(token in lowered for token in ["train_thesis_models.py", "train_ablation_local.py", "train_v7.py", "train_modern_baselines.py"]) or " -m src.train" in lowered:
         return "Result-affecting run finished. Reconcile artifacts and refresh benchmark summaries before changing narrative docs."
     if "aggregate_benchmarks.py" in lowered:
         return "Benchmark summary refreshed. Sync any publication-facing docs that depend on the updated table."

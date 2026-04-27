@@ -31,13 +31,14 @@ Scoped instruction files:
 |---|---|
 | `paper` | manuscript editing, claim-sensitive drafting |
 | `review` | read-only audits, circuit review, paper consistency review |
+| `deep` | high-rigor non-interactive reconciliation, paper audit, workflow audit, benchmark triage, and roadmap planning |
 | `fast_local` | lighter local iteration |
 | `benchmark` | result reconciliation, next-run decision, roadmap work |
 | `colab` | Colab handoff and remote-run planning |
 
-These profiles remain the conceptual operating modes for the repo. For the current
-local Codex CLI, the non-interactive `scripts/codex-*.sh` layer pins equivalent
-model/reasoning/sandbox settings explicitly on the command line for compatibility.
+As of April 27, 2026, high-rigor non-interactive scripts use the repo-local `deep`
+profile and attach JSON output schemas where the result should be machine-checkable.
+They still pin read-only sandboxing at the script level when the workflow is an audit.
 
 ## 4. Skill Routing
 
@@ -110,8 +111,7 @@ The main non-interactive workflow entrypoints are:
 - `scripts/codex-model-benchmark.sh`
 
 For the current local CLI version, these scripts are the preferred non-interactive
-entrypoints because they pin compatible Codex settings directly instead of relying
-on repo-local profile resolution.
+entrypoints because they combine the appropriate profile, sandbox, and output schema.
 
 ## 8. Default Operational Sequence
 

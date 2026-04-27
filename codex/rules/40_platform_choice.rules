@@ -20,6 +20,35 @@ prefix_rule(
 )
 
 prefix_rule(
+    pattern = ["python", "train_modern_baselines.py"],
+    decision = "prompt",
+    justification = "Modern classical baselines can change the reviewer-proof upper-bound row; confirm the run is needed and benchmark summaries will be reconciled.",
+    match = [
+        "python train_modern_baselines.py --model resnet18_cifar_gray",
+        "python train_modern_baselines.py --model resnet18_cifar_gray --seed 42 --split-seed 42",
+    ],
+)
+
+prefix_rule(
+    pattern = ["python", "train_thesis_models.py"],
+    decision = "prompt",
+    justification = "Thesis-faithful benchmark runs affect publication comparisons; confirm the run is intentional and family separation will be preserved.",
+    match = [
+        "python train_thesis_models.py --model thesis_cnniiii",
+        "python train_thesis_models.py --model thesis_hqnn2",
+    ],
+)
+
+prefix_rule(
+    pattern = ["python", "-m", "src.train"],
+    decision = "prompt",
+    justification = "src.train is the older V4/V6 baseline path; confirm this historical-path run is needed before spending time on it.",
+    match = [
+        "python -m src.train",
+    ],
+)
+
+prefix_rule(
     pattern = ["git", "reset", "--hard"],
     decision = "forbidden",
     justification = "Hard resets are disallowed in this study repo. Reconcile or inspect artifacts instead of deleting state.",
