@@ -32,7 +32,8 @@ Use this file together with:
 
 | Model | Runs | Test | Best Val | Params | Interpretation |
 |---|---:|---:|---:|---:|---|
-| `V7_trainable_quantum_rerun` | 1 fresh rerun | 72.53 | 72.89 | 87,798 | improved trainable-quantum engineering case-study, still not current benchmark leader; Drive-backed checkpoint files are now synced locally |
+| `V7_trainable_quantum_rerun` | 1 resumed rerun | 72.53 | 72.89 | 87,798 | April 6 resumed trainable-quantum engineering case-study, still not current benchmark leader; Drive-backed checkpoint files are now synced locally |
+| `V7_trainable_quantum_clean_20260427` | 1 clean non-resumed rerun | 65.88 | 69.97 | 87,798 | clean April 27-28 Colab L4 run reconstructed from captured notebook output after runtime disconnect; checkpoint files exist in Drive, but the JSON/experiment metadata was not copied before disconnect |
 | `V7_trainable_quantum_documented` | 1 documented | 65.02 | 67.35 | 87,798 | older documented trainable result retained for historical comparison |
 
 ### 1.4 Modern-classical upper bound
@@ -54,7 +55,7 @@ These are the strongest claims currently supported by repository artifacts.
    - information bottleneck threshold
    - gradient stabilization
    - AMP / float16 incompatibility at the quantum boundary
-   - reproducible Colab rerun to `72.53%` test without NaN failure
+   - Colab reruns without NaN failure, with observed single-run V7 test range from `65.88%` clean non-resumed to `72.53%` resumed
 
 ## 3. Claims To Avoid
 
@@ -92,8 +93,8 @@ Before submission, the draft should be rewritten so that:
 
 The most valuable next steps are now:
 
-1. sync the remote `experiments/v7_*` directory back into the repo workspace if it is still recoverable, so the rerun is represented by more than checkpoints plus the reconciled log-backed JSON row,
+1. keep the reconstructed April 2026 V7 JSON rows clearly labeled and recover copied remote `experiments/v7_*` metadata only if it is still available; the April 27 Drive folder currently contains checkpoints but an empty `experiments/` subfolder,
 2. rewrite and tighten `paper/draft.md` around the benchmark hierarchy above,
 3. refresh submission-facing summary documents and Word exports,
 4. add significance intervals/tests if reviewers are expected to push on variance,
-5. only then consider a low-data pilot or another narrowly justified extension if it materially improves reviewer resilience and is worth spending part of the remaining `245` Colab computing units.
+5. only then consider a low-data pilot or another narrowly justified extension if it materially improves reviewer resilience; spending roughly `45-50` surplus Colab units is defensible before renewal, but not for V7 artifact hygiene.

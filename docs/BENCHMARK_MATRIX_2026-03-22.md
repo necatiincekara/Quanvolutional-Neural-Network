@@ -10,14 +10,15 @@ This document tracks:
 
 ## 0. Current Compute Budget Snapshot
 
-As of April 23, 2026:
+As of April 30, 2026:
 
 - Google Colab budget currently available: `245` compute units
-- Monthly renewal: `100` compute units
+- Monthly renewal: `100` compute units, with a practical storage cap around `300` units
 - Practical policy for this budget:
   - keep thesis-faithful classical and light non-trainable work on the M4 Mac
-  - the trainable-quantum confirmation is already complete, so reserve Colab mainly for only clearly paper-relevant extension studies
-  - do **not** spend Colab units on work that is already feasible on the Mac
+  - the trainable-quantum confirmations are complete, so do not spend Colab units only for V7 folder hygiene
+  - because unused surplus above the cap can be lost after renewal, spending roughly `45-50` units is acceptable if the experiment is paper-relevant and not merely duplicative
+  - do **not** spend Colab units on work that is already feasible on the Mac unless doing so saves meaningful time for a high-impact paper audit or extension
 
 Recommended allocation:
 
@@ -27,7 +28,7 @@ Recommended allocation:
 | `thesis_hqnn2` | M4 Mac by default | 0 | thesis-best quantum reproduction via cached preprocessing |
 | local reruns: `classical_conv`, `param_linear`, `non_trainable_quantum` | M4 Mac | 0 | protocol-v1 multi-seed benchmark |
 | `V7 trainable quantum` confirmatory rerun | Colab L4/A100 | completed | one reproducible trainable-quantum confirmation run |
-| P2 extension work | Colab only if needed | remaining budget | low-data study, stronger baselines, or extra V7 seeds |
+| P2 extension work | M4 pilot first, Colab for selected high-impact runs | ~45-50 surplus CU if justified | low-data study, stronger baselines, or extra V7 seeds only if they address reviewer risk |
 
 This means the immediate next training steps should stay on the Mac unless a new experiment is both paper-relevant and clearly not M4-feasible.
 
@@ -39,7 +40,8 @@ This means the immediate next training steps should stay on the Mac unless a new
 | `param_linear` | repo-local + publication_v1 rerun | 25-param matched replacement | 87.13 | 83.69 | 87,798 | reproduced three times | current 3-seed summary is `81.12 ± 2.27` test; strongest single seed reaches `83.69%` |
 | `non_trainable_quantum` | repo-local + publication_v1 rerun | Henderson-style cached quantum | 86.84 | 80.90 | 88,488 | reproduced three times | current 3-seed summary is `80.40 ± 0.69` test; runtime excludes the one-time quantum cache/precompute stage |
 | `resnet18_cifar_gray` | modern-baseline + publication_v1 rerun | stronger modern classical baseline | 93.27 | 89.06 | 11,190,252 | reproduced three times | current 3-seed summary is `88.13 ± 0.82` test; reviewer-proof modern classical upper bound on the same fixed split |
-| `V7 trainable quantum rerun` | colab-l4-user-log + local checkpoints | trainable quantum | 72.89 | 72.53 | 87,798 | rerun complete | April 2026 fresh Colab rerun; still below strongest classical anchors; local checkpoints are synced, but remote `experiments/v7_*` metadata remains a provenance gap |
+| `V7 trainable quantum rerun` | colab-l4-user-log + local checkpoints | trainable quantum | 72.89 | 72.53 | 87,798 | rerun complete | April 6, 2026 resumed Colab rerun; still below strongest classical anchors; local checkpoints are synced, but remote `experiments/v7_*` metadata remains a provenance gap |
+| `V7 trainable quantum clean` | colab-l4-notebook-output + Drive checkpoints | trainable quantum | 69.97 | 65.88 | 87,798 | clean rerun complete | April 27, 2026 clean non-resumed L4 run; JSON reconstructed from captured notebook output because runtime disconnected before Drive copy; confirms trainability but not benchmark leadership |
 | `V7 trainable quantum` | docs/notebook | trainable quantum | 67.35 | 65.02 | 87,798 | documented | engineering case study, not benchmark winner |
 | `V4` | historical docs | old non-trainable | 8.75 | - | historical | historical | no longer a sufficient main reference |
 | `CNN-III` | thesis + local reproduction | classical | 85.96 | 80.26 | 769,804 | reproduced three times | current 3-seed summary is `79.33 ± 1.26` test; all local runs remain below the thesis reference (`83.05%`) |
@@ -94,8 +96,8 @@ python train_modern_baselines.py --model resnet18_cifar_gray --seed 42 --split-s
 ## 5. Practical Next Order
 
 1. Treat `resnet18_cifar_gray` as the current reviewer-proof modern classical upper bound and keep it analytically separate from thesis-faithful and matched-budget families.
-2. Keep Colab in reserve; do not spend the current `245` CU budget on work that is already M4-feasible.
+2. Use Colab deliberately: do not rerun V7 for folder hygiene, but a `45-50` CU paper-impact experiment is reasonable before the next renewal because surplus above the cap may be lost.
 3. Tighten the paper and submission-facing documents around the now-complete benchmark picture.
-4. Recover or explicitly mark the missing remote `experiments/v7_*` metadata before considering any new V7 run.
+4. Keep the reconstructed V7 rows clearly labeled and recover missing remote `experiments/v7_*` metadata only if it is still available; the April 27 Drive `experiments/` subfolder is empty.
 5. If additional empirical work is still needed, prefer a low-data pilot on the Mac before any new Colab training.
 6. Only consider extra Colab experiments if they are likely to change reviewer risk more than they consume compute budget.

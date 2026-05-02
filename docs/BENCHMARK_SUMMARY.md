@@ -34,5 +34,6 @@ Auto-generated from `experiments/*.json` plus documented reference rows.
 
 | Model | Source | Runs | Best Val | Test | Params | Notes |
 |---|---|---:|---:|---:|---:|---|
+| V7_trainable_quantum_clean_20260427 | colab-l4-notebook-output | 1 | 69.97 ± 0.00 | 65.88 ± 0.00 | 87798 | Clean April 27, 2026 Colab L4 run reconstructed from captured colab_v7_rerun_clean.ipynb output after runtime disconnected before the artifact-copy cell was executed. Drive-backed checkpoints were saved during training, but the emitted local JSON was not copied to Drive before disconnect. |
 | V7_trainable_quantum_documented | docs/notebook | 1 | 67.35 ± 0.00 | 65.02 ± 0.00 | 87798 | Documented stabilized V7 result from docs/notebook output. |
-| V7_trainable_quantum_rerun | colab-l4-user-log | 1 | 72.89 ± 0.00 | 72.53 ± 0.00 | 87798 | Fresh Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace. |
+| V7_trainable_quantum_rerun | colab-l4-user-log | 1 | 72.89 ± 0.00 | 72.53 ± 0.00 | 87798 | April 6, 2026 resumed Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace. |

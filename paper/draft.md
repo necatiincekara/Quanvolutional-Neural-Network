@@ -1,6 +1,6 @@
 # Fair Benchmarking and Engineering Lessons for Quanvolutional Neural Networks on Ottoman-Turkish Handwritten Character Recognition
 
-> Editorial status note, April 7, 2026:
+> Editorial status note, April 30, 2026:
 > This draft still reflects the older V7-centered manuscript state and is not submission-ready in its current form.
 > The current benchmark picture is now:
 > - `resnet18_cifar_gray`: `88.13 ± 0.82` test
@@ -9,7 +9,8 @@
 > - `param_linear`: `81.12 ± 2.27` test
 > - `non_trainable_quantum`: `80.40 ± 0.69` test
 > - `thesis_hqnn2`: `78.61 ± 0.69` test
-> - fresh `V7 trainable quantum` Colab rerun: `72.53%` test
+> - April 6 resumed `V7 trainable quantum` Colab rerun: `72.53%` test
+> - April 27 clean non-resumed `V7 trainable quantum` Colab rerun: `65.88%` test, reconstructed from captured notebook output after runtime disconnect
 > - older documented `V7 trainable quantum`: `65.02%` test
 > Therefore the paper must now be rewritten as a fair benchmark + engineering-lessons manuscript, not as a V7 accuracy-win manuscript.
 > Before using this draft for submission, reconcile claims against `docs/SUBMISSION_BENCHMARK_2026-03-25.md`, `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/EXPERIMENTS.md`, and `experiments/*.json`.
@@ -22,7 +23,7 @@ Necati Incekara
 
 ## Abstract
 
-We present a reproducible benchmark extension of a master's-thesis study on quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a difficult 44-class low-data task with 3,894 grayscale samples. The study combines three complementary views of the problem: thesis-faithful model reproductions, current-local matched-budget ablations, and a stronger modern-classical upper bound. Across multi-seed evaluation, the strongest reproduced evidence currently favors classical baselines rather than quantum variants. In the thesis-faithful family, the strongest reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, while the best reproduced thesis-faithful quantum baseline, `thesis_hqnn2`, reaches **78.61 ± 0.69%**. In the current-local matched-budget family, `classical_conv` reaches **81.40 ± 1.06%**, `param_linear` reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. A stronger modern-classical baseline, `resnet18_cifar_gray`, reaches **88.13 ± 0.82%**. A fresh Colab rerun of the stabilized trainable V7 path improves the trainable-quantum case-study result to **72.53%** test accuracy, up from the previously documented **65.02%**, but still below the strongest classical baselines. We therefore do not claim a quantum advantage on this task. Instead, the scientific value of the work lies in three contributions: (1) a fair comparative benchmark that separates thesis-faithful, matched-budget, and modern-classical families, (2) a trainable-quantum engineering case-study showing how information bottlenecks, gradient collapse, and optimizer/precision mistakes affect hybrid training, and (3) the documentation of a practical incompatibility between PyTorch AMP float16 autocasting and variational quantum circuit backpropagation at the quantum boundary.
+We present a reproducible benchmark extension of a master's-thesis study on quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a difficult 44-class low-data task with 3,894 grayscale samples. The study combines three complementary views of the problem: thesis-faithful model reproductions, current-local matched-budget ablations, and a stronger modern-classical upper bound. Across multi-seed evaluation, the strongest reproduced evidence currently favors classical baselines rather than quantum variants. In the thesis-faithful family, the strongest reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, while the best reproduced thesis-faithful quantum baseline, `thesis_hqnn2`, reaches **78.61 ± 0.69%**. In the current-local matched-budget family, `classical_conv` reaches **81.40 ± 1.06%**, `param_linear` reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. A stronger modern-classical baseline, `resnet18_cifar_gray`, reaches **88.13 ± 0.82%**. April 2026 Colab reruns of the stabilized trainable V7 path place the single-run trainable-quantum case-study range at **65.88--72.53%** test accuracy, still below the strongest classical baselines. We therefore do not claim a quantum advantage on this task. Instead, the scientific value of the work lies in three contributions: (1) a fair comparative benchmark that separates thesis-faithful, matched-budget, and modern-classical families, (2) a trainable-quantum engineering case-study showing how information bottlenecks, gradient collapse, and optimizer/precision mistakes affect hybrid training, and (3) the documentation of a practical incompatibility between PyTorch AMP float16 autocasting and variational quantum circuit backpropagation at the quantum boundary.
 
 **Keywords:** Quantum Machine Learning, Quanvolutional Neural Networks, Hybrid Quantum-Classical Computing, Ottoman Script Recognition, Variational Quantum Circuits, Gradient Stabilization, Barren Plateaus
 
@@ -262,7 +263,7 @@ Using `optimizer.step()` directly (bypassing `scaler.step()`) caused irreversibl
 - **Reproducibility and benchmark reruns:** Apple M4 Mac Mini (CPU, `default.qubit`) for all M4-feasible thesis-faithful and matched-budget models
 - **Quantum simulator:** PennyLane `lightning.gpu` with adjoint differentiation
 - **Framework:** PyTorch 2.x, PennyLane 0.44, NumPy ≥ 2.0
-- **Batch size / epochs:** configuration depends on benchmark family; the fresh V7 Colab rerun shown in this paper uses batch size 128 and reaches its reported result after a 10-epoch budget on L4
+- **Batch size / epochs:** configuration depends on benchmark family; the April 2026 V7 Colab reruns shown in this paper use batch size 128 and report after a 10-epoch budget on L4
 
 ---
 
@@ -298,7 +299,7 @@ This family asks a narrower question: if the parameter budget is kept close to t
 
 ### 4.4 Trainable-Quantum Engineering Case-Study
 
-The V1--V7 line remains scientifically useful, but it should be interpreted as an engineering case-study rather than as the main benchmark winner. Its value lies in showing what failed, what became trainable, and why. The April 2026 Colab rerun materially improves the stabilized V7 result, so the engineering story should now be told using both the older documented run and the fresh rerun.
+The V1--V7 line remains scientifically useful, but it should be interpreted as an engineering case-study rather than as the main benchmark winner. Its value lies in showing what failed, what became trainable, and why. The April 2026 Colab reruns show that the stabilized V7 path can train without NaN collapse, but they also show meaningful single-run variability; the engineering story should now be told using the older documented run, the April 6 resumed rerun, and the April 27 clean non-resumed rerun.
 
 #### 4.4.1 Architectural Evolution Summary
 
@@ -312,11 +313,12 @@ The V1--V7 line remains scientifically useful, but it should be interpreted as a
 | V6 | 6×6 | 9 | ~117s/batch | 0.00% | Gradient collapse |
 | V7-Run1 | 8×8 | 16 | ~5.4min/batch | NaN | AMP float16 bug |
 | **V7-Run2** | **8×8** | **16** | **~2.3h/epoch** | **67.35%** | **stabilized trainable-quantum case-study** |
-| **V7-Run3** | **8×8** | **16** | **~13.1h / 10-epoch budget** | **72.89%** | **fresh Colab L4 confirmatory rerun; 72.53% test** |
+| **V7-Run3** | **8×8** | **16** | **~13.1h / 10-epoch budget** | **72.89%** | **April 6 resumed Colab L4 rerun; 72.53% test** |
+| **V7-Run4** | **8×8** | **16** | **21h 43m / 10 epochs** | **69.97%** | **April 27 clean non-resumed Colab L4 rerun; 65.88% test** |
 
-#### 4.4.2 Fresh Colab Rerun
+#### 4.4.2 April 6 Resumed Colab Rerun
 
-Fresh epoch-by-epoch V7 rerun results for the `data_reuploading` circuit on an L4 GPU:
+April 6 epoch-by-epoch V7 rerun results for the `data_reuploading` circuit on an L4 GPU:
 
 | Epoch | Train Loss | Train Acc. | Val Acc. | Q-Grad Mean | C-Grad Mean | gradient_scale α |
 |-------|-----------|-----------|---------|-------------|-------------|-----------------|
@@ -331,9 +333,15 @@ Fresh epoch-by-epoch V7 rerun results for the `data_reuploading` circuit on an L
 | 9 | 1.8931 | 64.72% | **72.89%** | 5.47e-01 | 2.09e-01 | 0.1000 |
 | 10 | 1.7960 | 68.08% | **72.89%** | 2.08e-01 | 1.61e-01 | 0.1000 |
 
-**Fresh rerun test accuracy:** `72.53%`
+**April 6 rerun test accuracy:** `72.53%`
 
-This rerun resumed from a Drive-backed checkpoint at epoch 4 after an earlier target-triggered stop, then continued cleanly through epoch 10. The result does not overtake the strongest classical baselines, but it materially strengthens the trainable-quantum engineering case-study by showing that the stabilized V7 path is reproducible and improves substantially over the older documented `65.02%` test result. At the time of writing, the local repository now contains the synced Drive-backed checkpoint files for this rerun; the remaining housekeeping gap is the remote `experiments/v7_*` directory rather than the core checkpoint artifacts themselves.
+This rerun resumed from a Drive-backed checkpoint at epoch 4 after an earlier target-triggered stop, then continued cleanly through epoch 10. The result does not overtake the strongest classical baselines, but it materially strengthens the trainable-quantum engineering case-study by showing that the stabilized V7 path can improve substantially over the older documented `65.02%` test result. At the time of writing, the local repository now contains the synced Drive-backed checkpoint files for this rerun; the remaining housekeeping gap is the remote `experiments/v7_*` directory rather than the core checkpoint artifacts themselves.
+
+#### 4.4.3 April 27 Clean Non-Resumed Colab Rerun
+
+A later clean Colab L4 run removed local V7 checkpoints before launch and trained for the full 10-epoch budget without resume. The run reached `69.97%` best validation accuracy and `65.88%` test accuracy in `21h 43m`. Its JSON row is stored as `experiments/v7_trainable_quantum_clean_20260427_l4.json`, but it is explicitly marked as reconstructed from captured `colab_v7_rerun_clean.ipynb` output because the Colab runtime disconnected before the artifact-copy cell copied the emitted JSON to Drive. The linked Drive folder contains `best_v7_model.pth` and `checkpoint_latest_v7.pth`, while its `experiments/` subfolder is empty.
+
+This clean non-resumed run confirms that V7 trains without the earlier NaN failure, but it should not be used to claim stable high performance. Instead, the April 2026 evidence now supports a conservative single-run V7 range of `65.88--72.53%` test accuracy, reinforcing the decision to frame V7 as an engineering case-study rather than a benchmark leader.
 
 ### 4.5 Information Bottleneck Analysis
 
@@ -341,7 +349,7 @@ Systematic reduction of feature-map dimensions reveals a critical spatial thresh
 
 | Feature Map | Spatial Values/Channel | Q-Calls/img | Val Acc. | Gradient Status |
 |------------|----------------------|-------------|---------|----------------|
-| 8×8 | 64 | 16 | 8.75% (V4) / 72.89% (fresh V7 rerun) | Healthy |
+| 8×8 | 64 | 16 | 8.75% (V4) / 72.89% (April 6 V7) / 69.97% (April 27 clean V7) | Healthy |
 | 6×6 | 36 | 9 | 0.00% | Complete collapse |
 | 4×4 | 16 | 4 | 2.04% | Below random baseline |
 
@@ -397,7 +405,8 @@ scaler.step(quantum_optimizer)    # in training loop, not optimizer.step()
 | Variant | Quantum Params | Val Acc. | Test Acc. | Notes |
 |---------|---------------|---------|---------|-------|
 | V4 (non-trainable, old arch.) | 0 trainable | 8.75% | — | Original baseline |
-| V7 (trainable, data_reuploading, fresh rerun) | 25 | 72.89% | 72.53% | improved trainable engineering case-study, but still not current benchmark leader |
+| V7 (trainable, data_reuploading, April 6 resumed rerun) | 25 | 72.89% | 72.53% | strongest single V7 result, but still not current benchmark leader |
+| V7 (trainable, data_reuploading, April 27 clean rerun) | 25 | 69.97% | 65.88% | clean non-resumed run reconstructed from captured notebook output after runtime disconnect |
 | V7 (older documented run) | 25 | 67.35% | 65.02% | older documented trainable result retained for historical comparison |
 | `classical_conv` | 0 | 86.26 ± 1.76 | **81.40 ± 1.06** | strongest current-local matched-budget baseline |
 | `non_trainable_quantum` | 0 trainable | 85.77 ± 0.94 | 80.40 ± 0.69 | Henderson-style cached quantum baseline |
@@ -418,7 +427,7 @@ The most important scientific update in the repository is no longer the V4-to-V7
 
 This does not make the quantum experiments uninformative. It simply constrains the valid claim: the current evidence supports an honest comparative benchmark and engineering analysis, not a quantum-win narrative.
 
-The fresh V7 rerun strengthens this conclusion rather than overturning it. The trainable quantum path is meaningfully better than its older documented version, but even after this improvement it remains well below the strongest thesis-faithful and matched-budget classical anchors. That makes V7 more useful as evidence about trainability and engineering than as evidence about benchmark leadership.
+The April 2026 V7 reruns strengthen this conclusion rather than overturning it. The trainable quantum path is meaningfully trainable compared with earlier failed V1--V6 attempts, but even the strongest April run remains well below the strongest thesis-faithful and matched-budget classical anchors, and the clean non-resumed run is close to the older documented V7 result. That makes V7 more useful as evidence about trainability and engineering than as evidence about benchmark leadership.
 
 ### 5.2 The Quantum Preprocessing Trade-off
 
@@ -455,13 +464,13 @@ This interpretation should not be misread as "the thesis was wrong." A more accu
 
 3. **Single dataset.** Results remain specific to Ottoman handwritten character recognition. A second dataset, low-data scaling study, or robustness axis would materially strengthen the paper.
 
-4. **Single-run trainable-quantum evidence.** The fresh V7 rerun now removes the largest training-side uncertainty, but the trainable-quantum case-study is still represented by a single fresh Colab rerun rather than a multi-seed remote study. The checkpoint files are now synced locally; the remaining artifact gap is the remote `experiments/v7_*` directory and any richer run metadata it may contain.
+4. **Single-run trainable-quantum evidence.** The April 2026 V7 evidence consists of individual Colab reruns rather than a multi-seed remote study. The clean non-resumed run was reconstructed from captured notebook output after runtime disconnect; Drive checkpoint files exist, but the copied JSON/experiment metadata is missing from the Drive `experiments/` subfolder.
 
 ---
 
 ## 6. Conclusion
 
-We presented a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition. The strongest current evidence in the repository favors classical baselines rather than quantum variants: the best thesis-faithful reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, and the strongest current-local matched-budget model is `classical_conv` with **81.40 ± 1.06%**. The thesis-faithful quantum reproduction `thesis_hqnn2` reaches **78.61 ± 0.69%**, while the fresh trainable V7 Colab rerun reaches **72.53%** test accuracy.
+We presented a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition. The strongest current evidence in the repository favors classical baselines rather than quantum variants: the best thesis-faithful reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, and the strongest current-local matched-budget model is `classical_conv` with **81.40 ± 1.06%**. The thesis-faithful quantum reproduction `thesis_hqnn2` reaches **78.61 ± 0.69%**, while April 2026 trainable V7 Colab reruns span **65.88--72.53%** test accuracy.
 
 The paper therefore should not claim quantum superiority. Its value lies elsewhere:
 

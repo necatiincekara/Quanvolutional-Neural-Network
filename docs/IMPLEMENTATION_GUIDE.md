@@ -1,8 +1,8 @@
 # Implementation Guide: From 82% to 90% Accuracy
 
-> Status note, April 27, 2026:
+> Status note, April 30, 2026:
 > This guide is historical planning material and is stale relative to the current artifact-backed benchmark.
-> Do not treat the `82% -> 90%` path below as the current study plan. The current strongest overall model is `resnet18_cifar_gray = 88.13 ± 0.82` test, the strongest thesis-faithful model is `thesis_cnniiii = 85.26 ± 0.97`, and the fresh V7 trainable-quantum rerun is an engineering case-study at `72.53%` test.
+> Do not treat the `82% -> 90%` path below as the current study plan. The current strongest overall model is `resnet18_cifar_gray = 88.13 ± 0.82` test, the strongest thesis-faithful model is `thesis_cnniiii = 85.26 ± 0.97`, and April 2026 V7 trainable-quantum reruns remain engineering case-study evidence spanning `65.88--72.53%` test.
 > Use `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `docs/PUBLICATION_STRATEGY_2026-03-22.md` before implementing any result-affecting change.
 
 ## Quick Start: Immediate Next Steps

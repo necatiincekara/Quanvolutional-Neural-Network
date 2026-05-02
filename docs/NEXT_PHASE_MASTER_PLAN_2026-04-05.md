@@ -4,11 +4,12 @@
 
 This document is the post-upgrade master plan for the study. It assumes the current benchmark truth remains unchanged and uses the upgraded Codex layer to reduce ambiguity in the next research phase.
 
-> Update, April 23, 2026:
-> The fresh Colab V7 confirmatory rerun remains complete at `72.89%` best validation and `72.53%` test accuracy.
+> Update, April 30, 2026:
+> The April 6 resumed Colab V7 rerun remains complete at `72.89%` best validation and `72.53%` test accuracy.
+> The April 27 clean non-resumed Colab V7 rerun reached `69.97%` best validation and `65.88%` test; its JSON row is reconstructed from captured notebook output because the runtime disconnected before the artifact-copy cell copied JSON to Drive.
 > The stronger modern classical baseline `resnet18_cifar_gray` has now completed three local seeds at `88.13 ± 0.82%` test accuracy.
 > Remaining Colab budget is approximately `245` computing units.
-> Default policy is still conservative: do not start another Colab training run unless it changes the paper decision boundary.
+> Default policy is still conservative for V7 reruns, but spending roughly `45-50` surplus Colab units can be justified if the experiment is paper-impactful before the next renewal cap.
 
 ## 1. Immediate Operating Sequence
 
@@ -20,7 +21,7 @@ These are the next exact actions, in order:
    - Paper impact: high
 
 2. **Finish the remaining V7 artifact sync and reconciliation**
-   - Goal: keep `experiments/*.json`, `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `paper/draft.md` aligned, and recover the remote `experiments/v7_*` folder if it is still accessible.
+   - Goal: keep `experiments/*.json`, `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `paper/draft.md` aligned, and recover copied remote `experiments/v7_*` metadata only if it is still accessible.
    - Platform: local
    - Paper impact: high
 
@@ -35,7 +36,7 @@ These are the next exact actions, in order:
    - Paper impact: medium
 
 5. **Re-evaluate whether any extra training is still worth compute**
-   - Goal: default to no new Colab runs unless a new experiment would materially change reviewer resilience or the paper decision boundary.
+   - Goal: do not rerun V7 just for artifact hygiene, but use expiring Colab surplus for a high-impact experiment if it materially changes reviewer resilience or the paper decision boundary.
    - Platform: local planning only
    - Paper impact: medium
 
@@ -49,9 +50,9 @@ Finish a credible Q2 / specialized-QML submission without implying unsupported q
 
 1. **Artifact sync and V7 result reconciliation**
    - Platform: local + existing Drive artifacts
-   - Goal: pull the actual `models/` and `experiments/v7_*` artifacts from Colab/Drive into the repo and replace any user-log-only placeholder records
+   - Goal: keep the reconstructed April 2026 V7 JSON rows clearly labeled, preserve existing Drive checkpoints, and pull copied `experiments/v7_*` metadata only if it is still available
    - Paper impact: high
-   - Stop condition: complete once the rerun is backed by local artifact files rather than only reconstructed terminal output
+   - Stop condition: complete once benchmark-facing docs agree that the April 27 clean run has Drive checkpoints but no copied Drive JSON/experiment metadata
 
 2. **Paper synchronization after the rerun**
    - Platform: local
@@ -65,9 +66,9 @@ Finish a credible Q2 / specialized-QML submission without implying unsupported q
 
 4. **Optional next empirical extension**
    - Candidate: a low-data shortlist pilot before any second dataset or extra V7 seed
-   - Platform: M4 first, Colab only if absolutely necessary
+   - Platform: M4 first for cheap pilots; Colab is acceptable for a selected paper-impact experiment using likely-expiring surplus units
    - Paper impact: medium to high
-   - Stop condition: skip if the reviewer-risk reduction does not justify the implementation cost or the remaining `245` CU budget
+   - Stop condition: skip if the reviewer-risk reduction does not justify the implementation cost or Colab spend
 
 ## 3. Track B — Stronger Research Route
 
@@ -106,19 +107,20 @@ Execution rule:
 ## 4. Compute Policy
 
 - Keep Mac work for M4-feasible benchmark and documentation tasks.
-- The V7 confirmatory rerun is already complete; treat it as the last default Colab training spend unless new evidence justifies more.
+- The V7 confirmatory reruns are already complete; treat them as the last default Colab training spend unless new evidence justifies more.
 - Current remaining budget is approximately `245` computing units.
-- Do not spend additional Colab units on work already completed under the publication benchmark protocol.
-- Prefer zero-CU work now: artifact sync, reconciliation, manuscript tightening, and submission package cleanup.
-- Delay broader extension work until the rerun artifacts are synced and the manuscript is updated.
+- Do not spend additional Colab units on work already completed under the publication benchmark protocol or on V7 folder hygiene.
+- Prefer zero-CU work for artifact sync, reconciliation, manuscript tightening, and submission package cleanup.
+- A `45-50` CU paper-impact experiment is acceptable before renewal if it addresses reviewer risk better than local-only work.
+- Delay broader extension work until the rerun artifacts are reconciled and the manuscript is updated.
 
 ## 5. Current Stop Conditions
 
 Stop expanding the trainable-quantum branch if:
 
-- the fresh V7 rerun remains clearly below the strongest classical anchors, and
+- the April 2026 V7 reruns remain clearly below the strongest classical anchors, and
 - the paper contribution is already defensible as a benchmark + engineering paper without more V7 seeds
-- or the expected information gain does not justify spending the remaining `245` CU budget
+- or the expected information gain does not justify spending Colab units beyond the surplus likely to be lost at renewal
 
 Stop expanding the publication benchmark if:
 

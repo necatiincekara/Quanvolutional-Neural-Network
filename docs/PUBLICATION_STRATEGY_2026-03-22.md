@@ -26,7 +26,7 @@ The current repository evidence does **not** support a strong "quantum advantage
 
 ### 2.1 The strongest current result is not quantum
 
-Current repository evidence after the unified `publication_v1` benchmark pass and the fresh April 2026 Colab V7 rerun:
+Current repository evidence after the unified `publication_v1` benchmark pass and the April 2026 Colab V7 reruns:
 
 | Model | Test Accuracy | Status |
 |---|---:|---|
@@ -37,7 +37,8 @@ Current repository evidence after the unified `publication_v1` benchmark pass an
 | `non_trainable_quantum` | 80.40 ± 0.69 | current-local Henderson-style non-trainable quantum |
 | `thesis_cnn3` | 79.33 ± 1.26 | thesis-faithful classical pairwise reference |
 | `thesis_hqnn2` | 78.61 ± 0.69 | best thesis-faithful quantum reproduction |
-| `V7 trainable quantum rerun` | 72.53% | fresh Colab L4 rerun, still below strongest classical anchors |
+| `V7 trainable quantum rerun` | 72.53% | April 6 resumed Colab L4 rerun, still below strongest classical anchors |
+| `V7 trainable quantum clean rerun` | 65.88% | April 27-28 clean non-resumed Colab L4 run reconstructed from captured notebook output after runtime disconnect |
 | `V7 trainable quantum (older documented)` | 65.02% | historical documented stabilized result |
 
 This means the present paper cannot credibly argue that the trainable or non-trainable quantum path outperforms matched classical baselines.
@@ -62,7 +63,7 @@ Still missing or incomplete elements include:
 
 - confidence intervals or significance tests
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
-- the actual synced Colab artifact files for the fresh V7 rerun inside the local repo workspace
+- directly copied Colab JSON/experiment metadata for the April 2026 V7 reruns; the repository has reconstructed JSON rows and Drive-backed checkpoints, but the April 27 Drive `experiments/` subfolder is empty
 - a broader validation axis such as low-data scaling or a second dataset
 
 ### 2.5 There is no hardware or computational advantage argument yet
@@ -242,11 +243,11 @@ Steps:
    - current Henderson-style non-trainable quantum
    - classical_conv
    - param_linear
-3. do not schedule another V7 seed by default; first sync the finished rerun artifacts and update the paper from that result
+3. do not schedule another V7 seed by default; first keep the finished rerun artifacts and reconstructed JSON rows clearly labeled
 4. rewrite the paper around trustworthy comparative evidence
 
 Operational note:
-the trainable-quantum confirmation has now been obtained once on Colab L4, and the stronger modern classical upper bound has been completed locally. Remaining Colab budget is about `245` computing units, so further remote runs should still be treated as exceptional rather than routine.
+the trainable-quantum confirmations have now been obtained on Colab L4, and the stronger modern classical upper bound has been completed locally. Remaining Colab budget is about `245` computing units; because surplus above the renewal cap can be lost, a `45-50` CU remote experiment is reasonable only if it is paper-impactful and not just V7 artifact hygiene.
 
 This is the shortest realistic publication path.
 
@@ -276,10 +277,10 @@ That is much stronger and more defensible than:
 
 ## 9. Immediate Action List
 
-1. Sync the actual Colab `models/` and `experiments/v7_*` artifacts into the repo workspace.
-2. Reconcile the fresh V7 rerun row against `docs/EXPERIMENTS.md`, `docs/BENCHMARK_SUMMARY.md`, and `paper/draft.md`.
+1. Keep reconstructed April 2026 V7 rows clearly labeled, and sync copied Colab `experiments/v7_*` metadata only if it is still available.
+2. Reconcile the April 2026 V7 rerun rows against `docs/EXPERIMENTS.md`, `docs/BENCHMARK_SUMMARY.md`, and `paper/draft.md`.
 3. Finalize the benchmark-first paper wording and submission packet from the now-complete benchmark hierarchy.
-4. Delay any additional Colab training unless it clearly changes reviewer risk enough to justify the remaining `245` computing units.
+4. Use Colab only for a paper-impactful extension; spending roughly `45-50` surplus units is defensible before renewal if the experiment addresses reviewer risk.
 5. Decide whether the paper will follow the QML-insight route or the OCR/heritage route.
 
 ## 10. Source Notes

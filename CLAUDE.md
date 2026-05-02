@@ -6,7 +6,7 @@ This file provides project guidance for Claude Code when working in this reposit
 
 This repository contains a hybrid quantum-classical OCR study for Ottoman-Turkish handwritten character recognition. It includes both historical thesis-era material and newer post-thesis experimental artifacts. Do not assume the oldest planning documents still reflect the current scientific status.
 
-As of April 27, 2026:
+As of April 30, 2026:
 
 - `src/model.py` and `src/train.py` represent the older V4/V6-style path.
 - `src/trainable_quantum_model.py`, `src/enhanced_training.py`, and `train_v7.py` represent the newer stabilized trainable-quantum path.
@@ -31,7 +31,7 @@ When results disagree, use this order:
   - `classical_conv`: `81.40 ± 1.06` test
   - `param_linear`: `81.12 ± 2.27` test
   - `non_trainable_quantum`: `80.40 ± 0.69` test
-- Trainable-quantum case study: fresh V7 Colab rerun at `72.89%` best validation and `72.53%` test; older documented V7 remains `67.35%` best validation and `65.02%` test.
+- Trainable-quantum case study: April 6, 2026 resumed V7 Colab rerun at `72.89%` best validation and `72.53%` test; April 27-28, 2026 clean non-resumed V7 Colab rerun at `69.97%` best validation and `65.88%` test, reconstructed from captured notebook output after runtime disconnect; older documented V7 remains `67.35%` best validation and `65.02%` test.
 - Thesis-best quantum result was `HQNN-II` at `82.40%` in the thesis table, but the current thesis-faithful reproduction `thesis_hqnn2` is `78.61 ± 0.69` and should be kept separate from the Henderson-style current-local non-trainable quantum ablation.
 
 ## High-Value Files
@@ -70,7 +70,7 @@ When results disagree, use this order:
 
 - `README.md`, `docs/AUDIT_REPORT.md`, and parts of the historical roadmap are stale relative to post-2025 results.
 - `experiments/run_experiments.py` is stale relative to the current enhanced training path.
-- `train_v7.py` exposes `--target`, but the current enhanced training path does not fully thread that value through.
+- `train_v7.py` exposes `--target` and emits aggregate-compatible V7 JSON rows for future runs. Existing April 2026 V7 JSON rows are reconstructed from captured Colab output rather than copied directly from Drive.
 - The dataset loader skips malformed filenames with unknown label codes. One known file in `set/train` resolves to label code `00` and is ignored.
 
 ## Working Rules

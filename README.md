@@ -6,13 +6,14 @@ A research-grade implementation of a hybrid quantum-classical neural network for
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
 [![PennyLane](https://img.shields.io/badge/PennyLane-0.32+-green.svg)](https://pennylane.ai/)
 
-> Status note, April 27, 2026:
+> Status note, April 30, 2026:
 > This README still contains historical V4/V6-era narrative sections below. For the current benchmark truth, use `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `docs/PUBLICATION_STRATEGY_2026-03-22.md`.
 > The current strongest reproduced evidence favors classical baselines rather than quantum variants:
 > - `resnet18_cifar_gray`: `88.13 ± 0.82` test, modern-classical upper bound
 > - `thesis_cnniiii`: `85.26 ± 0.97` test
 > - `classical_conv`: `81.40 ± 1.06` test
-> - `V7 trainable quantum` fresh Colab rerun: `72.53%` test
+> - `V7 trainable quantum` April 6 resumed Colab rerun: `72.53%` test
+> - `V7 trainable quantum` April 27 clean non-resumed Colab rerun: `65.88%` test, reconstructed from captured notebook output after runtime disconnect
 > Treat the rest of this README primarily as historical background unless it is re-verified against current artifacts.
 
 ## 📝 Project Overview

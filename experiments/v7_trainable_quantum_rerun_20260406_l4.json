@@ -5,7 +5,7 @@
   "protocol_version": "colab_confirmatory_v1",
   "platform": "colab-l4-gpu",
   "run_id": "v7_trainable_quantum_rerun__20260406_l4",
-  "notes": "Fresh Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace.",
+  "notes": "April 6, 2026 resumed Colab L4 rerun reconstructed from the user-provided terminal log on April 7, 2026. Drive-backed checkpoint files are now synced locally, but the remote experiments/v7_* directory has not yet been recovered into the repo workspace.",
   "params": {
     "quantum": 25,
     "classical": 87773,

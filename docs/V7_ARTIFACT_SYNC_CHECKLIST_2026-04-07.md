@@ -2,7 +2,10 @@
 
 **Date:** April 7, 2026
 
-This checklist defines the zero-compute follow-up work after the fresh Colab L4 V7 rerun that reached `72.89%` best validation and `72.53%` test accuracy.
+This checklist defines the zero-compute follow-up work after the April 6 resumed Colab L4 V7 rerun that reached `72.89%` best validation and `72.53%` test accuracy.
+
+> Update, April 30, 2026:
+> The later April 27 clean non-resumed V7 rerun reached `69.97%` best validation and `65.88%` test. Its Drive folder contains `best_v7_model.pth` and `checkpoint_latest_v7.pth`, but the `experiments/` subfolder is empty because the runtime disconnected before the artifact-copy cell ran. Keep that row labeled as reconstructed from captured notebook output.
 
 ## Goal
 

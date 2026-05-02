@@ -7,6 +7,23 @@ This document serves as a log for the experiments conducted during the developme
 > Later local ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
 > For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
 
+## V7 Clean Colab Rerun
+
+*   **Date:** April 27-28, 2026 run, reconciled into the repo on April 30, 2026
+*   **Purpose:** Run a clean, non-resumed V7 trainable-quantum confirmation pass using the updated `train_v7.py --result-json` path, after the earlier April 6 rerun remained reconstructed from terminal logs.
+*   **Platform:** `colab-l4-gpu`
+*   **Circuit:** `data_reuploading`
+*   **Requested Epochs:** `10`
+*   **Resume Behavior:** No resume; local V7 checkpoints were removed before launch.
+*   **Validated Results:** (`experiments/v7_trainable_quantum_clean_20260427_l4.json`, reconstructed from captured `colab_v7_rerun_clean.ipynb` output because the runtime disconnected before the artifact-copy cell ran)
+    *   **Best Validation Accuracy:** `69.97%`
+    *   **Test Accuracy:** `65.88%`
+    *   **Runtime:** `21h 43m`
+    *   **Parameters:** `87,798` total (`25` quantum + `87,773` classical)
+    *   **Artifact Status:** Drive-backed checkpoints were saved during training. The top-level JSON was emitted in the Colab runtime but was not copied to Drive before disconnect, so the local JSON row is reconstructed from captured notebook output.
+*   **Comparison to Other V7 Rows:** This clean non-resumed run is slightly above the older documented V7 test result (`65.02%`) but below the April 6 resumed rerun (`72.53%` test).
+*   **Current Conclusion:** The clean run confirms that the V7 path trains without collapse, but it also reinforces that V7 should remain an engineering case-study rather than the benchmark leader. The run-to-run spread between `65.88%` and `72.53%` should be treated as single-run trainable-quantum variability, not evidence of quantum advantage.
+
 ## V7 Confirmatory Colab Rerun
 
 *   **Date:** April 6, 2026 run, reconciled into the repo on April 7, 2026

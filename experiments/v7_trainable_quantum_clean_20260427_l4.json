@@ -1,0 +1,103 @@
+{
+  "model": "V7_trainable_quantum_clean_20260427",
+  "source": "colab-l4-notebook-output",
+  "family": "trainable-quantum-case-study",
+  "protocol_version": "v7_enhanced_v1",
+  "platform": "colab-l4-gpu",
+  "run_id": "v7_trainable_quantum_clean__v7_enhanced_v1__data_reuploading__20260427_l4",
+  "notes": "Clean April 27, 2026 Colab L4 run reconstructed from captured colab_v7_rerun_clean.ipynb output after runtime disconnected before the artifact-copy cell was executed. Drive-backed checkpoints were saved during training, but the emitted local JSON was not copied to Drive before disconnect.",
+  "params": {
+    "quantum": 25,
+    "classical": 87773,
+    "total": 87798
+  },
+  "total_params": 87798,
+  "trainable_params": 87798,
+  "circuit_type": "data_reuploading",
+  "experiment_dir": "experiments/v7_data_reuploading_20260427_203430",
+  "epochs_requested": 10,
+  "epochs_completed": 10,
+  "resume_used": false,
+  "resume_start_epoch": 0,
+  "target_accuracy": 90.0,
+  "best_val_acc": 69.97,
+  "test_acc": 65.88,
+  "runtime_seconds": 78180,
+  "runtime_minutes": 1303.0,
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 3.5796,
+      "train_acc": 6.29,
+      "val_loss": 3.3113,
+      "val_acc": 13.12
+    },
+    {
+      "epoch": 2,
+      "train_loss": 3.1773,
+      "train_acc": 18.85,
+      "val_loss": 2.6481,
+      "val_acc": 32.65
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.7756,
+      "train_acc": 29.93,
+      "val_loss": 2.2734,
+      "val_acc": 39.94
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.4313,
+      "train_acc": 39.9,
+      "val_loss": 2.0442,
+      "val_acc": 50.15
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.2515,
+      "train_acc": 47.09,
+      "val_loss": 1.8879,
+      "val_acc": 53.94
+    },
+    {
+      "epoch": 6,
+      "train_loss": 2.1794,
+      "train_acc": 50.45,
+      "val_loss": 1.8613,
+      "val_acc": 59.18
+    },
+    {
+      "epoch": 7,
+      "train_loss": 2.1159,
+      "train_acc": 53.73,
+      "val_loss": 1.7263,
+      "val_acc": 64.14
+    },
+    {
+      "epoch": 8,
+      "train_loss": 2.0131,
+      "train_acc": 58.33,
+      "val_loss": 1.6807,
+      "val_acc": 67.64
+    },
+    {
+      "epoch": 9,
+      "train_loss": 2.2211,
+      "train_acc": 53.03,
+      "val_loss": 1.6752,
+      "val_acc": 65.89
+    },
+    {
+      "epoch": 10,
+      "train_loss": 2.0277,
+      "train_acc": 57.85,
+      "val_loss": 1.6443,
+      "val_acc": 69.97
+    }
+  ],
+  "artifacts": {
+    "captured_notebook": "colab_v7_rerun_clean.ipynb",
+    "drive_folder": "https://drive.google.com/drive/folders/14IX6HCnxDTjBcdn3GeO0BrXuXcsAGnHY"
+  }
+}

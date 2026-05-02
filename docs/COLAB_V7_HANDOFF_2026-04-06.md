@@ -4,10 +4,11 @@
 
 This document is the operational handoff for the trainable V7 Colab path.
 
-> Update, April 23, 2026:
-> One fresh L4 rerun has already been completed successfully at `72.89%` best validation and `72.53%` test accuracy.
+> Update, April 30, 2026:
+> The April 6 resumed L4 rerun completed successfully at `72.89%` best validation and `72.53%` test accuracy.
+> The April 27 clean non-resumed L4 rerun completed at `69.97%` best validation and `65.88%` test accuracy; its JSON row is reconstructed from captured notebook output because the runtime disconnected before the artifact-copy cell ran.
 > Remaining Colab budget is approximately `245` computing units.
-> Therefore this document should now be read mainly as a resume / recovery / artifact-sync reference, not as an instruction to start another default Colab run.
+> Therefore this document should now be read mainly as a resume / recovery / artifact-sync reference, not as an instruction to start another default V7 Colab run.
 
 ## 1. Goal
 
@@ -125,11 +126,11 @@ After the Colab run finishes:
    - `docs/EXPERIMENTS.md`
    - `docs/BENCHMARK_SUMMARY.md`
    - `paper/draft.md`
-4. If the fresh V7 rerun still does not change the main ranking, keep V7 framed as:
+4. If a V7 rerun still does not change the main ranking, keep V7 framed as:
    - a trainable-quantum engineering case-study
    - not the benchmark leader
 
-At the current repository state, this post-run reconciliation is still incomplete: the benchmark tables and paper already reflect the fresh rerun metrics, and the Drive-backed checkpoint files are now synced locally, but the remote `experiments/v7_*` directory has not yet been recovered into the local repo workspace.
+At the current repository state, this post-run reconciliation should preserve the provenance labels: the benchmark tables and paper reflect the April rerun metrics, the April 27 Drive folder contains checkpoint files, and its `experiments/` subfolder is empty because the artifact-copy cell did not run before runtime disconnect.
 
 ## 8. Stop Conditions
 
@@ -139,4 +140,4 @@ Stop after the first clean artifact-backed rerun if any of the following hold:
 - checkpoints and metadata are captured correctly
 - the new result does not materially change the current benchmark hierarchy
 
-Only consider extra V7 seeds after this first rerun if the new run is both stable and paper-relevant, and if the expected value clearly justifies the remaining `245` CU budget. The current default is to spend zero additional Colab units until artifact sync and manuscript tightening are complete.
+Only consider extra V7 seeds if they are paper-relevant and if the expected value clearly justifies the Colab spend. The current default is to avoid more V7 training for artifact hygiene; a separate `45-50` CU paper-impact experiment may be justified before renewal if it addresses reviewer risk.
