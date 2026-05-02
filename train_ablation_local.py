@@ -6,6 +6,7 @@ Examples:
   python train_ablation_local.py --model classical_conv --epochs 50 --seed 42 --split-seed 42
   python train_ablation_local.py --model param_linear --epochs 50 --seed 1 --split-seed 42
   python train_ablation_local.py --model non_trainable_quantum --epochs 50 --seed 42 --split-seed 42
+  python train_ablation_local.py --model classical_conv --train-fraction 0.10 --protocol-version low_data_pilot_v1
   python train_ablation_local.py --model non_trainable_quantum --test
 """
 
@@ -35,9 +36,11 @@ from src.benchmark_protocol import (
     compute_split_indices,
     get_platform_label,
     load_raw_tensors,
+    low_data_result_paths,
     make_loader,
     result_paths,
     set_global_seed,
+    stratified_train_subset_indices,
     summarize_model_params,
 )
 from src.benchmark_training import LabelSmoothingCrossEntropy, train_classifier
@@ -47,10 +50,11 @@ RESULT_PREFIX = "ablation"
 CHECKPOINT_PREFIX = "best_ablation"
 
 
-def load_data(split_seed: int, seed: int):
+def load_data(split_seed: int, seed: int, train_fraction: float, fraction_seed: int):
     train_img, train_lbl, test_img, test_lbl = load_raw_tensors(config.IMAGE_SIZE)
     split = compute_split_indices(len(train_img), config.VALIDATION_SPLIT, split_seed)
-    train_ds = TensorImageDataset(train_img, train_lbl, indices=split.train)
+    selection = stratified_train_subset_indices(split.train, train_lbl, train_fraction, fraction_seed)
+    train_ds = TensorImageDataset(train_img, train_lbl, indices=selection.indices)
     val_ds = TensorImageDataset(train_img, train_lbl, indices=split.val)
     test_ds = TensorImageDataset(test_img, test_lbl)
     return (
@@ -58,6 +62,7 @@ def load_data(split_seed: int, seed: int):
         make_loader(val_ds, config.BATCH_SIZE, shuffle=False, seed=seed),
         make_loader(test_ds, config.BATCH_SIZE, shuffle=False, seed=seed),
         {"train": len(train_ds), "val": len(val_ds), "test": len(test_ds)},
+        selection.metadata,
     )
 
 
@@ -160,6 +165,8 @@ def load_quantum_data(
     *,
     seed: int,
     split_seed: int,
+    train_fraction: float,
+    fraction_seed: int,
     protocol_version: str,
     force_recompute: bool = False,
 ):
@@ -175,7 +182,8 @@ def load_quantum_data(
     test_lbl_t = torch.tensor(test_lbl, dtype=torch.long)
 
     split = compute_split_indices(len(train_feat_t), config.VALIDATION_SPLIT, split_seed)
-    train_ds = TensorImageDataset(train_feat_t, train_lbl_t, indices=split.train)
+    selection = stratified_train_subset_indices(split.train, train_lbl_t, train_fraction, fraction_seed)
+    train_ds = TensorImageDataset(train_feat_t, train_lbl_t, indices=selection.indices)
     val_ds = TensorImageDataset(train_feat_t, train_lbl_t, indices=split.val)
     test_ds = TensorImageDataset(test_feat_t, test_lbl_t)
     loaders = (
@@ -183,6 +191,7 @@ def load_quantum_data(
         make_loader(val_ds, config.BATCH_SIZE, shuffle=False, seed=seed),
         make_loader(test_ds, config.BATCH_SIZE, shuffle=False, seed=seed),
         {"train": len(train_ds), "val": len(val_ds), "test": len(test_ds)},
+        selection.metadata,
         metadata,
     )
     return loaders
@@ -200,6 +209,12 @@ def build_model(args):
     raise ValueError(f"Unknown model: {args.model}")
 
 
+def select_device(name: str) -> torch.device:
+    if name == "auto":
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    return torch.device(name)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Publication-oriented local ablation training")
     parser.add_argument(
@@ -211,13 +226,21 @@ def main():
     parser.add_argument("--n_filters", type=int, default=4)
     parser.add_argument("--seed", type=int, default=config.RANDOM_SEED)
     parser.add_argument("--split-seed", type=int, default=config.RANDOM_SEED)
+    parser.add_argument("--train-fraction", type=float, default=1.0)
+    parser.add_argument("--fraction-seed", type=int, default=None)
+    parser.add_argument("--device", choices=["cpu", "auto"], default="cpu")
     parser.add_argument("--protocol-version", default=PROTOCOL_VERSION)
     parser.add_argument("--force-recompute-cache", action="store_true")
     parser.add_argument("--test", action="store_true")
     args = parser.parse_args()
+    if args.fraction_seed is None:
+        args.fraction_seed = args.split_seed
+    is_low_data_run = args.train_fraction < 1.0 or args.protocol_version.startswith("low_data")
+    cache_protocol_version = PROTOCOL_VERSION if is_low_data_run else args.protocol_version
 
     set_global_seed(args.seed)
     model = build_model(args)
+    device = select_device(args.device)
 
     if args.test:
         if args.model == "non_trainable_quantum":
@@ -233,44 +256,73 @@ def main():
         return
 
     if args.model == "non_trainable_quantum":
-        train_loader, val_loader, test_loader, dataset_sizes, cache_metadata = load_quantum_data(
+        train_loader, val_loader, test_loader, dataset_sizes, low_data_metadata, cache_metadata = load_quantum_data(
             args.n_filters,
             seed=args.seed,
             split_seed=args.split_seed,
-            protocol_version=args.protocol_version,
+            train_fraction=args.train_fraction,
+            fraction_seed=args.fraction_seed,
+            protocol_version=cache_protocol_version,
             force_recompute=args.force_recompute_cache,
         )
     else:
-        train_loader, val_loader, test_loader, dataset_sizes = load_data(
+        train_loader, val_loader, test_loader, dataset_sizes, low_data_metadata = load_data(
             split_seed=args.split_seed,
             seed=args.seed,
+            train_fraction=args.train_fraction,
+            fraction_seed=args.fraction_seed,
         )
         cache_metadata = None
 
     params = summarize_model_params(model)
-    paths = result_paths(
-        args.model,
-        args.seed,
-        args.split_seed,
-        args.protocol_version,
-        result_prefix=RESULT_PREFIX,
-        checkpoint_prefix=CHECKPOINT_PREFIX,
-    )
+    if is_low_data_run:
+        paths = low_data_result_paths(
+            args.model,
+            args.seed,
+            args.split_seed,
+            args.fraction_seed,
+            args.train_fraction,
+            args.protocol_version,
+            result_prefix=RESULT_PREFIX,
+            checkpoint_prefix=CHECKPOINT_PREFIX,
+        )
+    else:
+        paths = result_paths(
+            args.model,
+            args.seed,
+            args.split_seed,
+            args.protocol_version,
+            result_prefix=RESULT_PREFIX,
+            checkpoint_prefix=CHECKPOINT_PREFIX,
+        )
     checkpoint_alias = None
     json_alias = None
-    if args.seed == config.RANDOM_SEED and args.split_seed == config.RANDOM_SEED:
+    if (
+        not is_low_data_run
+        and args.train_fraction >= 1.0
+        and args.protocol_version == PROTOCOL_VERSION
+        and args.seed == config.RANDOM_SEED
+        and args.split_seed == config.RANDOM_SEED
+    ):
         checkpoint_alias = f"models/{CHECKPOINT_PREFIX}_{args.model}.pth"
         json_alias = f"experiments/{RESULT_PREFIX}_{args.model}.json"
 
     print(f"Model: {args.model}")
     print(f"Protocol: {args.protocol_version}")
     print(f"Seed / split-seed: {args.seed} / {args.split_seed}")
+    print(f"Train fraction / fraction-seed: {args.train_fraction:.2f} / {args.fraction_seed}")
     print(f"Params: {params['total']} total, {params['trainable']} trainable")
     print(f"Dataset sizes: {dataset_sizes}")
-    print(f"Platform: {get_platform_label()}")
+    print(f"Platform: {get_platform_label()} | Device: {device}")
     print("=" * 50)
 
-    extra = {"dataset_sizes": dataset_sizes}
+    extra = {
+        "dataset_sizes": dataset_sizes,
+        "benchmark_axis": "low-data-scaling" if is_low_data_run else "publication",
+        "train_fraction": args.train_fraction,
+        "fraction_seed": args.fraction_seed,
+        "low_data": low_data_metadata,
+    }
     if cache_metadata is not None:
         extra["cache_metadata"] = cache_metadata
         extra["n_filters"] = args.n_filters
@@ -296,7 +348,7 @@ def main():
         train_loader=train_loader,
         val_loader=val_loader,
         test_loader=test_loader,
-        device=torch.device("cpu"),
+        device=device,
         epochs=args.epochs,
         optimizer=optimizer,
         scheduler=scheduler,

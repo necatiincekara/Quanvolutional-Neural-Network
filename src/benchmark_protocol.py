@@ -37,6 +37,12 @@ class SplitIndices:
     val: list[int]
 
 
+@dataclass(frozen=True)
+class LowDataSelection:
+    indices: list[int]
+    metadata: Dict[str, Any]
+
+
 class TensorImageDataset(Dataset):
     """Tensor-backed dataset with optional transforms and subset indices."""
 
@@ -109,6 +115,91 @@ def compute_split_indices(
     val_indices = perm[:val_size]
     train_indices = perm[val_size:]
     return SplitIndices(train=train_indices, val=val_indices)
+
+
+def format_fraction_tag(train_fraction: float) -> str:
+    """Return a stable filename tag for low-data fractions."""
+    return f"frac{int(round(train_fraction * 100)):03d}"
+
+
+def stratified_train_subset_indices(
+    indices: Sequence[int],
+    labels: torch.Tensor,
+    train_fraction: float,
+    fraction_seed: int,
+) -> LowDataSelection:
+    """Select a deterministic label-stratified subset from training indices."""
+    if train_fraction <= 0 or train_fraction > 1:
+        raise ValueError("--train-fraction must be in the interval (0, 1].")
+
+    base_indices = list(indices)
+    if train_fraction >= 1.0:
+        label_values = labels.detach().cpu().numpy()
+        counts: Dict[str, int] = {}
+        for idx in base_indices:
+            key = str(int(label_values[idx]))
+            counts[key] = counts.get(key, 0) + 1
+        return LowDataSelection(
+            indices=base_indices,
+            metadata={
+                "enabled": False,
+                "train_fraction": 1.0,
+                "fraction_seed": fraction_seed,
+                "full_train_size": len(base_indices),
+                "selected_train_size": len(base_indices),
+                "classes_present": len(counts),
+                "selected_class_counts": counts,
+            },
+        )
+
+    label_values = labels.detach().cpu().numpy()
+    groups: Dict[int, list[int]] = {}
+    for idx in base_indices:
+        label = int(label_values[idx])
+        groups.setdefault(label, []).append(idx)
+
+    rng = np.random.default_rng(fraction_seed)
+    target_size = int(round(len(base_indices) * train_fraction))
+    target_size = max(1, min(len(base_indices), target_size))
+    target_size = max(target_size, len(groups))
+
+    selected: list[int] = []
+    selected_set: set[int] = set()
+    remaining_pool: list[int] = []
+    for label in sorted(groups):
+        shuffled = list(groups[label])
+        rng.shuffle(shuffled)
+        first = shuffled[0]
+        selected.append(first)
+        selected_set.add(first)
+        remaining_pool.extend(shuffled[1:])
+
+    rng.shuffle(remaining_pool)
+    for idx in remaining_pool:
+        if len(selected) >= target_size:
+            break
+        selected.append(idx)
+        selected_set.add(idx)
+
+    ordered_selection = [idx for idx in base_indices if idx in selected_set]
+    counts = {}
+    for idx in ordered_selection:
+        key = str(int(label_values[idx]))
+        counts[key] = counts.get(key, 0) + 1
+
+    return LowDataSelection(
+        indices=ordered_selection,
+        metadata={
+            "enabled": True,
+            "train_fraction": train_fraction,
+            "fraction_seed": fraction_seed,
+            "full_train_size": len(base_indices),
+            "selected_train_size": len(ordered_selection),
+            "target_train_size": target_size,
+            "classes_present": len(groups),
+            "selected_class_counts": counts,
+        },
+    )
 
 
 def make_loader(
@@ -185,6 +276,30 @@ def result_paths(
         "run_id": run_id,
         "json": os.path.join("experiments", f"{result_prefix}_{model_name}_seed{seed}_split{split_seed}.json"),
         "checkpoint": os.path.join("models", f"{checkpoint_prefix}_{model_name}_seed{seed}_split{split_seed}.pth"),
+    }
+
+
+def low_data_result_paths(
+    model_name: str,
+    seed: int,
+    split_seed: int,
+    fraction_seed: int,
+    train_fraction: float,
+    protocol_version: str,
+    *,
+    result_prefix: str,
+    checkpoint_prefix: str,
+) -> Dict[str, str]:
+    fraction_tag = format_fraction_tag(train_fraction)
+    run_id = (
+        f"{model_name}__{protocol_version}__{fraction_tag}"
+        f"__seed{seed}__split{split_seed}__fraction{fraction_seed}"
+    )
+    filename = f"{model_name}_{fraction_tag}_seed{seed}_split{split_seed}_fraction{fraction_seed}"
+    return {
+        "run_id": run_id,
+        "json": os.path.join("experiments", "low_data", f"{result_prefix}_{filename}.json"),
+        "checkpoint": os.path.join("models", "low_data", f"{checkpoint_prefix}_{filename}.pth"),
     }
 
 

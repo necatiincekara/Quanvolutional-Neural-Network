@@ -4,8 +4,48 @@ This document serves as a log for the experiments conducted during the developme
 
 > Status note, March 22, 2026:
 > This file is still useful as the detailed experiment history, but it is no longer the safest single-source summary of the study.
-> Later local ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
+> Later multi-seed full-data ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
 > For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
+
+## Low-Data Scaling Pilot
+
+*   **Date:** May 2, 2026
+*   **Purpose:** Test whether quantum variants become more competitive when only the training split is reduced, while validation and test splits remain fixed.
+*   **Protocol:** `low_data_pilot_v1`
+*   **Platform:** `mac-cpu`
+*   **Seed / Split Seed / Fraction Seed:** `42 / 42 / 42`
+*   **Implementation:** `train_ablation_local.py`, `train_thesis_models.py`, `scripts/run_low_data_grid.py`, and `scripts/aggregate_low_data.py`
+*   **Validated Artifacts:** `experiments/low_data/*.json`, `experiments/low_data_summary.json`, and `docs/LOW_DATA_SUMMARY.md`
+*   **Command:**
+    ```bash
+    venv/bin/python scripts/run_low_data_grid.py \
+      --execute \
+      --protocol-version low_data_pilot_v1 \
+      --models classical_conv non_trainable_quantum thesis_cnniiii thesis_hqnn2 \
+      --fractions 0.10 0.25 0.50 1.00 \
+      --seeds 42 \
+      --split-seed 42 \
+      --device cpu
+    ```
+*   **Current-local matched-budget results:**
+
+    | Fraction | `classical_conv` Test | `non_trainable_quantum` Test | Gap C-Q |
+    |---:|---:|---:|---:|
+    | `0.10` | `47.42%` | `50.21%` | `-2.79` |
+    | `0.25` | `68.24%` | `69.31%` | `-1.07` |
+    | `0.50` | `76.39%` | `77.04%` | `-0.65` |
+    | `1.00` | `80.69%` | `81.33%` | `-0.64` |
+
+*   **Thesis-faithful results:**
+
+    | Fraction | `thesis_cnniiii` Test | `thesis_hqnn2` Test | Gap C-Q |
+    |---:|---:|---:|---:|
+    | `0.10` | `65.88%` | `50.43%` | `15.45` |
+    | `0.25` | `79.61%` | `62.45%` | `17.16` |
+    | `0.50` | `82.40%` | `72.10%` | `10.30` |
+    | `1.00` | `85.19%` | `78.33%` | `6.86` |
+
+*   **Current Conclusion:** The single-seed pilot shows a narrow current-local low-data competitiveness signal: `non_trainable_quantum` exceeds `classical_conv` at all four fractions under this seed-42 run. The thesis-faithful low-data axis remains classical-favored, with `thesis_cnniiii` ahead of `thesis_hqnn2` at every tested fraction. This is not a quantum-advantage claim; it is a pilot signal that justifies a selective Colab follow-up for the current-local pair only.
 
 ## V7 Clean Colab Rerun
 

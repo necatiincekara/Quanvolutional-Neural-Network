@@ -1,0 +1,374 @@
+{
+  "summary": [
+    {
+      "family": "current-local",
+      "model": "classical_conv",
+      "train_fraction": 0.1,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 308,
+      "best_val_acc_mean": 49.71,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 47.42,
+      "test_acc_std": 0.0,
+      "total_params": 88045,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "classical_conv",
+      "train_fraction": 0.25,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 771,
+      "best_val_acc_mean": 68.42,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 68.24,
+      "test_acc_std": 0.0,
+      "total_params": 88045,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "classical_conv",
+      "train_fraction": 0.5,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 1542,
+      "best_val_acc_mean": 78.36,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 76.39,
+      "test_acc_std": 0.0,
+      "total_params": 88045,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "classical_conv",
+      "train_fraction": 1.0,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 3085,
+      "best_val_acc_mean": 86.26,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 80.69,
+      "test_acc_std": 0.0,
+      "total_params": 88045,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "non_trainable_quantum",
+      "train_fraction": 0.1,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 308,
+      "best_val_acc_mean": 56.73,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 50.21,
+      "test_acc_std": 0.0,
+      "total_params": 88488,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "non_trainable_quantum",
+      "train_fraction": 0.25,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 771,
+      "best_val_acc_mean": 71.35,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 69.31,
+      "test_acc_std": 0.0,
+      "total_params": 88488,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "non_trainable_quantum",
+      "train_fraction": 0.5,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 1542,
+      "best_val_acc_mean": 78.36,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 77.04,
+      "test_acc_std": 0.0,
+      "total_params": 88488,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "current-local",
+      "model": "non_trainable_quantum",
+      "train_fraction": 1.0,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 3085,
+      "best_val_acc_mean": 86.55,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 81.33,
+      "test_acc_std": 0.0,
+      "total_params": 88488,
+      "source": "repo-local-ablation",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_cnniiii",
+      "train_fraction": 0.1,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 308,
+      "best_val_acc_mean": 70.18,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 65.88,
+      "test_acc_std": 0.0,
+      "total_params": 1378124,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_cnniiii",
+      "train_fraction": 0.25,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 771,
+      "best_val_acc_mean": 85.67,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 79.61,
+      "test_acc_std": 0.0,
+      "total_params": 1378124,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_cnniiii",
+      "train_fraction": 0.5,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 1542,
+      "best_val_acc_mean": 88.3,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 82.4,
+      "test_acc_std": 0.0,
+      "total_params": 1378124,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_cnniiii",
+      "train_fraction": 1.0,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 3085,
+      "best_val_acc_mean": 92.4,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 85.19,
+      "test_acc_std": 0.0,
+      "total_params": 1378124,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_hqnn2",
+      "train_fraction": 0.1,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 308,
+      "best_val_acc_mean": 55.56,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 50.43,
+      "test_acc_std": 0.0,
+      "total_params": 248428,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_hqnn2",
+      "train_fraction": 0.25,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 771,
+      "best_val_acc_mean": 66.67,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 62.45,
+      "test_acc_std": 0.0,
+      "total_params": 248428,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_hqnn2",
+      "train_fraction": 0.5,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 1542,
+      "best_val_acc_mean": 79.24,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 72.1,
+      "test_acc_std": 0.0,
+      "total_params": 248428,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    },
+    {
+      "family": "thesis-faithful",
+      "model": "thesis_hqnn2",
+      "train_fraction": 1.0,
+      "runs": 1,
+      "seeds": [
+        42
+      ],
+      "train_size": 3085,
+      "best_val_acc_mean": 84.21,
+      "best_val_acc_std": 0.0,
+      "test_acc_mean": 78.33,
+      "test_acc_std": 0.0,
+      "total_params": 248428,
+      "source": "thesis-faithful",
+      "protocol_version": "low_data_pilot_v1"
+    }
+  ],
+  "comparisons": [
+    {
+      "family": "current-local",
+      "train_fraction": 0.1,
+      "classical_model": "classical_conv",
+      "classical_test_acc": 47.42,
+      "quantum_model": "non_trainable_quantum",
+      "quantum_test_acc": 50.21,
+      "gap_classical_minus_quantum": -2.79,
+      "full_data_gap": -0.64,
+      "colab_signal": true,
+      "signal_reason": "quantum_wins, within_2_points"
+    },
+    {
+      "family": "current-local",
+      "train_fraction": 0.25,
+      "classical_model": "classical_conv",
+      "classical_test_acc": 68.24,
+      "quantum_model": "non_trainable_quantum",
+      "quantum_test_acc": 69.31,
+      "gap_classical_minus_quantum": -1.07,
+      "full_data_gap": -0.64,
+      "colab_signal": true,
+      "signal_reason": "quantum_wins, within_2_points"
+    },
+    {
+      "family": "current-local",
+      "train_fraction": 0.5,
+      "classical_model": "classical_conv",
+      "classical_test_acc": 76.39,
+      "quantum_model": "non_trainable_quantum",
+      "quantum_test_acc": 77.04,
+      "gap_classical_minus_quantum": -0.65,
+      "full_data_gap": -0.64,
+      "colab_signal": true,
+      "signal_reason": "quantum_wins, within_2_points"
+    },
+    {
+      "family": "current-local",
+      "train_fraction": 1.0,
+      "classical_model": "classical_conv",
+      "classical_test_acc": 80.69,
+      "quantum_model": "non_trainable_quantum",
+      "quantum_test_acc": 81.33,
+      "gap_classical_minus_quantum": -0.64,
+      "full_data_gap": -0.64,
+      "colab_signal": true,
+      "signal_reason": "quantum_wins, within_2_points"
+    },
+    {
+      "family": "thesis-faithful",
+      "train_fraction": 0.1,
+      "classical_model": "thesis_cnniiii",
+      "classical_test_acc": 65.88,
+      "quantum_model": "thesis_hqnn2",
+      "quantum_test_acc": 50.43,
+      "gap_classical_minus_quantum": 15.45,
+      "full_data_gap": 6.86,
+      "colab_signal": false,
+      "signal_reason": "none"
+    },
+    {
+      "family": "thesis-faithful",
+      "train_fraction": 0.25,
+      "classical_model": "thesis_cnniiii",
+      "classical_test_acc": 79.61,
+      "quantum_model": "thesis_hqnn2",
+      "quantum_test_acc": 62.45,
+      "gap_classical_minus_quantum": 17.16,
+      "full_data_gap": 6.86,
+      "colab_signal": false,
+      "signal_reason": "none"
+    },
+    {
+      "family": "thesis-faithful",
+      "train_fraction": 0.5,
+      "classical_model": "thesis_cnniiii",
+      "classical_test_acc": 82.4,
+      "quantum_model": "thesis_hqnn2",
+      "quantum_test_acc": 72.1,
+      "gap_classical_minus_quantum": 10.3,
+      "full_data_gap": 6.86,
+      "colab_signal": false,
+      "signal_reason": "none"
+    },
+    {
+      "family": "thesis-faithful",
+      "train_fraction": 1.0,
+      "classical_model": "thesis_cnniiii",
+      "classical_test_acc": 85.19,
+      "quantum_model": "thesis_hqnn2",
+      "quantum_test_acc": 78.33,
+      "gap_classical_minus_quantum": 6.86,
+      "full_data_gap": 6.86,
+      "colab_signal": false,
+      "signal_reason": "none"
+    }
+  ]
+}
