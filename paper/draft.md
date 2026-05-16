@@ -85,6 +85,8 @@ This paper builds directly on a master's-thesis study conducted on the same OCR 
 
 The Ottoman-Turkish Handwritten Character Dataset consists of 32x32 grayscale character images across 44 classes. The original directory structure contains 3,428 training files and 466 test files. Under the current parser, one malformed training filename is skipped, so the effective loaded benchmark uses 3,427 training samples and 466 test samples. The original thesis train/test separation is preserved rather than re-sampled from scratch, allowing direct continuity between thesis-era results and the present paper.
 
+**Table 1.** Dataset summary under the current parser and fixed thesis-era train/test split.
+
 | Property | Value |
 |----------|-------|
 | Classes | 44 Ottoman-Turkish characters |
@@ -122,6 +124,8 @@ This separation is methodologically important. A thesis-faithful HQNN model and 
 #### 3.1.3 Model Nomenclature
 
 The repository retains implementation-oriented model identifiers for reproducibility. In the results, these identifiers correspond to the following paper-level roles:
+
+**Table 2.** Mapping from repository model identifiers to paper-level benchmark roles.
 
 | Repository identifier | Paper-level role | Benchmark family |
 |---|---|---|
@@ -224,6 +228,8 @@ Output: 44-class logits
 
 Quantum and classical parameters are optimized separately to account for their different loss landscape geometries:
 
+**Table 3.** Optimizer configuration for the trainable V7 engineering case-study.
+
 | Optimizer | Parameters | LR | Weight Decay | Grad Clip |
 |-----------|-----------|-----|-------------|-----------|
 | Adam | Quantum (25) | 0.0005 | 1e-5 | max_norm=0.5 |
@@ -281,7 +287,9 @@ The benchmark picture must be read in separate layers rather than as a single fl
 
 ### 4.2 Thesis-Faithful Family
 
-| Model | Runs | Best Val | Test | Params | Interpretation |
+**Table 4.** Thesis-faithful full-data benchmark results across three seeds.
+
+| Model (repository identifier) | Runs | Best Val | Test | Params | Interpretation |
 |-------|---:|---:|---:|---:|---|
 | `thesis_cnniiii` | 3 | **92.11 ± 0.30** | **85.26 ± 0.97** | 1,378,124 | strongest thesis-faithful reproduction; above thesis table reference |
 | `thesis_cnn3` | 3 | 85.38 ± 0.77 | 79.33 ± 1.26 | 769,804 | weaker classical thesis-faithful anchor |
@@ -291,7 +299,9 @@ This family is the most relevant when asking whether the thesis-era quantum clai
 
 ### 4.3 Current-Local Matched-Budget Family
 
-| Model | Runs | Best Val | Test | Params | Interpretation |
+**Table 5.** Current-local matched-budget full-data benchmark results across three seeds.
+
+| Model (repository identifier) | Runs | Best Val | Test | Params | Interpretation |
 |-------|---:|---:|---:|---:|---|
 | `classical_conv` | 3 | 86.26 ± 1.76 | **81.40 ± 1.06** | 88,045 | strongest matched-budget local model by mean test accuracy |
 | `param_linear` | 3 | **86.45 ± 0.61** | 81.12 ± 2.27 | 87,798 | matched classical replacement, nearly tied with `classical_conv` on mean test |
@@ -303,7 +313,9 @@ This family asks a narrower question: if the parameter budget is kept close to t
 
 The modern-classical upper bound is not thesis-faithful and not matched-budget; it is included to test whether the study remains credible against a stronger contemporary classical vision baseline. Under the same fixed data split, `resnet18_cifar_gray` reaches **92.98 ± 0.29%** best validation accuracy and **88.13 ± 0.82%** test accuracy across three seeds.
 
-| Model | Runs | Best Val | Test | Params | Interpretation |
+**Table 6.** Modern-classical upper-bound result under the same fixed split.
+
+| Model (repository identifier) | Runs | Best Val | Test | Params | Interpretation |
 |-------|---:|---:|---:|---:|---|
 | `resnet18_cifar_gray` | 3 | **92.98 ± 0.29** | **88.13 ± 0.82** | 11,190,252 | strongest reproduced model; modern-classical upper bound, not a thesis-faithful or matched-budget row |
 
@@ -316,6 +328,8 @@ The low-data axis asks whether the quantum variants become more competitive when
 ![Low-data scaling results](figures/low_data_scaling.png)
 
 **Figure 1.** Low-data scaling results by benchmark family. The current-local panel reports three-seed means with standard deviations for `classical_conv` and `non_trainable_quantum`; the thesis-faithful panel reports the available seed-42 pilot for `thesis_cnniiii` and `thesis_hqnn2`. The gap panel uses classical minus quantum test accuracy, so negative current-local gaps indicate the non-trainable quantum baseline is ahead for that paired comparison.
+
+**Table 7.** Low-data scaling results. Current-local rows are three-seed means; thesis-faithful rows are seed-42 pilot evidence.
 
 | Family | Fraction | Classical Test | Quantum Test | Interpretation |
 |---|---:|---:|---:|---|
@@ -336,6 +350,8 @@ The V1--V7 line remains scientifically useful as an engineering case-study rathe
 
 #### 4.6.1 Architectural Evolution Summary
 
+**Table 8.** V1--V7 architectural evolution and trainability outcomes.
+
 | Version | Feature Map | Q-Calls/img | Epoch Time | Best Val Acc. | Outcome |
 |---------|------------|-------------|------------|--------------|---------|
 | V1 | 32×32 | 256 | >8h | 2.3% | Computationally infeasible |
@@ -352,6 +368,8 @@ The V1--V7 line remains scientifically useful as an engineering case-study rathe
 #### 4.6.2 April 6 Resumed Colab Rerun
 
 April 6 epoch-by-epoch V7 rerun results for the `data_reuploading` circuit on an L4 GPU:
+
+**Table 9.** April 6, 2026 resumed V7 Colab L4 rerun dynamics.
 
 | Epoch | Train Loss | Train Acc. | Val Acc. | Q-Grad Mean | C-Grad Mean | gradient_scale α |
 |-------|-----------|-----------|---------|-------------|-------------|-----------------|
@@ -379,6 +397,8 @@ This clean non-resumed run confirms that V7 trains without the earlier NaN failu
 ### 4.7 Information Bottleneck Analysis
 
 Systematic reduction of feature-map dimensions reveals a critical spatial threshold:
+
+**Table 10.** Information bottleneck behavior as the pre-quantum feature map is reduced.
 
 | Feature Map | Spatial Values/Channel | Q-Calls/img | Val Acc. | Gradient Status |
 |------------|----------------------|-------------|---------|----------------|
@@ -426,6 +446,8 @@ scaler.step(quantum_optimizer)    # in training loop, not optimizer.step()
 
 ### 4.10 Quantum Computational Efficiency
 
+**Table 11.** Quantum-call reduction from classical preprocessing and vectorization.
+
 | Transition | Technique | Q-Call Reduction | Epoch Speedup |
 |-----------|-----------|-----------------|---------------|
 | V1→V2 | Vectorization + GPU | 0% | ~0% |
@@ -434,6 +456,8 @@ scaler.step(quantum_optimizer)    # in training loop, not optimizer.step()
 | **V1→V4/V7** | **Combined** | **93.75%** | **>80%** |
 
 ### 4.11 Comparative Interpretation
+
+**Table 12.** Cross-family interpretation table. Rows are not a single flat leaderboard because families differ in protocol role and model size.
 
 | Variant | Quantum Params | Val Acc. | Test Acc. | Notes |
 |---------|---------------|---------|---------|-------|
@@ -550,6 +574,8 @@ Future work should focus on strengthening the benchmark rather than chasing an u
 ## Appendix A: Experimental Configuration And Artifacts
 
 Complete hyperparameter settings, debug output, and per-version configurations are documented in `docs/EXPERIMENTS.md`. The main machine-readable artifacts used by this draft are:
+
+**Table 13.** Machine-readable artifacts backing the manuscript claims.
 
 | Artifact | Purpose |
 |---|---|
