@@ -483,20 +483,32 @@ scaler.step(quantum_optimizer)    # in training loop, not optimizer.step()
 
 ## 5. Discussion
 
-### 5.1 What The Benchmark Now Shows
+### 5.1 Answers To The Research Questions
 
-The most important scientific update in the repository is no longer the V4-to-V7 jump alone. The stronger conclusion is that, once the benchmark is organized fairly and run with multi-seed reporting, the strongest reproduced evidence currently favors classical baselines. This is true in both benchmark families considered here:
+The evidence answers the three research questions in different ways. The full-data benchmark is classical-favored, the low-data axis reveals one narrow current-local quantum competitiveness signal, and the trainable-quantum path is most valuable as an engineering case-study rather than as a performance leader.
+
+**Table 13.** Summary answers to the research questions.
+
+| Research question | Evidence | Answer |
+|---|---|---|
+| RQ1: Do quantum variants outperform their strongest classical counterparts under the full-data protocol? | Three-seed thesis-faithful and current-local results, plus the modern-classical upper bound | No. `thesis_cnniiii` exceeds `thesis_hqnn2`; `classical_conv` and `param_linear` exceed the current-local non-trainable quantum baseline; `resnet18_cifar_gray` is the strongest reproduced model. |
+| RQ2: Does low-data scaling reveal a quantum-competitive regime? | Three-seed current-local low-data confirmation and seed-42 thesis-faithful pilot | Partially. The current-local non-trainable quantum baseline exceeds `classical_conv` at all tested training fractions, but the thesis-faithful low-data comparison remains classical-favored. |
+| RQ3: What determines whether trainable quanvolution learns? | V1--V7 engineering path, April 2026 V7 reruns, gradient diagnostics, and AMP failure analysis | Trainability depends on preserving sufficient pre-quantum spatial information, stabilizing gradient flow, and preventing float16 precision from entering the quantum backpropagation boundary. |
+
+### 5.2 Interpreting The Benchmark Hierarchy
+
+The strongest conclusion is that, once the benchmark is organized fairly and run with multi-seed reporting, the strongest reproduced full-data evidence favors classical baselines. This is true in both main benchmark families:
 
 - in the thesis-faithful family, `thesis_cnniiii` clearly exceeds `thesis_hqnn2`,
 - in the current-local matched-budget family, `classical_conv` and `param_linear` both slightly exceed the Henderson-style non-trainable quantum baseline on mean test accuracy.
 
-This does not make the quantum experiments uninformative. It simply constrains the valid claim: the current evidence supports an honest comparative benchmark and engineering analysis, not a quantum-win narrative.
+This does not make the quantum experiments uninformative. It constrains the valid claim: the current full-data evidence supports an honest comparative benchmark and engineering analysis, not a quantum-win narrative.
 
-The May 2026 low-data confirmation adds nuance to this conclusion without overturning it. In the current-local family, `non_trainable_quantum` exceeds `classical_conv` on 3-seed mean test accuracy at every tested train fraction. In the thesis-faithful family, the seed-42 low-data pilot remains clearly classical-favored, with `thesis_hqnn2` behind `thesis_cnniiii`. This supports a specific low-data competitiveness signal for the current-local non-trainable quantum baseline, not a broad statement that quantum models dominate the task.
+The May 2026 low-data confirmation adds nuance without overturning the full-data hierarchy. In the current-local family, `non_trainable_quantum` exceeds `classical_conv` on three-seed mean test accuracy at every tested train fraction. In the thesis-faithful family, the seed-42 low-data pilot remains clearly classical-favored, with `thesis_hqnn2` behind `thesis_cnniiii`. The valid claim is therefore specific: a current-local, non-trainable quantum preprocessing baseline shows low-data competitiveness against its paired classical convolutional baseline. This is not evidence that quantum models dominate the task.
 
-The April 2026 V7 reruns strengthen this conclusion rather than overturning it. The trainable quantum path is meaningfully trainable compared with earlier failed V1--V6 attempts, but even the strongest April run remains well below the strongest thesis-faithful and matched-budget classical anchors, and the clean non-resumed run is close to the older documented V7 result. That makes V7 more useful as evidence about trainability and engineering than as evidence about benchmark leadership.
+The April 2026 V7 reruns further support the engineering interpretation. The trainable quantum path is meaningfully trainable compared with earlier failed V1--V6 attempts, but even the strongest April run remains well below the strongest thesis-faithful and matched-budget classical anchors, and the clean non-resumed run is close to the older documented V7 result. V7 is therefore evidence about trainability and implementation constraints, not evidence about benchmark leadership.
 
-### 5.2 The Quantum Preprocessing Trade-off
+### 5.3 The Quantum Preprocessing Trade-off
 
 Our experiments still reveal a fundamental design tension in hybrid quantum-classical architectures: reducing quantum computational overhead through classical preprocessing simultaneously reduces the spatial information available to the quantum feature extractor. The 8×8 threshold identified in the V4--V7 path suggests a minimum information density requirement for 4-qubit circuits on this 44-class task.
 
@@ -505,7 +517,7 @@ This finding has practical value beyond Ottoman script recognition. Hybrid QML d
 1. computational feasibility, which favors fewer quantum evaluations, and
 2. information sufficiency, which favors larger pre-quantum feature maps.
 
-### 5.3 Engineering Challenges In Hybrid Pipelines
+### 5.4 Engineering Challenges In Hybrid Pipelines
 
 The AMP incompatibility documents an underreported class of hybrid-QML failures: modern classical optimization defaults are not always safe when a variational quantum circuit sits inside the forward and backward path. In this study, float16 autocasting at the quantum boundary was sufficient to destroy the trainable V7 run until explicit float32 restoration and GradScaler-aware optimizer stepping were enforced.
 
@@ -515,7 +527,7 @@ Our recommendation for hybrid QML practitioners is therefore concrete:
 2. treat optimizer stepping and gradient logging carefully under AMP,
 3. verify gradient health empirically rather than assuming that shallow circuits will train cleanly.
 
-### 5.4 Why Thesis-Faithful Reproduction Still Matters
+### 5.5 Why Thesis-Faithful Reproduction Still Matters
 
 The repository now contains two distinct quantum baselines: the current-local Henderson-style cached baseline and the thesis-faithful HQNN-II reproduction. Keeping them separate is essential. They differ in architecture, parameter count, and motivation, so combining them into a single "quantum" row would be scientifically misleading.
 
@@ -523,23 +535,27 @@ The thesis-faithful path matters because it answers a narrower historical questi
 
 This interpretation should not be misread as "the thesis was wrong." A more accurate reading is that the thesis identified a promising comparison space, while the paper extends it with stricter protocols, clearer family separation, and more demanding evidence standards. Under those stricter rules, some thesis-era headline numbers are not recovered exactly, but the thesis remains the scientific foundation of the present study.
 
-### 5.5 Limitations And Scope
+### 5.6 Limitations And Scope
 
 1. **No quantum advantage claimed.** The benchmark evidence does not support a claim that quantum variants outperform the strongest reproduced classical baselines on this dataset.
 
 2. **Simulator-based evaluation.** All quantum experiments rely on classical simulation. This is acceptable for methodology research, but it prevents any hardware-side performance claim.
 
-3. **Single dataset.** Results remain specific to Ottoman handwritten character recognition. A second dataset or robustness axis would materially strengthen the paper.
+3. **Single dataset.** Results remain specific to Ottoman handwritten character recognition. A second dataset, a handwriting-style transfer test, or a corruption/robustness axis would materially strengthen the paper.
 
-4. **Single-run trainable-quantum evidence.** The April 2026 V7 evidence consists of individual Colab reruns rather than a multi-seed remote study. The clean non-resumed run was reconstructed from captured notebook output after runtime disconnect; Drive checkpoint files exist, but the copied JSON/experiment metadata is missing from the Drive `experiments/` subfolder.
+4. **Limited trainable-quantum statistics.** The April 2026 V7 evidence consists of individual Colab reruns rather than a multi-seed remote study. The clean non-resumed run was reconstructed from captured notebook output after runtime disconnect; Drive checkpoint files exist, but the copied JSON/experiment metadata is missing from the Drive `experiments/` subfolder.
+
+5. **Low-data claim scope.** The low-data competitiveness signal is confirmed only for the current-local non-trainable quantum baseline against `classical_conv`. It should not be generalized to thesis-faithful HQNN models, trainable V7, other datasets, or quantum hardware.
 
 ---
 
 ## 6. Conclusion
 
-We presented a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition. The strongest current evidence in the repository favors classical baselines rather than quantum variants: the best thesis-faithful reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, and the strongest current-local matched-budget model is `classical_conv` with **81.40 ± 1.06%**. The thesis-faithful quantum reproduction `thesis_hqnn2` reaches **78.61 ± 0.69%**, while April 2026 trainable V7 Colab reruns span **65.88--72.53%** test accuracy.
+We presented a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition. The answer to RQ1 is negative under the present full-data evidence: the strongest thesis-faithful reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, and the strongest current-local matched-budget model is `classical_conv` with **81.40 ± 1.06%**. The thesis-faithful quantum reproduction `thesis_hqnn2` reaches **78.61 ± 0.69%**, while April 2026 trainable V7 Colab reruns span **65.88--72.53%** test accuracy.
 
-The May 2026 low-data confirmation identifies a narrower current-local competitiveness signal for the Henderson-style non-trainable quantum baseline: it exceeds `classical_conv` on 3-seed mean test accuracy across the tested training fractions. The thesis-faithful low-data comparison remains classical-favored in the available seed-42 pilot.
+The answer to RQ2 is more nuanced. The May 2026 low-data confirmation identifies a current-local competitiveness signal for the Henderson-style non-trainable quantum baseline: it exceeds `classical_conv` on three-seed mean test accuracy across the tested training fractions. The thesis-faithful low-data comparison remains classical-favored in the available seed-42 pilot.
+
+The answer to RQ3 is that trainable quanvolution can be made to learn, but only under a narrow set of engineering constraints. The V1--V7 path shows that pre-quantum spatial information, gradient routing, learnable scaling, and precision boundaries are not implementation details; they determine whether the hybrid model trains or collapses.
 
 We therefore do not claim quantum superiority. The value of the study lies elsewhere:
 
@@ -547,7 +563,7 @@ We therefore do not claim quantum superiority. The value of the study lies elsew
 2. **Engineering lessons:** trainable hybrid quanvolution can be stabilized, but only when information flow, gradient routing, and precision boundaries are handled carefully.
 3. **Negative-result clarity:** honest separation of thesis-faithful and matched-budget benchmark families prevents misleading conclusions.
 
-Future work should focus on strengthening the benchmark rather than chasing an unsupported generic quantum-advantage claim: (1) test whether the low-data signal transfers to a second dataset or robustness axis, (2) consider a transfer-learning-style classical upper bound only if reviewer pressure justifies it, and (3) only consider extra trainable-quantum seeds if they are justified by paper impact and remaining compute budget.
+Future work should focus on testing the boundaries of the narrow low-data signal rather than chasing an unsupported generic quantum-advantage claim. The highest-value next steps are to test whether the current-local signal transfers to a second dataset or robustness axis, evaluate whether the signal survives alternative classical matched-budget controls, and run additional trainable-quantum seeds only if reviewer feedback specifically requires stronger V7 statistics.
 
 ---
 
@@ -583,7 +599,7 @@ Future work should focus on strengthening the benchmark rather than chasing an u
 
 Complete hyperparameter settings, debug output, and per-version configurations are documented in `docs/EXPERIMENTS.md`. The main machine-readable artifacts used by this draft are:
 
-**Table 13.** Machine-readable artifacts backing the manuscript claims.
+**Table 14.** Machine-readable artifacts backing the manuscript claims.
 
 | Artifact | Purpose |
 |---|---|

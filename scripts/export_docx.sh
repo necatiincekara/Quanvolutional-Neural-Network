@@ -26,10 +26,11 @@ for src in "$@"; do
   esac
 
   out="${src%.md}.docx"
+  src_dir="$(dirname "$src")"
   pandoc "$src" \
     --from gfm \
     --to docx \
-    --resource-path . \
+    --resource-path ".:$src_dir" \
     --output "$out"
   echo "Wrote $out"
 done
