@@ -7,16 +7,16 @@ This document serves as a log for the experiments conducted during the developme
 > Later multi-seed full-data ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
 > For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
 
-## Low-Data Scaling Pilot
+## Low-Data Scaling Pilot And Confirmation
 
-*   **Date:** May 2, 2026
+*   **Date:** May 2-16, 2026
 *   **Purpose:** Test whether quantum variants become more competitive when only the training split is reduced, while validation and test splits remain fixed.
-*   **Protocol:** `low_data_pilot_v1`
-*   **Platform:** `mac-cpu`
-*   **Seed / Split Seed / Fraction Seed:** `42 / 42 / 42`
+*   **Protocols:** `low_data_pilot_v1` for the seed-42 pilot; `low_data_confirm_v1` for Colab L4 confirmation seeds 43 and 44.
+*   **Platforms:** `mac-cpu` for the seed-42 pilot; `colab-NVIDIA L4` for current-local confirmation seeds 43 and 44.
+*   **Seed / Split Seed / Fraction Seed:** `42,43,44 / 42 / 42` for the current-local pair; `42 / 42 / 42` for the thesis-faithful pilot rows.
 *   **Implementation:** `train_ablation_local.py`, `train_thesis_models.py`, `scripts/run_low_data_grid.py`, and `scripts/aggregate_low_data.py`
-*   **Validated Artifacts:** `experiments/low_data/*.json`, `experiments/low_data_summary.json`, and `docs/LOW_DATA_SUMMARY.md`
-*   **Command:**
+*   **Validated Artifacts:** Drive-backed `quanv_results/low_data_confirm_20260502/experiments_low_data/*.json`, `experiments/low_data_drive_manifest_20260502.json`, `experiments/low_data_summary.json`, and `docs/LOW_DATA_SUMMARY.md`.
+*   **Pilot Command:**
     ```bash
     venv/bin/python scripts/run_low_data_grid.py \
       --execute \
@@ -27,16 +27,27 @@ This document serves as a log for the experiments conducted during the developme
       --split-seed 42 \
       --device cpu
     ```
-*   **Current-local matched-budget results:**
+*   **Confirmation Command:**
+    ```bash
+    python scripts/run_low_data_grid.py \
+      --execute \
+      --protocol-version low_data_confirm_v1 \
+      --models classical_conv non_trainable_quantum \
+      --fractions 0.10 0.25 0.50 1.00 \
+      --seeds 43 44 \
+      --split-seed 42 \
+      --device auto
+    ```
+*   **Current-local matched-budget confirmed results:**
 
     | Fraction | `classical_conv` Test | `non_trainable_quantum` Test | Gap C-Q |
     |---:|---:|---:|---:|
-    | `0.10` | `47.42%` | `50.21%` | `-2.79` |
-    | `0.25` | `68.24%` | `69.31%` | `-1.07` |
-    | `0.50` | `76.39%` | `77.04%` | `-0.65` |
-    | `1.00` | `80.69%` | `81.33%` | `-0.64` |
+    | `0.10` | `48.42 ± 2.31%` | `50.71 ± 2.93%` | `-2.29` |
+    | `0.25` | `66.24 ± 1.78%` | `69.88 ± 0.99%` | `-3.64` |
+    | `0.50` | `75.61 ± 1.02%` | `76.75 ± 0.50%` | `-1.14` |
+    | `1.00` | `80.47 ± 0.57%` | `80.76 ± 0.99%` | `-0.29` |
 
-*   **Thesis-faithful results:**
+*   **Thesis-faithful pilot results:**
 
     | Fraction | `thesis_cnniiii` Test | `thesis_hqnn2` Test | Gap C-Q |
     |---:|---:|---:|---:|
@@ -45,7 +56,7 @@ This document serves as a log for the experiments conducted during the developme
     | `0.50` | `82.40%` | `72.10%` | `10.30` |
     | `1.00` | `85.19%` | `78.33%` | `6.86` |
 
-*   **Current Conclusion:** The single-seed pilot shows a narrow current-local low-data competitiveness signal: `non_trainable_quantum` exceeds `classical_conv` at all four fractions under this seed-42 run. The thesis-faithful low-data axis remains classical-favored, with `thesis_cnniiii` ahead of `thesis_hqnn2` at every tested fraction. This is not a quantum-advantage claim; it is a pilot signal that justifies a selective Colab follow-up for the current-local pair only.
+*   **Current Conclusion:** The current-local low-data signal survived confirmation: `non_trainable_quantum` exceeds `classical_conv` on 3-seed mean test accuracy at all four train fractions. The effect is narrow at full data (`+0.29` points) but clearer at 10-50% train fractions (`+1.14` to `+3.64` points). The thesis-faithful low-data axis remains classical-favored in the seed-42 pilot, with `thesis_cnniiii` ahead of `thesis_hqnn2` at every tested fraction. This supports a specific low-data competitiveness signal for the current-local non-trainable quantum baseline; it is still not a generic quantum-advantage claim.
 
 ## V7 Clean Colab Rerun
 

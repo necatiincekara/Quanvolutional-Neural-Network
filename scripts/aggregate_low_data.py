@@ -52,6 +52,7 @@ def summarize(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         test_vals = [item["test_acc"] for item in items if item.get("test_acc") is not None]
         val_vals = [item["best_val_acc"] for item in items if item.get("best_val_acc") is not None]
         train_sizes = [item.get("dataset_sizes", {}).get("train") for item in items]
+        protocol_versions = sorted({item.get("protocol_version") for item in items if item.get("protocol_version")})
         test_mean, test_std = metric(test_vals)
         val_mean, val_std = metric(val_vals)
         rows.append(
@@ -68,7 +69,8 @@ def summarize(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "test_acc_std": test_std,
                 "total_params": items[0].get("total_params"),
                 "source": items[0].get("source", "unknown"),
-                "protocol_version": items[0].get("protocol_version"),
+                "protocol_version": protocol_versions[0] if len(protocol_versions) == 1 else "mixed",
+                "protocol_versions": protocol_versions,
             }
         )
     return rows
@@ -199,7 +201,20 @@ def to_markdown(summary_rows: list[dict[str, Any]], comparisons: list[dict[str, 
                 )
             )
         lines.append("")
-        if any(row["colab_signal"] for row in comparisons):
+        confirmed_rows = [
+            row
+            for row in comparisons
+            if row["colab_signal"]
+            and all(
+                summary.get("runs", 0) >= 3
+                for summary in summary_rows
+                if summary["model"] in {row["classical_model"], row["quantum_model"]}
+                and summary["train_fraction"] == row["train_fraction"]
+            )
+        ]
+        if confirmed_rows:
+            lines.append("Decision: low-data confirmation is complete for the flagged multi-seed rows.")
+        elif any(row["colab_signal"] for row in comparisons):
             lines.append("Decision: Colab follow-up is justified for the flagged model pair/fraction rows only.")
         else:
             lines.append("Decision: no Colab follow-up is justified by the current low-data rows.")

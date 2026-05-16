@@ -1,0 +1,96 @@
+{
+  "artifact": "low_data_confirm_20260502_drive_manifest",
+  "created_local_date": "2026-05-16",
+  "drive_folder": {
+    "name": "quanv_results/low_data_confirm_20260502",
+    "id": "14ehWSq5BaQb8JTxDj0m6jiNOs-TNYdIz",
+    "url": "https://drive.google.com/drive/folders/14ehWSq5BaQb8JTxDj0m6jiNOs-TNYdIz"
+  },
+  "raw_json_folder": {
+    "name": "experiments_low_data",
+    "id": "1YcGJelo5u0uzABLRKcadNy6tYNUCV2VY",
+    "url": "https://drive.google.com/drive/folders/1YcGJelo5u0uzABLRKcadNy6tYNUCV2VY",
+    "observed_json_count": 32
+  },
+  "checkpoint_folder": {
+    "name": "models_low_data",
+    "id": "1y6mmT8crY3WVgWFNL_0XHvcr3-URwUDB",
+    "observed_checkpoint_count": 16
+  },
+  "synced_local_artifacts": [
+    "experiments/low_data_summary.json",
+    "docs/LOW_DATA_SUMMARY.md"
+  ],
+  "notes": [
+    "Seed-42 pilot JSON rows are tracked locally under experiments/low_data/.",
+    "Current-local confirmation seeds 43 and 44 were produced on Colab L4 and remain Drive-backed raw artifacts.",
+    "Checkpoint files are intentionally not tracked because models/ is git-ignored.",
+    "The aggregate summary combines low_data_pilot_v1 seed 42 with low_data_confirm_v1 seeds 43 and 44 for the current-local pair."
+  ],
+  "remote_only_current_local_json": [
+    {
+      "title": "ablation_classical_conv_frac010_seed43_split42_fraction42.json",
+      "id": "1oObo9EMPrdazwGqgX-utF8aNdE7vuwB3"
+    },
+    {
+      "title": "ablation_classical_conv_frac010_seed44_split42_fraction42.json",
+      "id": "1rO-8lpVG1Sm27yNCAQQtLe2AydV0cUYM"
+    },
+    {
+      "title": "ablation_classical_conv_frac025_seed43_split42_fraction42.json",
+      "id": "1PhQ7zpFu-B3j2HgYPt9iBtTJRx5u38uu"
+    },
+    {
+      "title": "ablation_classical_conv_frac025_seed44_split42_fraction42.json",
+      "id": "1M0f0k3S83ViEqnT5KNZl9Dm14mFsb-sq"
+    },
+    {
+      "title": "ablation_classical_conv_frac050_seed43_split42_fraction42.json",
+      "id": "1UvPmMXByfuUeQk329YmMrdnQoBX_TG11"
+    },
+    {
+      "title": "ablation_classical_conv_frac050_seed44_split42_fraction42.json",
+      "id": "1APn7-A-nsGvc0Fx1WtG-r-5sR6f9eAX5"
+    },
+    {
+      "title": "ablation_classical_conv_frac100_seed43_split42_fraction42.json",
+      "id": "1_S0F1Is2i5tgvsmGfdqt3c1IUf7khP1J"
+    },
+    {
+      "title": "ablation_classical_conv_frac100_seed44_split42_fraction42.json",
+      "id": "1NSZ3ngN3Ucnm0YSj7dC7FkVNdetLfXIA"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.json",
+      "id": "1ylz-IxwFq5FFDZZEoVJU7OYuQYMHllJH"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.json",
+      "id": "1Ub79bznOVDJzB12o88cCYjb6YiYCc44R"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.json",
+      "id": "1rruQ3I4TLnp9YlLlbP3Jb0xeNPEcQ_o_"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.json",
+      "id": "1fa7sF40QUsPGhyctDEnVsssdBrhVvyn2"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.json",
+      "id": "1kD_oBsZAgfddW7ev5_MWZxFdyc9oXdib"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.json",
+      "id": "1CQovT6pj7Kz5Esqr3FjX-c2MxwnXUyA0"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.json",
+      "id": "1LZ4Br12kI7pR51YoMTv8pwG71NrgaenF"
+    },
+    {
+      "title": "ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.json",
+      "id": "1YuP0tjcq_mhbixiOzr01JECMlYGcb-Db"
+    }
+  ]
+}
