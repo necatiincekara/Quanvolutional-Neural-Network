@@ -8,7 +8,7 @@ Necati Incekara
 
 ## Abstract
 
-We present a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a 44-class low-data OCR task with 3,894 grayscale samples. The study separates five evidence axes: thesis-faithful reproductions, current-local matched-budget ablations, a stronger modern-classical upper bound, low-data scaling, and a trainable-quantum engineering case-study. Across three-seed full-data evaluation, the strongest reproduced evidence favors classical baselines. The best thesis-faithful model, `thesis_cnniiii`, reaches **85.26 ± 0.97%** test accuracy, while the best thesis-faithful quantum reproduction, `thesis_hqnn2`, reaches **78.61 ± 0.69%**. In the current-local matched-budget family, `classical_conv` reaches **81.40 ± 1.06%**, `param_linear` reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. A stronger modern-classical baseline, `resnet18_cifar_gray`, reaches **88.13 ± 0.82%**. The May 2026 low-data confirmation adds a narrower result: within the current-local family, the non-trainable quantum baseline exceeds `classical_conv` on three-seed mean test accuracy across 10/25/50/100% training fractions, while the thesis-faithful low-data pilot remains classical-favored. April 2026 reruns of the stabilized trainable V7 path place the single-run trainable-quantum case-study range at **65.88--72.53%** test accuracy. We therefore do not claim generic quantum advantage. The contribution is instead an artifact-backed benchmark with family separation, a specific low-data competitiveness signal for one non-trainable quantum baseline, and concrete engineering lessons about information bottlenecks, gradient collapse, and AMP precision failures at the quantum boundary.
+We present a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a 44-class low-data OCR task with 3,894 grayscale samples. The study separates five evidence axes: thesis-faithful reproductions, current-local matched-budget ablations, a stronger modern-classical upper bound, low-data scaling, and a trainable-quantum engineering case-study. Across three-seed full-data evaluation, the strongest reproduced evidence favors classical baselines. The best thesis-faithful model, a CNN-IIII reproduction (`thesis_cnniiii`), reaches **85.26 ± 0.97%** test accuracy, while the best thesis-faithful quantum reproduction, HQNN-II (`thesis_hqnn2`), reaches **78.61 ± 0.69%**. In the current-local matched-budget family, the classical convolutional baseline (`classical_conv`) reaches **81.40 ± 1.06%**, the linear classical replacement (`param_linear`) reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. A stronger grayscale ResNet-18 baseline (`resnet18_cifar_gray`) reaches **88.13 ± 0.82%**. The May 2026 low-data confirmation adds a narrower result: within the current-local family, the non-trainable quantum baseline exceeds the classical convolutional baseline on three-seed mean test accuracy across 10/25/50/100% training fractions, while the thesis-faithful low-data pilot remains classical-favored. April 2026 reruns of the stabilized trainable V7 path place the single-run trainable-quantum case-study range at **65.88--72.53%** test accuracy. We therefore do not claim generic quantum advantage. The contribution is instead an artifact-backed benchmark with family separation, a specific low-data competitiveness signal for one non-trainable quantum baseline, and concrete engineering lessons about information bottlenecks, gradient collapse, and AMP precision failures at the quantum boundary.
 
 **Keywords:** Quantum Machine Learning, Quanvolutional Neural Networks, Hybrid Quantum-Classical Computing, Ottoman Script Recognition, Variational Quantum Circuits, Gradient Stabilization, Barren Plateaus
 
@@ -22,19 +22,27 @@ Recent QML benchmarking work warns that experimental design, small simulation sc
 
 We apply quanvolutional neural networks to Ottoman-Turkish handwritten character recognition, a historically significant and technically challenging classification problem. The Ottoman script comprises 44 distinct character classes with significant morphological variation and limited training data (3,894 samples), making it an ideal testbed for evaluating quantum feature extractors under resource-constrained conditions.
 
-### 1.1 Contributions
+### 1.1 Research Questions
+
+The study is organized around three research questions:
+
+1. **RQ1:** Under a reproducible full-data protocol, do thesis-faithful or matched-budget quantum variants outperform their strongest classical counterparts on this Ottoman-Turkish OCR task?
+2. **RQ2:** Does reducing only the training split reveal a low-data regime in which a quantum variant becomes competitive with its paired classical baseline?
+3. **RQ3:** Which architecture, gradient-flow, and numerical-precision constraints determine whether a trainable quanvolutional model can learn at all?
+
+### 1.2 Contributions
 
 Our contributions are fourfold:
 
-1. **Reproducible Benchmark Structure.** We organize the study into analytically separate evidence axes: thesis-faithful reproductions, current-local matched-budget ablations, a modern-classical upper bound, low-data scaling, and the trainable-quantum engineering case-study. This prevents misleading direct comparisons between differently sized or differently motivated models and yields an artifact-backed benchmark picture for the repository.
+1. **Artifact-Backed Benchmark Protocol.** We organize the study into analytically separate evidence axes: thesis-faithful reproductions, current-local matched-budget ablations, a modern-classical upper bound, low-data scaling, and the trainable-quantum engineering case-study. This prevents misleading direct comparisons between differently sized or differently motivated models.
 
-2. **Negative-Result Benchmark Evidence With A Low-Data Nuance.** We show that the strongest multi-seed full-data evidence on this 44-class task currently favors classical baselines. The best thesis-faithful model is classical (`thesis_cnniiii`), the best full-data current-local matched-budget model is also classical (`classical_conv`), and a stronger modern-classical upper bound (`resnet18_cifar_gray`) extends that conclusion further. A separate low-data confirmation produces a specific current-local non-trainable quantum competitiveness signal, which is scientifically useful but still not sufficient for a headline generic quantum-win narrative.
+2. **Full-Data Negative Result With Low-Data Qualification.** We show that the strongest multi-seed full-data evidence on this 44-class task favors classical baselines in both thesis-faithful and current-local matched-budget families. A separate low-data confirmation produces a specific current-local non-trainable quantum competitiveness signal, but not a generic quantum-win narrative.
 
-3. **Information Bottleneck and Gradient Stabilization Analysis.** Through the V1--V7 trainable-quantum path, we identify an empirical spatial threshold below which quantum feature extraction collapses, and we show that learnable scaling, residual routing, and channel attention are sufficient to transform a non-learning hybrid architecture into a trainable one.
+3. **Trainable-Quanvolution Engineering Analysis.** Through the V1--V7 trainable-quantum path, we identify an empirical spatial threshold below which quantum feature extraction collapses, and we show that learnable scaling, residual routing, and channel attention are sufficient to transform a non-learning hybrid architecture into a trainable one.
 
-4. **AMP--PennyLane Incompatibility Documentation.** We identify and document a concrete failure mode in which PyTorch AMP float16 autocasting corrupts variational quantum circuit backpropagation unless float32 is restored at the quantum boundary and optimizer stepping remains GradScaler-aware.
+4. **Precision-Boundary Failure Mode.** We document a concrete failure mode in which PyTorch AMP float16 autocasting corrupts variational quantum circuit backpropagation unless float32 is restored at the quantum boundary and optimizer stepping remains GradScaler-aware.
 
-### 1.2 Relation To The Thesis
+### 1.3 Relation To The Thesis
 
 This paper should be read as a continuation and formalization of the master's-thesis study, not as a repudiation of it. The thesis established the dataset framing, the OCR problem formulation, and the initial CNN/HQNN comparison space. The present paper extends that foundation in four ways:
 
@@ -45,9 +53,9 @@ This paper should be read as a continuation and formalization of the master's-th
 
 Under this framing, the thesis remains scientifically valuable as the origin of the task definition and the first model family, while the paper provides the stricter reproducibility, benchmarking, and engineering analysis needed for publication.
 
-### 1.3 Paper Organization
+### 1.4 Paper Organization
 
-Section 2 reviews related work. Section 3 describes the dataset, architectures, and training pipelines. Section 4 presents the benchmark results, separating thesis-faithful reproductions, current-local matched-budget ablations, low-data scaling, and the trainable-quantum engineering case-study. Section 5 discusses the scientific implications and limitations. Section 6 concludes with future work.
+Section 2 reviews related work. Section 3 describes the dataset, benchmark families, architectures, and training pipeline. Section 4 presents the results in the order of the research questions: full-data benchmark families, low-data scaling, and the trainable-quantum engineering case-study. Section 5 discusses scientific implications and limitations. Section 6 concludes with future work.
 
 ---
 
