@@ -1,21 +1,5 @@
 # Fair Benchmarking and Engineering Lessons for Quanvolutional Neural Networks on Ottoman-Turkish Handwritten Character Recognition
 
-> Editorial status note, updated May 16, 2026:
-> This draft still reflects the older V7-centered manuscript state and is not submission-ready in its current form.
-> The current benchmark picture is now:
-> - `resnet18_cifar_gray`: `88.13 ± 0.82` test
-> - `thesis_cnniiii`: `85.26 ± 0.97` test
-> - `classical_conv`: `81.40 ± 1.06` test
-> - `param_linear`: `81.12 ± 2.27` test
-> - `non_trainable_quantum`: `80.40 ± 0.69` test
-> - `thesis_hqnn2`: `78.61 ± 0.69` test
-> - April 6 resumed `V7 trainable quantum` Colab rerun: `72.53%` test
-> - April 27 clean non-resumed `V7 trainable quantum` Colab rerun: `65.88%` test, reconstructed from captured notebook output after runtime disconnect
-> - older documented `V7 trainable quantum`: `65.02%` test
-> - May 2026 low-data current-local confirmation: `non_trainable_quantum` exceeds `classical_conv` on 3-seed mean test accuracy at 10/25/50/100% train fractions; the thesis-faithful low-data axis remains seed-42-only and classical-favored.
-> Therefore the paper must now be rewritten as a fair benchmark + engineering-lessons manuscript, not as a V7 accuracy-win manuscript.
-> Before using this draft for submission, reconcile claims against `docs/SUBMISSION_BENCHMARK_2026-03-25.md`, `docs/PUBLICATION_STRATEGY_2026-03-22.md`, `docs/EXPERIMENTS.md`, and `experiments/*.json`.
-
 ## Authors
 
 Necati Incekara
@@ -24,7 +8,7 @@ Necati Incekara
 
 ## Abstract
 
-We present a reproducible benchmark extension of a master's-thesis study on quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a difficult 44-class low-data task with 3,894 grayscale samples. The study combines thesis-faithful model reproductions, current-local matched-budget ablations, a stronger modern-classical upper bound, a low-data validation axis, and a trainable-quantum engineering case-study. Across multi-seed full-data evaluation, the strongest reproduced evidence currently favors classical baselines rather than quantum variants. In the thesis-faithful family, the strongest reproduced model is `thesis_cnniiii` with **85.26 ± 0.97%** test accuracy, while the best reproduced thesis-faithful quantum baseline, `thesis_hqnn2`, reaches **78.61 ± 0.69%**. In the current-local matched-budget family, `classical_conv` reaches **81.40 ± 1.06%**, `param_linear` reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. A stronger modern-classical baseline, `resnet18_cifar_gray`, reaches **88.13 ± 0.82%**. April 2026 Colab reruns of the stabilized trainable V7 path place the single-run trainable-quantum case-study range at **65.88--72.53%** test accuracy, still below the strongest classical baselines. A May 2026 low-data confirmation adds one narrower observation: in the current-local family, the non-trainable quantum baseline exceeds `classical_conv` on 3-seed mean test accuracy across 10/25/50/100% train fractions, while the thesis-faithful low-data pilot remains classical-favored. We therefore do not claim a generic quantum advantage on this task. Instead, the scientific value of the work lies in three contributions: (1) a fair comparative benchmark that separates thesis-faithful, matched-budget, modern-classical, and low-data validation axes, (2) a trainable-quantum engineering case-study showing how information bottlenecks, gradient collapse, and optimizer/precision mistakes affect hybrid training, and (3) the documentation of a practical incompatibility between PyTorch AMP float16 autocasting and variational quantum circuit backpropagation at the quantum boundary.
+We present a reproducible benchmark and engineering study of quanvolutional neural networks for Ottoman-Turkish handwritten character recognition, a 44-class low-data OCR task with 3,894 grayscale samples. The study separates five evidence axes: thesis-faithful reproductions, current-local matched-budget ablations, a stronger modern-classical upper bound, low-data scaling, and a trainable-quantum engineering case-study. Across three-seed full-data evaluation, the strongest reproduced evidence favors classical baselines. The best thesis-faithful model, `thesis_cnniiii`, reaches **85.26 ± 0.97%** test accuracy, while the best thesis-faithful quantum reproduction, `thesis_hqnn2`, reaches **78.61 ± 0.69%**. In the current-local matched-budget family, `classical_conv` reaches **81.40 ± 1.06%**, `param_linear` reaches **81.12 ± 2.27%**, and the Henderson-style non-trainable quantum baseline reaches **80.40 ± 0.69%**. A stronger modern-classical baseline, `resnet18_cifar_gray`, reaches **88.13 ± 0.82%**. The May 2026 low-data confirmation adds a narrower result: within the current-local family, the non-trainable quantum baseline exceeds `classical_conv` on three-seed mean test accuracy across 10/25/50/100% training fractions, while the thesis-faithful low-data pilot remains classical-favored. April 2026 reruns of the stabilized trainable V7 path place the single-run trainable-quantum case-study range at **65.88--72.53%** test accuracy. We therefore do not claim generic quantum advantage. The contribution is instead an artifact-backed benchmark with family separation, a specific low-data competitiveness signal for one non-trainable quantum baseline, and concrete engineering lessons about information bottlenecks, gradient collapse, and AMP precision failures at the quantum boundary.
 
 **Keywords:** Quantum Machine Learning, Quanvolutional Neural Networks, Hybrid Quantum-Classical Computing, Ottoman Script Recognition, Variational Quantum Circuits, Gradient Stabilization, Barren Plateaus
 
@@ -34,7 +18,7 @@ We present a reproducible benchmark extension of a master's-thesis study on quan
 
 Quantum machine learning (QML) has emerged as a promising paradigm for leveraging quantum computational properties in pattern recognition tasks [1,2]. Among various QML architectures, quanvolutional neural networks---which replace or augment classical convolutional filters with parameterized quantum circuits (PQCs)---have attracted significant research attention since their introduction by Henderson et al. [3]. However, the practical deployment of quanvolutional layers faces substantial engineering and theoretical challenges that are often underreported in the literature.
 
-A central concern in the QML community is the preponderance of positive results: papers demonstrating quantum enhancement while omitting systematic failure analysis [see Bowles et al., 2024]. This "positive bias" undermines reproducibility and obscures the true practical limits of near-term quantum machine learning. In this work, we deliberately adopt a failure-first methodology, documenting every architectural failure in detail alongside our eventual successes.
+Recent QML benchmarking work warns that experimental design, small simulation scales, and performance narratives can make quantum model comparisons difficult to interpret [11]. In this work, we adopt a reproducibility-first methodology, documenting architectural failures alongside the configurations that eventually train.
 
 We apply quanvolutional neural networks to Ottoman-Turkish handwritten character recognition, a historically significant and technically challenging classification problem. The Ottoman script comprises 44 distinct character classes with significant morphological variation and limited training data (3,894 samples), making it an ideal testbed for evaluating quantum feature extractors under resource-constrained conditions.
 
@@ -63,7 +47,7 @@ Under this framing, the thesis remains scientifically valuable as the origin of 
 
 ### 1.3 Paper Organization
 
-Section 2 reviews related work. Section 3 describes the dataset, architectures, and training pipelines. Section 4 presents the benchmark results, separating thesis-faithful reproductions, current-local matched-budget ablations, low-data scaling, and the trainable-quantum engineering case-study. Section 5 discusses the scientific implications of the benchmark picture. Section 6 concludes with realistic publication takeaways and future work.
+Section 2 reviews related work. Section 3 describes the dataset, architectures, and training pipelines. Section 4 presents the benchmark results, separating thesis-faithful reproductions, current-local matched-budget ablations, low-data scaling, and the trainable-quantum engineering case-study. Section 5 discusses the scientific implications and limitations. Section 6 concludes with future work.
 
 ---
 
@@ -89,11 +73,9 @@ The engineering side of hybrid classical-quantum training is much less standardi
 
 ### 2.4 Ottoman Script Recognition and Thesis Context
 
-Ottoman-Turkish handwriting recognition is an active research area given the historical significance of Ottoman documents [9]. Classical deep learning approaches have achieved moderate success on limited datasets. The script's 44 character classes with significant intra-class variation and limited training data (~88 samples/class average) present challenges representative of real-world QML deployment scenarios with data-scarce settings.
+Ottoman script recognition is an active research area given the historical significance of Ottoman documents, with prior work spanning online handwritten character recognition and printed-document OCR [9,12]. The script's 44 character classes with significant intra-class variation and limited training data (~88 samples/class average) present challenges representative of real-world QML deployment scenarios with data-scarce settings.
 
 This paper builds directly on a master's-thesis study conducted on the same OCR problem. The thesis established the task framing and the initial CNN/HQNN comparison space; the present work extends it by introducing reproducible reruns, multi-seed reporting, stricter model-family separation, and a trainable-quantum engineering analysis. In that sense, the thesis is the foundation of the paper rather than a discarded precursor.
-
-*[References [9] and [11] to be completed with full citations]*
 
 ---
 
@@ -279,7 +261,7 @@ The benchmark picture must be read in separate layers rather than as a single fl
 1. **Thesis-faithful family:** reproductions of the thesis-era classical and quantum models.
 2. **Current-local matched-budget family:** smaller parameter-matched ablations designed for fair local comparison.
 3. **Modern-classical upper bound:** a stronger classical model that tests reviewer risk beyond thesis-era architectures.
-4. **Low-data scaling pilot:** a validation axis that reduces only the training split and keeps validation/test fixed.
+4. **Low-data scaling axis:** a validation axis that reduces only the training split and keeps validation/test fixed.
 5. **Trainable-quantum case-study:** the V1--V7 engineering path, which is valuable scientifically even though it is not the strongest benchmark family.
 
 ### 4.2 Thesis-Faithful Family
@@ -331,11 +313,11 @@ The low-data axis asks whether the quantum variants become more competitive when
 | thesis-faithful | 0.50 | `thesis_cnniiii`: 82.40% | `thesis_hqnn2`: 72.10% | seed-42 pilot; classical ahead by 10.30 points |
 | thesis-faithful | 1.00 | `thesis_cnniiii`: 85.19% | `thesis_hqnn2`: 78.33% | seed-42 pilot; classical ahead by 6.86 points |
 
-This result should be interpreted narrowly. It does not overturn the multi-seed full-data hierarchy and does not support a generic quantum-advantage claim. It does, however, provide a specific low-data competitiveness signal for the current-local non-trainable quantum baseline. The effect is clearest at 10-50% training fractions and becomes very small at full data.
+This low-data result is narrow. It does not overturn the multi-seed full-data hierarchy and does not support a generic quantum-advantage claim. It does, however, provide a specific low-data competitiveness signal for the current-local non-trainable quantum baseline. The effect is clearest at 10-50% training fractions and becomes very small at full data.
 
 ### 4.6 Trainable-Quantum Engineering Case-Study
 
-The V1--V7 line remains scientifically useful, but it should be interpreted as an engineering case-study rather than as the main benchmark winner. Its value lies in showing what failed, what became trainable, and why. The April 2026 Colab reruns show that the stabilized V7 path can train without NaN collapse, but they also show meaningful single-run variability; the engineering story should now be told using the older documented run, the April 6 resumed rerun, and the April 27 clean non-resumed rerun.
+The V1--V7 line remains scientifically useful as an engineering case-study rather than as the main benchmark winner. Its value lies in showing what failed, what became trainable, and why. The April 2026 Colab reruns show that the stabilized V7 path can train without NaN collapse, but they also show meaningful single-run variability. We therefore analyze V7 using the older documented run, the April 6 resumed rerun, and the April 27 clean non-resumed rerun.
 
 #### 4.6.1 Architectural Evolution Summary
 
@@ -496,7 +478,7 @@ This interpretation should not be misread as "the thesis was wrong." A more accu
 
 ### 5.5 Limitations And Scope
 
-1. **No quantum advantage claimed.** The current benchmark picture does not support a claim that quantum variants outperform the strongest reproduced classical baselines on this dataset.
+1. **No quantum advantage claimed.** The benchmark evidence does not support a claim that quantum variants outperform the strongest reproduced classical baselines on this dataset.
 
 2. **Simulator-based evaluation.** All quantum experiments rely on classical simulation. This is acceptable for methodology research, but it prevents any hardware-side performance claim.
 
@@ -512,7 +494,7 @@ We presented a reproducible benchmark and engineering study of quanvolutional ne
 
 The May 2026 low-data confirmation identifies a narrower current-local competitiveness signal for the Henderson-style non-trainable quantum baseline: it exceeds `classical_conv` on 3-seed mean test accuracy across the tested training fractions. The thesis-faithful low-data comparison remains classical-favored in the available seed-42 pilot.
 
-The paper therefore should not claim quantum superiority. Its value lies elsewhere:
+We therefore do not claim quantum superiority. The value of the study lies elsewhere:
 
 1. **Fair benchmark evidence:** classical baselines remain stronger under the current reproduced evidence.
 2. **Engineering lessons:** trainable hybrid quanvolution can be stabilized, but only when information flow, gradient routing, and precision boundaries are handled carefully.
@@ -540,11 +522,13 @@ Future work should focus on strengthening the benchmark rather than chasing an u
 
 [8] Cerezo, M., et al. "Cost function dependent barren plateaus in shallow parametrized quantum circuits." *Nature Communications* 12.1 (2021): 1791.
 
-[9] *[Ottoman script recognition reference to be added — search: "Ottoman handwriting recognition deep learning"]*
+[9] Nalbant, M., Burunkaya, M., & Eroglu, Y. "Online Handwritten Ottoman Character Recognition." *Engineering Sciences* 4.2 (2009): 148-164. https://doi.org/10.12739/nwsaes.v4i2.5000067152
 
 [10] Perez-Salinas, A., et al. "Data re-uploading for a universal quantum classifier." *Quantum* 4 (2020): 226.
 
-[11] Bowles, J., et al. "Better classical surrogate models for quantum classifiers." *arXiv:2403.07998* (2024).
+[11] Bowles, J., Ahmed, S., & Schuld, M. "Better than classical? The subtle art of benchmarking quantum machine learning models." *arXiv:2403.07059* (2024). https://doi.org/10.48550/arXiv.2403.07059
+
+[12] Dolek, I., & Kurt, A. "Ottoman Optical Character Recognition with Deep Neural Networks." *Journal of the Faculty of Engineering and Architecture of Gazi University* 38.4 (2023): 2579-2593. https://doi.org/10.17341/gazimmfd.1062596
 
 ---
 
@@ -558,5 +542,5 @@ Future work should focus on strengthening the benchmark rather than chasing an u
 - **Training notebook:** `colab_v7_rerun_clean.ipynb`
 - **Framework versions:** PyTorch 2.x, PennyLane 0.44, NumPy ≥ 2.0, CUDA 12.1
 - **Hardware:** NVIDIA L4 / A100-SXM4-80GB (Google Colab Pro); Apple M4 Mac Mini (development)
-- **Random seeds:** *[to be specified before submission]*
-- **Dataset:** *[access instructions to be added]*
+- **Random seeds:** full-data publication benchmarks use seeds 42, 43, and 44 with split seed 42; the low-data current-local confirmation uses seeds 42, 43, and 44 with split seed 42 and fraction seed 42; the thesis-faithful low-data rows are seed-42 pilot evidence.
+- **Dataset:** local repository split under `set/train` and `set/test`; publication use should include dataset access instructions or an archive link.
