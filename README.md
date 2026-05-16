@@ -6,21 +6,22 @@ A research-grade implementation of a hybrid quantum-classical neural network for
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
 [![PennyLane](https://img.shields.io/badge/PennyLane-0.32+-green.svg)](https://pennylane.ai/)
 
-> Status note, April 30, 2026:
+> Status note, May 16, 2026:
 > This README still contains historical V4/V6-era narrative sections below. For the current benchmark truth, use `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `docs/PUBLICATION_STRATEGY_2026-03-22.md`.
 > The current strongest reproduced evidence favors classical baselines rather than quantum variants:
 > - `resnet18_cifar_gray`: `88.13 ± 0.82` test, modern-classical upper bound
 > - `thesis_cnniiii`: `85.26 ± 0.97` test
 > - `classical_conv`: `81.40 ± 1.06` test
+> - May 2026 current-local low-data confirmation: `non_trainable_quantum` exceeds `classical_conv` on 3-seed mean test accuracy at 10/25/50/100% train fractions
 > - `V7 trainable quantum` April 6 resumed Colab rerun: `72.53%` test
 > - `V7 trainable quantum` April 27 clean non-resumed Colab rerun: `65.88%` test, reconstructed from captured notebook output after runtime disconnect
 > Treat the rest of this README primarily as historical background unless it is re-verified against current artifacts.
 
 ## 📝 Project Overview
 
-This project explores quantum machine learning (QML) for handwritten character recognition in historical scripts. Ottoman-Turkish characters present unique challenges due to high intra-class variance and complex morphology. Our hybrid architecture uses quantum circuits as trainable feature extractors, targeting quantum advantages in feature correlation learning.
+This project evaluates quantum machine learning (QML) for handwritten character recognition in historical scripts. Ottoman-Turkish characters present unique challenges due to high intra-class variance and complex morphology. The current artifact-backed framing is a fair benchmark plus hybrid-QML engineering study, with one narrow current-local low-data competitiveness signal and no generic quantum-advantage claim.
 
-**Research Goal**: Achieve ≥90% accuracy by evolving from fixed quantum layers (82% baseline from master's thesis) to fully trainable quantum circuits with advanced architectural innovations.
+**Current Research Goal**: Build a reproducible, artifact-backed comparison of thesis-faithful, matched-budget, modern-classical, low-data, and trainable-quantum case-study axes without mixing historical claims with current evidence.
 
 ### 🏛️ Historical Architecture Snapshot (V4/V6 Path)
 
