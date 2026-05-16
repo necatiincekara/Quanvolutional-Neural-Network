@@ -55,7 +55,7 @@ Section 2 reviews related work. Section 3 describes the dataset, architectures, 
 
 ### 2.1 Quanvolutional Neural Networks
 
-Henderson et al. [3] introduced quanvolutional neural networks, demonstrating that random non-trainable quantum circuits can be used as fixed feature extractors before a classical classifier. That formulation remains important because it motivates the non-trainable preprocessing baselines used both in our thesis-faithful reproductions and in our current-local Henderson-style comparisons. Later work such as Hur et al. [4] explored trainable quantum convolutional variants for classical data classification, opening the question of whether learned quantum parameters provide a practical benefit over random or classical replacements.
+Henderson et al. [3] introduced quanvolutional neural networks, demonstrating that random non-trainable quantum circuits can be used as fixed feature extractors before a classical classifier. That formulation remains important because it motivates the non-trainable preprocessing baselines used both in our thesis-faithful reproductions and in our current-local Henderson-style comparisons. Later work such as Hur et al. [4] explored trainable quantum convolutional variants for classical data classification, while broader reviews summarize the wider quantum-classifier and image-classification landscape [5,6]. This opens the practical question of whether learned or fixed quantum parameters provide measurable benefit over random or classical replacements.
 
 Our study differs from most one-family quanvolution papers in that it does not treat all quantum models as interchangeable. Instead, it distinguishes between: (1) thesis-faithful reproductions of earlier CNN/HQNN designs, (2) current-local matched-budget ablations designed for fair comparison, and (3) a trainable-quantum engineering case-study. This separation is necessary because different quanvolutional setups answer different scientific questions.
 
@@ -118,6 +118,21 @@ The methodology separates five evidence axes:
 5. **Trainable-quantum engineering case-study:** the V1--V7 development path used to study gradient flow, bottlenecks, and precision failures.
 
 This separation is methodologically important. A thesis-faithful HQNN model and a current-local Henderson-style non-trainable quantum baseline are both "quantum" models, but they do not answer the same question and should not be merged into a single ranking row.
+
+#### 3.1.3 Model Nomenclature
+
+The repository retains implementation-oriented model identifiers for reproducibility. In the results, these identifiers correspond to the following paper-level roles:
+
+| Repository identifier | Paper-level role | Benchmark family |
+|---|---|---|
+| `thesis_cnniiii` | strongest thesis-faithful classical CNN reproduction | thesis-faithful |
+| `thesis_cnn3` | weaker thesis-faithful classical CNN anchor | thesis-faithful |
+| `thesis_hqnn2` | strongest thesis-faithful quantum reproduction | thesis-faithful |
+| `classical_conv` | current-local classical convolutional matched-budget baseline | current-local |
+| `param_linear` | current-local linear classical replacement for the quantum block | current-local |
+| `non_trainable_quantum` | current-local Henderson-style non-trainable quantum preprocessing baseline | current-local |
+| `resnet18_cifar_gray` | stronger grayscale ResNet-18 classical upper bound | modern-classical |
+| V7 trainable quantum | stabilized trainable-quantum engineering case-study | trainable-quantum |
 
 ### 3.2 Quantum Circuit Design
 
@@ -532,14 +547,32 @@ Future work should focus on strengthening the benchmark rather than chasing an u
 
 ---
 
-## Appendix A: Experimental Configuration
+## Appendix A: Experimental Configuration And Artifacts
 
-*Complete hyperparameter settings, debug output, and per-version configurations documented in `docs/EXPERIMENTS.md`.*
+Complete hyperparameter settings, debug output, and per-version configurations are documented in `docs/EXPERIMENTS.md`. The main machine-readable artifacts used by this draft are:
+
+| Artifact | Purpose |
+|---|---|
+| `experiments/benchmark_summary.json` | aggregate full-data benchmark summary |
+| `experiments/low_data_summary.json` | aggregate low-data scaling summary |
+| `experiments/low_data_drive_manifest_20260502.json` | Drive provenance manifest for Colab low-data confirmation rows |
+| `experiments/v7_trainable_quantum_rerun_20260406_l4.json` | April 6 resumed V7 Colab rerun row |
+| `experiments/v7_trainable_quantum_clean_20260427_l4.json` | April 27 clean V7 Colab rerun row reconstructed from captured notebook output |
+| `paper/figures/low_data_scaling.png` and `.pdf` | paper figure generated from the low-data aggregate summary |
+
+The principal local verification commands are:
+
+```bash
+python scripts/aggregate_benchmarks.py
+python scripts/plot_low_data_results.py
+```
+
+The low-data confirmation aggregate was generated in the Drive-backed Colab context after all seed-42/43/44 raw JSON rows were present. Re-running `scripts/aggregate_low_data.py` locally requires first syncing the Drive-only confirmation JSON rows listed in `experiments/low_data_drive_manifest_20260502.json`.
 
 ## Appendix B: Reproducibility
 
 - **Code:** https://github.com/necatiincekara/Quanvolutional-Neural-Network
-- **Training notebook:** `colab_v7_rerun_clean.ipynb`
+- **Training notebooks:** `train_v7_colab.ipynb`, `colab_v7_rerun_clean.ipynb`, and `colab_low_data_confirm.ipynb`
 - **Framework versions:** PyTorch 2.x, PennyLane 0.44, NumPy ≥ 2.0, CUDA 12.1
 - **Hardware:** NVIDIA L4 / A100-SXM4-80GB (Google Colab Pro); Apple M4 Mac Mini (development)
 - **Random seeds:** full-data publication benchmarks use seeds 42, 43, and 44 with split seed 42; the low-data current-local confirmation uses seeds 42, 43, and 44 with split seed 42 and fraction seed 42; the thesis-faithful low-data rows are seed-42 pilot evidence.
