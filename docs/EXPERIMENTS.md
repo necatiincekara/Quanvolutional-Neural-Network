@@ -15,7 +15,7 @@ This document serves as a log for the experiments conducted during the developme
 *   **Platforms:** `mac-cpu` for the seed-42 pilot; `colab-NVIDIA L4` for current-local confirmation seeds 43 and 44.
 *   **Seed / Split Seed / Fraction Seed:** `42,43,44 / 42 / 42` for the current-local pair; `42 / 42 / 42` for the thesis-faithful pilot rows.
 *   **Implementation:** `train_ablation_local.py`, `train_thesis_models.py`, `scripts/run_low_data_grid.py`, and `scripts/aggregate_low_data.py`
-*   **Validated Artifacts:** Drive-backed `quanv_results/low_data_confirm_20260502/experiments_low_data/*.json`, `experiments/low_data_drive_manifest_20260502.json`, `experiments/low_data_summary.json`, and `docs/LOW_DATA_SUMMARY.md`.
+*   **Validated Artifacts:** Drive-backed `quanv_results/low_data_confirm_20260502/experiments_low_data/*.json`, `experiments/low_data_drive_manifest_20260502.json`, `experiments/low_data_summary.json`, `docs/LOW_DATA_SUMMARY.md`, and `paper/figures/low_data_scaling.{png,pdf}`.
 *   **Pilot Command:**
     ```bash
     venv/bin/python scripts/run_low_data_grid.py \

@@ -316,6 +316,10 @@ This result strengthens the paper's negative-result framing. It shows that the c
 
 The low-data axis asks whether the quantum variants become more competitive when only the training split is reduced. Validation and test splits remain fixed; only the training subset is selected deterministically with label stratification. The seed-42 pilot uses `low_data_pilot_v1`; the current-local confirmation adds Colab L4 seeds 43 and 44 under `low_data_confirm_v1`. Aggregate summaries are stored in `experiments/low_data_summary.json` and `docs/LOW_DATA_SUMMARY.md`.
 
+![Low-data scaling results](figures/low_data_scaling.png)
+
+**Figure 1.** Low-data scaling results by benchmark family. The current-local panel reports three-seed means with standard deviations for `classical_conv` and `non_trainable_quantum`; the thesis-faithful panel reports the available seed-42 pilot for `thesis_cnniiii` and `thesis_hqnn2`. The gap panel uses classical minus quantum test accuracy, so negative current-local gaps indicate the non-trainable quantum baseline is ahead for that paired comparison.
+
 | Family | Fraction | Classical Test | Quantum Test | Interpretation |
 |---|---:|---:|---:|---|
 | current-local | 0.10 | `classical_conv`: 48.42 ± 2.31% | `non_trainable_quantum`: 50.71 ± 2.93% | quantum ahead by 2.29 points |

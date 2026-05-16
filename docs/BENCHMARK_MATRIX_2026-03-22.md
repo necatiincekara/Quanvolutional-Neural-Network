@@ -101,6 +101,7 @@ python scripts/aggregate_low_data.py
 
 # Low-data current-local confirmation, completed on Colab L4 in May 2026
 python scripts/run_low_data_grid.py --execute --protocol-version low_data_confirm_v1 --models classical_conv non_trainable_quantum --fractions 0.10 0.25 0.50 1.00 --seeds 43 44 --split-seed 42 --device auto
+python scripts/plot_low_data_results.py
 
 # Stronger modern classical baseline
 python train_modern_baselines.py --model resnet18_cifar_gray --seed 42 --split-seed 42
@@ -113,4 +114,4 @@ python train_modern_baselines.py --model resnet18_cifar_gray --seed 42 --split-s
 3. Tighten the paper and submission-facing documents around the now-complete benchmark picture.
 4. Keep the reconstructed V7 rows clearly labeled and recover missing remote `experiments/v7_*` metadata only if it is still available; the April 27 Drive `experiments/` subfolder is empty.
 5. Treat the current-local low-data confirmation as implemented. It supports a specific low-data competitiveness signal for `non_trainable_quantum`, not a generic quantum-advantage claim.
-6. Do not spend more Colab on low-data unless the paper review process asks for a narrower follow-up. The next work should be claim integration, figure/table preparation, and paper cleanup.
+6. Do not spend more Colab on low-data unless the paper review process asks for a narrower follow-up. Low-data figure/table preparation now has a tracked script and paper figure artifact; the next work should be paper cleanup and final claim integration.

@@ -2,6 +2,7 @@
 
 Auto-generated in Colab from Drive-backed `experiments/low_data/*.json`; synced locally from `quanv_results/low_data_confirm_20260502`.
 Drive raw-artifact IDs for the confirmation rows are recorded in `experiments/low_data_drive_manifest_20260502.json`.
+Paper figure artifacts are available at `paper/figures/low_data_scaling.png` and `paper/figures/low_data_scaling.pdf`.
 Rows with `Runs = 1` are pilot evidence only; do not treat them as multi-seed claims.
 
 ## current-local

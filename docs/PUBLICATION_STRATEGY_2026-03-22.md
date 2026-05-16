@@ -64,7 +64,7 @@ Still missing or incomplete elements include:
 - confidence intervals or significance tests
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
 - directly copied Colab JSON/experiment metadata for the April 2026 V7 reruns; the repository has reconstructed JSON rows and Drive-backed checkpoints, but the April 27 Drive `experiments/` subfolder is empty
-- a broader validation axis such as low-data scaling or a second dataset
+- a second dataset or robustness axis; the May 2026 low-data scaling axis is now partially addressed for the current-local pair and remains thesis-faithful seed-42-only
 
 ### 2.5 There is no hardware or computational advantage argument yet
 
@@ -72,11 +72,11 @@ The experiments are simulator-centric. That is acceptable for research, but it w
 
 - better accuracy in a well-defined regime
 - better parameter efficiency
-- better low-data behavior
+- better low-data behavior beyond the narrow May 2026 current-local signal
 - better robustness
 - a concrete resource tradeoff that remains favorable
 
-At the moment, that case is not established.
+At the moment, only a narrow current-local low-data competitiveness signal is established. A broad practical-usefulness case is not established.
 
 ## 3. What Could Still Be Publishable
 
@@ -212,7 +212,7 @@ Choose **one** defensible claim:
 
 1. **Engineering claim:** gradient stabilization and precision-boundary lessons make trainable quanvolution reproducible.
 2. **Benchmark claim:** on a hard low-data heritage OCR task, quantum and classical variants can be compared on equal footing and the current evidence favors classical baselines.
-3. **Regime claim:** quantum may remain competitive only in a specific regime such as low-data or parameter-efficiency, if future experiments support it.
+3. **Regime claim:** quantum can be narrowly competitive in a specific current-local low-data regime, while thesis-faithful and strongest full-data comparisons remain classical-favored.
 
 Do not claim all three unless the evidence truly supports all three.
 
@@ -221,7 +221,7 @@ Do not claim all three unless the evidence truly supports all three.
 At least one of the following should be added:
 
 - a second dataset
-- a low-data scaling study
+- a second-dataset, robustness, or parameter-budget extension to the May 2026 low-data scaling study
 - parameter-budget scaling
 - robustness / noise / corruption evaluation
 
@@ -259,7 +259,7 @@ Additional steps:
 
 1. add stronger classical baselines
 2. add one external or second benchmark
-3. add low-data or parameter-efficiency analysis
+3. extend the low-data result to a second dataset, robustness axis, or parameter-efficiency analysis
 4. formalize a fair comparison framework inspired by practical quantum advantage literature
 5. demonstrate at least one regime where the quantum model is genuinely competitive under rules defined in advance
 
