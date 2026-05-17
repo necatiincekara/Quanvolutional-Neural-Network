@@ -6,13 +6,15 @@ A research-grade implementation of a hybrid quantum-classical neural network for
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
 [![PennyLane](https://img.shields.io/badge/PennyLane-0.32+-green.svg)](https://pennylane.ai/)
 
-> Status note, May 16, 2026:
+> Status note, May 17, 2026:
 > This README still contains historical V4/V6-era narrative sections below. For the current benchmark truth, use `docs/BENCHMARK_SUMMARY.md`, `docs/EXPERIMENTS.md`, and `docs/PUBLICATION_STRATEGY_2026-03-22.md`.
+> For the current submission package, use `docs/SUBMISSION_PACKET_2026-05-16.md` and `docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.md`.
 > The current strongest reproduced evidence favors classical baselines rather than quantum variants:
 > - `resnet18_cifar_gray`: `88.13 ± 0.82` test, modern-classical upper bound
 > - `thesis_cnniiii`: `85.26 ± 0.97` test
 > - `classical_conv`: `81.40 ± 1.06` test
 > - May 2026 current-local low-data confirmation: `non_trainable_quantum` exceeds `classical_conv` on 3-seed mean test accuracy at 10/25/50/100% train fractions
+> - May 17, 2026 statistical evidence report: `docs/STATISTICAL_EVIDENCE_2026-05-17.md`
 > - `V7 trainable quantum` April 6 resumed Colab rerun: `72.53%` test
 > - `V7 trainable quantum` April 27 clean non-resumed Colab rerun: `65.88%` test, reconstructed from captured notebook output after runtime disconnect
 > Treat the rest of this README primarily as historical background unless it is re-verified against current artifacts.
@@ -25,7 +27,7 @@ This project evaluates quantum machine learning (QML) for handwritten character 
 
 ### 🏛️ Historical Architecture Snapshot (V4/V6 Path)
 
-Our model has evolved through 6 major iterations. **V4 provides the optimal balance** between training speed and accuracy:
+The historical V4/V6-era model evolved through 6 major iterations. In that older path, **V4 provided the most stable balance** between training speed and accuracy, but it is not the current benchmark leader:
 
 ```
 Input (32×32 grayscale)
@@ -80,28 +82,31 @@ Input (32×32 grayscale)
 
 ### 📊 Legacy Status & Roadmap Snapshot
 
-**Stable Baseline**: V4 (8×8 feature maps, 8.75% accuracy, 1.5h/epoch)
+This roadmap is superseded by the current benchmark and submission documents. It is retained only as historical context for the V4→V7 engineering path.
 
-**Immediate Priorities** (see [docs/AUDIT_REPORT.md](docs/AUDIT_REPORT.md)):
+**Historical Stable Baseline**: V4 (8×8 feature maps, 8.75% validation accuracy, 1.5h/epoch)
+
+**Historical Priorities From The Original Roadmap** (do not treat as current plan):
 1. **V7** (Week 1-2): Gradient stabilization → Target 25% accuracy
 2. **V8** (Week 3-4): Multi-scale processing → Target 40% accuracy
 3. **V9** (Week 5-6): Selective quantum → Target 60% accuracy
 4. **V10** (Week 7-8): Trainable quantum → Target 90% accuracy
 
-For detailed experimental results, see [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | For implementation roadmap, see [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md)
+For current experimental results, see [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md), [docs/BENCHMARK_SUMMARY.md](docs/BENCHMARK_SUMMARY.md), and [docs/SUBMISSION_PACKET_2026-05-16.md](docs/SUBMISSION_PACKET_2026-05-16.md). For historical implementation roadmap context, see [docs/IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md).
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-**Recommended Setup** (see [docs/COMPUTING_RESOURCES_2025.md](docs/COMPUTING_RESOURCES_2025.md) for details):
+**Recommended Setup** (see [docs/COMPUTING_RESOURCES_2025.md](docs/COMPUTING_RESOURCES_2025.md) for historical details):
 
 *   **Python 3.12.x** (or 3.13.x) - Full PyTorch 2.6+ and PennyLane 0.43+ support
-*   **Google Colab Pro** with A100 GPU (CUDA 12.1) - Essential for quantum training
+*   **Apple M4 / CPU** - sufficient for current local benchmark, aggregation, documentation, and many thesis-faithful/current-local jobs
+*   **Google Colab Pro** with L4/A100 GPU - use only for selected trainable-quantum or paper-impactful remote experiments
 *   **VS Code** with Google Colab extension - Seamless local development + cloud execution
 *   **Git** for version control
 
-**Important**: M4 Mac Mini lacks CUDA support - cannot run `lightning.gpu` quantum simulator. Use Colab Pro for training.
+**Important**: M4 Mac Mini lacks CUDA support and cannot run `lightning.gpu`; use Colab only when the experiment genuinely requires GPU/remote runtime.
 
 ### ⚙️ Installation
 

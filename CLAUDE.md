@@ -6,12 +6,13 @@ This file provides project guidance for Claude Code when working in this reposit
 
 This repository contains a hybrid quantum-classical OCR study for Ottoman-Turkish handwritten character recognition. It includes both historical thesis-era material and newer post-thesis experimental artifacts. Do not assume the oldest planning documents still reflect the current scientific status.
 
-As of April 30, 2026:
+As of May 17, 2026:
 
 - `src/model.py` and `src/train.py` represent the older V4/V6-style path.
 - `src/trainable_quantum_model.py`, `src/enhanced_training.py`, and `train_v7.py` represent the newer stabilized trainable-quantum path.
 - Multi-seed classical artifacts currently outperform the trainable and non-trainable quantum variants on test accuracy.
 - The current repo evidence supports a stronger "fair benchmark + hybrid QML engineering and failure-analysis" story than a clean "quantum advantage" story.
+- The current submission package is tracked in `docs/SUBMISSION_PACKET_2026-05-16.md` and `docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.md`.
 
 ## Source Of Truth Order
 
@@ -32,6 +33,8 @@ When results disagree, use this order:
   - `param_linear`: `81.12 ± 2.27` test
   - `non_trainable_quantum`: `80.40 ± 0.69` test
 - Trainable-quantum case study: April 6, 2026 resumed V7 Colab rerun at `72.89%` best validation and `72.53%` test; April 27-28, 2026 clean non-resumed V7 Colab rerun at `69.97%` best validation and `65.88%` test, reconstructed from captured notebook output after runtime disconnect; older documented V7 remains `67.35%` best validation and `65.02%` test.
+- Current-local low-data confirmation: `non_trainable_quantum` exceeds `classical_conv` on three-seed mean test accuracy at 10/25/50/100% train fractions; this is a narrow current-local signal, not a generic quantum-advantage claim.
+- Statistical evidence report: `docs/STATISTICAL_EVIDENCE_2026-05-17.md` and `experiments/statistical_evidence_2026-05-17.json` provide 95% confidence intervals and exploratory Welch comparisons. Treat p-values as descriptive reviewer aids because most groups have only `n=3`.
 - Thesis-best quantum result was `HQNN-II` at `82.40%` in the thesis table, but the current thesis-faithful reproduction `thesis_hqnn2` is `78.61 ± 0.69` and should be kept separate from the Henderson-style current-local non-trainable quantum ablation.
 
 ## High-Value Files
@@ -98,6 +101,9 @@ python train_thesis_models.py --help
 
 # Aggregate benchmark tables
 python scripts/aggregate_benchmarks.py
+
+# Statistical evidence summary
+python scripts/statistical_evidence.py
 
 # Quick non-trainable quantum smoke test
 python train_ablation_local.py --model non_trainable_quantum --test

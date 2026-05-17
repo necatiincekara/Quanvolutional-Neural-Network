@@ -26,6 +26,8 @@ This manifest lists the current shareable paper/advisor package after the April 
 | Statistical evidence Word export | `docs/STATISTICAL_EVIDENCE_2026-05-17.docx` |
 | Literature contribution note | `docs/LITERATURE_CONTRIBUTION_2026-05-17.md` |
 | Literature contribution Word export | `docs/LITERATURE_CONTRIBUTION_2026-05-17.docx` |
+| Submission readiness checklist | `docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.md` |
+| Submission readiness Word export | `docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.docx` |
 | Submission benchmark and claim set | `docs/SUBMISSION_BENCHMARK_2026-03-25.md` |
 | Submission benchmark Word export | `docs/SUBMISSION_BENCHMARK_2026-03-25.docx` |
 | Turkish advisor update | `docs/ADVISOR_UPDATE_2026-03-25_TR.md` |
