@@ -1,6 +1,7 @@
 # Publication Strategy
 
 **Date:** March 22, 2026
+**Last updated:** May 16, 2026
 
 This document records the realistic publication status of the study and the strategy required to turn it into a publishable paper.
 
@@ -13,7 +14,7 @@ Operational benchmark tracking now lives alongside this strategy in:
 
 As the repository stands today, this work is **not yet strong enough for a broad-scope Q1 AI or computer vision journal**.
 
-It is still **worth publishing**, but not in its current narrative form. The publishable value is in the benchmark discipline, negative-result honesty, hybrid-QML engineering lessons, and thesis-to-reproducible-study evolution, not in an unsupported raw "quantum wins" story.
+It is still **worth publishing**, and the current `paper/draft.md` has now been refocused around benchmark discipline, negative-result honesty, a narrow low-data competitiveness signal, hybrid-QML engineering lessons, and thesis-to-reproducible-study evolution. The paper should not be positioned as an unsupported raw "quantum wins" story.
 
 It is **potentially publishable** in one of two ways:
 
@@ -26,12 +27,12 @@ The current repository evidence does **not** support a strong "quantum advantage
 
 ### 2.1 The strongest current result is not quantum
 
-Current repository evidence after the unified `publication_v1` benchmark pass and the April 2026 Colab V7 reruns:
+Current repository evidence after the unified `publication_v1` benchmark pass, the April 2026 Colab V7 reruns, and the May 2026 low-data confirmation:
 
 | Model | Test Accuracy | Status |
 |---|---:|---|
-| `thesis_cnniiii` | **85.26 ± 0.97** | strongest thesis-faithful reproduction |
 | `resnet18_cifar_gray` | **88.13 ± 0.82** | stronger modern classical upper bound on the same fixed split |
+| `thesis_cnniiii` | **85.26 ± 0.97** | strongest thesis-faithful reproduction |
 | `classical_conv` | **81.40 ± 1.06** | strongest current-local matched-budget model |
 | `param_linear` | 81.12 ± 2.27 | strong matched classical replacement |
 | `non_trainable_quantum` | 80.40 ± 0.69 | current-local Henderson-style non-trainable quantum |
@@ -43,9 +44,16 @@ Current repository evidence after the unified `publication_v1` benchmark pass an
 
 This means the present paper cannot credibly argue that the trainable or non-trainable quantum path outperforms matched classical baselines.
 
-### 2.2 The current draft over-focuses on V7 versus an old weak baseline
+Low-data scaling adds a narrower qualification:
 
-The paper draft currently frames V7 primarily against V4 and historical failures. That is scientifically incomplete because newer local ablations are stronger than both V4 and V7 on test accuracy.
+| Family | Low-data result | Status |
+|---|---|---|
+| current-local | `non_trainable_quantum` exceeds `classical_conv` on three-seed mean test accuracy at 10/25/50/100% train fractions | specific competitiveness signal |
+| thesis-faithful | `thesis_cnniiii` remains ahead of `thesis_hqnn2` in the seed-42 pilot at all train fractions | classical-favored |
+
+### 2.2 Draft framing status
+
+Earlier versions of the draft over-focused on V7 versus V4 and historical failures. The current `paper/draft.md` has been refocused around RQ1/RQ2/RQ3: full-data benchmark hierarchy, low-data scaling, and trainable-quantum engineering constraints. The remaining writing risk is now submission polish and venue fit, not a stale V7-winner narrative.
 
 ### 2.3 The benchmark scope is too narrow for a broad Q1 claim
 
@@ -64,7 +72,7 @@ Still missing or incomplete elements include:
 - confidence intervals or significance tests
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
 - directly copied Colab JSON/experiment metadata for the April 2026 V7 reruns; the repository has reconstructed JSON rows and Drive-backed checkpoints, but the April 27 Drive `experiments/` subfolder is empty
-- a second dataset or robustness axis; the May 2026 low-data scaling axis is now partially addressed for the current-local pair and remains thesis-faithful seed-42-only
+- a second dataset or robustness axis; the May 2026 low-data scaling axis is now confirmed for the current-local pair and remains thesis-faithful seed-42-only
 
 ### 2.5 There is no hardware or computational advantage argument yet
 
@@ -76,7 +84,7 @@ The experiments are simulator-centric. That is acceptable for research, but it w
 - better robustness
 - a concrete resource tradeoff that remains favorable
 
-At the moment, only a narrow current-local low-data competitiveness signal is established. A broad practical-usefulness case is not established.
+At the moment, only a narrow current-local low-data competitiveness signal is established. A broad practical-usefulness or hardware-advantage case is not established.
 
 ## 3. What Could Still Be Publishable
 
@@ -162,17 +170,18 @@ That requires more evidence than is currently present.
 
 ## 6. Concrete Gap List Before Submission
 
-The following are the highest-priority missing pieces.
+The following are the highest-priority remaining pieces.
 
 ### 6.1 Synchronize the scientific claim
 
-The paper, README, thesis comparisons, and experiment logs must all reflect the same current truth:
+The paper, README, thesis comparisons, and experiment logs should continue to reflect the same current truth:
 
 - the strongest thesis-faithful reproduced model is classical (`thesis_cnniiii = 85.26 ± 0.97`)
 - the strongest current-local matched-budget model is classical (`classical_conv = 81.40 ± 1.06`)
 - current-local Henderson-style non-trainable quantum is `80.40 ± 0.69`
 - thesis-faithful HQNN-II reproduction is `78.61 ± 0.69`
 - V7 trainable quantum is not the best current model
+- current-local low-data confirmation supports a specific `non_trainable_quantum` competitiveness signal against `classical_conv`, not a generic quantum-advantage claim
 
 ### 6.2 Reproduce the thesis-best quantum baseline faithfully
 
@@ -198,11 +207,21 @@ The goal is not to make quantum look better. The goal is to make reviewer object
 
 ### 6.4 Run multi-seed experiments
 
-Minimum recommendation:
+Completed for the core full-data benchmark:
 
 - 3 seeds for all key models
 - report mean ± std
 - keep splits and augmentation logic consistent
+
+Completed for the current-local low-data confirmation:
+
+- seeds 42, 43, and 44 for `classical_conv` and `non_trainable_quantum`
+- fixed split seed 42 and fraction seed 42
+
+Still optional:
+
+- formal confidence intervals or significance tests if the target venue requires stronger statistical reporting
+- extra thesis-faithful low-data seeds only if reviewer feedback specifically asks for that axis
 
 ### 6.5 Define the quantum claim narrowly
 
@@ -225,7 +244,7 @@ At least one of the following should be added:
 - parameter-budget scaling
 - robustness / noise / corruption evaluation
 
-Without this, the paper remains too single-benchmark to be persuasive for stronger venues.
+Without this, the paper remains too single-benchmark to be persuasive for stronger broad-scope venues, although it is still viable as a specialized benchmark/engineering paper.
 
 ## 7. Practical Two-Track Strategy
 
@@ -235,7 +254,7 @@ Goal: produce a credible Q2 / specialized-journal manuscript without waiting for
 
 Steps:
 
-1. synchronize claims across paper and docs
+1. keep claims synchronized across paper and docs after each result-language edit
 2. use the now-completed 3-seed comparisons for:
    - thesis HQNN-II
    - thesis CNN-III
@@ -243,11 +262,12 @@ Steps:
    - current Henderson-style non-trainable quantum
    - classical_conv
    - param_linear
-3. do not schedule another V7 seed by default; first keep the finished rerun artifacts and reconstructed JSON rows clearly labeled
-4. rewrite the paper around trustworthy comparative evidence
+3. use the May 2026 low-data confirmation only as a narrow current-local regime claim
+4. do not schedule another V7 seed by default; keep the finished rerun artifacts and reconstructed JSON rows clearly labeled
+5. keep `paper/draft.md` and `paper/draft.docx` refreshed from the current Markdown
 
 Operational note:
-the trainable-quantum confirmations have now been obtained on Colab L4, and the stronger modern classical upper bound has been completed locally. Remaining Colab budget is about `245` computing units; because surplus above the renewal cap can be lost, a `45-50` CU remote experiment is reasonable only if it is paper-impactful and not just V7 artifact hygiene.
+the trainable-quantum confirmations have been obtained on Colab L4, the stronger modern classical upper bound has been completed locally, and the current-local low-data confirmation has been completed. The last user-reported Colab budget before this low-data confirmation was about `245` computing units; future remote spending should address reviewer risk or a stronger venue target, not V7 artifact hygiene or already-completed low-data rows.
 
 This is the shortest realistic publication path.
 
@@ -267,7 +287,7 @@ This route is slower, but it is the only honest way toward a broad Q1 attempt.
 
 ## 8. Recommended Writing Position Today
 
-If we start rewriting now, the paper should be positioned as:
+The current paper should be positioned as:
 
 > A rigorous comparative study of trainable and non-trainable quanvolutional models for Ottoman handwritten character recognition, with emphasis on failure analysis, benchmarking discipline, and reproducible engineering lessons for hybrid QML.
 
@@ -278,10 +298,10 @@ That is much stronger and more defensible than:
 ## 9. Immediate Action List
 
 1. Keep reconstructed April 2026 V7 rows clearly labeled, and sync copied Colab `experiments/v7_*` metadata only if it is still available.
-2. Reconcile the April 2026 V7 rerun rows against `docs/EXPERIMENTS.md`, `docs/BENCHMARK_SUMMARY.md`, and `paper/draft.md`.
-3. Finalize the benchmark-first paper wording and submission packet from the now-complete benchmark hierarchy.
-4. Use Colab only for a paper-impactful extension; spending roughly `45-50` surplus units is defensible before renewal if the experiment addresses reviewer risk.
-5. Decide whether the paper will follow the QML-insight route or the OCR/heritage route.
+2. Keep the May 2026 low-data claim scoped to the current-local `non_trainable_quantum` versus `classical_conv` comparison unless new artifacts expand it.
+3. Maintain synchronized Markdown and Word exports for `paper/draft.md`, `docs/SUBMISSION_BENCHMARK_2026-03-25.md`, and this strategy document.
+4. Decide whether the paper will follow the specialized QML-insight route or the OCR/heritage route.
+5. Use Colab only for a paper-impactful extension, such as second-dataset/robustness transfer or reviewer-requested statistics.
 
 ## 10. Source Notes
 

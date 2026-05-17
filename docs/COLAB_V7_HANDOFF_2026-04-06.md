@@ -7,14 +7,20 @@ This document is the operational handoff for the trainable V7 Colab path.
 > Update, April 30, 2026:
 > The April 6 resumed L4 rerun completed successfully at `72.89%` best validation and `72.53%` test accuracy.
 > The April 27 clean non-resumed L4 rerun completed at `69.97%` best validation and `65.88%` test accuracy; its JSON row is reconstructed from captured notebook output because the runtime disconnected before the artifact-copy cell ran.
-> Remaining Colab budget is approximately `245` computing units.
+> The last user-reported Colab budget before the May 2026 low-data confirmation was approximately `245` computing units; remeasure the current balance before any new Colab work.
 > Therefore this document should now be read mainly as a resume / recovery / artifact-sync reference, not as an instruction to start another default V7 Colab run.
+
+> Update, May 16, 2026:
+> V7 is closed as a trainable-quantum engineering case-study unless reviewer feedback specifically demands another controlled rerun.
+> Do not spend Colab units on V7 folder hygiene; the current paper-impact path is submission cleanup or a separately justified robustness/statistics extension.
 
 ## 1. Goal
 
-The goal is not to prove a new benchmark lead. The goal is to produce a fresh, reproducible,
-artifact-backed V7 rerun that can be cited safely in the paper as the current trainable-quantum
+The historical goal was not to prove a new benchmark lead. It was to produce a fresh, reproducible,
+artifact-backed V7 rerun that could be cited safely in the paper as a trainable-quantum
 case-study result.
+
+At the current repository state, that goal has been satisfied by the April 2026 reruns and reconstructed JSON rows. Use this document for resume/recovery instructions only.
 
 ## 2. Platform Choice
 
@@ -140,4 +146,4 @@ Stop after the first clean artifact-backed rerun if any of the following hold:
 - checkpoints and metadata are captured correctly
 - the new result does not materially change the current benchmark hierarchy
 
-Only consider extra V7 seeds if they are paper-relevant and if the expected value clearly justifies the Colab spend. The current default is to avoid more V7 training for artifact hygiene; a separate `45-50` CU paper-impact experiment may be justified before renewal if it addresses reviewer risk.
+Only consider extra V7 seeds if reviewer feedback makes them paper-relevant and if the expected value clearly justifies the Colab spend. The current default is to avoid more V7 training for artifact hygiene; any future Colab experiment should address a concrete reviewer risk or stronger venue target.

@@ -7,6 +7,7 @@ import argparse
 import glob
 import json
 from collections import defaultdict
+from pathlib import Path
 from statistics import mean, stdev
 from typing import Any
 
@@ -15,6 +16,10 @@ COMPARISONS = [
     ("current-local", "classical_conv", "non_trainable_quantum"),
     ("thesis-faithful", "thesis_cnniiii", "thesis_hqnn2"),
 ]
+
+DEFAULT_JSON_OUT = "experiments/low_data_summary.json"
+DEFAULT_MD_OUT = "docs/LOW_DATA_SUMMARY.md"
+DEFAULT_REMOTE_MANIFEST = "experiments/low_data_drive_manifest_20260502.json"
 
 
 def load_records(pattern: str) -> list[dict[str, Any]]:
@@ -26,6 +31,35 @@ def load_records(pattern: str) -> list[dict[str, Any]]:
             continue
         records.append(data | {"__path": path})
     return records
+
+
+def has_remote_only_confirmation(manifest_path: str) -> bool:
+    path = Path(manifest_path)
+    if not path.exists():
+        return False
+    with path.open(encoding="utf-8") as f:
+        manifest = json.load(f)
+    return bool(manifest.get("remote_only_current_local_json"))
+
+
+def has_local_confirmation_records(records: list[dict[str, Any]]) -> bool:
+    return any(record.get("protocol_version") == "low_data_confirm_v1" for record in records)
+
+
+def existing_summary_has_confirmed_rows(path: str) -> bool:
+    summary_path = Path(path)
+    if not summary_path.exists():
+        return False
+    with summary_path.open(encoding="utf-8") as f:
+        data = json.load(f)
+    for row in data.get("summary", []):
+        if (
+            row.get("family") == "current-local"
+            and row.get("model") in {"classical_conv", "non_trainable_quantum"}
+            and row.get("runs", 0) >= 3
+        ):
+            return True
+    return False
 
 
 def metric(values: list[float]) -> tuple[float | None, float | None]:
@@ -225,13 +259,42 @@ def to_markdown(summary_rows: list[dict[str, Any]], comparisons: list[dict[str, 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Aggregate low-data benchmark result JSON files")
     parser.add_argument("--input-glob", default="experiments/low_data/*.json")
-    parser.add_argument("--json-out", default="experiments/low_data_summary.json")
-    parser.add_argument("--md-out", default="docs/LOW_DATA_SUMMARY.md")
+    parser.add_argument("--json-out", default=DEFAULT_JSON_OUT)
+    parser.add_argument("--md-out", default=DEFAULT_MD_OUT)
+    parser.add_argument("--remote-manifest", default=DEFAULT_REMOTE_MANIFEST)
+    parser.add_argument(
+        "--allow-partial-overwrite",
+        action="store_true",
+        help=(
+            "Allow canonical outputs to be overwritten from local-only pilot rows even when "
+            "the Drive manifest says confirmation JSON rows are remote-only."
+        ),
+    )
     args = parser.parse_args()
 
     records = load_records(args.input_glob)
     summary_rows = summarize(records)
     comparisons = comparison_rows(summary_rows)
+
+    canonical_outputs = args.json_out == DEFAULT_JSON_OUT and args.md_out == DEFAULT_MD_OUT
+    remote_confirmation_missing_locally = (
+        has_remote_only_confirmation(args.remote_manifest)
+        and not has_local_confirmation_records(records)
+    )
+    if (
+        canonical_outputs
+        and remote_confirmation_missing_locally
+        and existing_summary_has_confirmed_rows(args.json_out)
+        and not args.allow_partial_overwrite
+    ):
+        print(
+            "Skipped canonical low-data summary write: "
+            "Drive manifest records remote-only confirmation rows, but local input contains "
+            "only pilot rows. Use --allow-partial-overwrite to intentionally replace the "
+            "confirmed summary with local-only output."
+        )
+        return
+
     with open(args.json_out, "w", encoding="utf-8") as f:
         json.dump({"summary": summary_rows, "comparisons": comparisons}, f, indent=2)
     with open(args.md_out, "w", encoding="utf-8") as f:
