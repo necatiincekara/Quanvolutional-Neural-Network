@@ -26,6 +26,10 @@ This manifest lists the current shareable paper/advisor package after the April 
 | Statistical evidence Word export | `docs/STATISTICAL_EVIDENCE_2026-05-17.docx` |
 | Literature contribution note | `docs/LITERATURE_CONTRIBUTION_2026-05-17.md` |
 | Literature contribution Word export | `docs/LITERATURE_CONTRIBUTION_2026-05-17.docx` |
+| May 2026 literature review | `docs/LITERATURE_REVIEW_2026-05-17.md` |
+| May 2026 literature review Word export | `docs/LITERATURE_REVIEW_2026-05-17.docx` |
+| V8 quantum extension decision | `docs/V8_QUANTUM_EXTENSION_DECISION_2026-05-17.md` |
+| V8 quantum extension decision Word export | `docs/V8_QUANTUM_EXTENSION_DECISION_2026-05-17.docx` |
 | Submission readiness checklist | `docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.md` |
 | Submission readiness Word export | `docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.docx` |
 | Submission benchmark and claim set | `docs/SUBMISSION_BENCHMARK_2026-03-25.md` |
@@ -55,6 +59,7 @@ This manifest lists the current shareable paper/advisor package after the April 
 - Current-local low-data seed-43 and seed-44 raw JSON rows are Drive-backed and recorded in `experiments/low_data_drive_manifest_20260502.json`; they are not tracked as local raw JSON files.
 - `scripts/aggregate_low_data.py` now protects the canonical low-data summary from being overwritten by local seed-42 pilot rows while those confirmation JSONs remain remote-only.
 - `scripts/statistical_evidence.py` reports 95% confidence intervals and exploratory Welch comparisons; because most multi-seed groups have only `n=3`, these p-values are descriptive reviewer aids rather than definitive inferential claims.
+- The May 2026 literature review and V8 decision note are planning and claim-safety documents. They do not introduce new benchmark results.
 - The April 27 clean V7 Drive folder contains checkpoints, but its `experiments/` subfolder is empty because the Colab runtime disconnected before the artifact-copy cell ran.
 - The last user-reported Colab budget before the May 2026 low-data confirmation was approximately `245` CU; remeasure before planning any new Colab run.
 
@@ -64,3 +69,4 @@ This manifest lists the current shareable paper/advisor package after the April 
 2. Add confidence intervals or formal significance tests only if the target venue/reviewer profile needs them.
 3. Add a second dataset or robustness axis only for a stronger methodology route.
 4. Do not rerun V7 or low-data rows for artifact hygiene.
+5. Treat V8 as future work until a design note and small gradient/architecture smoke justify training.

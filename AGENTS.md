@@ -86,6 +86,7 @@ Prefer the repository skills when the task matches:
 - `review-circuit`: quantum circuit review with the custom QML reviewer agent
 - `performance-debug`: slowness, dead quantum signal, scheduler mistakes, or learning collapse analysis
 - `paper-sync`: synchronize `paper/draft.md`, docs, and study claims before writing or editing the paper
+- `literature-review`: current-date, primary-source literature review before related-work edits, V8 proposals, or new Colab quantum-training decisions
 - `codex-audit`: audit official Codex capabilities against the repo's integration
 - `benchmark-triage`: choose the next benchmark or training task from current evidence
 - `roadmap-sync`: derive a next-phase plan from benchmark truth and publication strategy

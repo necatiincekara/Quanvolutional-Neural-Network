@@ -25,7 +25,8 @@ Use this skill before editing `paper/draft.md`, thesis text, or any publication-
    - configuration
    - quantitative results
    - conclusion
-5. If the task is substantial, spawn `paper_consistency_reviewer` first.
-6. If the task involves drafting or revising the paper itself, use `paper_writer`.
+5. If the task edits related work, the introduction, contribution framing, or publication positioning, use `literature-review` first and cite only primary sources or DOI/publisher records for scientific claims.
+6. If the task is substantial, spawn `paper_consistency_reviewer` first.
+7. If the task involves drafting or revising the paper itself, use `paper_writer`.
 
 Repository note: this repo contains historical planning text that is no longer fully aligned with current experimental artifacts. Do not write the paper from `README.md` or `CLAUDE.md` alone.

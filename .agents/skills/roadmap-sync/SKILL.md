@@ -22,9 +22,11 @@ Use this skill when the task is to re-plan the next phase of the study or conver
    - exact next task order
    - platform and compute choice
    - stop conditions
-5. If the roadmap spans many workflows, spawn `benchmark_strategist`.
+5. For V8, new quantum architectures, new Colab spend, or empirical extensions, use `literature-review` first and include source-backed paper impact plus explicit stop/go gates.
+6. If the roadmap spans many workflows, spawn `benchmark_strategist`.
 
 ## Repository Caveats
 
 - Do not let the roadmap drift back into a generic quantum-win narrative.
 - Publication-safe planning should assume the strongest current evidence favors classical baselines.
+- Do not default to new V7/V8 training. V8 should start as a design note plus a small gradient/architecture smoke, and Colab should be reserved for source-backed paper impact.
