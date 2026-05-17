@@ -537,7 +537,19 @@ The thesis-faithful path matters because it answers a narrower historical questi
 
 This interpretation should not be misread as "the thesis was wrong." A more accurate reading is that the thesis identified a promising comparison space, while the paper extends it with stricter protocols, clearer family separation, and more demanding evidence standards. Under those stricter rules, some thesis-era headline numbers are not recovered exactly, but the thesis remains the scientific foundation of the present study.
 
-### 5.6 Limitations And Scope
+### 5.6 Contribution To The Literature
+
+The study contributes to three overlapping literatures without relying on a generic quantum-advantage claim.
+
+First, for quanvolutional neural networks, it provides a reproducible negative-result benchmark with explicit family separation. Instead of reporting a single quantum-versus-classical leaderboard, the paper distinguishes thesis-faithful HQNN reproductions, current-local matched-budget ablations, a modern classical upper bound, low-data scaling, and trainable-quantum engineering evidence. This directly addresses a recurring weakness in QML benchmarking: quantum improvements can be overstated when the classical reference is too weak, too small, or not matched to the actual question being asked.
+
+Second, for hybrid QML engineering, the V1--V7 path turns implementation failures into reusable design evidence. The results identify a concrete information bottleneck below 8x8 pre-quantum spatial resolution, show that gradient routing and learnable scaling can make a previously non-learning trainable quanvolutional path trainable, and document an AMP/PennyLane precision-boundary failure mode. These findings are useful even though the final trainable-quantum model is not the benchmark leader, because they clarify why hybrid pipelines collapse and how to make them diagnosable.
+
+Third, for Ottoman-Turkish OCR and cultural-heritage computing, the paper upgrades a thesis-era model comparison into a reproducible, artifact-backed benchmark on a small 44-class handwriting task. The strongest evidence remains classical-favored, but the May 2026 low-data axis adds a scoped regime result: a Henderson-style non-trainable quantum preprocessing baseline is competitive with and modestly ahead of its paired current-local classical convolutional baseline under reduced training data. This is best read as a hypothesis-generating low-data signal for future validation, not as proof of general quantum superiority.
+
+The literature contribution is therefore methodological and evidential: a careful benchmark that narrows what can be claimed, preserves the useful parts of the quantum hypothesis, and records engineering constraints that future hybrid QML studies can test against.
+
+### 5.7 Limitations And Scope
 
 1. **No quantum advantage claimed.** The benchmark evidence does not support a claim that quantum variants outperform the strongest reproduced classical baselines on this dataset.
 
