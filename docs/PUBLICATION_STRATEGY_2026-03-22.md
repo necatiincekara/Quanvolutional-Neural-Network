@@ -69,7 +69,7 @@ That is interesting and publishable in a niche or domain-aware venue, but it is 
 
 Still missing or incomplete elements include:
 
-- confidence intervals or significance tests
+- formal inferential power beyond the May 17, 2026 confidence-interval and exploratory Welch report; most multi-seed groups still have only `n=3`
 - a clearly defined evaluation framework for any "practical quantum advantage" claim
 - directly copied Colab JSON/experiment metadata for the April 2026 V7 reruns; the repository has reconstructed JSON rows and Drive-backed checkpoints, but the April 27 Drive `experiments/` subfolder is empty
 - a second dataset or robustness axis; the May 2026 low-data scaling axis is now confirmed for the current-local pair and remains thesis-faithful seed-42-only
@@ -220,7 +220,7 @@ Completed for the current-local low-data confirmation:
 
 Still optional:
 
-- formal confidence intervals or significance tests if the target venue requires stronger statistical reporting
+- stronger statistical reporting if the target venue requires more than the May 17, 2026 descriptive confidence-interval and exploratory Welch report
 - extra thesis-faithful low-data seeds only if reviewer feedback specifically asks for that axis
 
 ### 6.5 Define the quantum claim narrowly

@@ -22,6 +22,8 @@ This manifest lists the current shareable paper/advisor package after the April 
 | Word paper draft | `paper/draft.docx` |
 | Low-data figure | `paper/figures/low_data_scaling.pdf` |
 | Low-data figure preview | `paper/figures/low_data_scaling.png` |
+| Statistical evidence report | `docs/STATISTICAL_EVIDENCE_2026-05-17.md` |
+| Statistical evidence Word export | `docs/STATISTICAL_EVIDENCE_2026-05-17.docx` |
 | Submission benchmark and claim set | `docs/SUBMISSION_BENCHMARK_2026-03-25.md` |
 | Submission benchmark Word export | `docs/SUBMISSION_BENCHMARK_2026-03-25.docx` |
 | Turkish advisor update | `docs/ADVISOR_UPDATE_2026-03-25_TR.md` |
@@ -39,6 +41,7 @@ This manifest lists the current shareable paper/advisor package after the April 
 | Full-data benchmark aggregate Markdown | `docs/BENCHMARK_SUMMARY.md` |
 | Low-data aggregate JSON | `experiments/low_data_summary.json` |
 | Low-data aggregate Markdown | `docs/LOW_DATA_SUMMARY.md` |
+| Statistical evidence JSON | `experiments/statistical_evidence_2026-05-17.json` |
 | Low-data Drive provenance manifest | `experiments/low_data_drive_manifest_20260502.json` |
 | Experiment log | `docs/EXPERIMENTS.md` |
 | V7 operational/provenance handoff | `docs/COLAB_V7_HANDOFF_2026-04-06.md` |
@@ -47,6 +50,7 @@ This manifest lists the current shareable paper/advisor package after the April 
 
 - Current-local low-data seed-43 and seed-44 raw JSON rows are Drive-backed and recorded in `experiments/low_data_drive_manifest_20260502.json`; they are not tracked as local raw JSON files.
 - `scripts/aggregate_low_data.py` now protects the canonical low-data summary from being overwritten by local seed-42 pilot rows while those confirmation JSONs remain remote-only.
+- `scripts/statistical_evidence.py` reports 95% confidence intervals and exploratory Welch comparisons; because most multi-seed groups have only `n=3`, these p-values are descriptive reviewer aids rather than definitive inferential claims.
 - The April 27 clean V7 Drive folder contains checkpoints, but its `experiments/` subfolder is empty because the Colab runtime disconnected before the artifact-copy cell ran.
 - The last user-reported Colab budget before the May 2026 low-data confirmation was approximately `245` CU; remeasure before planning any new Colab run.
 

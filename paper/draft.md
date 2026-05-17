@@ -352,6 +352,8 @@ The low-data axis asks whether the quantum variants become more competitive when
 
 This low-data result is narrow. It does not overturn the multi-seed full-data hierarchy and does not support a generic quantum-advantage claim. It does, however, provide a specific low-data competitiveness signal for the current-local non-trainable quantum baseline. The effect is clearest at 10-50% training fractions and becomes very small at full data.
 
+Because the multi-seed rows use only three seeds, we treat all uncertainty estimates as descriptive rather than definitive. The artifact-backed statistical report in `docs/STATISTICAL_EVIDENCE_2026-05-17.md` adds 95% confidence intervals and exploratory Welch comparisons from the stored benchmark summaries. It reinforces the main full-data conclusion: `thesis_cnniiii` exceeds `thesis_hqnn2` by 6.65 test points with an exploratory 95% difference interval of [4.66, 8.64], while `resnet18_cifar_gray` exceeds `classical_conv` by 6.73 points with interval [4.53, 8.93]. In contrast, the current-local full-data difference between `classical_conv` and `non_trainable_quantum` is only 1.00 point with interval [-1.17, 3.17]. For the low-data current-local axis, the largest quantum mean lead is at the 25% fraction (3.64 points), but its exploratory interval is [-0.02, 7.30]. The statistically cautious reading is therefore a narrow low-data competitiveness signal, not a broad or definitive quantum advantage.
+
 ### 4.6 Trainable-Quantum Engineering Case-Study
 
 The V1--V7 line remains scientifically useful as an engineering case-study rather than as the main benchmark winner. Its value lies in showing what failed, what became trainable, and why. The April 2026 Colab reruns show that the stabilized V7 path can train without NaN collapse, but they also show meaningful single-run variability. We therefore analyze V7 using the older documented run, the April 6 resumed rerun, and the April 27 clean non-resumed rerun.
@@ -605,6 +607,8 @@ Complete hyperparameter settings, debug output, and per-version configurations a
 |---|---|
 | `experiments/benchmark_summary.json` | aggregate full-data benchmark summary |
 | `experiments/low_data_summary.json` | aggregate low-data scaling summary |
+| `experiments/statistical_evidence_2026-05-17.json` | generated confidence-interval and exploratory pairwise comparison report |
+| `docs/STATISTICAL_EVIDENCE_2026-05-17.md` | human-readable statistical evidence summary |
 | `experiments/low_data_drive_manifest_20260502.json` | Drive provenance manifest for Colab low-data confirmation rows |
 | `experiments/v7_trainable_quantum_rerun_20260406_l4.json` | April 6 resumed V7 Colab rerun row |
 | `experiments/v7_trainable_quantum_clean_20260427_l4.json` | April 27 clean V7 Colab rerun row reconstructed from captured notebook output |
@@ -615,6 +619,7 @@ The principal local verification commands are:
 ```bash
 python scripts/aggregate_benchmarks.py
 python scripts/plot_low_data_results.py
+python scripts/statistical_evidence.py
 ```
 
 The low-data confirmation aggregate was generated in the Drive-backed Colab context after all seed-42/43/44 raw JSON rows were present. Re-running `scripts/aggregate_low_data.py` locally requires first syncing the Drive-only confirmation JSON rows listed in `experiments/low_data_drive_manifest_20260502.json`.

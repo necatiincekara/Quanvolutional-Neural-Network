@@ -10,6 +10,7 @@ Use this file together with:
 - `docs/PUBLICATION_STRATEGY_2026-03-22.md`
 - `docs/EXPERIMENTS.md`
 - `docs/LOW_DATA_SUMMARY.md`
+- `docs/STATISTICAL_EVIDENCE_2026-05-17.md`
 - `paper/draft.md`
 
 ## 1. Main Benchmark Snapshot
@@ -69,7 +70,8 @@ These are the strongest claims currently supported by repository artifacts.
 4. A stronger modern classical upper bound now also exists: `resnet18_cifar_gray` reaches **88.13 ± 0.82%** test accuracy on the same fixed split.
 5. The thesis-faithful quantum reproduction (`thesis_hqnn2`) is competitive with `thesis_cnn3`, but it does **not** surpass the strongest classical thesis-faithful model.
 6. The May 2026 low-data confirmation supports a **specific current-local low-data competitiveness signal**: `non_trainable_quantum` exceeds `classical_conv` on three-seed mean test accuracy at the tested train fractions.
-7. V7 remains valuable as a **hybrid-QML engineering and stabilization case-study**:
+7. The May 17 statistical evidence report supports cautious language: full-data classical-favored gaps are stronger than the current-local low-data signal, while current-local full-data differences are small relative to `n=3` uncertainty.
+8. V7 remains valuable as a **hybrid-QML engineering and stabilization case-study**:
    - information bottleneck threshold
    - gradient stabilization
    - AMP / float16 incompatibility at the quantum boundary
@@ -117,6 +119,6 @@ The most valuable next steps are now:
 
 1. keep the reconstructed April 2026 V7 JSON rows clearly labeled and recover copied remote `experiments/v7_*` metadata only if it is still available; the April 27 Drive folder currently contains checkpoints but an empty `experiments/` subfolder,
 2. keep `paper/draft.md`, this claim set, and Word exports synchronized after any result-language change,
-3. add confidence intervals or formal significance tests if the target venue or reviewers are expected to push on variance,
+3. use `docs/STATISTICAL_EVIDENCE_2026-05-17.md` for confidence-interval and exploratory pairwise language; add stronger statistics only if the target venue or reviewers require it,
 4. test whether the current-local low-data signal transfers to a second dataset, robustness axis, or alternative matched-budget classical controls if aiming above a specialized/Q2 route,
 5. use Colab only for a paper-impactful extension, not for V7 artifact hygiene or already-completed low-data rows.
