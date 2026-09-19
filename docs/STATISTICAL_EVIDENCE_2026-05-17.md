@@ -1,15 +1,17 @@
 # Statistical Evidence Summary
 
-**Date:** May 17, 2026
+**Date:** August 9, 2026
 
 This report is generated from repository benchmark artifacts. It is intended to support manuscript wording, not to create stronger claims than the artifacts justify.
 
 ## Method Notes
 
 - 95% confidence intervals use the Student t distribution around the reported mean test accuracy.
-- Pairwise rows use two-sided Welch tests and standardized mean differences from summary statistics.
-- Because most multi-seed groups have only `n=3`, p-values are descriptive reviewer aids rather than definitive inferential evidence.
-- Low-data current-local tests are approximate because seed-43 and seed-44 raw JSON files are Drive-backed remote artifacts; the local repository currently stores the confirmed aggregate summary and Drive manifest.
+- Full-data pairwise rows use two-sided Welch tests and standardized mean differences from summary statistics.
+- Full-data groups have `n=3`; their Welch p-values are descriptive reviewer aids rather than definitive inferential evidence.
+- Low-data current-local rows use the paired seed design (`n=6`, seeds 42--47); paired t and exact sign-flip tests are primary, with Holm correction across four fractions.
+- Seed 42 used the local 3,427-image parser state, while Colab seeds 43--47 used 3,428 loaded images. Training subset sizes therefore differ by one image; the low-data analysis is near-matched and exploratory.
+- Byte-original Drive JSON for seeds 43--47 was reconciled into the canonical low-data directory on August 9, 2026; the former notebook reconstructions remain documented in a superseded provenance manifest.
 - Thesis-faithful low-data rows are seed-42 pilot evidence only, so no confidence interval or significance test is reported for that axis.
 
 ## Full-Data Test Accuracy Intervals
@@ -45,16 +47,16 @@ Positive differences mean the left model has higher mean test accuracy.
 
 Positive differences mean `non_trainable_quantum` has higher mean test accuracy than `classical_conv`.
 
-| Fraction | Quantum Test | Classical Test | Difference | 95% CI | Welch p | Interpretation |
-|---:|---:|---:|---:|---:|---:|---|
-| 0.10 | 50.71 ± 2.93 | 48.42 ± 2.31 | 2.29 | [-3.82, 8.40] | 0.351 | quantum higher on mean test accuracy |
-| 0.25 | 69.88 ± 0.99 | 66.24 ± 1.78 | 3.64 | [-0.02, 7.30] | 0.051 | quantum higher on mean test accuracy |
-| 0.50 | 76.75 ± 0.50 | 75.61 ± 1.02 | 1.14 | [-0.98, 3.26] | 0.183 | quantum higher on mean test accuracy |
-| 1.00 | 80.76 ± 0.99 | 80.47 ± 0.57 | 0.29 | [-1.74, 2.32] | 0.688 | quantum higher on mean test accuracy |
+| Fraction | Seeds | Q-C Difference | Paired 95% CI | Paired p | Exact sign-flip p | Holm p | Interpretation |
+|---:|---|---:|---:|---:|---:|---:|---|
+| 0.10 | 42,43,44,45,46,47 | 1.79 | [-2.93, 6.50] | 0.375 | 0.375 | 1.000 | quantum mean higher; CI crosses zero |
+| 0.25 | 42,43,44,45,46,47 | 1.29 | [-1.88, 4.45] | 0.344 | 0.438 | 1.000 | quantum mean higher; CI crosses zero |
+| 0.50 | 42,43,44,45,46,47 | 0.65 | [-1.43, 2.72] | 0.461 | 0.469 | 1.000 | quantum mean higher; CI crosses zero |
+| 1.00 | 42,43,44,45,46,47 | 0.28 | [-0.44, 1.00] | 0.359 | 0.406 | 1.000 | quantum mean higher; CI crosses zero |
 
 ## Manuscript-Safe Interpretation
 
 - Full-data RQ1 remains classical-favored: the largest and most stable leads belong to `resnet18_cifar_gray` and `thesis_cnniiii`.
 - Current-local full-data differences among `classical_conv`, `param_linear`, and `non_trainable_quantum` are small relative to the low `n=3` uncertainty.
-- The May 2026 low-data result supports a narrow current-local signal for `non_trainable_quantum`, strongest at the 25% fraction and weakest at full data.
+- The May 2026 low-data result supports only a narrow exploratory current-local signal: the largest mean gap is at 10%, but every paired 95% interval crosses zero.
 - No row in this report supports a generic quantum-advantage claim.

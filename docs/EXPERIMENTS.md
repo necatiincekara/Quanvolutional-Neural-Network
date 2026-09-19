@@ -2,20 +2,21 @@
 
 This document serves as a log for the experiments conducted during the development of the Hybrid Quantum-Classical CNN. It tracks the evolution of the model, detailing the configuration, performance metrics, and accuracy results at each major stage. This log is intended for academic and research purposes.
 
-> Status note, March 22, 2026:
+> Status note, August 9, 2026:
 > This file is still useful as the detailed experiment history, but it is no longer the safest single-source summary of the study.
 > Later multi-seed full-data ablations show that current classical baselines outperform the current trainable and Henderson-style non-trainable quantum variants on test accuracy.
-> For the up-to-date publication assessment and claim hierarchy, use `docs/PUBLICATION_STRATEGY_2026-03-22.md` together with `experiments/*.json`.
+> Historical V1--V7 sections below preserve development-era interpretations; current paper claims must follow `experiments/*.json`, `docs/STATISTICAL_EVIDENCE_2026-05-17.md`, and `paper/draft.md`.
 
 ## Low-Data Scaling Pilot And Confirmation
 
-*   **Date:** May 2-16, 2026
+*   **Date:** May 2-August 9, 2026 reconciliation
 *   **Purpose:** Test whether quantum variants become more competitive when only the training split is reduced, while validation and test splits remain fixed.
-*   **Protocols:** `low_data_pilot_v1` for the seed-42 pilot; `low_data_confirm_v1` for Colab L4 confirmation seeds 43 and 44.
-*   **Platforms:** `mac-cpu` for the seed-42 pilot; `colab-NVIDIA L4` for current-local confirmation seeds 43 and 44.
-*   **Seed / Split Seed / Fraction Seed:** `42,43,44 / 42 / 42` for the current-local pair; `42 / 42 / 42` for the thesis-faithful pilot rows.
+*   **Protocols:** `low_data_pilot_v1` for seed 42; `low_data_confirm_v1` for Colab L4 seeds 43--47.
+*   **Platforms:** `mac-cpu` for seed 42; `colab-NVIDIA L4` for current-local seeds 43--47.
+*   **Seed / Split Seed / Fraction Seed:** `42--47 / 42 / 42` for the current-local pair; `42 / 42 / 42` for thesis-faithful pilot rows.
 *   **Implementation:** `train_ablation_local.py`, `train_thesis_models.py`, `scripts/run_low_data_grid.py`, and `scripts/aggregate_low_data.py`
-*   **Validated Artifacts:** Drive-backed `quanv_results/low_data_confirm_20260502/experiments_low_data/*.json`, `experiments/low_data_drive_manifest_20260502.json`, `experiments/low_data_summary.json`, `docs/LOW_DATA_SUMMARY.md`, and `paper/figures/low_data_scaling.{png,pdf}`.
+*   **Artifact Status:** All 56 expected low-data JSON rows and all 56 corresponding best checkpoints are now byte-local. On August 9, the 40 previously notebook-reconstructed current-local rows for seeds 43--47 were replaced by their reconciled byte-original Drive JSON; their result-bearing fields matched exactly. The historical reconstruction manifest is marked superseded. Seed 42 used 3,427 loaded training images whereas the Colab runs used 3,428, so subset sizes differ by one image and the paired design remains described as near-matched.
+*   **Validated Artifacts:** `experiments/low_data/*.json`, `models/low_data/*.pth`, `experiments/drive_artifact_reconciliation_20260809.json`, `experiments/low_data_summary.json`, `experiments/low_data_classification_metrics_20260809.json`, `docs/LOW_DATA_SUMMARY.md`, `docs/LOW_DATA_CLASSIFICATION_METRICS_2026-08-09.md`, `docs/STATISTICAL_EVIDENCE_2026-05-17.md`, and `paper/figures/low_data_scaling.{png,pdf}`. `experiments/low_data_reconstruction_manifest_20260728.json` is retained only as superseded provenance history.
 *   **Pilot Command:**
     ```bash
     venv/bin/python scripts/run_low_data_grid.py \
@@ -34,7 +35,7 @@ This document serves as a log for the experiments conducted during the developme
       --protocol-version low_data_confirm_v1 \
       --models classical_conv non_trainable_quantum \
       --fractions 0.10 0.25 0.50 1.00 \
-      --seeds 43 44 \
+      --seeds 43 44 45 46 47 \
       --split-seed 42 \
       --device auto
     ```
@@ -42,10 +43,10 @@ This document serves as a log for the experiments conducted during the developme
 
     | Fraction | `classical_conv` Test | `non_trainable_quantum` Test | Gap C-Q |
     |---:|---:|---:|---:|
-    | `0.10` | `48.42 ± 2.31%` | `50.71 ± 2.93%` | `-2.29` |
-    | `0.25` | `66.24 ± 1.78%` | `69.88 ± 0.99%` | `-3.64` |
-    | `0.50` | `75.61 ± 1.02%` | `76.75 ± 0.50%` | `-1.14` |
-    | `1.00` | `80.47 ± 0.57%` | `80.76 ± 0.99%` | `-0.29` |
+    | `0.10` | `49.14 ± 2.49%` | `50.93 ± 2.72%` | `-1.79` |
+    | `0.25` | `67.88 ± 2.13%` | `69.17 ± 1.12%` | `-1.29` |
+    | `0.50` | `75.36 ± 1.43%` | `76.00 ± 1.36%` | `-0.65` |
+    | `1.00` | `80.62 ± 0.44%` | `80.90 ± 0.95%` | `-0.28` |
 
 *   **Thesis-faithful pilot results:**
 
@@ -56,7 +57,18 @@ This document serves as a log for the experiments conducted during the developme
     | `0.50` | `82.40%` | `72.10%` | `10.30` |
     | `1.00` | `85.19%` | `78.33%` | `6.86` |
 
-*   **Current Conclusion:** The current-local low-data signal survived confirmation: `non_trainable_quantum` exceeds `classical_conv` on 3-seed mean test accuracy at all four train fractions. The effect is narrow at full data (`+0.29` points) but clearer at 10-50% train fractions (`+1.14` to `+3.64` points). The thesis-faithful low-data axis remains classical-favored in the seed-42 pilot, with `thesis_cnniiii` ahead of `thesis_hqnn2` at every tested fraction. This supports a specific low-data competitiveness signal for the current-local non-trainable quantum baseline; it is still not a generic quantum-advantage claim.
+*   **Current Conclusion:** `non_trainable_quantum` has a higher six-seed mean than `classical_conv` at all four fractions, by `+0.28` to `+1.79` points. However, every paired 95% interval crosses zero and all four Holm-adjusted p-values are `1.0`. The result is a narrow hypothesis-generating signal, not a confirmed advantage. The thesis-faithful seed-42 pilot remains classical-favored.
+
+*   **Class-aware current-local results:** Checkpoint inference reproduced all 48 source accuracies within tolerance. Mean macro-F1 for `classical_conv` versus `non_trainable_quantum` was `28.56 ± 2.14` vs `31.56 ± 4.69` at 10%, `50.75 ± 3.20` vs `51.50 ± 1.32` at 25%, `60.90 ± 2.56` vs `61.25 ± 4.65` at 50%, and `69.61 ± 0.82` vs `72.07 ± 2.74` at 100%. These descriptive differences are exploratory and do not establish quantum advantage.
+
+## Full-Data Class-Aware Checkpoint Evaluation
+
+*   **Date:** July 28, 2026
+*   **Purpose:** Add macro-F1, balanced accuracy, weighted-F1, per-class recall, and confusion matrices without retraining.
+*   **Method:** `scripts/evaluate_classification_metrics.py` loads all 21 saved best-validation checkpoints. A row is accepted only when regenerated top-1 test accuracy matches the source experiment JSON within tolerance.
+*   **Artifacts:** `experiments/classification_metrics_20260728.json` and `docs/CLASSIFICATION_METRICS_2026-07-28.md`.
+*   **Key Results:** `resnet18_cifar_gray` has `81.85 ± 1.53` macro-F1, `thesis_cnniiii` has `79.73 ± 1.22`, and `non_trainable_quantum` has `72.76 ± 1.52`. The class-aware ranking remains classical-favored overall, while fixed quanvolution's macro-F1 is descriptively above its two current-local controls despite lower top-1 accuracy.
+*   **Scope:** Low-data class-aware evaluation is now complete for the 48 current-local runs. Thesis-faithful low-data class-aware evidence remains a seed-42 pilot only.
 
 ## V7 Clean Colab Rerun
 
@@ -305,7 +317,7 @@ This document serves as a log for the experiments conducted during the developme
     *   **Batch Time:** ~51 seconds (massive speedup).
 *   **Accuracy Metrics (Run interrupted):**
     *   **Epoch 1 Validation Accuracy:** 2.04%
-*   **Conclusion:** **Failure.** Performance hypothesis confirmed, but the extreme spatial reduction created an information bottleneck, destroying the model's ability to learn. This establishes a lower bound on the pre-processing strategy.
+*   **Conclusion:** **Historical failed run.** The result is consistent with an information bottleneck under this bundled V5 configuration, but it does not establish a causal spatial-resolution lower bound because preprocessing, channel count, circuit placement, and training logic also differed. A controlled resolution-only ablation would be required for a threshold claim.
 
 ---
 
@@ -337,12 +349,13 @@ This document serves as a log for the experiments conducted during the developme
 *   **Conclusion:** **Failure.** Although the training speed improved significantly, the model failed to learn (0% accuracy). Post-mortem analysis suggests the aggressive spatial reduction without proper information preservation mechanisms (residual connections, adaptive pooling) created a severe information bottleneck. The quantum layer likely receives insufficient spatial information to extract meaningful features.
 *   **Lessons Learned:**
     *   6x6 is theoretically viable but requires architectural modifications (residual connections, better preprocessing)
-    *   V4 (8x8) remains the optimal balance between speed and accuracy
-    *   Future experiments should focus on enhancing quantum circuit expressivity rather than further spatial reduction
+    *   Historical interpretation: 8x8 appeared more viable, but the versions changed multiple confounded factors and do not establish a controlled resolution optimum.
 
 ---
 
 ## Experiment 08: V7 - Gradient-Stabilized Trainable Quantum Model
+
+> Historical development log. The bundled V7 changes support an engineering association, not causal attribution to an individual component. Current publication wording is in `paper/draft.md`.
 
 *   **Date:** March 2, 2026
 *   **Hypothesis:** Making quantum parameters fully trainable with gradient stabilization techniques (residual connections, gradient scaling, channel attention) will overcome V6's gradient collapse while exceeding V4's 8.75% accuracy.
@@ -357,7 +370,7 @@ This document serves as a log for the experiments conducted during the developme
         *   **Qubits (`N_QUBITS`):** 4
         *   **Quantum Device:** `lightning.gpu` (A100 80GB)
         *   **Diff Method:** `adjoint`
-        *   **Structure:** 2-layer data re-uploading with AngleEmbedding, Rot gates, CNOT ring topology
+        *   **Structure:** 2-layer data re-uploading with AngleEmbedding, RY/RZ rotations, CNOT ring topology, and a second RY rotation per layer
         *   **Trainable Parameters:** 25 (vs 12 fixed in V1-V6)
     *   **Hybrid Architecture (EnhancedQuanvNet):**
         *   **Input:** 32x32 grayscale image.
@@ -366,19 +379,19 @@ This document serves as a log for the experiments conducted during the developme
             *   `ResidualBlock(8, 8)` (identity skip connection)
             *   `Conv2d(8, 4, stride=2)` + GroupNorm + GELU → 8x8
         *   **Quantum Layer (`TrainableQuanvLayer`):**
-            *   Operates on 8x8 feature map (V4 optimal size).
-            *   2x2 patches with stride 2 → 16 quantum executions per image.
-            *   **Gradient scaling:** Learnable `gradient_scale` parameter (init=0.1)
+            *   Operates on a 4-channel 8x8 feature map.
+            *   2x2 patches with stride 2 → 16 spatial positions × 4 channels = 64 circuit input instances per image.
+            *   **Quantum-output gain:** Learnable `gradient_scale` parameter (init=0.1); it is not a gradient-only operator.
             *   **Output:** 16 channels (4 input channels × 4 qubits)
         *   **Skip Connection:**
             *   `Conv2d(4→16, 1x1)` adapter for classical features
             *   Learnable `skip_weight` parameter (init=0.1)
             *   `quantum_out + skip_weight * adapted_classical`
-        *   **Channel Attention:** SE-block style (squeeze-excitation)
+        *   **Classical Channel Attention:** SE-block style (squeeze-excitation)
         *   **Classical Post-processing:**
             *   `Conv2d(16, 32, kernel=3)` + GroupNorm + GELU
-            *   `Conv2d(32, 64, kernel=3)` + GroupNorm + GELU + Dropout(0.3)
-            *   AdaptiveAvgPool2d(1) → Linear(64, 44)
+            *   `ResidualBlock(32,32)` → `Conv2d(32,64,kernel=3)` + GroupNorm + GELU
+            *   AdaptiveAvgPool2d(2) → Linear(256,128) → Linear(128,64) → Linear(64,44), with classifier dropout 0.5/0.3
         *   **Total Parameters:** 87,798 (25 quantum + 87,773 classical)
 *   **Run 1 Results (NaN Failure):**
     *   **Epoch 1 Batch 1:** gradient_scale=0.1, quantum grad mean=2.09e+02 (SCALED), classical grad mean=1.59e+03 (SCALED)
@@ -415,8 +428,8 @@ This document serves as a log for the experiments conducted during the developme
     *   **Total training time:** ~20 hours (9 epochs × ~2.2h on L4 GPU)
     *   **Improvement over V4:** 7.4× (val: 8.75% → 67.35%)
     *   **Above random baseline:** 28.6× (2.27% → 65.02%)
-*   **Conclusion:** **Full Success.** V7 achieves 65.02% test accuracy with trainable quantum circuit. The gradient stabilization framework (learnable alpha scaling, residual skip, SE-attention) successfully maintains healthy gradient flow across all 9 epochs. Notable: quantum gradient magnitude spans 3 orders of magnitude across training (7.78e-04 → 3.01e-01), suggesting a "cold start" warm-up phase in variational quantum circuit training.
-*   **Key Insight for Publication:** This represents the most complete systematic study of trainable quanvolutional architectures on historical script recognition. Combined with the AMP incompatibility finding and information bottleneck characterization, this provides genuine novel contributions to the hybrid QML engineering literature.
+*   **Current Interpretation:** The composite V7 configuration achieved 65.02% test accuracy and restored non-zero training behavior. Because architecture, normalization, skip routing, output gain, attention, precision handling, and training logic changed together, no individual mechanism is proven sufficient. The gradient trajectory is compatible with a warm-up pattern but does not establish a universal VQC "cold start" dynamic.
+*   **Publication Scope:** Retain as a trainable-quantum engineering case-study with explicit provenance and protocol limitations; do not present it as an accuracy leader or component ablation.
 
 ---
 

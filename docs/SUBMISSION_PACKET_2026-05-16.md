@@ -1,5 +1,7 @@
 # Submission Packet
 
+> **Historical packet:** Superseded by the August 9, 2026 reconciliation and current advisor package. Do not use this file as a current status source.
+
 **Date:** May 16, 2026
 
 This manifest lists the current shareable paper/advisor package after the April 2026 V7 reruns, the May 2026 low-data confirmation, and the paper cleanup pass.
