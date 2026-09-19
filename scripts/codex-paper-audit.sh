@@ -10,7 +10,8 @@ if [ "$#" -gt 0 ]; then
 fi
 
 exec codex --search \
-  exec -p deep -s read-only -C "$ROOT_DIR" \
+  exec -m gpt-5.6-sol -c model_reasoning_effort=xhigh \
+  -s read-only -C "$ROOT_DIR" \
   --include-plan-tool \
   --output-schema "$ROOT_DIR/schemas/codex/paper_audit.schema.json" \
   "$PROMPT"

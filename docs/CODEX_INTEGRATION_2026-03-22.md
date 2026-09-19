@@ -68,7 +68,7 @@ Bu nedenle sadece "Claude dosyalarini kopyalama" yaklasimi kullanilmadi. Bunun y
 - stale dosyalarin nasil ele alinacagi `AGENTS.md` icine yazildi
 - approval/sandbox politikasi `.codex/config.toml` icinde proje icin makul varsayilanlarla ayarlandi
 - daha sert komut politikalarinin ise gerekirse sonradan `codex/rules/` altinda eklenmesi tercih edildi
-- `profiles.<name>.*` kullanilarak gorev bazli Codex modlari eklendi
+- Gorev bazli Codex modlari kullanici duzeyindeki ayri `~/.codex/<name>.config.toml` profil dosyalarina tasindi; proje-local `[profiles.<name>]` tablolari guncel Codex tarafindan yok sayilir
 - `codex exec` tabanli tekrar kullanilabilir script'ler olusturuldu
 - `.cursor/rules` altindaki faydali ama stale olmayan mantik, yeni Codex skill'lerine secilerek tasindi
 

@@ -1,6 +1,6 @@
 name = "quantum_ml_reviewer"
 description = "Read-only reviewer for quantum circuits, hybrid classical-quantum training logic, barren plateau risks, and QML implementation quality."
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_reasoning_effort = "xhigh"
 sandbox_mode = "read-only"
 developer_instructions = """

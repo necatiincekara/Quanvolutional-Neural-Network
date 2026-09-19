@@ -1,6 +1,4 @@
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
-review_model = "gpt-5.5"
+review_model = "gpt-5.6-sol"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 web_search = "live"
@@ -20,52 +18,3 @@ network_access = true
 [agents]
 max_threads = 4
 max_depth = 1
-
-[profiles.paper]
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
-plan_mode_reasoning_effort = "xhigh"
-review_model = "gpt-5.5"
-web_search = "live"
-personality = "none"
-
-[profiles.review]
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
-plan_mode_reasoning_effort = "xhigh"
-review_model = "gpt-5.5"
-web_search = "cached"
-personality = "pragmatic"
-sandbox_mode = "read-only"
-
-[profiles.deep]
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
-plan_mode_reasoning_effort = "xhigh"
-review_model = "gpt-5.5"
-web_search = "live"
-personality = "pragmatic"
-
-[profiles.fast_local]
-model = "gpt-5.4-mini"
-model_reasoning_effort = "medium"
-plan_mode_reasoning_effort = "medium"
-review_model = "gpt-5.4"
-web_search = "cached"
-personality = "pragmatic"
-
-[profiles.benchmark]
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
-plan_mode_reasoning_effort = "xhigh"
-review_model = "gpt-5.5"
-web_search = "cached"
-personality = "pragmatic"
-
-[profiles.colab]
-model = "gpt-5.4-mini"
-model_reasoning_effort = "medium"
-plan_mode_reasoning_effort = "medium"
-review_model = "gpt-5.4"
-web_search = "cached"
-personality = "pragmatic"

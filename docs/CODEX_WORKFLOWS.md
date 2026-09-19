@@ -32,20 +32,25 @@ Bu eklemelerin amaci, ayni repoda arastirma, debugging ve makale yazimini ayri a
 
 ## 2. Profiller
 
-`/.codex/config.toml` icinde aktif profil seti:
+Profiller guncel Codex profil semasina uygun olarak kullanici duzeyindeki
+`~/.codex/<profil>.config.toml` dosyalarinda tutulur. Bunlar interaktif CLI
+oturumlarinda `--profile` / `-p` ile secilir. Repo script'leri farkli CLI
+surumlerinde de ayni davranisi korumak icin model ve reasoning ayarlarini acik
+argumanlarla verir. Proje-local `.codex/config.toml` icindeki eski
+`[profiles.<name>]` tablolari kullanilmaz.
 
 - `paper`
   - makale ve tez duzeltmeleri
-  - `gpt-5.5` + `xhigh` reasoning
+  - `gpt-5.6-sol` + `xhigh` reasoning
   - `live` web search
   - daha noro akademik dil icin `personality = "none"`
 - `review`
   - read-only audit ve teknik inceleme
-  - `gpt-5.5` + `xhigh` reasoning
+  - `gpt-5.6-sol` + `high` reasoning
   - repo icinde risk arama, circuit review, status audit
 - `deep`
   - artifact reconciliation, workflow audit, paper audit ve benchmark planning gibi yuksek-rigor non-interactive isler
-  - `gpt-5.5` + `xhigh` reasoning
+  - `gpt-5.6-sol` + `xhigh` reasoning
   - `live` web search
 - `fast_local`
   - daha hizli yerel iterasyon
@@ -54,7 +59,7 @@ Bu eklemelerin amaci, ayni repoda arastirma, debugging ve makale yazimini ayri a
   - benchmark triage
   - result reconciliation
   - experiment planning
-  - `gpt-5.5` + `xhigh` reasoning
+  - `gpt-5.6-sol` + `xhigh` reasoning
 - `colab`
   - Colab handoff
   - remote training orchestration planning
@@ -85,10 +90,11 @@ Tekrar tekrar prompt yazmamak icin aktif script katmani:
 python scripts/aggregate_benchmarks.py
 ```
 
-Bu script'ler `codex exec` kullanir. 27 Nisan 2026 itibariyla yuksek-rigor script'ler
-repo-local `deep` profilini kullanir ve onemli denetim ciktilarini `schemas/codex/*.schema.json`
-ile makine-okunabilir hale getirir. Script-first kullanim hala onerilir; cunku dogru profil,
-sandbox ve schema ayarini tek giris noktasinda toplar.
+Bu script'ler `codex exec` kullanir. 12 Temmuz 2026 itibariyla yuksek-rigor script'ler
+`gpt-5.6-sol` + `xhigh` ayarini acik argumanlarla kullanir ve onemli denetim
+ciktilarini `schemas/codex/*.schema.json` ile makine-okunabilir hale getirir.
+Script-first kullanim hala onerilir; cunku dogru model, reasoning, sandbox ve
+schema ayarini tek giris noktasinda toplar.
 
 ## 4. Etkili Interactive Akis
 

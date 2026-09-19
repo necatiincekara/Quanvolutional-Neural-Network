@@ -10,4 +10,5 @@ if [ "$#" -gt 0 ]; then
 fi
 
 exec codex --search \
-  exec -p colab -s read-only -C "$ROOT_DIR" --include-plan-tool "$PROMPT"
+  exec -m gpt-5.6-terra -c model_reasoning_effort=medium \
+  -s read-only -C "$ROOT_DIR" --include-plan-tool "$PROMPT"

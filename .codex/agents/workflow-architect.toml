@@ -1,6 +1,6 @@
 name = "workflow_architect"
 description = "Read-only Codex integration and workflow reviewer for this repo, focused on hooks, rules, profiles, scripts, and instruction architecture."
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_reasoning_effort = "xhigh"
 sandbox_mode = "read-only"
 developer_instructions = """
