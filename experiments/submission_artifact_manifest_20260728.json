@@ -1,0 +1,976 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-11T17:27:14.066167+00:00",
+  "generator": "scripts/build_submission_manifest.py",
+  "scope_note": "Byte-identity manifest only. Canonical low-data rows are reconciled byte-original Drive artifacts. Reconstructed V7 rows retain their explicit artifact_status fields and are not converted into original artifacts.",
+  "artifact_count": 189,
+  "artifacts": [
+    {
+      "path": "colab_low_data_confirm.ipynb",
+      "bytes": 516751,
+      "sha256": "bd7d5e79a8c015e2a996b8657af3f065affb655b6d0abf41cf236ef251d92c21"
+    },
+    {
+      "path": "colab_training_optimized.ipynb",
+      "bytes": 15904,
+      "sha256": "bf91a09b542e33dc1de9fcdfc3551070feb3aaaa55f2255626517c5841603d6d"
+    },
+    {
+      "path": "colab_v7_rerun_clean.ipynb",
+      "bytes": 39214,
+      "sha256": "e9ea66fe5aba287fbd3de5c19eb64aa6b88f9d2ba24bf7679b08d00a73c95c13"
+    },
+    {
+      "path": "docs/ARTIFACT_PROVENANCE_2026-07-28.md",
+      "bytes": 5730,
+      "sha256": "148def79330a95090a9218b50eb6e5b05b84efc17b5a0299bb5b49bf246d15e8"
+    },
+    {
+      "path": "docs/CLASSIFICATION_METRICS_2026-07-28.md",
+      "bytes": 2262,
+      "sha256": "c6f96f53e6bac0e6d5d085c6e169959bdc3fa5927bca05c778b4908b9a31550b"
+    },
+    {
+      "path": "docs/EXPERIMENTS.md",
+      "bytes": 32517,
+      "sha256": "b11a1de4a00191b14766a8147260df4b2ba14d3ba8963014f8f83f992923975a"
+    },
+    {
+      "path": "docs/LOW_DATA_CLASSIFICATION_METRICS_2026-08-09.md",
+      "bytes": 2075,
+      "sha256": "ff31afe0850f4dd55454b085a9573536c3eb16d744b336b6174fe01b84c916c8"
+    },
+    {
+      "path": "docs/LOW_DATA_SUMMARY.md",
+      "bytes": 3153,
+      "sha256": "c6e7b928133b4f406ea139fac9185924f9076534c309cf1e5f76c5f668f0d04d"
+    },
+    {
+      "path": "docs/STATISTICAL_EVIDENCE_2026-05-17.md",
+      "bytes": 5068,
+      "sha256": "8134307503e350cfe605d88ef57d22a7a81a62a18aab01226178e82f65b42834"
+    },
+    {
+      "path": "docs/SUBMISSION_READINESS_CHECKLIST_2026-05-17.md",
+      "bytes": 6230,
+      "sha256": "ae1a6aad38f746ce23f193c9585f7196aea05a3aeb70871630458825e1da8933"
+    },
+    {
+      "path": "experiments/ablation_classical_conv.json",
+      "bytes": 7254,
+      "sha256": "0d3695e9b29336dbfd6097e2226f473e47ad003ef1a9436f57547237e68260f6"
+    },
+    {
+      "path": "experiments/ablation_classical_conv_seed42_split42.json",
+      "bytes": 7254,
+      "sha256": "0d3695e9b29336dbfd6097e2226f473e47ad003ef1a9436f57547237e68260f6"
+    },
+    {
+      "path": "experiments/ablation_classical_conv_seed43_split42.json",
+      "bytes": 7317,
+      "sha256": "565f89b34248da8ba0106af3caf3a063eba4c8daa1497a18f88c1bc53544fd2a"
+    },
+    {
+      "path": "experiments/ablation_classical_conv_seed44_split42.json",
+      "bytes": 6649,
+      "sha256": "7e5f2b4e400142e262f179b1ee0cb693689f76eb1f5855ed9fb75d3a860a13fd"
+    },
+    {
+      "path": "experiments/ablation_non_trainable_quantum.json",
+      "bytes": 8075,
+      "sha256": "25db3a3a4b7dfd8aa53f567c925c067405eb9eb4381e0591e310e47ef9aa75fc"
+    },
+    {
+      "path": "experiments/ablation_non_trainable_quantum_seed42_split42.json",
+      "bytes": 8075,
+      "sha256": "25db3a3a4b7dfd8aa53f567c925c067405eb9eb4381e0591e310e47ef9aa75fc"
+    },
+    {
+      "path": "experiments/ablation_non_trainable_quantum_seed43_split42.json",
+      "bytes": 8068,
+      "sha256": "bf8d4e9f7da8ced22e0ecbec344cc224cbe3d20b8871c483e0c0a0e6976d834b"
+    },
+    {
+      "path": "experiments/ablation_non_trainable_quantum_seed44_split42.json",
+      "bytes": 8083,
+      "sha256": "77fabb2baa3c4209d8fc5fbf1d2d2fee02389bc1fd74f95268bb60f32dfe5091"
+    },
+    {
+      "path": "experiments/ablation_param_linear.json",
+      "bytes": 7316,
+      "sha256": "6559216fbd43f931ebc01862ea5cbf46dddce294b58e8456e96bc926ff7db02d"
+    },
+    {
+      "path": "experiments/ablation_param_linear_seed42_split42.json",
+      "bytes": 7316,
+      "sha256": "6559216fbd43f931ebc01862ea5cbf46dddce294b58e8456e96bc926ff7db02d"
+    },
+    {
+      "path": "experiments/ablation_param_linear_seed43_split42.json",
+      "bytes": 6105,
+      "sha256": "e5c5532e23a66b8a10d94e4972fc82e5e78d8dc99c3f89d6d3455fdd151e5a13"
+    },
+    {
+      "path": "experiments/ablation_param_linear_seed44_split42.json",
+      "bytes": 6905,
+      "sha256": "e7b7c9fa4f207f0b05dab05042b56fdbee286f44c15d0b5b6c3410db1dbdf7a0"
+    },
+    {
+      "path": "experiments/benchmark_summary.json",
+      "bytes": 4218,
+      "sha256": "98a31b76c597c47c57733f0a3a8421e5ef9cdb1a76fc53db9eabffa91b424e71"
+    },
+    {
+      "path": "experiments/classification_metrics_20260728.json",
+      "bytes": 811162,
+      "sha256": "a1e772a580b2518e63f20673d7c1b730677ff29e71448c1f4b361d9cf818861d"
+    },
+    {
+      "path": "experiments/drive_artifact_reconciliation_20260809.json",
+      "bytes": 108070,
+      "sha256": "0054c4cbca972a1edbc29fde971a816759774560110aef3a659e17583e159bfc"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac010_seed42_split42_fraction42.json",
+      "bytes": 8342,
+      "sha256": "8dbdc48662bbb3f623f01528901a6e3881c732d7ef21f16b57551fbcce89f6bc"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac010_seed43_split42_fraction42.json",
+      "bytes": 8352,
+      "sha256": "e2a26bacf1bd5d369fdd58cf963b357e1cf1eb63ec52b9675e919a05ea7c7d64"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac010_seed44_split42_fraction42.json",
+      "bytes": 8344,
+      "sha256": "cc5f4e9cc6b930b9da098cbc1a0bebf92d9bdb908f8fe9859d1b14359fab039c"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac010_seed45_split42_fraction42.json",
+      "bytes": 8361,
+      "sha256": "bb8f9132c401d572fba05de506f5cae422ade97f1ed01c534b5bac0d6ed34586"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac010_seed46_split42_fraction42.json",
+      "bytes": 8367,
+      "sha256": "8177e58a4fbab961168b172313828bfbaa9addeb6ff76e67d9d68ac4284ce0f7"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac010_seed47_split42_fraction42.json",
+      "bytes": 8364,
+      "sha256": "0decb38dd33492fca6a8ac8696898af0a1b393cf89ecf7a549c60bd0fa0e5f9a"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac025_seed42_split42_fraction42.json",
+      "bytes": 8351,
+      "sha256": "bd6651e809bc1589128126e39c238b2e6029dc9d3d603e398fff0463bf97f266"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac025_seed43_split42_fraction42.json",
+      "bytes": 7965,
+      "sha256": "724efa5e176389e0e2f22e27d7f0154b5e7bf8c2858b7625da21c73595bd772a"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac025_seed44_split42_fraction42.json",
+      "bytes": 8369,
+      "sha256": "700d45bc2877be6cc519084ebca084c7db8debcb86366b4690c8ca33d5f42c5b"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac025_seed45_split42_fraction42.json",
+      "bytes": 8392,
+      "sha256": "6351355d4474bc14d344736edbbeabf71c02d436bdecba6d812fa789c3a78680"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac025_seed46_split42_fraction42.json",
+      "bytes": 8380,
+      "sha256": "5f9de5efef242189530636cd20e517ba38a22d44b34491b37db0a6160c986f69"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac025_seed47_split42_fraction42.json",
+      "bytes": 8382,
+      "sha256": "36fafe4a4bf81bbf5ad53d9642317ae8265a9c8085a91f346ca287fc49e4355d"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac050_seed42_split42_fraction42.json",
+      "bytes": 8354,
+      "sha256": "472250e431ef1e45c0a2d97a739c23305eea017ef1627190e1b108d7fbb3bd61"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac050_seed43_split42_fraction42.json",
+      "bytes": 8244,
+      "sha256": "8d7ef479a0c6a475d02af0cca1566f1585b75366a36a1c8052f27c020e682400"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac050_seed44_split42_fraction42.json",
+      "bytes": 8374,
+      "sha256": "42d410cdb9084c84e3f7fb285d04803386965c51387ceb2b0d59d2da61cdce24"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac050_seed45_split42_fraction42.json",
+      "bytes": 8396,
+      "sha256": "a3ba964933e909e0896dceb0db8cc795fdea066164ca0a397c269e2ef9ee4086"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac050_seed46_split42_fraction42.json",
+      "bytes": 8392,
+      "sha256": "4617e3c77b9e098b8b2fb7f7b47c786762c334013d6bdc2960c403702308d26a"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac050_seed47_split42_fraction42.json",
+      "bytes": 8395,
+      "sha256": "551e331dc84b7af46520753464cd0cb58840df6e490b0cdef52112851594a619"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac100_seed42_split42_fraction42.json",
+      "bytes": 8356,
+      "sha256": "f2d49acaf186aa6025b7443a62e3823a09304588d634326fdfa1c6a9ecb3254c"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac100_seed43_split42_fraction42.json",
+      "bytes": 7560,
+      "sha256": "cd72213e8b330aac9c3afa96fb985da966c937b8843ea592ff5c80ff815c9678"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac100_seed44_split42_fraction42.json",
+      "bytes": 7966,
+      "sha256": "5c68e6bfa37490685db23ddefd26289b5839e7eb2e3678cbcc68756716d4a60d"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac100_seed45_split42_fraction42.json",
+      "bytes": 8385,
+      "sha256": "d552b53d713d2f48d1e21e143f6de13cc63120456ce095e4dcc9fb37fd42e6c8"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac100_seed46_split42_fraction42.json",
+      "bytes": 8372,
+      "sha256": "f48fb41dbd5b58af98f6fa2034652a1f2faa7c46adf6fad095ab22e25dfc18b7"
+    },
+    {
+      "path": "experiments/low_data/ablation_classical_conv_frac100_seed47_split42_fraction42.json",
+      "bytes": 7172,
+      "sha256": "bed71b667998e5f9bd6a3c6ef08de99d11ffd4ca4e6e2aa44bcc766d1a869ff8"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed42_split42_fraction42.json",
+      "bytes": 9098,
+      "sha256": "b6a1932221cb985199da12c0ef886e22678a6eb7bdf9121a88475f08ca19832f"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.json",
+      "bytes": 9035,
+      "sha256": "21c262455df4633a8d78e50e735d1c9f5bd32360dcfd7c3a4e71fad0a7aa0d9a"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.json",
+      "bytes": 9043,
+      "sha256": "afd42ccadbc1bf8974d05beeec8181f5b2fd10b30ca702624ad3cc8bd051c13a"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.json",
+      "bytes": 9059,
+      "sha256": "b3ae8449b578745302d0139fb66d2f15c45fb043665b2a6487e283d55e5bad70"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.json",
+      "bytes": 8917,
+      "sha256": "173b7b606a1f1854947b4de2cb07ba9dc4add573e43edbd6a1be5cc28cc88a6c"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.json",
+      "bytes": 9047,
+      "sha256": "fe963769e793dc22792abb67678ca4ea35bf9c9bb84a0b5af031d243994ecf1a"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed42_split42_fraction42.json",
+      "bytes": 9119,
+      "sha256": "16c5dd97f54235a2bbd8d57979b2034ca72d42b66793ee8d9d28fa9ae4de245b"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.json",
+      "bytes": 9065,
+      "sha256": "4700c98b16aa473ca6368ee94edd03dc1e34890973a5f464067a900da20c1882"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.json",
+      "bytes": 9053,
+      "sha256": "9993a1e8951074a09e2f26f1851df9bb96aa2b6f08bfda7d2ca28aa8480737fb"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.json",
+      "bytes": 9074,
+      "sha256": "5f2adc6458c5fab5261ce82bd4b223e0ded316f895cbff335252db524c08e5b9"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.json",
+      "bytes": 9078,
+      "sha256": "9af7ef5fb096da8df44198cb5ce9f554ae575b03bf18dfaa9c57b4b6c70600d7"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.json",
+      "bytes": 9076,
+      "sha256": "59ce9bda597f4840d177e4fdb47bfef0abf34b737d15f8c4e00419dbda437e34"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed42_split42_fraction42.json",
+      "bytes": 9130,
+      "sha256": "03cf9c5c692cd0885079b22aa47565f08a56ba2fb1d7b17e26de638509f14f91"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.json",
+      "bytes": 9069,
+      "sha256": "85b5e1d42f66210a5b6c50fa1fd1d0dedd065bf55c5b7635996bbe037e32d679"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.json",
+      "bytes": 9073,
+      "sha256": "3607d9dd310caf60feebe0312db2dfcdddfff642d7e2a53d790263174a0872e8"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.json",
+      "bytes": 9087,
+      "sha256": "781cd9a8f13f9f9ca6c9bbfdeec3de42adf2e3fe859132c941c601f5fde31cb8"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.json",
+      "bytes": 8141,
+      "sha256": "89086469ff78aed970045474bcedcb3dc72f85e3c56431f8df746f9396a900e6"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.json",
+      "bytes": 9084,
+      "sha256": "67ef87409c725987eda7b539665ac02ef6022b58cab725fc748d951be4a2aa41"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed42_split42_fraction42.json",
+      "bytes": 9117,
+      "sha256": "60dd7a1ffab977a284c8796914d59127ae0cb6e1841364ed73f869e1c12aa8e3"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.json",
+      "bytes": 9064,
+      "sha256": "a4da5dfe73351e95b900cfb554906d91e89e2448c8f7d6d913c9b172a98b7fa0"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.json",
+      "bytes": 8524,
+      "sha256": "0f0c6e9669d9940f8e9e79a8538a2e71698569e2a1dfc978b55ab50d0aa1111f"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.json",
+      "bytes": 9078,
+      "sha256": "a10bae19393efbf747f5930dfea496d8c5098da64a6a6f454cfce841afb08f8c"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.json",
+      "bytes": 9077,
+      "sha256": "fb343ed67a5c4e93c1ea81068fa512a378380596d475de807152a747ca4af07b"
+    },
+    {
+      "path": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.json",
+      "bytes": 9080,
+      "sha256": "c9e515927be09446f2c52072f4ae5b82da749f70db480bec738e23d96da31793"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_cnniiii_frac010_seed42_split42_fraction42.json",
+      "bytes": 69456,
+      "sha256": "eb21d5ec7dc8ed89027ab4938ba03161cfdb16def1ada62e642cd5d6cdad30cd"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_cnniiii_frac025_seed42_split42_fraction42.json",
+      "bytes": 69489,
+      "sha256": "ee1245781caa0e8a338ca35f80c7bc6dd29906730293209811f87dd9f6c4a762"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_cnniiii_frac050_seed42_split42_fraction42.json",
+      "bytes": 69510,
+      "sha256": "691fef655a942958ed978d54b1ae1b8c13c94d006cb982445bbd0a608ed3d795"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_cnniiii_frac100_seed42_split42_fraction42.json",
+      "bytes": 69483,
+      "sha256": "a6339924150210bdf5a6a7da33a3c40373bba8de301b5ecb8f3b62b9ec295650"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_hqnn2_frac010_seed42_split42_fraction42.json",
+      "bytes": 9522,
+      "sha256": "513c06ebdc408313e839286cae3c78a0c4e98e64addf1ef868ef100b87a5e54f"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_hqnn2_frac025_seed42_split42_fraction42.json",
+      "bytes": 9526,
+      "sha256": "a15bc8354cbd9208f8500d14b03647ec6170ded39b5f309f6b4379e93b0ac1fd"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_hqnn2_frac050_seed42_split42_fraction42.json",
+      "bytes": 9534,
+      "sha256": "84a95df5837e7e018e68f6cb097f4e96beadde69a9817d68aaeb44ca05890f2a"
+    },
+    {
+      "path": "experiments/low_data/publication_thesis_hqnn2_frac100_seed42_split42_fraction42.json",
+      "bytes": 9542,
+      "sha256": "3107684d8c77275bd81c981aabe51c6a2e57d4ad5f414bf1f2a1b3ebd12ba5e9"
+    },
+    {
+      "path": "experiments/low_data_classification_metrics_20260809.json",
+      "bytes": 1637843,
+      "sha256": "03c84b602be0f406f798e6915832467cf891d41d6c97dae2dd9def65eb3785fc"
+    },
+    {
+      "path": "experiments/low_data_drive_manifest_20260502.json",
+      "bytes": 3592,
+      "sha256": "a6891213e1728d9afc63bb37c5ee8deae2ca3b4f7a42624fc88abb4cf16e8992"
+    },
+    {
+      "path": "experiments/low_data_reconstruction_manifest_20260728.json",
+      "bytes": 7928,
+      "sha256": "2a0b8d1b370f02be413eb538853f8729f998efa4f117f381fdcc359a3571707f"
+    },
+    {
+      "path": "experiments/low_data_summary.json",
+      "bytes": 14483,
+      "sha256": "a9e18a820170a159297d2b3591eb53efbda21004ae2284534fdc697f4f4190e6"
+    },
+    {
+      "path": "experiments/publication_resnet18_cifar_gray_seed42_split42.json",
+      "bytes": 6807,
+      "sha256": "eefb84544461fd29fceb05fc7319f206e429f7ee13386d66f4bc1e18c9f6fb25"
+    },
+    {
+      "path": "experiments/publication_resnet18_cifar_gray_seed43_split42.json",
+      "bytes": 8823,
+      "sha256": "8ea1611fe5c63a78dc8b58c9b2c3a8fa1fdc2d6e4d2def02351f5a2e9d4e2d3f"
+    },
+    {
+      "path": "experiments/publication_resnet18_cifar_gray_seed44_split42.json",
+      "bytes": 8283,
+      "sha256": "d8ecfd4b0381314ca3c56a3233b754911000f293ead9c6be2a607dc511f20ed2"
+    },
+    {
+      "path": "experiments/publication_thesis_cnn3_seed42_split42.json",
+      "bytes": 6058,
+      "sha256": "95071208d8a6bdb9c7c502a8ba86b3beb455e4c45bce12ce803adac7d9847972"
+    },
+    {
+      "path": "experiments/publication_thesis_cnn3_seed43_split42.json",
+      "bytes": 6057,
+      "sha256": "0db81cc7b2c0340581d6992c54eeb7635fa966b1ec568408964c5a83846376b5"
+    },
+    {
+      "path": "experiments/publication_thesis_cnn3_seed44_split42.json",
+      "bytes": 6049,
+      "sha256": "52e4daa2c8dd693bd3a3e267e16d60b96f83b684b65e99122d09608234b838f1"
+    },
+    {
+      "path": "experiments/publication_thesis_cnniiii_seed42_split42.json",
+      "bytes": 68383,
+      "sha256": "0206d64c0e8bc7b27efbcf6ee5374d2be3b441934b11c45a553e233cdaf676d4"
+    },
+    {
+      "path": "experiments/publication_thesis_cnniiii_seed43_split42.json",
+      "bytes": 68378,
+      "sha256": "9129a1794a26a7055524d74003fcb45282235c6f25c7f4fcfdfe91c014c536f5"
+    },
+    {
+      "path": "experiments/publication_thesis_cnniiii_seed44_split42.json",
+      "bytes": 68378,
+      "sha256": "fb170d152462ebdaf5faa236205f8466796a08701f2aef800868541b8e565ae4"
+    },
+    {
+      "path": "experiments/publication_thesis_hqnn2_seed42_split42.json",
+      "bytes": 8443,
+      "sha256": "c408319821403b97db225ca0240306409d41e897abd02504b15f92ca1db95fc2"
+    },
+    {
+      "path": "experiments/publication_thesis_hqnn2_seed43_split42.json",
+      "bytes": 8435,
+      "sha256": "faeba027aac3f1d798e09a93ad4f7b249aa5818e1afe9e59c55cefadc67e76b9"
+    },
+    {
+      "path": "experiments/publication_thesis_hqnn2_seed44_split42.json",
+      "bytes": 8435,
+      "sha256": "6f00e9fb33397479e9289711d63755b505afae609bdcdb9b3bc51bb5e2584e8b"
+    },
+    {
+      "path": "experiments/statistical_evidence_2026-05-17.json",
+      "bytes": 18167,
+      "sha256": "74923e2c413a56705c16767c2b4de36cca62a1582e97f28db17542094d8212d0"
+    },
+    {
+      "path": "experiments/v7_trainable_quantum_clean_20260427_l4.json",
+      "bytes": 2606,
+      "sha256": "ed53fc7c37a66dbd40092c4a485f86a9bedad548de47e144d63e379dd0a28b31"
+    },
+    {
+      "path": "experiments/v7_trainable_quantum_rerun_20260406_l4.json",
+      "bytes": 2224,
+      "sha256": "e9c4fc4b842d8aaaf18120e0fafc0df1ba99bf448875d9877e9db661f4d1e27d"
+    },
+    {
+      "path": "models/best_ablation_classical_conv.pth",
+      "bytes": 368413,
+      "sha256": "b4fe705327629002d01f07e41888afb090fee2c4da1b3492cdb9371492c9b245"
+    },
+    {
+      "path": "models/best_ablation_classical_conv_seed123_split123.pth",
+      "bytes": 369937,
+      "sha256": "6f9867f2e646f3267fd7452cdb95d18c91dd14ac2a221d122715efd75679acaf"
+    },
+    {
+      "path": "models/best_ablation_classical_conv_seed42_split42.pth",
+      "bytes": 369833,
+      "sha256": "c116497c2475925b23a3e713ee7388a4b7413b47bd90a613d9613b2d9e49c6ed"
+    },
+    {
+      "path": "models/best_ablation_classical_conv_seed43_split42.pth",
+      "bytes": 369833,
+      "sha256": "558882392c6aa9d4028c0599c28a746fd8383fe4fa8ef9e50847db7681ee99cf"
+    },
+    {
+      "path": "models/best_ablation_classical_conv_seed44_split42.pth",
+      "bytes": 369833,
+      "sha256": "7af573fa3bf7c27a73d1f9fc4b51c7ee8bcd1f67edaf75fa52720985e6f094df"
+    },
+    {
+      "path": "models/best_ablation_non_trainable_quantum.pth",
+      "bytes": 366749,
+      "sha256": "4266bb9735260092f0411bda94836c2356e89c2304d35811dde8a9cdd124ed42"
+    },
+    {
+      "path": "models/best_ablation_non_trainable_quantum_seed42_split42.pth",
+      "bytes": 367541,
+      "sha256": "9bf9fe94c671be115e163332c160600b9ac9d2f4159eda2b1ffd26b72841f68e"
+    },
+    {
+      "path": "models/best_ablation_non_trainable_quantum_seed43_split42.pth",
+      "bytes": 367541,
+      "sha256": "cf45610cd0394ddfdf3009fa6dcdcbbb7d32551bc10212bcafc8150ece497676"
+    },
+    {
+      "path": "models/best_ablation_non_trainable_quantum_seed44_split42.pth",
+      "bytes": 367541,
+      "sha256": "978427e0b4defe2dd1cb2acd5b5a26da02ebdeff1911bfd10e879753ec801c22"
+    },
+    {
+      "path": "models/best_ablation_param_linear.pth",
+      "bytes": 367893,
+      "sha256": "1edd8019cf38aa5828d534fc57a0c4d399be677829c4e65896228a554431558a"
+    },
+    {
+      "path": "models/best_ablation_param_linear_seed42_split42.pth",
+      "bytes": 369343,
+      "sha256": "2a716dc1acebdbd261ab8a98435daabac77291a53e7fab4391e311c9af809733"
+    },
+    {
+      "path": "models/best_ablation_param_linear_seed43_split42.pth",
+      "bytes": 369343,
+      "sha256": "a0abd42b4140696be5ab3caec753c16ba9184a578bcb1b08277de6d46827b16f"
+    },
+    {
+      "path": "models/best_ablation_param_linear_seed44_split42.pth",
+      "bytes": 369343,
+      "sha256": "0c94bd5ddcf07da11199ef74899b9670edc04aee87ea252a51e79afb3c54ea32"
+    },
+    {
+      "path": "models/best_publication_resnet18_cifar_gray_seed42_split42.pth",
+      "bytes": 44846027,
+      "sha256": "eba8cb24375b2ba73990bf70aa9b4b2f28bdd1d0a2faa58f84a3d2c1257870f8"
+    },
+    {
+      "path": "models/best_publication_resnet18_cifar_gray_seed43_split42.pth",
+      "bytes": 44846027,
+      "sha256": "30faacb8349a85908ea81e029430f3b2c98da1a2412f4455611ac522fb3755db"
+    },
+    {
+      "path": "models/best_publication_resnet18_cifar_gray_seed44_split42.pth",
+      "bytes": 44846027,
+      "sha256": "483d5fcc094aefdcbd64b5c2a52f585b6f06172ae41477492590b33265d93f53"
+    },
+    {
+      "path": "models/best_publication_thesis_cnn3_seed123_split123.pth",
+      "bytes": 3085035,
+      "sha256": "5590225e1620e4611215b649833ab854e36e8abafc9d854301970f5ebf33154a"
+    },
+    {
+      "path": "models/best_publication_thesis_cnn3_seed42_split42.pth",
+      "bytes": 3084999,
+      "sha256": "c7b68ac271a803bd985efe77f9176641946dbab46a7cb3e3c725133af48e94e7"
+    },
+    {
+      "path": "models/best_publication_thesis_cnn3_seed43_split42.pth",
+      "bytes": 3084999,
+      "sha256": "7bbf2ffd4f6a393764c7ba69e706b2199998de7402326fa0c84d07499db050a5"
+    },
+    {
+      "path": "models/best_publication_thesis_cnn3_seed44_split42.pth",
+      "bytes": 3084999,
+      "sha256": "001af6e358dcf47c820aa7077a455643cd087ddfa244530f30ea6d2936c96e28"
+    },
+    {
+      "path": "models/best_publication_thesis_cnniiii_seed42_split42.pth",
+      "bytes": 5519109,
+      "sha256": "0b6285cb35dcb7baf3dddccf52449dfcd7ef78dc6ccafa78e8022799ec8a7d5e"
+    },
+    {
+      "path": "models/best_publication_thesis_cnniiii_seed43_split42.pth",
+      "bytes": 5519109,
+      "sha256": "704ac55c9cb7747d9d8576c55dfaa7bfaa1fce6673bcdefaaa608e725ef2e578"
+    },
+    {
+      "path": "models/best_publication_thesis_cnniiii_seed44_split42.pth",
+      "bytes": 5519109,
+      "sha256": "59b762e0a52de9eccde2f5ed86c018da16b55b94c06ade53ab6415998fa28952"
+    },
+    {
+      "path": "models/best_publication_thesis_hqnn2_seed42_split42.pth",
+      "bytes": 999513,
+      "sha256": "b555262aba460ca0790df956be656d254950e429bb9b97b196e981a3e8202718"
+    },
+    {
+      "path": "models/best_publication_thesis_hqnn2_seed43_split42.pth",
+      "bytes": 999513,
+      "sha256": "9a2e26edc9a8e59103f221c0f679a92a405b9c7072febc91415c3439c270a361"
+    },
+    {
+      "path": "models/best_publication_thesis_hqnn2_seed44_split42.pth",
+      "bytes": 999513,
+      "sha256": "ef7bc7795645b4d9ebe9b2cd577e2ced5dd1c6ae714c3571a173e31b460dc46b"
+    },
+    {
+      "path": "models/best_v7_model.pth",
+      "bytes": 1109379,
+      "sha256": "a18b9b5d6906cb4d672a1b4d71bfca01b37d6f0d959bbaff76f36bd74c6a0de8"
+    },
+    {
+      "path": "models/checkpoint_latest_v7.pth",
+      "bytes": 1111477,
+      "sha256": "4d34fde9d697ba272bdbc0e61c6dfffbff939de6d25787b918ee036cbfe8579f"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac010_seed42_split42_fraction42.pth",
+      "bytes": 371205,
+      "sha256": "f8443622c783299eb2d5378e2ee3caacf3b6b5591f087c58e3d4f3a15eec75b4"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac010_seed43_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "d1e0bd35ec5fe7d3532e43aa9253a1d9e73bd04b008b571ad657be4d4f5f8873"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac010_seed44_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "d2e38d1a0d30faf97f98256a2e27053e2363739c72bd756536ead45a011aa22c"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac010_seed45_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "18b44f7d24470f0abe08a2105b4ae3b1988fe864a0f36356ddb1cce4b9d69bff"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac010_seed46_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "4dd7f41349f1e9701ef5a4953a9aa74864a432342f13e3082a7bb2a2c89762f8"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac010_seed47_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "50c6efc800300a53dbac4421d8bb43ebfe31e7a94e4d419c2859317fd2ff23e4"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac025_seed42_split42_fraction42.pth",
+      "bytes": 371205,
+      "sha256": "8bf515d3d97730111931bbafae100ed18043b04da143624420489cced4b4535e"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac025_seed43_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "9683cc72b12e4f191c56626bdc3ecb4ae6837924d15bcf6803ff8b20ec9fec1b"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac025_seed44_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "b96886eac43e7c8fb1473d4a14161b0ce30325bb88f0b7d2ca1f15d04c8bd853"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac025_seed45_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "4838fa2eb48ee0f73a19a5b029cc22288ba023c6135c7d7fb8c93d53473bebb0"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac025_seed46_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "28bc4068b6c6faea3e897f3f47cb33e37ed6a627416af5ec2013ebeee5826402"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac025_seed47_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "dfb293cc8029ce3578a0ebb95744a7df72f3090f617324edca72903a346ff590"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac050_seed42_split42_fraction42.pth",
+      "bytes": 371205,
+      "sha256": "b501f1ff68b477eb37b419b789f954a6d51127019889fdf9c35b5dcaba7c209b"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac050_seed43_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "cd62793db51b056482a908334c389e20ab6090b3b8455ae6f695a6d2d39f4b39"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac050_seed44_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "9a0ccaaae877e5d4641ab7708006226924ff754641006ff42e788ff6eeb47827"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac050_seed45_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "a3b37911446c95d9334519c908dd989feebe8ad9aedc5668c7f25e643393136a"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac050_seed46_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "c92fbb6dfd6741422085edc2aabb34347a1d303051d8cd999cbfe38f6597ae1b"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac050_seed47_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "3a78af7fa532bc8f2df603c37f885221ce92a1abdef8750620422cd20879a45d"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac100_seed42_split42_fraction42.pth",
+      "bytes": 371205,
+      "sha256": "2444b1dee1de9f5db94492078e661eb9c6ee7fe758bdfc47fa7e55a04c5c2f65"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac100_seed43_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "cab98f9eed466751f7825aaa8fb919b25a60cc6a4f7c96345997316a52576531"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac100_seed44_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "eefd30c76f986a92f703f5ac04e4adc54c587fd9e97e1b4a4a9449bb79a8d585"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac100_seed45_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "1090644680b713261f827a13a143d3d2af56762eec9f64819b826837fe208ce5"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac100_seed46_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "5e8499b0669fc7dcdcd2bb71159eb1f708ee8352d566da5e1237c16d01b29d90"
+    },
+    {
+      "path": "models/low_data/best_ablation_classical_conv_frac100_seed47_split42_fraction42.pth",
+      "bytes": 371845,
+      "sha256": "f46e1a9bfe462a4c3dae267d6148bff8198a383bc5cba2aca8cd19473e7d0220"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed42_split42_fraction42.pth",
+      "bytes": 368685,
+      "sha256": "455f1a8827a6491ac63d2bfd2b92041fb0e610f8c8e14ece99fcbbb7bffdb259"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "d556a74a9c44d6e810e74ec76202fb2fa0700ab0a51320403d08182dc4be0fd1"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "ffb57a594bc5ba5a58da687899c3a6d03d16ea7d5d5f67ba5316322cf965b8d0"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "d66aff7939250e597ef6ef6a1d6f3f98eb5108e20b233b81abfcc9da15604050"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "9773707bcc206bb444a5725ddb4ea76adefda5b27a1f62aebaf3e1fb7db9abda"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "be168e94be7de5e5a5d07d9d96670c47b1137baf16444e2025cb2c16ae88f2fe"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed42_split42_fraction42.pth",
+      "bytes": 368685,
+      "sha256": "9db0891d3d1cb54114446b103b12555d805e6483266ee0c6ac5a64eb5e9dd022"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "337de68554465a735b6e77d0897a3a464c58afbee7f9289f1206153f7a722fbc"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "437ba931fe09907d2a115b46810b44e879edfe030c18f201e7984b3595ba5ab2"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "049f0bf80574379a63a5d3ce18930db44f018a464f0c940f8a13201ea3792234"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "c3204612d1a67952015bd38a008a7fa32d61a03528e7382d1c278c0a3d1ebe53"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "99c6f434a55838990dd91f1522b0cbd84a8377b5692d7476b9270945f506a1ac"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed42_split42_fraction42.pth",
+      "bytes": 368685,
+      "sha256": "ced662222603662e3ac928bcd462d9e769755a872f27ca79ac43053420d576b1"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "adf72c749fecfe1e96ab4dc93c1ff722599a729cb3d25d53e72ebe1e2ab532ab"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "d106cfe31f11f4211e55968b65c6acca231b53722efcbee0169bf0d3337a3a58"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "debcd0d17517c7b160db9793ecde849582dcdbb962320d8cc841e40da311fe1a"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "3d6d72cb09dff970d0ca23f4e6fced8b6ca636d75e55ed5a44f5a328bd9ad934"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "3103110f133ffd84fb3bad1370bde7d5bac6a2d2c2ddca01c514b14a5e2965fd"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed42_split42_fraction42.pth",
+      "bytes": 368685,
+      "sha256": "18026df3f0bd79cf1d7f496ab1d4b31d32c42b7b1302134d76fc29585bcb23a1"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "651f816d52e8044c27de83873404cd07af47b0f3b3acd79f6369fa17bdcc4d5a"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "3455e7ae8b97c074f7808da1c8853e030921f1fe2d500680d5f0934b9eefdf7a"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "30a8d0c9e0c5f1a04ca433767407024c98219204027b292ecf9334540dff20f8"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "f3746f897cc5e8ada8cc9f1651d850f08f696456afa444645b8661a6677621ba"
+    },
+    {
+      "path": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.pth",
+      "bytes": 369133,
+      "sha256": "f43a21429d172698d1f596f55e29f3329d46db332e18b387f30af0e805c304a1"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_cnniiii_frac010_seed42_split42_fraction42.pth",
+      "bytes": 5519617,
+      "sha256": "c4fdbff944cf20a941b69896f55b57db1f96afeb928db5b5f56730e7f4fbb520"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_cnniiii_frac025_seed42_split42_fraction42.pth",
+      "bytes": 5519617,
+      "sha256": "c6311bda9a93f7bc2e5480e95f4af41c3421197d2c5ac63449c980256d7b9f0e"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_cnniiii_frac050_seed42_split42_fraction42.pth",
+      "bytes": 5519617,
+      "sha256": "a835d1bea53675bbd0955d79a41220940b0a359ac3e70f35a7cd02ed0e942a08"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_cnniiii_frac100_seed42_split42_fraction42.pth",
+      "bytes": 5519617,
+      "sha256": "b5b0bcf8ab832c26524fed9cf62f32a711593c6b53bb06f16e932baad3183b94"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_hqnn2_frac010_seed42_split42_fraction42.pth",
+      "bytes": 999983,
+      "sha256": "191bf9b710c0a9fcef65a4582837fe940189aa9c54114e2f10a73153f3b00cd9"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_hqnn2_frac025_seed42_split42_fraction42.pth",
+      "bytes": 999983,
+      "sha256": "04977324f4005a1c78bae287f2b1a3b3e6ecca0d596dbb542ca3ffd47728d4cd"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_hqnn2_frac050_seed42_split42_fraction42.pth",
+      "bytes": 999983,
+      "sha256": "e87f8001b9fb0fa15bca1aaffdf331bccd4eb715a17c131cac554f5c4b24a8ce"
+    },
+    {
+      "path": "models/low_data/best_publication_thesis_hqnn2_frac100_seed42_split42_fraction42.pth",
+      "bytes": 999983,
+      "sha256": "9e7e5a6ffdab955f88ccededea592b72d7772aa0d5aff96244a872aee1d3d244"
+    },
+    {
+      "path": "paper/draft.md",
+      "bytes": 59161,
+      "sha256": "d62c92904518ee91e67c9ab5bae593a3b8ee3353e4b611037e02c4565713bb4e"
+    },
+    {
+      "path": "paper/figures/low_data_scaling.pdf",
+      "bytes": 23570,
+      "sha256": "50c2a55d4db11b2f38b8e69bc007931aa3693779f54cdcaa1f05790888f4e5ed"
+    },
+    {
+      "path": "paper/figures/low_data_scaling.png",
+      "bytes": 128900,
+      "sha256": "3ac36b6179b6749fff56cd9eeaa8ccc3053c2018d4b9017326560c997a0376f2"
+    },
+    {
+      "path": "requirements-publication-lock.txt",
+      "bytes": 581,
+      "sha256": "04e0f8a761b30bd126748efadc63e4d3cb706d0468b38e77d6ed72e1546f0184"
+    },
+    {
+      "path": "train_v7_colab.ipynb",
+      "bytes": 23284,
+      "sha256": "c6b722c15e6ce4becfb468c8902625cee2feffc84d22d073b981a4fde907f027"
+    }
+  ],
+  "dataset_snapshot": {
+    "file_count": 3894,
+    "split_file_counts": {
+      "train": 3428,
+      "test": 466
+    },
+    "total_bytes": 1620581,
+    "combined_sha256": "0ba83bc2c3e36bb084688aeaf5cca5141a2d6b093b8ff4ab045d8b907391a492",
+    "method": "sha256 of sorted '<relative_path>\\t<size>\\t<file_sha256>\\n' rows"
+  },
+  "dataset_source": {
+    "title": "Ottoman Turkish Characters",
+    "authors": [
+      "Alperen \u00d6zer",
+      "Alp Bintu\u011f Uzun"
+    ],
+    "url": "https://www.kaggle.com/datasets/alpbintuuzun/ottoman-turkish-characters",
+    "kaggle_license_label": "GPL 2",
+    "official_version": 1,
+    "official_zip_sha256_verified_2026_08_09": "35b68d7f7e677e591d2305c573ce350914042f0f7e5b2fa79d2cb16415563885",
+    "identity_check": "3894 local PNG files content-identical; no missing, extra, or mismatched images"
+  }
+}

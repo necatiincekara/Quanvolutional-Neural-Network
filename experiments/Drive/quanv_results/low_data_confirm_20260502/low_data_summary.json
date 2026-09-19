@@ -4,297 +4,153 @@
       "family": "current-local",
       "model": "classical_conv",
       "train_fraction": 0.1,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        308,
-        309
-      ],
-      "best_val_acc_mean": 52.05,
-      "best_val_acc_std": 2.23,
-      "test_acc_mean": 49.14,
-      "test_acc_std": 2.49,
+      "train_size": 308,
+      "best_val_acc_mean": 50.88,
+      "best_val_acc_std": 2.28,
+      "test_acc_mean": 48.42,
+      "test_acc_std": 2.31,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "classical_conv",
       "train_fraction": 0.25,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        771,
-        772
-      ],
-      "best_val_acc_mean": 71.25,
-      "best_val_acc_std": 1.75,
-      "test_acc_mean": 67.88,
-      "test_acc_std": 2.13,
+      "train_size": 771,
+      "best_val_acc_mean": 70.17,
+      "best_val_acc_std": 1.52,
+      "test_acc_mean": 66.24,
+      "test_acc_std": 1.78,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "classical_conv",
       "train_fraction": 0.5,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        1542,
-        1543
-      ],
-      "best_val_acc_mean": 80.5,
-      "best_val_acc_std": 1.66,
-      "test_acc_mean": 75.36,
-      "test_acc_std": 1.43,
+      "train_size": 1542,
+      "best_val_acc_mean": 79.53,
+      "best_val_acc_std": 1.34,
+      "test_acc_mean": 75.61,
+      "test_acc_std": 1.02,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "classical_conv",
       "train_fraction": 1.0,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        3085,
-        3086
-      ],
-      "best_val_acc_mean": 87.23,
-      "best_val_acc_std": 1.12,
-      "test_acc_mean": 80.62,
-      "test_acc_std": 0.44,
+      "train_size": 3085,
+      "best_val_acc_mean": 87.04,
+      "best_val_acc_std": 1.1,
+      "test_acc_mean": 80.47,
+      "test_acc_std": 0.57,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "non_trainable_quantum",
       "train_fraction": 0.1,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        308,
-        309
-      ],
-      "best_val_acc_mean": 56.38,
-      "best_val_acc_std": 3.0,
-      "test_acc_mean": 50.93,
-      "test_acc_std": 2.72,
+      "train_size": 308,
+      "best_val_acc_mean": 57.02,
+      "best_val_acc_std": 0.77,
+      "test_acc_mean": 50.71,
+      "test_acc_std": 2.93,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "non_trainable_quantum",
       "train_fraction": 0.25,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        771,
-        772
-      ],
-      "best_val_acc_mean": 72.03,
-      "best_val_acc_std": 1.07,
-      "test_acc_mean": 69.17,
-      "test_acc_std": 1.12,
+      "train_size": 771,
+      "best_val_acc_mean": 71.74,
+      "best_val_acc_std": 1.5,
+      "test_acc_mean": 69.88,
+      "test_acc_std": 0.99,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "non_trainable_quantum",
       "train_fraction": 0.5,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        1542,
-        1543
-      ],
-      "best_val_acc_mean": 82.41,
-      "best_val_acc_std": 2.85,
-      "test_acc_mean": 76.0,
-      "test_acc_std": 1.36,
+      "train_size": 1542,
+      "best_val_acc_mean": 81.87,
+      "best_val_acc_std": 4.02,
+      "test_acc_mean": 76.75,
+      "test_acc_std": 0.5,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "current-local",
       "model": "non_trainable_quantum",
       "train_fraction": 1.0,
-      "runs": 6,
+      "runs": 3,
       "seeds": [
         42,
         43,
-        44,
-        45,
-        46,
-        47
+        44
       ],
-      "train_size": null,
-      "train_sizes": [
-        3085,
-        3086
-      ],
-      "best_val_acc_mean": 86.5,
-      "best_val_acc_std": 1.15,
-      "test_acc_mean": 80.9,
-      "test_acc_std": 0.95,
+      "train_size": 3085,
+      "best_val_acc_mean": 86.36,
+      "best_val_acc_std": 1.47,
+      "test_acc_mean": 80.76,
+      "test_acc_std": 0.99,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "mixed",
-      "protocol_versions": [
-        "low_data_confirm_v1",
-        "low_data_confirm_v2_20260517",
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -305,25 +161,13 @@
         42
       ],
       "train_size": 308,
-      "train_sizes": [
-        308
-      ],
       "best_val_acc_mean": 70.18,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 65.88,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -334,25 +178,13 @@
         42
       ],
       "train_size": 771,
-      "train_sizes": [
-        771
-      ],
       "best_val_acc_mean": 85.67,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 79.61,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -363,25 +195,13 @@
         42
       ],
       "train_size": 1542,
-      "train_sizes": [
-        1542
-      ],
       "best_val_acc_mean": 88.3,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 82.4,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -392,25 +212,13 @@
         42
       ],
       "train_size": 3085,
-      "train_sizes": [
-        3085
-      ],
       "best_val_acc_mean": 92.4,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 85.19,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -421,25 +229,13 @@
         42
       ],
       "train_size": 308,
-      "train_sizes": [
-        308
-      ],
       "best_val_acc_mean": 55.56,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 50.43,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -450,25 +246,13 @@
         42
       ],
       "train_size": 771,
-      "train_sizes": [
-        771
-      ],
       "best_val_acc_mean": 66.67,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 62.45,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -479,25 +263,13 @@
         42
       ],
       "train_size": 1542,
-      "train_sizes": [
-        1542
-      ],
       "best_val_acc_mean": 79.24,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 72.1,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     },
     {
       "family": "thesis-faithful",
@@ -508,25 +280,13 @@
         42
       ],
       "train_size": 3085,
-      "train_sizes": [
-        3085
-      ],
       "best_val_acc_mean": 84.21,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 78.33,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
-      "protocol_version": "low_data_pilot_v1",
-      "protocol_versions": [
-        "low_data_pilot_v1"
-      ]
+      "protocol_version": "low_data_pilot_v1"
     }
   ],
   "comparisons": [
@@ -534,11 +294,11 @@
       "family": "current-local",
       "train_fraction": 0.1,
       "classical_model": "classical_conv",
-      "classical_test_acc": 49.14,
+      "classical_test_acc": 48.42,
       "quantum_model": "non_trainable_quantum",
-      "quantum_test_acc": 50.93,
-      "gap_classical_minus_quantum": -1.79,
-      "full_data_gap": -0.28,
+      "quantum_test_acc": 50.71,
+      "gap_classical_minus_quantum": -2.29,
+      "full_data_gap": -0.29,
       "colab_signal": true,
       "signal_reason": "quantum_wins, within_2_points"
     },
@@ -546,11 +306,11 @@
       "family": "current-local",
       "train_fraction": 0.25,
       "classical_model": "classical_conv",
-      "classical_test_acc": 67.88,
+      "classical_test_acc": 66.24,
       "quantum_model": "non_trainable_quantum",
-      "quantum_test_acc": 69.17,
-      "gap_classical_minus_quantum": -1.29,
-      "full_data_gap": -0.28,
+      "quantum_test_acc": 69.88,
+      "gap_classical_minus_quantum": -3.64,
+      "full_data_gap": -0.29,
       "colab_signal": true,
       "signal_reason": "quantum_wins, within_2_points"
     },
@@ -558,11 +318,11 @@
       "family": "current-local",
       "train_fraction": 0.5,
       "classical_model": "classical_conv",
-      "classical_test_acc": 75.36,
+      "classical_test_acc": 75.61,
       "quantum_model": "non_trainable_quantum",
-      "quantum_test_acc": 76.0,
-      "gap_classical_minus_quantum": -0.64,
-      "full_data_gap": -0.28,
+      "quantum_test_acc": 76.75,
+      "gap_classical_minus_quantum": -1.14,
+      "full_data_gap": -0.29,
       "colab_signal": true,
       "signal_reason": "quantum_wins, within_2_points"
     },
@@ -570,11 +330,11 @@
       "family": "current-local",
       "train_fraction": 1.0,
       "classical_model": "classical_conv",
-      "classical_test_acc": 80.62,
+      "classical_test_acc": 80.47,
       "quantum_model": "non_trainable_quantum",
-      "quantum_test_acc": 80.9,
-      "gap_classical_minus_quantum": -0.28,
-      "full_data_gap": -0.28,
+      "quantum_test_acc": 80.76,
+      "gap_classical_minus_quantum": -0.29,
+      "full_data_gap": -0.29,
       "colab_signal": true,
       "signal_reason": "quantum_wins, within_2_points"
     },

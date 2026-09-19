@@ -1,0 +1,1602 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-09T14:46:23.189306+00:00",
+  "operation": "drive-artifact-reconciliation",
+  "applied": true,
+  "scope_note": "Low-data JSON metrics were verified against the prior reconstructed rows before replacement. V7 checkpoints were inventoried but not copied over the generic local V7 paths; the Drive folders still contain no raw V7 result JSON.",
+  "drive_inventory": {
+    "root": "experiments/Drive/quanv_results",
+    "artifact_count": 138,
+    "total_bytes": 20563212,
+    "artifacts": [
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/docs/LOW_DATA_SUMMARY.md",
+        "bytes": 2955,
+        "sha256": "b027fcc961774643ea8ca927aa9028f9a1d94d01026144f4157289ef0e5d58bd"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac010_seed42_split42_fraction42.json",
+        "bytes": 8342,
+        "sha256": "8dbdc48662bbb3f623f01528901a6e3881c732d7ef21f16b57551fbcce89f6bc"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac010_seed43_split42_fraction42.json",
+        "bytes": 8352,
+        "sha256": "e2a26bacf1bd5d369fdd58cf963b357e1cf1eb63ec52b9675e919a05ea7c7d64"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac010_seed44_split42_fraction42.json",
+        "bytes": 8344,
+        "sha256": "cc5f4e9cc6b930b9da098cbc1a0bebf92d9bdb908f8fe9859d1b14359fab039c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac025_seed42_split42_fraction42.json",
+        "bytes": 8351,
+        "sha256": "bd6651e809bc1589128126e39c238b2e6029dc9d3d603e398fff0463bf97f266"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac025_seed43_split42_fraction42.json",
+        "bytes": 7965,
+        "sha256": "724efa5e176389e0e2f22e27d7f0154b5e7bf8c2858b7625da21c73595bd772a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac025_seed44_split42_fraction42.json",
+        "bytes": 8369,
+        "sha256": "700d45bc2877be6cc519084ebca084c7db8debcb86366b4690c8ca33d5f42c5b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac050_seed42_split42_fraction42.json",
+        "bytes": 8354,
+        "sha256": "472250e431ef1e45c0a2d97a739c23305eea017ef1627190e1b108d7fbb3bd61"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac050_seed43_split42_fraction42.json",
+        "bytes": 8244,
+        "sha256": "8d7ef479a0c6a475d02af0cca1566f1585b75366a36a1c8052f27c020e682400"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac050_seed44_split42_fraction42.json",
+        "bytes": 8374,
+        "sha256": "42d410cdb9084c84e3f7fb285d04803386965c51387ceb2b0d59d2da61cdce24"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac100_seed42_split42_fraction42.json",
+        "bytes": 8356,
+        "sha256": "f2d49acaf186aa6025b7443a62e3823a09304588d634326fdfa1c6a9ecb3254c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac100_seed43_split42_fraction42.json",
+        "bytes": 7560,
+        "sha256": "cd72213e8b330aac9c3afa96fb985da966c937b8843ea592ff5c80ff815c9678"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_classical_conv_frac100_seed44_split42_fraction42.json",
+        "bytes": 7966,
+        "sha256": "5c68e6bfa37490685db23ddefd26289b5839e7eb2e3678cbcc68756716d4a60d"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac010_seed42_split42_fraction42.json",
+        "bytes": 9098,
+        "sha256": "b6a1932221cb985199da12c0ef886e22678a6eb7bdf9121a88475f08ca19832f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.json",
+        "bytes": 9035,
+        "sha256": "21c262455df4633a8d78e50e735d1c9f5bd32360dcfd7c3a4e71fad0a7aa0d9a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.json",
+        "bytes": 9043,
+        "sha256": "afd42ccadbc1bf8974d05beeec8181f5b2fd10b30ca702624ad3cc8bd051c13a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac025_seed42_split42_fraction42.json",
+        "bytes": 9119,
+        "sha256": "16c5dd97f54235a2bbd8d57979b2034ca72d42b66793ee8d9d28fa9ae4de245b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.json",
+        "bytes": 9065,
+        "sha256": "4700c98b16aa473ca6368ee94edd03dc1e34890973a5f464067a900da20c1882"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.json",
+        "bytes": 9053,
+        "sha256": "9993a1e8951074a09e2f26f1851df9bb96aa2b6f08bfda7d2ca28aa8480737fb"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac050_seed42_split42_fraction42.json",
+        "bytes": 9130,
+        "sha256": "03cf9c5c692cd0885079b22aa47565f08a56ba2fb1d7b17e26de638509f14f91"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.json",
+        "bytes": 9069,
+        "sha256": "85b5e1d42f66210a5b6c50fa1fd1d0dedd065bf55c5b7635996bbe037e32d679"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.json",
+        "bytes": 9073,
+        "sha256": "3607d9dd310caf60feebe0312db2dfcdddfff642d7e2a53d790263174a0872e8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac100_seed42_split42_fraction42.json",
+        "bytes": 9117,
+        "sha256": "60dd7a1ffab977a284c8796914d59127ae0cb6e1841364ed73f869e1c12aa8e3"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.json",
+        "bytes": 9064,
+        "sha256": "a4da5dfe73351e95b900cfb554906d91e89e2448c8f7d6d913c9b172a98b7fa0"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.json",
+        "bytes": 8524,
+        "sha256": "0f0c6e9669d9940f8e9e79a8538a2e71698569e2a1dfc978b55ab50d0aa1111f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_cnniiii_frac010_seed42_split42_fraction42.json",
+        "bytes": 69456,
+        "sha256": "eb21d5ec7dc8ed89027ab4938ba03161cfdb16def1ada62e642cd5d6cdad30cd"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_cnniiii_frac025_seed42_split42_fraction42.json",
+        "bytes": 69489,
+        "sha256": "ee1245781caa0e8a338ca35f80c7bc6dd29906730293209811f87dd9f6c4a762"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_cnniiii_frac050_seed42_split42_fraction42.json",
+        "bytes": 69510,
+        "sha256": "691fef655a942958ed978d54b1ae1b8c13c94d006cb982445bbd0a608ed3d795"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_cnniiii_frac100_seed42_split42_fraction42.json",
+        "bytes": 69483,
+        "sha256": "a6339924150210bdf5a6a7da33a3c40373bba8de301b5ecb8f3b62b9ec295650"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_hqnn2_frac010_seed42_split42_fraction42.json",
+        "bytes": 9522,
+        "sha256": "513c06ebdc408313e839286cae3c78a0c4e98e64addf1ef868ef100b87a5e54f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_hqnn2_frac025_seed42_split42_fraction42.json",
+        "bytes": 9526,
+        "sha256": "a15bc8354cbd9208f8500d14b03647ec6170ded39b5f309f6b4379e93b0ac1fd"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_hqnn2_frac050_seed42_split42_fraction42.json",
+        "bytes": 9534,
+        "sha256": "84a95df5837e7e018e68f6cb097f4e96beadde69a9817d68aaeb44ca05890f2a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/experiments_low_data/publication_thesis_hqnn2_frac100_seed42_split42_fraction42.json",
+        "bytes": 9542,
+        "sha256": "3107684d8c77275bd81c981aabe51c6a2e57d4ad5f414bf1f2a1b3ebd12ba5e9"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/low_data_summary.json",
+        "bytes": 10039,
+        "sha256": "526d4c84a6878bcc3b49fb54b330dad298e1f64ccc1015df486d79ce49e47d0d"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac010_seed43_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "d1e0bd35ec5fe7d3532e43aa9253a1d9e73bd04b008b571ad657be4d4f5f8873"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac010_seed44_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "d2e38d1a0d30faf97f98256a2e27053e2363739c72bd756536ead45a011aa22c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac025_seed43_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "9683cc72b12e4f191c56626bdc3ecb4ae6837924d15bcf6803ff8b20ec9fec1b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac025_seed44_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "b96886eac43e7c8fb1473d4a14161b0ce30325bb88f0b7d2ca1f15d04c8bd853"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac050_seed43_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "cd62793db51b056482a908334c389e20ab6090b3b8455ae6f695a6d2d39f4b39"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac050_seed44_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "9a0ccaaae877e5d4641ab7708006226924ff754641006ff42e788ff6eeb47827"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac100_seed43_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "cab98f9eed466751f7825aaa8fb919b25a60cc6a4f7c96345997316a52576531"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac100_seed44_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "eefd30c76f986a92f703f5ac04e4adc54c587fd9e97e1b4a4a9449bb79a8d585"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "d556a74a9c44d6e810e74ec76202fb2fa0700ab0a51320403d08182dc4be0fd1"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "ffb57a594bc5ba5a58da687899c3a6d03d16ea7d5d5f67ba5316322cf965b8d0"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "337de68554465a735b6e77d0897a3a464c58afbee7f9289f1206153f7a722fbc"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "437ba931fe09907d2a115b46810b44e879edfe030c18f201e7984b3595ba5ab2"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "adf72c749fecfe1e96ab4dc93c1ff722599a729cb3d25d53e72ebe1e2ab532ab"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "d106cfe31f11f4211e55968b65c6acca231b53722efcbee0169bf0d3337a3a58"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "651f816d52e8044c27de83873404cd07af47b0f3b3acd79f6369fa17bdcc4d5a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "3455e7ae8b97c074f7808da1c8853e030921f1fe2d500680d5f0934b9eefdf7a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/docs/LOW_DATA_SUMMARY_v2_20260517.md",
+        "bytes": 3018,
+        "sha256": "a018db047ca394e0719893acc2ee464aef5bfceae5f6093f8fbb257c4e2f2e48"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/docs/STATISTICAL_EVIDENCE_LOW_DATA_CONFIRM_V2_20260517.md",
+        "bytes": 4643,
+        "sha256": "a64024a4b7df716f04fb23784fe68f48931d58ba09e73a8b047ed4ef1b9d009f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed42_split42_fraction42.json",
+        "bytes": 8342,
+        "sha256": "8dbdc48662bbb3f623f01528901a6e3881c732d7ef21f16b57551fbcce89f6bc"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed43_split42_fraction42.json",
+        "bytes": 8352,
+        "sha256": "e2a26bacf1bd5d369fdd58cf963b357e1cf1eb63ec52b9675e919a05ea7c7d64"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed44_split42_fraction42.json",
+        "bytes": 8344,
+        "sha256": "cc5f4e9cc6b930b9da098cbc1a0bebf92d9bdb908f8fe9859d1b14359fab039c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed45_split42_fraction42.json",
+        "bytes": 8361,
+        "sha256": "bb8f9132c401d572fba05de506f5cae422ade97f1ed01c534b5bac0d6ed34586"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed46_split42_fraction42.json",
+        "bytes": 8367,
+        "sha256": "8177e58a4fbab961168b172313828bfbaa9addeb6ff76e67d9d68ac4284ce0f7"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed47_split42_fraction42.json",
+        "bytes": 8364,
+        "sha256": "0decb38dd33492fca6a8ac8696898af0a1b393cf89ecf7a549c60bd0fa0e5f9a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed42_split42_fraction42.json",
+        "bytes": 8351,
+        "sha256": "bd6651e809bc1589128126e39c238b2e6029dc9d3d603e398fff0463bf97f266"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed43_split42_fraction42.json",
+        "bytes": 7965,
+        "sha256": "724efa5e176389e0e2f22e27d7f0154b5e7bf8c2858b7625da21c73595bd772a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed44_split42_fraction42.json",
+        "bytes": 8369,
+        "sha256": "700d45bc2877be6cc519084ebca084c7db8debcb86366b4690c8ca33d5f42c5b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed45_split42_fraction42.json",
+        "bytes": 8392,
+        "sha256": "6351355d4474bc14d344736edbbeabf71c02d436bdecba6d812fa789c3a78680"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed46_split42_fraction42.json",
+        "bytes": 8380,
+        "sha256": "5f9de5efef242189530636cd20e517ba38a22d44b34491b37db0a6160c986f69"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed47_split42_fraction42.json",
+        "bytes": 8382,
+        "sha256": "36fafe4a4bf81bbf5ad53d9642317ae8265a9c8085a91f346ca287fc49e4355d"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed42_split42_fraction42.json",
+        "bytes": 8354,
+        "sha256": "472250e431ef1e45c0a2d97a739c23305eea017ef1627190e1b108d7fbb3bd61"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed43_split42_fraction42.json",
+        "bytes": 8244,
+        "sha256": "8d7ef479a0c6a475d02af0cca1566f1585b75366a36a1c8052f27c020e682400"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed44_split42_fraction42.json",
+        "bytes": 8374,
+        "sha256": "42d410cdb9084c84e3f7fb285d04803386965c51387ceb2b0d59d2da61cdce24"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed45_split42_fraction42.json",
+        "bytes": 8396,
+        "sha256": "a3ba964933e909e0896dceb0db8cc795fdea066164ca0a397c269e2ef9ee4086"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed46_split42_fraction42.json",
+        "bytes": 8392,
+        "sha256": "4617e3c77b9e098b8b2fb7f7b47c786762c334013d6bdc2960c403702308d26a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed47_split42_fraction42.json",
+        "bytes": 8395,
+        "sha256": "551e331dc84b7af46520753464cd0cb58840df6e490b0cdef52112851594a619"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed42_split42_fraction42.json",
+        "bytes": 8356,
+        "sha256": "f2d49acaf186aa6025b7443a62e3823a09304588d634326fdfa1c6a9ecb3254c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed43_split42_fraction42.json",
+        "bytes": 7560,
+        "sha256": "cd72213e8b330aac9c3afa96fb985da966c937b8843ea592ff5c80ff815c9678"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed44_split42_fraction42.json",
+        "bytes": 7966,
+        "sha256": "5c68e6bfa37490685db23ddefd26289b5839e7eb2e3678cbcc68756716d4a60d"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed45_split42_fraction42.json",
+        "bytes": 8385,
+        "sha256": "d552b53d713d2f48d1e21e143f6de13cc63120456ce095e4dcc9fb37fd42e6c8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed46_split42_fraction42.json",
+        "bytes": 8372,
+        "sha256": "f48fb41dbd5b58af98f6fa2034652a1f2faa7c46adf6fad095ab22e25dfc18b7"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed47_split42_fraction42.json",
+        "bytes": 7172,
+        "sha256": "bed71b667998e5f9bd6a3c6ef08de99d11ffd4ca4e6e2aa44bcc766d1a869ff8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed42_split42_fraction42.json",
+        "bytes": 9098,
+        "sha256": "b6a1932221cb985199da12c0ef886e22678a6eb7bdf9121a88475f08ca19832f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.json",
+        "bytes": 9035,
+        "sha256": "21c262455df4633a8d78e50e735d1c9f5bd32360dcfd7c3a4e71fad0a7aa0d9a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.json",
+        "bytes": 9043,
+        "sha256": "afd42ccadbc1bf8974d05beeec8181f5b2fd10b30ca702624ad3cc8bd051c13a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.json",
+        "bytes": 9059,
+        "sha256": "b3ae8449b578745302d0139fb66d2f15c45fb043665b2a6487e283d55e5bad70"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.json",
+        "bytes": 8917,
+        "sha256": "173b7b606a1f1854947b4de2cb07ba9dc4add573e43edbd6a1be5cc28cc88a6c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.json",
+        "bytes": 9047,
+        "sha256": "fe963769e793dc22792abb67678ca4ea35bf9c9bb84a0b5af031d243994ecf1a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed42_split42_fraction42.json",
+        "bytes": 9119,
+        "sha256": "16c5dd97f54235a2bbd8d57979b2034ca72d42b66793ee8d9d28fa9ae4de245b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.json",
+        "bytes": 9065,
+        "sha256": "4700c98b16aa473ca6368ee94edd03dc1e34890973a5f464067a900da20c1882"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.json",
+        "bytes": 9053,
+        "sha256": "9993a1e8951074a09e2f26f1851df9bb96aa2b6f08bfda7d2ca28aa8480737fb"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.json",
+        "bytes": 9074,
+        "sha256": "5f2adc6458c5fab5261ce82bd4b223e0ded316f895cbff335252db524c08e5b9"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.json",
+        "bytes": 9078,
+        "sha256": "9af7ef5fb096da8df44198cb5ce9f554ae575b03bf18dfaa9c57b4b6c70600d7"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.json",
+        "bytes": 9076,
+        "sha256": "59ce9bda597f4840d177e4fdb47bfef0abf34b737d15f8c4e00419dbda437e34"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed42_split42_fraction42.json",
+        "bytes": 9130,
+        "sha256": "03cf9c5c692cd0885079b22aa47565f08a56ba2fb1d7b17e26de638509f14f91"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.json",
+        "bytes": 9069,
+        "sha256": "85b5e1d42f66210a5b6c50fa1fd1d0dedd065bf55c5b7635996bbe037e32d679"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.json",
+        "bytes": 9073,
+        "sha256": "3607d9dd310caf60feebe0312db2dfcdddfff642d7e2a53d790263174a0872e8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.json",
+        "bytes": 9087,
+        "sha256": "781cd9a8f13f9f9ca6c9bbfdeec3de42adf2e3fe859132c941c601f5fde31cb8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.json",
+        "bytes": 8141,
+        "sha256": "89086469ff78aed970045474bcedcb3dc72f85e3c56431f8df746f9396a900e6"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.json",
+        "bytes": 9084,
+        "sha256": "67ef87409c725987eda7b539665ac02ef6022b58cab725fc748d951be4a2aa41"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed42_split42_fraction42.json",
+        "bytes": 9117,
+        "sha256": "60dd7a1ffab977a284c8796914d59127ae0cb6e1841364ed73f869e1c12aa8e3"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.json",
+        "bytes": 9064,
+        "sha256": "a4da5dfe73351e95b900cfb554906d91e89e2448c8f7d6d913c9b172a98b7fa0"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.json",
+        "bytes": 8524,
+        "sha256": "0f0c6e9669d9940f8e9e79a8538a2e71698569e2a1dfc978b55ab50d0aa1111f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.json",
+        "bytes": 9078,
+        "sha256": "a10bae19393efbf747f5930dfea496d8c5098da64a6a6f454cfce841afb08f8c"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.json",
+        "bytes": 9077,
+        "sha256": "fb343ed67a5c4e93c1ea81068fa512a378380596d475de807152a747ca4af07b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.json",
+        "bytes": 9080,
+        "sha256": "c9e515927be09446f2c52072f4ae5b82da749f70db480bec738e23d96da31793"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac010_seed42_split42_fraction42.json",
+        "bytes": 69456,
+        "sha256": "eb21d5ec7dc8ed89027ab4938ba03161cfdb16def1ada62e642cd5d6cdad30cd"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac025_seed42_split42_fraction42.json",
+        "bytes": 69489,
+        "sha256": "ee1245781caa0e8a338ca35f80c7bc6dd29906730293209811f87dd9f6c4a762"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac050_seed42_split42_fraction42.json",
+        "bytes": 69510,
+        "sha256": "691fef655a942958ed978d54b1ae1b8c13c94d006cb982445bbd0a608ed3d795"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac100_seed42_split42_fraction42.json",
+        "bytes": 69483,
+        "sha256": "a6339924150210bdf5a6a7da33a3c40373bba8de301b5ecb8f3b62b9ec295650"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac010_seed42_split42_fraction42.json",
+        "bytes": 9522,
+        "sha256": "513c06ebdc408313e839286cae3c78a0c4e98e64addf1ef868ef100b87a5e54f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac025_seed42_split42_fraction42.json",
+        "bytes": 9526,
+        "sha256": "a15bc8354cbd9208f8500d14b03647ec6170ded39b5f309f6b4379e93b0ac1fd"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac050_seed42_split42_fraction42.json",
+        "bytes": 9534,
+        "sha256": "84a95df5837e7e018e68f6cb097f4e96beadde69a9817d68aaeb44ca05890f2a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac100_seed42_split42_fraction42.json",
+        "bytes": 9542,
+        "sha256": "3107684d8c77275bd81c981aabe51c6a2e57d4ad5f414bf1f2a1b3ebd12ba5e9"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/low_data_summary_v2_20260517.json",
+        "bytes": 11851,
+        "sha256": "f4d207dfde3892cb66f1c288ce00f674e39ec745b5a5d5f0afca4fa5f5e64ea2"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac010_seed45_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "18b44f7d24470f0abe08a2105b4ae3b1988fe864a0f36356ddb1cce4b9d69bff"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac010_seed46_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "4dd7f41349f1e9701ef5a4953a9aa74864a432342f13e3082a7bb2a2c89762f8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac010_seed47_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "50c6efc800300a53dbac4421d8bb43ebfe31e7a94e4d419c2859317fd2ff23e4"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac025_seed45_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "4838fa2eb48ee0f73a19a5b029cc22288ba023c6135c7d7fb8c93d53473bebb0"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac025_seed46_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "28bc4068b6c6faea3e897f3f47cb33e37ed6a627416af5ec2013ebeee5826402"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac025_seed47_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "dfb293cc8029ce3578a0ebb95744a7df72f3090f617324edca72903a346ff590"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac050_seed45_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "a3b37911446c95d9334519c908dd989feebe8ad9aedc5668c7f25e643393136a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac050_seed46_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "c92fbb6dfd6741422085edc2aabb34347a1d303051d8cd999cbfe38f6597ae1b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac050_seed47_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "3a78af7fa532bc8f2df603c37f885221ce92a1abdef8750620422cd20879a45d"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac100_seed45_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "1090644680b713261f827a13a143d3d2af56762eec9f64819b826837fe208ce5"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac100_seed46_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "5e8499b0669fc7dcdcd2bb71159eb1f708ee8352d566da5e1237c16d01b29d90"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac100_seed47_split42_fraction42.pth",
+        "bytes": 371845,
+        "sha256": "f46e1a9bfe462a4c3dae267d6148bff8198a383bc5cba2aca8cd19473e7d0220"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "d66aff7939250e597ef6ef6a1d6f3f98eb5108e20b233b81abfcc9da15604050"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "9773707bcc206bb444a5725ddb4ea76adefda5b27a1f62aebaf3e1fb7db9abda"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "be168e94be7de5e5a5d07d9d96670c47b1137baf16444e2025cb2c16ae88f2fe"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "049f0bf80574379a63a5d3ce18930db44f018a464f0c940f8a13201ea3792234"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "c3204612d1a67952015bd38a008a7fa32d61a03528e7382d1c278c0a3d1ebe53"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "99c6f434a55838990dd91f1522b0cbd84a8377b5692d7476b9270945f506a1ac"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "debcd0d17517c7b160db9793ecde849582dcdbb962320d8cc841e40da311fe1a"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "3d6d72cb09dff970d0ca23f4e6fced8b6ca636d75e55ed5a44f5a328bd9ad934"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "3103110f133ffd84fb3bad1370bde7d5bac6a2d2c2ddca01c514b14a5e2965fd"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "30a8d0c9e0c5f1a04ca433767407024c98219204027b292ecf9334540dff20f8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "f3746f897cc5e8ada8cc9f1651d850f08f696456afa444645b8661a6677621ba"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.pth",
+        "bytes": 369133,
+        "sha256": "f43a21429d172698d1f596f55e29f3329d46db332e18b387f30af0e805c304a1"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/statistical_evidence_low_data_confirm_v2_20260517.json",
+        "bytes": 17180,
+        "sha256": "2b7d450a36eb115354b1deb8b74a94c7d4d16ad772dbe77e3e6035cce8fbea81"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/v7/best_v7_model.pth",
+        "bytes": 1109379,
+        "sha256": "a18b9b5d6906cb4d672a1b4d71bfca01b37d6f0d959bbaff76f36bd74c6a0de8"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/v7/checkpoint_latest_v7.pth",
+        "bytes": 1111477,
+        "sha256": "4d34fde9d697ba272bdbc0e61c6dfffbff939de6d25787b918ee036cbfe8579f"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/v7_clean_20260427/best_v7_model.pth",
+        "bytes": 1108931,
+        "sha256": "f1a2a9f7a843aae34f122c8aa9d4deda1fb70c3ac69ced8fb8671f541f28ac1b"
+      },
+      {
+        "path": "experiments/Drive/quanv_results/v7_clean_20260427/checkpoint_latest_v7.pth",
+        "bytes": 1110965,
+        "sha256": "fa9b257997e7af5eb711fd947573822e58b2880a3ec6a8b8b4dc8801f1561756"
+      }
+    ]
+  },
+  "low_data_json_reconciliation": {
+    "source_count": 56,
+    "byte_identical_before_copy": 16,
+    "reconstructed_rows_replaced": 40,
+    "entries": [
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac010_seed42_split42_fraction42.json",
+        "source_sha256": "8dbdc48662bbb3f623f01528901a6e3881c732d7ef21f16b57551fbcce89f6bc",
+        "previous_destination_sha256": "8dbdc48662bbb3f623f01528901a6e3881c732d7ef21f16b57551fbcce89f6bc",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "8dbdc48662bbb3f623f01528901a6e3881c732d7ef21f16b57551fbcce89f6bc"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac010_seed43_split42_fraction42.json",
+        "source_sha256": "e2a26bacf1bd5d369fdd58cf963b357e1cf1eb63ec52b9675e919a05ea7c7d64",
+        "previous_destination_sha256": "29d7d1b14172584ec734d90e5d72976ce02a1e58117967a25a5086f8ebf3f216",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "e2a26bacf1bd5d369fdd58cf963b357e1cf1eb63ec52b9675e919a05ea7c7d64"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac010_seed44_split42_fraction42.json",
+        "source_sha256": "cc5f4e9cc6b930b9da098cbc1a0bebf92d9bdb908f8fe9859d1b14359fab039c",
+        "previous_destination_sha256": "00065c0ff8c031c8d0ab8815bdb5bd366ea0580f42cecb344dcbc52057b029c9",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "cc5f4e9cc6b930b9da098cbc1a0bebf92d9bdb908f8fe9859d1b14359fab039c"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac010_seed45_split42_fraction42.json",
+        "source_sha256": "bb8f9132c401d572fba05de506f5cae422ade97f1ed01c534b5bac0d6ed34586",
+        "previous_destination_sha256": "1ab600921c755ce34316b5f26fbbeff671fc64d4f00cb0187af1faecc0f8b8de",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "bb8f9132c401d572fba05de506f5cae422ade97f1ed01c534b5bac0d6ed34586"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac010_seed46_split42_fraction42.json",
+        "source_sha256": "8177e58a4fbab961168b172313828bfbaa9addeb6ff76e67d9d68ac4284ce0f7",
+        "previous_destination_sha256": "625c337511e7bc68f22aedd7b832b8a9b0383b36278a4e1b6e5ec1824f977963",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "8177e58a4fbab961168b172313828bfbaa9addeb6ff76e67d9d68ac4284ce0f7"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac010_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac010_seed47_split42_fraction42.json",
+        "source_sha256": "0decb38dd33492fca6a8ac8696898af0a1b393cf89ecf7a549c60bd0fa0e5f9a",
+        "previous_destination_sha256": "9c83714b4c8a7f6498cd3e9d2d218b800628690522afccca70bbf9308ffb8f07",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "0decb38dd33492fca6a8ac8696898af0a1b393cf89ecf7a549c60bd0fa0e5f9a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac025_seed42_split42_fraction42.json",
+        "source_sha256": "bd6651e809bc1589128126e39c238b2e6029dc9d3d603e398fff0463bf97f266",
+        "previous_destination_sha256": "bd6651e809bc1589128126e39c238b2e6029dc9d3d603e398fff0463bf97f266",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "bd6651e809bc1589128126e39c238b2e6029dc9d3d603e398fff0463bf97f266"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac025_seed43_split42_fraction42.json",
+        "source_sha256": "724efa5e176389e0e2f22e27d7f0154b5e7bf8c2858b7625da21c73595bd772a",
+        "previous_destination_sha256": "54361e5583cd48a55ac298a0699f6a628c71e697147b4bff36c1949430085ddf",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "724efa5e176389e0e2f22e27d7f0154b5e7bf8c2858b7625da21c73595bd772a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac025_seed44_split42_fraction42.json",
+        "source_sha256": "700d45bc2877be6cc519084ebca084c7db8debcb86366b4690c8ca33d5f42c5b",
+        "previous_destination_sha256": "9b16420a99819905ce2a90802fc644a772ca5adc767d6f5ab7146305c0c3e74f",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "700d45bc2877be6cc519084ebca084c7db8debcb86366b4690c8ca33d5f42c5b"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac025_seed45_split42_fraction42.json",
+        "source_sha256": "6351355d4474bc14d344736edbbeabf71c02d436bdecba6d812fa789c3a78680",
+        "previous_destination_sha256": "833243f83cde813cb7083530122dc460e6fa39817fa0f5015e5dc6c7860dc154",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "6351355d4474bc14d344736edbbeabf71c02d436bdecba6d812fa789c3a78680"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac025_seed46_split42_fraction42.json",
+        "source_sha256": "5f9de5efef242189530636cd20e517ba38a22d44b34491b37db0a6160c986f69",
+        "previous_destination_sha256": "2eaa95e654a81b66775e05ede58cc76be2855213d194b5954b5e70dd79ea939e",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "5f9de5efef242189530636cd20e517ba38a22d44b34491b37db0a6160c986f69"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac025_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac025_seed47_split42_fraction42.json",
+        "source_sha256": "36fafe4a4bf81bbf5ad53d9642317ae8265a9c8085a91f346ca287fc49e4355d",
+        "previous_destination_sha256": "e4b106c304ad74a2147ac9e88dfd4883e29513c14f05f5b768e2f489c643cfe4",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "36fafe4a4bf81bbf5ad53d9642317ae8265a9c8085a91f346ca287fc49e4355d"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac050_seed42_split42_fraction42.json",
+        "source_sha256": "472250e431ef1e45c0a2d97a739c23305eea017ef1627190e1b108d7fbb3bd61",
+        "previous_destination_sha256": "472250e431ef1e45c0a2d97a739c23305eea017ef1627190e1b108d7fbb3bd61",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "472250e431ef1e45c0a2d97a739c23305eea017ef1627190e1b108d7fbb3bd61"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac050_seed43_split42_fraction42.json",
+        "source_sha256": "8d7ef479a0c6a475d02af0cca1566f1585b75366a36a1c8052f27c020e682400",
+        "previous_destination_sha256": "5c4fdf786b8723bbc66ea76da8a89e91d6ead7b749482d0b2fedd8c310382f33",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "8d7ef479a0c6a475d02af0cca1566f1585b75366a36a1c8052f27c020e682400"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac050_seed44_split42_fraction42.json",
+        "source_sha256": "42d410cdb9084c84e3f7fb285d04803386965c51387ceb2b0d59d2da61cdce24",
+        "previous_destination_sha256": "1c1f73a78d7ab7b0b7bcdd0d20b415c936bd04c1c3f8715e14c2b40e00a59622",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "42d410cdb9084c84e3f7fb285d04803386965c51387ceb2b0d59d2da61cdce24"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac050_seed45_split42_fraction42.json",
+        "source_sha256": "a3ba964933e909e0896dceb0db8cc795fdea066164ca0a397c269e2ef9ee4086",
+        "previous_destination_sha256": "ee1716641af94751c31df1bb5d3003bb8687ce8c8fab3a91be4f5ac418b0a8ea",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "a3ba964933e909e0896dceb0db8cc795fdea066164ca0a397c269e2ef9ee4086"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac050_seed46_split42_fraction42.json",
+        "source_sha256": "4617e3c77b9e098b8b2fb7f7b47c786762c334013d6bdc2960c403702308d26a",
+        "previous_destination_sha256": "11e32e4e9e94f35afd1aea92476d05e99457aa7930d9e26e0afe1ca4a4517e77",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "4617e3c77b9e098b8b2fb7f7b47c786762c334013d6bdc2960c403702308d26a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac050_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac050_seed47_split42_fraction42.json",
+        "source_sha256": "551e331dc84b7af46520753464cd0cb58840df6e490b0cdef52112851594a619",
+        "previous_destination_sha256": "b6cf94867a4d6796565110a919583d8ec70e8d0db10860227a7376c618b156f2",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "551e331dc84b7af46520753464cd0cb58840df6e490b0cdef52112851594a619"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac100_seed42_split42_fraction42.json",
+        "source_sha256": "f2d49acaf186aa6025b7443a62e3823a09304588d634326fdfa1c6a9ecb3254c",
+        "previous_destination_sha256": "f2d49acaf186aa6025b7443a62e3823a09304588d634326fdfa1c6a9ecb3254c",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "f2d49acaf186aa6025b7443a62e3823a09304588d634326fdfa1c6a9ecb3254c"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac100_seed43_split42_fraction42.json",
+        "source_sha256": "cd72213e8b330aac9c3afa96fb985da966c937b8843ea592ff5c80ff815c9678",
+        "previous_destination_sha256": "8938e2b72f45f498ccf91241379e1636a4edee993c9c369d26cdf9e6f1e65ed7",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "cd72213e8b330aac9c3afa96fb985da966c937b8843ea592ff5c80ff815c9678"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac100_seed44_split42_fraction42.json",
+        "source_sha256": "5c68e6bfa37490685db23ddefd26289b5839e7eb2e3678cbcc68756716d4a60d",
+        "previous_destination_sha256": "cd5ed04add108646051ee33aa6e735a5bea5875c917ccd526fb3ef4197eac176",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "5c68e6bfa37490685db23ddefd26289b5839e7eb2e3678cbcc68756716d4a60d"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac100_seed45_split42_fraction42.json",
+        "source_sha256": "d552b53d713d2f48d1e21e143f6de13cc63120456ce095e4dcc9fb37fd42e6c8",
+        "previous_destination_sha256": "3cef47597596a99ed282eb47b40ea0db7eb4096509a63f89d1b5a957ecf8879b",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "d552b53d713d2f48d1e21e143f6de13cc63120456ce095e4dcc9fb37fd42e6c8"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac100_seed46_split42_fraction42.json",
+        "source_sha256": "f48fb41dbd5b58af98f6fa2034652a1f2faa7c46adf6fad095ab22e25dfc18b7",
+        "previous_destination_sha256": "c5c3e58c03d592a9b44a7ce44f7ca9a2262eccc74f8c7d653dfa36eb44c4abfa",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "f48fb41dbd5b58af98f6fa2034652a1f2faa7c46adf6fad095ab22e25dfc18b7"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_classical_conv_frac100_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_classical_conv_frac100_seed47_split42_fraction42.json",
+        "source_sha256": "bed71b667998e5f9bd6a3c6ef08de99d11ffd4ca4e6e2aa44bcc766d1a869ff8",
+        "previous_destination_sha256": "36839664a97b1279d9745678a382cb05ee893fc1ee8a32abc0203ea899af0bd4",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "bed71b667998e5f9bd6a3c6ef08de99d11ffd4ca4e6e2aa44bcc766d1a869ff8"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed42_split42_fraction42.json",
+        "source_sha256": "b6a1932221cb985199da12c0ef886e22678a6eb7bdf9121a88475f08ca19832f",
+        "previous_destination_sha256": "b6a1932221cb985199da12c0ef886e22678a6eb7bdf9121a88475f08ca19832f",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "b6a1932221cb985199da12c0ef886e22678a6eb7bdf9121a88475f08ca19832f"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.json",
+        "source_sha256": "21c262455df4633a8d78e50e735d1c9f5bd32360dcfd7c3a4e71fad0a7aa0d9a",
+        "previous_destination_sha256": "8b999084907bd11cbe9d7ca9b922431a2a4cea84e62727272bbb1f0d85f283f3",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "21c262455df4633a8d78e50e735d1c9f5bd32360dcfd7c3a4e71fad0a7aa0d9a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.json",
+        "source_sha256": "afd42ccadbc1bf8974d05beeec8181f5b2fd10b30ca702624ad3cc8bd051c13a",
+        "previous_destination_sha256": "3c96c1613878467669cc5ddc5d31de28afd85e37108417a4a7039c3a19bd8949",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "afd42ccadbc1bf8974d05beeec8181f5b2fd10b30ca702624ad3cc8bd051c13a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.json",
+        "source_sha256": "b3ae8449b578745302d0139fb66d2f15c45fb043665b2a6487e283d55e5bad70",
+        "previous_destination_sha256": "4d84cc729c4eae4ae3b6953ac5ab57b4729a1c9efcc89a8a35af73f7c61b9b5d",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "b3ae8449b578745302d0139fb66d2f15c45fb043665b2a6487e283d55e5bad70"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.json",
+        "source_sha256": "173b7b606a1f1854947b4de2cb07ba9dc4add573e43edbd6a1be5cc28cc88a6c",
+        "previous_destination_sha256": "f25969645e7ad4c52215618aeb980852bedcf5902f0073fa44f2e01b9a2a9140",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "173b7b606a1f1854947b4de2cb07ba9dc4add573e43edbd6a1be5cc28cc88a6c"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.json",
+        "source_sha256": "fe963769e793dc22792abb67678ca4ea35bf9c9bb84a0b5af031d243994ecf1a",
+        "previous_destination_sha256": "ba9453c5daf7fbb4217494e679fcd4799ef2c0926086a543f760074744dddbf2",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "fe963769e793dc22792abb67678ca4ea35bf9c9bb84a0b5af031d243994ecf1a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed42_split42_fraction42.json",
+        "source_sha256": "16c5dd97f54235a2bbd8d57979b2034ca72d42b66793ee8d9d28fa9ae4de245b",
+        "previous_destination_sha256": "16c5dd97f54235a2bbd8d57979b2034ca72d42b66793ee8d9d28fa9ae4de245b",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "16c5dd97f54235a2bbd8d57979b2034ca72d42b66793ee8d9d28fa9ae4de245b"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.json",
+        "source_sha256": "4700c98b16aa473ca6368ee94edd03dc1e34890973a5f464067a900da20c1882",
+        "previous_destination_sha256": "39429b3c5eedddf11b8a0c70584350d835b2cdf16d5547fe528ad5ccf8278469",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "4700c98b16aa473ca6368ee94edd03dc1e34890973a5f464067a900da20c1882"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.json",
+        "source_sha256": "9993a1e8951074a09e2f26f1851df9bb96aa2b6f08bfda7d2ca28aa8480737fb",
+        "previous_destination_sha256": "f0c1c5d5c60f203f5cf651ebe1623ef9d8bd7e83ca6df85781e59614171914bc",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "9993a1e8951074a09e2f26f1851df9bb96aa2b6f08bfda7d2ca28aa8480737fb"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.json",
+        "source_sha256": "5f2adc6458c5fab5261ce82bd4b223e0ded316f895cbff335252db524c08e5b9",
+        "previous_destination_sha256": "f881c6b4dc97e314e7a374db34999ff48b8315d89eca8ada852697e4aee88e58",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "5f2adc6458c5fab5261ce82bd4b223e0ded316f895cbff335252db524c08e5b9"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.json",
+        "source_sha256": "9af7ef5fb096da8df44198cb5ce9f554ae575b03bf18dfaa9c57b4b6c70600d7",
+        "previous_destination_sha256": "622e879ba0abe642007abaf7d558a9b0ff3a08edfef34717d13ea3a71d73785d",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "9af7ef5fb096da8df44198cb5ce9f554ae575b03bf18dfaa9c57b4b6c70600d7"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.json",
+        "source_sha256": "59ce9bda597f4840d177e4fdb47bfef0abf34b737d15f8c4e00419dbda437e34",
+        "previous_destination_sha256": "3cce614e832c45db435e008a558d5d4eeda9eea3f1d9352cbc2d6dbf1480df63",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "59ce9bda597f4840d177e4fdb47bfef0abf34b737d15f8c4e00419dbda437e34"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed42_split42_fraction42.json",
+        "source_sha256": "03cf9c5c692cd0885079b22aa47565f08a56ba2fb1d7b17e26de638509f14f91",
+        "previous_destination_sha256": "03cf9c5c692cd0885079b22aa47565f08a56ba2fb1d7b17e26de638509f14f91",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "03cf9c5c692cd0885079b22aa47565f08a56ba2fb1d7b17e26de638509f14f91"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.json",
+        "source_sha256": "85b5e1d42f66210a5b6c50fa1fd1d0dedd065bf55c5b7635996bbe037e32d679",
+        "previous_destination_sha256": "caf3499d4f1b9702658f941677d50ac0bf90636b9195e97f24ca19e171f04a68",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "85b5e1d42f66210a5b6c50fa1fd1d0dedd065bf55c5b7635996bbe037e32d679"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.json",
+        "source_sha256": "3607d9dd310caf60feebe0312db2dfcdddfff642d7e2a53d790263174a0872e8",
+        "previous_destination_sha256": "c167f0d538741091e3ee1a920c609f21f01acf383878bc5d00b43084bb058898",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "3607d9dd310caf60feebe0312db2dfcdddfff642d7e2a53d790263174a0872e8"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.json",
+        "source_sha256": "781cd9a8f13f9f9ca6c9bbfdeec3de42adf2e3fe859132c941c601f5fde31cb8",
+        "previous_destination_sha256": "7c0519ca413f8acb3f472802ba3eac411973113a57256ac79e9fc341cb0e1a53",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "781cd9a8f13f9f9ca6c9bbfdeec3de42adf2e3fe859132c941c601f5fde31cb8"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.json",
+        "source_sha256": "89086469ff78aed970045474bcedcb3dc72f85e3c56431f8df746f9396a900e6",
+        "previous_destination_sha256": "7dbf88a172a99469276c4c3ceef309f014cdb06606da12681a7c52549f3deb38",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "89086469ff78aed970045474bcedcb3dc72f85e3c56431f8df746f9396a900e6"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.json",
+        "source_sha256": "67ef87409c725987eda7b539665ac02ef6022b58cab725fc748d951be4a2aa41",
+        "previous_destination_sha256": "364aeb3439ed754d89df9e74544dc8e82940bf9a3e8463035e68223b1acfa555",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "67ef87409c725987eda7b539665ac02ef6022b58cab725fc748d951be4a2aa41"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed42_split42_fraction42.json",
+        "source_sha256": "60dd7a1ffab977a284c8796914d59127ae0cb6e1841364ed73f869e1c12aa8e3",
+        "previous_destination_sha256": "60dd7a1ffab977a284c8796914d59127ae0cb6e1841364ed73f869e1c12aa8e3",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "60dd7a1ffab977a284c8796914d59127ae0cb6e1841364ed73f869e1c12aa8e3"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.json",
+        "source_sha256": "a4da5dfe73351e95b900cfb554906d91e89e2448c8f7d6d913c9b172a98b7fa0",
+        "previous_destination_sha256": "fdd24332615176908d2a9beb8b1f7778c911faed8e72ec955c36bf15c285f56a",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "a4da5dfe73351e95b900cfb554906d91e89e2448c8f7d6d913c9b172a98b7fa0"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.json",
+        "source_sha256": "0f0c6e9669d9940f8e9e79a8538a2e71698569e2a1dfc978b55ab50d0aa1111f",
+        "previous_destination_sha256": "e803ce2cf4df96b6d78ee85dcbaab46205f2267c8d8ef960208c951287430ceb",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "0f0c6e9669d9940f8e9e79a8538a2e71698569e2a1dfc978b55ab50d0aa1111f"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.json",
+        "source_sha256": "a10bae19393efbf747f5930dfea496d8c5098da64a6a6f454cfce841afb08f8c",
+        "previous_destination_sha256": "43d2879b5d1d04e3efee0932eeecefcf8f8aefc0f2c423da4bc21cf3ea9f0d0b",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "a10bae19393efbf747f5930dfea496d8c5098da64a6a6f454cfce841afb08f8c"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.json",
+        "source_sha256": "fb343ed67a5c4e93c1ea81068fa512a378380596d475de807152a747ca4af07b",
+        "previous_destination_sha256": "7e4e64829c217e395e631eb8d2d90a968a57cbecb3d440a5446552d40820649e",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "fb343ed67a5c4e93c1ea81068fa512a378380596d475de807152a747ca4af07b"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.json",
+        "destination": "experiments/low_data/ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.json",
+        "source_sha256": "c9e515927be09446f2c52072f4ae5b82da749f70db480bec738e23d96da31793",
+        "previous_destination_sha256": "0eb41dd6c370c5985945c4996c2e8c46038b8da34f8152aff1e0491ba78f4ce2",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "reconstructed-from-captured-output",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "c9e515927be09446f2c52072f4ae5b82da749f70db480bec738e23d96da31793"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac010_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_cnniiii_frac010_seed42_split42_fraction42.json",
+        "source_sha256": "eb21d5ec7dc8ed89027ab4938ba03161cfdb16def1ada62e642cd5d6cdad30cd",
+        "previous_destination_sha256": "eb21d5ec7dc8ed89027ab4938ba03161cfdb16def1ada62e642cd5d6cdad30cd",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "eb21d5ec7dc8ed89027ab4938ba03161cfdb16def1ada62e642cd5d6cdad30cd"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac025_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_cnniiii_frac025_seed42_split42_fraction42.json",
+        "source_sha256": "ee1245781caa0e8a338ca35f80c7bc6dd29906730293209811f87dd9f6c4a762",
+        "previous_destination_sha256": "ee1245781caa0e8a338ca35f80c7bc6dd29906730293209811f87dd9f6c4a762",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "ee1245781caa0e8a338ca35f80c7bc6dd29906730293209811f87dd9f6c4a762"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac050_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_cnniiii_frac050_seed42_split42_fraction42.json",
+        "source_sha256": "691fef655a942958ed978d54b1ae1b8c13c94d006cb982445bbd0a608ed3d795",
+        "previous_destination_sha256": "691fef655a942958ed978d54b1ae1b8c13c94d006cb982445bbd0a608ed3d795",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "691fef655a942958ed978d54b1ae1b8c13c94d006cb982445bbd0a608ed3d795"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_cnniiii_frac100_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_cnniiii_frac100_seed42_split42_fraction42.json",
+        "source_sha256": "a6339924150210bdf5a6a7da33a3c40373bba8de301b5ecb8f3b62b9ec295650",
+        "previous_destination_sha256": "a6339924150210bdf5a6a7da33a3c40373bba8de301b5ecb8f3b62b9ec295650",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "a6339924150210bdf5a6a7da33a3c40373bba8de301b5ecb8f3b62b9ec295650"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac010_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_hqnn2_frac010_seed42_split42_fraction42.json",
+        "source_sha256": "513c06ebdc408313e839286cae3c78a0c4e98e64addf1ef868ef100b87a5e54f",
+        "previous_destination_sha256": "513c06ebdc408313e839286cae3c78a0c4e98e64addf1ef868ef100b87a5e54f",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "513c06ebdc408313e839286cae3c78a0c4e98e64addf1ef868ef100b87a5e54f"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac025_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_hqnn2_frac025_seed42_split42_fraction42.json",
+        "source_sha256": "a15bc8354cbd9208f8500d14b03647ec6170ded39b5f309f6b4379e93b0ac1fd",
+        "previous_destination_sha256": "a15bc8354cbd9208f8500d14b03647ec6170ded39b5f309f6b4379e93b0ac1fd",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "a15bc8354cbd9208f8500d14b03647ec6170ded39b5f309f6b4379e93b0ac1fd"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac050_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_hqnn2_frac050_seed42_split42_fraction42.json",
+        "source_sha256": "84a95df5837e7e018e68f6cb097f4e96beadde69a9817d68aaeb44ca05890f2a",
+        "previous_destination_sha256": "84a95df5837e7e018e68f6cb097f4e96beadde69a9817d68aaeb44ca05890f2a",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "84a95df5837e7e018e68f6cb097f4e96beadde69a9817d68aaeb44ca05890f2a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/experiments_low_data/publication_thesis_hqnn2_frac100_seed42_split42_fraction42.json",
+        "destination": "experiments/low_data/publication_thesis_hqnn2_frac100_seed42_split42_fraction42.json",
+        "source_sha256": "3107684d8c77275bd81c981aabe51c6a2e57d4ad5f414bf1f2a1b3ebd12ba5e9",
+        "previous_destination_sha256": "3107684d8c77275bd81c981aabe51c6a2e57d4ad5f414bf1f2a1b3ebd12ba5e9",
+        "result_fields_verified_equal": true,
+        "previous_artifact_status": "original",
+        "final_status": "canonical-byte-original-drive-json",
+        "destination_sha256_after_copy": "3107684d8c77275bd81c981aabe51c6a2e57d4ad5f414bf1f2a1b3ebd12ba5e9"
+      }
+    ]
+  },
+  "low_data_checkpoint_reconciliation": {
+    "source_count": 40,
+    "entries": [
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac010_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac010_seed43_split42_fraction42.pth",
+        "source_sha256": "d1e0bd35ec5fe7d3532e43aa9253a1d9e73bd04b008b571ad657be4d4f5f8873",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "d1e0bd35ec5fe7d3532e43aa9253a1d9e73bd04b008b571ad657be4d4f5f8873"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac010_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac010_seed44_split42_fraction42.pth",
+        "source_sha256": "d2e38d1a0d30faf97f98256a2e27053e2363739c72bd756536ead45a011aa22c",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "d2e38d1a0d30faf97f98256a2e27053e2363739c72bd756536ead45a011aa22c"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac025_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac025_seed43_split42_fraction42.pth",
+        "source_sha256": "9683cc72b12e4f191c56626bdc3ecb4ae6837924d15bcf6803ff8b20ec9fec1b",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "9683cc72b12e4f191c56626bdc3ecb4ae6837924d15bcf6803ff8b20ec9fec1b"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac025_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac025_seed44_split42_fraction42.pth",
+        "source_sha256": "b96886eac43e7c8fb1473d4a14161b0ce30325bb88f0b7d2ca1f15d04c8bd853",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "b96886eac43e7c8fb1473d4a14161b0ce30325bb88f0b7d2ca1f15d04c8bd853"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac050_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac050_seed43_split42_fraction42.pth",
+        "source_sha256": "cd62793db51b056482a908334c389e20ab6090b3b8455ae6f695a6d2d39f4b39",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "cd62793db51b056482a908334c389e20ab6090b3b8455ae6f695a6d2d39f4b39"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac050_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac050_seed44_split42_fraction42.pth",
+        "source_sha256": "9a0ccaaae877e5d4641ab7708006226924ff754641006ff42e788ff6eeb47827",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "9a0ccaaae877e5d4641ab7708006226924ff754641006ff42e788ff6eeb47827"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac100_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac100_seed43_split42_fraction42.pth",
+        "source_sha256": "cab98f9eed466751f7825aaa8fb919b25a60cc6a4f7c96345997316a52576531",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "cab98f9eed466751f7825aaa8fb919b25a60cc6a4f7c96345997316a52576531"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_classical_conv_frac100_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac100_seed44_split42_fraction42.pth",
+        "source_sha256": "eefd30c76f986a92f703f5ac04e4adc54c587fd9e97e1b4a4a9449bb79a8d585",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "eefd30c76f986a92f703f5ac04e4adc54c587fd9e97e1b4a4a9449bb79a8d585"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed43_split42_fraction42.pth",
+        "source_sha256": "d556a74a9c44d6e810e74ec76202fb2fa0700ab0a51320403d08182dc4be0fd1",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "d556a74a9c44d6e810e74ec76202fb2fa0700ab0a51320403d08182dc4be0fd1"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed44_split42_fraction42.pth",
+        "source_sha256": "ffb57a594bc5ba5a58da687899c3a6d03d16ea7d5d5f67ba5316322cf965b8d0",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "ffb57a594bc5ba5a58da687899c3a6d03d16ea7d5d5f67ba5316322cf965b8d0"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed43_split42_fraction42.pth",
+        "source_sha256": "337de68554465a735b6e77d0897a3a464c58afbee7f9289f1206153f7a722fbc",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "337de68554465a735b6e77d0897a3a464c58afbee7f9289f1206153f7a722fbc"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed44_split42_fraction42.pth",
+        "source_sha256": "437ba931fe09907d2a115b46810b44e879edfe030c18f201e7984b3595ba5ab2",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "437ba931fe09907d2a115b46810b44e879edfe030c18f201e7984b3595ba5ab2"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed43_split42_fraction42.pth",
+        "source_sha256": "adf72c749fecfe1e96ab4dc93c1ff722599a729cb3d25d53e72ebe1e2ab532ab",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "adf72c749fecfe1e96ab4dc93c1ff722599a729cb3d25d53e72ebe1e2ab532ab"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed44_split42_fraction42.pth",
+        "source_sha256": "d106cfe31f11f4211e55968b65c6acca231b53722efcbee0169bf0d3337a3a58",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "d106cfe31f11f4211e55968b65c6acca231b53722efcbee0169bf0d3337a3a58"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed43_split42_fraction42.pth",
+        "source_sha256": "651f816d52e8044c27de83873404cd07af47b0f3b3acd79f6369fa17bdcc4d5a",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "651f816d52e8044c27de83873404cd07af47b0f3b3acd79f6369fa17bdcc4d5a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_20260502/models_low_data/best_ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed44_split42_fraction42.pth",
+        "source_sha256": "3455e7ae8b97c074f7808da1c8853e030921f1fe2d500680d5f0934b9eefdf7a",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "3455e7ae8b97c074f7808da1c8853e030921f1fe2d500680d5f0934b9eefdf7a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac010_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac010_seed45_split42_fraction42.pth",
+        "source_sha256": "18b44f7d24470f0abe08a2105b4ae3b1988fe864a0f36356ddb1cce4b9d69bff",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "18b44f7d24470f0abe08a2105b4ae3b1988fe864a0f36356ddb1cce4b9d69bff"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac010_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac010_seed46_split42_fraction42.pth",
+        "source_sha256": "4dd7f41349f1e9701ef5a4953a9aa74864a432342f13e3082a7bb2a2c89762f8",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "4dd7f41349f1e9701ef5a4953a9aa74864a432342f13e3082a7bb2a2c89762f8"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac010_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac010_seed47_split42_fraction42.pth",
+        "source_sha256": "50c6efc800300a53dbac4421d8bb43ebfe31e7a94e4d419c2859317fd2ff23e4",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "50c6efc800300a53dbac4421d8bb43ebfe31e7a94e4d419c2859317fd2ff23e4"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac025_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac025_seed45_split42_fraction42.pth",
+        "source_sha256": "4838fa2eb48ee0f73a19a5b029cc22288ba023c6135c7d7fb8c93d53473bebb0",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "4838fa2eb48ee0f73a19a5b029cc22288ba023c6135c7d7fb8c93d53473bebb0"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac025_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac025_seed46_split42_fraction42.pth",
+        "source_sha256": "28bc4068b6c6faea3e897f3f47cb33e37ed6a627416af5ec2013ebeee5826402",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "28bc4068b6c6faea3e897f3f47cb33e37ed6a627416af5ec2013ebeee5826402"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac025_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac025_seed47_split42_fraction42.pth",
+        "source_sha256": "dfb293cc8029ce3578a0ebb95744a7df72f3090f617324edca72903a346ff590",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "dfb293cc8029ce3578a0ebb95744a7df72f3090f617324edca72903a346ff590"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac050_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac050_seed45_split42_fraction42.pth",
+        "source_sha256": "a3b37911446c95d9334519c908dd989feebe8ad9aedc5668c7f25e643393136a",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "a3b37911446c95d9334519c908dd989feebe8ad9aedc5668c7f25e643393136a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac050_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac050_seed46_split42_fraction42.pth",
+        "source_sha256": "c92fbb6dfd6741422085edc2aabb34347a1d303051d8cd999cbfe38f6597ae1b",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "c92fbb6dfd6741422085edc2aabb34347a1d303051d8cd999cbfe38f6597ae1b"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac050_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac050_seed47_split42_fraction42.pth",
+        "source_sha256": "3a78af7fa532bc8f2df603c37f885221ce92a1abdef8750620422cd20879a45d",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "3a78af7fa532bc8f2df603c37f885221ce92a1abdef8750620422cd20879a45d"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac100_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac100_seed45_split42_fraction42.pth",
+        "source_sha256": "1090644680b713261f827a13a143d3d2af56762eec9f64819b826837fe208ce5",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "1090644680b713261f827a13a143d3d2af56762eec9f64819b826837fe208ce5"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac100_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac100_seed46_split42_fraction42.pth",
+        "source_sha256": "5e8499b0669fc7dcdcd2bb71159eb1f708ee8352d566da5e1237c16d01b29d90",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "5e8499b0669fc7dcdcd2bb71159eb1f708ee8352d566da5e1237c16d01b29d90"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_classical_conv_frac100_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_classical_conv_frac100_seed47_split42_fraction42.pth",
+        "source_sha256": "f46e1a9bfe462a4c3dae267d6148bff8198a383bc5cba2aca8cd19473e7d0220",
+        "bytes": 371845,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "f46e1a9bfe462a4c3dae267d6148bff8198a383bc5cba2aca8cd19473e7d0220"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed45_split42_fraction42.pth",
+        "source_sha256": "d66aff7939250e597ef6ef6a1d6f3f98eb5108e20b233b81abfcc9da15604050",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "d66aff7939250e597ef6ef6a1d6f3f98eb5108e20b233b81abfcc9da15604050"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed46_split42_fraction42.pth",
+        "source_sha256": "9773707bcc206bb444a5725ddb4ea76adefda5b27a1f62aebaf3e1fb7db9abda",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "9773707bcc206bb444a5725ddb4ea76adefda5b27a1f62aebaf3e1fb7db9abda"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac010_seed47_split42_fraction42.pth",
+        "source_sha256": "be168e94be7de5e5a5d07d9d96670c47b1137baf16444e2025cb2c16ae88f2fe",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "be168e94be7de5e5a5d07d9d96670c47b1137baf16444e2025cb2c16ae88f2fe"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed45_split42_fraction42.pth",
+        "source_sha256": "049f0bf80574379a63a5d3ce18930db44f018a464f0c940f8a13201ea3792234",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "049f0bf80574379a63a5d3ce18930db44f018a464f0c940f8a13201ea3792234"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed46_split42_fraction42.pth",
+        "source_sha256": "c3204612d1a67952015bd38a008a7fa32d61a03528e7382d1c278c0a3d1ebe53",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "c3204612d1a67952015bd38a008a7fa32d61a03528e7382d1c278c0a3d1ebe53"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac025_seed47_split42_fraction42.pth",
+        "source_sha256": "99c6f434a55838990dd91f1522b0cbd84a8377b5692d7476b9270945f506a1ac",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "99c6f434a55838990dd91f1522b0cbd84a8377b5692d7476b9270945f506a1ac"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed45_split42_fraction42.pth",
+        "source_sha256": "debcd0d17517c7b160db9793ecde849582dcdbb962320d8cc841e40da311fe1a",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "debcd0d17517c7b160db9793ecde849582dcdbb962320d8cc841e40da311fe1a"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed46_split42_fraction42.pth",
+        "source_sha256": "3d6d72cb09dff970d0ca23f4e6fced8b6ca636d75e55ed5a44f5a328bd9ad934",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "3d6d72cb09dff970d0ca23f4e6fced8b6ca636d75e55ed5a44f5a328bd9ad934"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac050_seed47_split42_fraction42.pth",
+        "source_sha256": "3103110f133ffd84fb3bad1370bde7d5bac6a2d2c2ddca01c514b14a5e2965fd",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "3103110f133ffd84fb3bad1370bde7d5bac6a2d2c2ddca01c514b14a5e2965fd"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed45_split42_fraction42.pth",
+        "source_sha256": "30a8d0c9e0c5f1a04ca433767407024c98219204027b292ecf9334540dff20f8",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "30a8d0c9e0c5f1a04ca433767407024c98219204027b292ecf9334540dff20f8"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed46_split42_fraction42.pth",
+        "source_sha256": "f3746f897cc5e8ada8cc9f1651d850f08f696456afa444645b8661a6677621ba",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "f3746f897cc5e8ada8cc9f1651d850f08f696456afa444645b8661a6677621ba"
+      },
+      {
+        "source": "experiments/Drive/quanv_results/low_data_confirm_v2_20260517/models_low_data/best_ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.pth",
+        "destination": "models/low_data/best_ablation_non_trainable_quantum_frac100_seed47_split42_fraction42.pth",
+        "source_sha256": "f43a21429d172698d1f596f55e29f3329d46db332e18b387f30af0e805c304a1",
+        "bytes": 369133,
+        "final_status": "canonical-byte-original-drive-checkpoint",
+        "destination_sha256_after_copy": "f43a21429d172698d1f596f55e29f3329d46db332e18b387f30af0e805c304a1"
+      }
+    ]
+  },
+  "v7": {
+    "resumed_folder": "experiments/Drive/quanv_results/v7",
+    "clean_folder": "experiments/Drive/quanv_results/v7_clean_20260427",
+    "checkpoint_count": 4,
+    "raw_result_json_found": false
+  }
+}

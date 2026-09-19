@@ -13,23 +13,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        308,
-        309
-      ],
+      "train_size": 308,
       "best_val_acc_mean": 52.05,
       "best_val_acc_std": 2.23,
       "test_acc_mean": 49.14,
       "test_acc_std": 2.49,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -50,23 +40,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        771,
-        772
-      ],
+      "train_size": 771,
       "best_val_acc_mean": 71.25,
       "best_val_acc_std": 1.75,
       "test_acc_mean": 67.88,
       "test_acc_std": 2.13,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -87,23 +67,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        1542,
-        1543
-      ],
+      "train_size": 1542,
       "best_val_acc_mean": 80.5,
       "best_val_acc_std": 1.66,
       "test_acc_mean": 75.36,
       "test_acc_std": 1.43,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -124,23 +94,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        3085,
-        3086
-      ],
+      "train_size": 3085,
       "best_val_acc_mean": 87.23,
       "best_val_acc_std": 1.12,
       "test_acc_mean": 80.62,
       "test_acc_std": 0.44,
       "total_params": 88045,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -161,23 +121,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        308,
-        309
-      ],
+      "train_size": 308,
       "best_val_acc_mean": 56.38,
       "best_val_acc_std": 3.0,
       "test_acc_mean": 50.93,
       "test_acc_std": 2.72,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -198,23 +148,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        771,
-        772
-      ],
+      "train_size": 771,
       "best_val_acc_mean": 72.03,
       "best_val_acc_std": 1.07,
       "test_acc_mean": 69.17,
       "test_acc_std": 1.12,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -235,23 +175,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        1542,
-        1543
-      ],
+      "train_size": 1542,
       "best_val_acc_mean": 82.41,
       "best_val_acc_std": 2.85,
       "test_acc_mean": 76.0,
       "test_acc_std": 1.36,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -272,23 +202,13 @@
         46,
         47
       ],
-      "train_size": null,
-      "train_sizes": [
-        3085,
-        3086
-      ],
+      "train_size": 3085,
       "best_val_acc_mean": 86.5,
       "best_val_acc_std": 1.15,
       "test_acc_mean": 80.9,
       "test_acc_std": 0.95,
       "total_params": 88488,
       "source": "repo-local-ablation",
-      "sources": [
-        "repo-local-ablation"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "mixed",
       "protocol_versions": [
         "low_data_confirm_v1",
@@ -305,21 +225,12 @@
         42
       ],
       "train_size": 308,
-      "train_sizes": [
-        308
-      ],
       "best_val_acc_mean": 70.18,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 65.88,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -334,21 +245,12 @@
         42
       ],
       "train_size": 771,
-      "train_sizes": [
-        771
-      ],
       "best_val_acc_mean": 85.67,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 79.61,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -363,21 +265,12 @@
         42
       ],
       "train_size": 1542,
-      "train_sizes": [
-        1542
-      ],
       "best_val_acc_mean": 88.3,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 82.4,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -392,21 +285,12 @@
         42
       ],
       "train_size": 3085,
-      "train_sizes": [
-        3085
-      ],
       "best_val_acc_mean": 92.4,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 85.19,
       "test_acc_std": 0.0,
       "total_params": 1378124,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -421,21 +305,12 @@
         42
       ],
       "train_size": 308,
-      "train_sizes": [
-        308
-      ],
       "best_val_acc_mean": 55.56,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 50.43,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -450,21 +325,12 @@
         42
       ],
       "train_size": 771,
-      "train_sizes": [
-        771
-      ],
       "best_val_acc_mean": 66.67,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 62.45,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -479,21 +345,12 @@
         42
       ],
       "train_size": 1542,
-      "train_sizes": [
-        1542
-      ],
       "best_val_acc_mean": 79.24,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 72.1,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
@@ -508,21 +365,12 @@
         42
       ],
       "train_size": 3085,
-      "train_sizes": [
-        3085
-      ],
       "best_val_acc_mean": 84.21,
       "best_val_acc_std": 0.0,
       "test_acc_mean": 78.33,
       "test_acc_std": 0.0,
       "total_params": 248428,
       "source": "thesis-faithful",
-      "sources": [
-        "thesis-faithful"
-      ],
-      "artifact_statuses": [
-        "original"
-      ],
       "protocol_version": "low_data_pilot_v1",
       "protocol_versions": [
         "low_data_pilot_v1"
