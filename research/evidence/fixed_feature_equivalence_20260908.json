@@ -1,0 +1,124 @@
+{
+  "experiment_id": "astra_fixed_feature_equivalence_20260908",
+  "kind": "algebraic_map_verification_not_training",
+  "passed": true,
+  "created_utc": "2026-09-07T21:07:31.468355+00:00",
+  "git_head": "95d6fb85f27c394e4b33b2cd5e5321c0c61e724a",
+  "source_sha256": {
+    "train_ablation_local.py": "852dd09b18b7a59c02c09c94dc0b482ee19c4064551f9a774c48af89c87aca57",
+    "src/model.py": "a48df0c8f56e1cf2f019e7f075ff516018eeacf5105b6c77c0d92aa2495dc40e",
+    "research/verify_fixed_quantum_equivalence.py": "b7d1da939e4d509d469689226058eaa18104bdc911fdedfa987a0d560a6dfb54"
+  },
+  "scope": "RX encoding; local Rot; forward CNOT chain; single-wire Z expectations",
+  "excluded": [
+    "V7 reuploading",
+    "full OCR prediction replay",
+    "historical cache byte equality",
+    "hardware noise"
+  ],
+  "formula": "cumprod(cos(theta)*cos(x)-sin(theta)*sin(phi)*sin(x))",
+  "dtype": "float64",
+  "backend": "default.qubit",
+  "diff_method": "backprop",
+  "circuit_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+  ],
+  "filters_per_seed": 4,
+  "input_seed": 20260908,
+  "instances_per_reference": 1248,
+  "jacobian_cases_per_reference": 24,
+  "threshold": 1e-10,
+  "errors": {
+    "fixed_preprocessor": {
+      "forward_max_abs": 1.3322676295501878e-15,
+      "input_jacobian_max_abs": 5.551115123125783e-16,
+      "weight_jacobian_max_abs": 7.771561172376096e-16,
+      "omega_gradient_max_abs": 1.97758476261356e-16
+    },
+    "current_base_circuit": {
+      "forward_max_abs": 1.3322676295501878e-15,
+      "input_jacobian_max_abs": 5.551115123125783e-16,
+      "weight_jacobian_max_abs": 7.771561172376096e-16,
+      "omega_gradient_max_abs": 1.97758476261356e-16
+    }
+  },
+  "training_image_crops": [
+    {
+      "path": "set/train/243901a1-30d5-4b40-aa27-cd926b3e6e7a033.png",
+      "sha256": "19a0b57e92eb8f2d1690dba8ee409f6d581dcb94274987e16f31d5e8d0355576"
+    },
+    {
+      "path": "set/train/2be59a69-415f-4bfb-b64a-f2da88e0bd0b033.png",
+      "sha256": "c786d42fbe39e94c8992a630664fc5cd56413b542b89d177a859fb682e951a63"
+    },
+    {
+      "path": "set/train/2dd4b019-5b93-4688-ab02-3838ee2545810030.png",
+      "sha256": "6ef997c6126a6e863ca7b36341d1587b9146d8fc3f068add63ced160ac9fadab"
+    },
+    {
+      "path": "set/train/2dd4b019-5b93-4688-ab02-3838ee254581030.png",
+      "sha256": "1c09b4836760e47aaff40c4bc0da8b1333c1103505ddf894acb7e1ac7f346129"
+    },
+    {
+      "path": "set/train/2dd4b019-5b93-4688-ab02-3838ee254581033.png",
+      "sha256": "a0e8eb931de9a5f88e23c7239e99ccd069217375592878b94b37d5326c9dc41d"
+    },
+    {
+      "path": "set/train/2dd4b019-5b93-4688-ab02-3838ee25458104.png",
+      "sha256": "70f3cb8a144017537e0adbc0a8fd8bcf963ca19157f43c32930f8afaf9478abc"
+    },
+    {
+      "path": "set/train/302980d3-6ac6-4a56-ba35-996685cb395f00033.png",
+      "sha256": "d7ae9dd9c54b70366e4a68c5f5d897ce40f489e4de4dba27c16c7e63624a254f"
+    },
+    {
+      "path": "set/train/302980d3-6ac6-4a56-ba35-996685cb395f0033.png",
+      "sha256": "d7b418d165d374521b20935fcac81a4571a3bf3c6d06cc6b115e621888014125"
+    },
+    {
+      "path": "set/train/302980d3-6ac6-4a56-ba35-996685cb395f033.png",
+      "sha256": "76144facdf72649cfc788199e8cfbaf9bd246fbb45ae0c0dc04f1a210efc522c"
+    },
+    {
+      "path": "set/train/311cb9ae-c2a4-46a7-bd09-22f0a134bb33030.png",
+      "sha256": "9f602ea3392cf682594e9eecdc7f0fdc8ea7b32589cadf5b539f2f91ded2b0b8"
+    },
+    {
+      "path": "set/train/311cb9ae-c2a4-46a7-bd09-22f0a134bb33033.png",
+      "sha256": "2164ae6bd4eb3f7a8d42c2a8cbc4acc63e0536978327cd0b6d18e16751c55b19"
+    },
+    {
+      "path": "set/train/5c9fa6b8-0d48-4359-8034-e1d3013d498c030.png",
+      "sha256": "26eb40fb8a35c218eb08741283c4d731df3f31d072a3a97ba96f8643ba92e451"
+    },
+    {
+      "path": "set/train/681ae2b3-b747-4dfa-858c-aded63eebdb7032.png",
+      "sha256": "82d599979379bda19af82fe846aa9cc2bd2f9fbdced224b87bd1f820194c9c0b"
+    },
+    {
+      "path": "set/train/681ae2b3-b747-4dfa-858c-aded63eebdb7033.png",
+      "sha256": "ba7571dca0e6813a87f16af27f981d5fce7039569e23f1513bf585099f3f45cd"
+    },
+    {
+      "path": "set/train/888f4efd-6568-4e93-bc6c-fdb6c8f563a4000033.png",
+      "sha256": "fd01a44b622b2c05918a89f59986543f411517d8b9a0a6e04f3afabdad270714"
+    },
+    {
+      "path": "set/train/888f4efd-6568-4e93-bc6c-fdb6c8f563a400033.png",
+      "sha256": "0ad7a08951766bd6bd2a003afa5121e67c92acf85e84bb5bf93d1aaa02ed4a4a"
+    }
+  ],
+  "versions": {
+    "torch": "2.10.0",
+    "pennylane": "0.44.0",
+    "numpy": "2.4.2",
+    "python": "3.13.7"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "runtime_seconds": 0.5659477909994166
+}
