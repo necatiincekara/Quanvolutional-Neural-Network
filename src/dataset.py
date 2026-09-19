@@ -10,7 +10,7 @@ from torch.utils.data import TensorDataset, DataLoader, random_split
 from pennylane import numpy as np
 from . import config
 
-def load_images_from_folder(folder_path, tags, image_size):
+def load_images_from_folder(folder_path, tags, image_size, *, sort_filenames=False):
     """
     Loads images and their corresponding labels from a specified folder.
 
@@ -18,6 +18,9 @@ def load_images_from_folder(folder_path, tags, image_size):
         folder_path (str): The path to the folder containing images.
         tags (dict): A dictionary mapping label codes to character names.
         image_size (int): The target size (width and height) to resize images to.
+        sort_filenames (bool): Sort filenames before loading for cross-filesystem
+            deterministic ordering. Legacy publication-v1 callers retain the
+            historical unsorted behavior unless they opt in explicitly.
 
     Returns:
         tuple: A tuple containing a numpy array of images and a numpy array of labels.
@@ -26,7 +29,10 @@ def load_images_from_folder(folder_path, tags, image_size):
     labels = []
     
     print(f"Loading images from: {folder_path}")
-    for filename in os.listdir(folder_path):
+    filenames = os.listdir(folder_path)
+    if sort_filenames:
+        filenames = sorted(filenames)
+    for filename in filenames:
         label_code = filename[-6:-4]
         if label_code not in tags.keys():
             print(f"Warning: Skipping file with unknown label code: {filename}")
@@ -51,21 +57,25 @@ def load_images_from_folder(folder_path, tags, image_size):
     print(f"Loaded {len(images)} images.")
     return np.array(images), np.array(labels)
 
-def get_dataloaders():
+def get_dataloaders(train_seed=config.RANDOM_SEED, split_seed=config.RANDOM_SEED):
     """
     Creates and returns the data loaders for training, validation, and testing.
 
     Returns:
         tuple: A tuple containing (train_loader, val_loader, test_loader).
+
+    The V7 path opts into sorted filename loading and explicit generators. This
+    deterministic behavior is newer than the historical V7 artifacts and must
+    not be used to imply that those older runs had a fully reproducible split.
     """
     # Load the train images and labels
     train_images, train_labels_int = load_images_from_folder(
-        config.TRAIN_PATH, config.TAGS, config.IMAGE_SIZE
+        config.TRAIN_PATH, config.TAGS, config.IMAGE_SIZE, sort_filenames=True
     )
 
     # Load the test images and labels
     test_images, test_labels_int = load_images_from_folder(
-        config.TEST_PATH, config.TAGS, config.IMAGE_SIZE
+        config.TEST_PATH, config.TAGS, config.IMAGE_SIZE, sort_filenames=True
     )
 
     # Convert labels to torch tensors
@@ -94,11 +104,20 @@ def get_dataloaders():
     # Split training data into training and validation sets
     train_size = int((1.0 - config.VALIDATION_SPLIT) * len(train_dataset))
     val_size = len(train_dataset) - train_size
-    train_dataset, val_dataset = random_split(train_dataset, [train_size, val_size])
+    split_generator = torch.Generator().manual_seed(split_seed)
+    train_dataset, val_dataset = random_split(
+        train_dataset, [train_size, val_size], generator=split_generator
+    )
 
     # Create data loaders
-    train_loader = DataLoader(train_dataset, batch_size=config.BATCH_SIZE, shuffle=True)
+    train_generator = torch.Generator().manual_seed(train_seed)
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=config.BATCH_SIZE,
+        shuffle=True,
+        generator=train_generator,
+    )
     val_loader = DataLoader(val_dataset, batch_size=config.BATCH_SIZE, shuffle=False)
     test_loader = DataLoader(test_dataset, batch_size=config.BATCH_SIZE, shuffle=False)
 
-    return train_loader, val_loader, test_loader 
+    return train_loader, val_loader, test_loader

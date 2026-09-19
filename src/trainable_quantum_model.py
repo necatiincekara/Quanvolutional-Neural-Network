@@ -1,6 +1,6 @@
 """
 Enhanced Trainable Quantum-Classical Hybrid Model (V7)
-Gradient-stabilized architecture targeting 25%+ accuracy
+Trainable hybrid architecture used as an engineering case-study
 Building upon V4 stable baseline (8x8 feature maps, 8.75% accuracy)
 """
 
@@ -31,12 +31,12 @@ def create_quantum_device(n_qubits=4):
 # Quantum Circuit Strategies
 # -----------------
 
-# Strategy 1: Strongly Entangling Layers (Best for gradient flow)
+# Strategy 1: Strongly Entangling Layers (implemented, not benchmarked here)
 @qml.qnode(create_quantum_device(), interface='torch', diff_method='adjoint')
 def strongly_entangling_circuit(inputs, weights):
     """
-    Strongly entangling circuit with multiple layers for expressivity.
-    Achieves better gradient flow than simple circuits.
+    Strongly entangling circuit option with multiple layers for expressivity.
+    No repository result currently supports a comparative performance claim.
     """
     n_qubits = 4
 
@@ -48,7 +48,7 @@ def strongly_entangling_circuit(inputs, weights):
 
     return [qml.expval(qml.PauliZ(i)) for i in range(n_qubits)]
 
-# Strategy 2: Data Re-uploading Circuit (Best for accuracy)
+# Strategy 2: Data Re-uploading Circuit (used by the reported V7 runs)
 @qml.qnode(create_quantum_device(), interface='torch', diff_method='adjoint')
 def data_reuploading_circuit(inputs, weights):
     """
@@ -77,11 +77,11 @@ def data_reuploading_circuit(inputs, weights):
 
     return [qml.expval(qml.PauliZ(i)) for i in range(n_qubits)]
 
-# Strategy 3: Hardware Efficient Ansatz (Best for NISQ devices)
+# Strategy 3: Hardware-efficient ansatz (implemented, not benchmarked here)
 @qml.qnode(create_quantum_device(), interface='torch', diff_method='adjoint')
 def hardware_efficient_circuit(inputs, weights):
     """
-    Hardware-efficient ansatz optimized for near-term quantum devices.
+    Hardware-efficient ansatz option for shallow circuit studies.
     Uses AngleEmbedding (4 inputs for 4 qubits) instead of AmplitudeEmbedding
     which would require 2^4=16 inputs.
     """
@@ -114,10 +114,10 @@ def hardware_efficient_circuit(inputs, weights):
 
 class TrainableQuanvLayer(nn.Module):
     """
-    Fully trainable quantum convolutional layer with gradient stabilization.
+    Fully trainable quantum convolutional layer with a learnable output gain.
     Key improvements over base QuanvLayer:
     - Multiple circuit strategies
-    - Learnable gradient scaling
+    - Learnable quantum-output scaling
     - Variance-preserving initialization (anti-barren plateau)
     """
     def __init__(self, n_qubits=4, circuit_type='data_reuploading', n_layers=2):
@@ -125,6 +125,17 @@ class TrainableQuanvLayer(nn.Module):
         self.n_qubits = n_qubits
         self.n_layers = n_layers
         self.circuit_type = circuit_type
+        if n_qubits != 4:
+            raise ValueError("The current V7 qnodes are defined for exactly 4 qubits.")
+
+        # The current qnodes have fixed depths. Reject misleading n_layers values
+        # instead of silently creating unused weights or indexing past the tensor.
+        expected_layers = 3 if circuit_type == 'strongly_entangling' else 2
+        if n_layers != expected_layers:
+            raise ValueError(
+                f"{circuit_type} currently requires n_layers={expected_layers}; "
+                "the qnode depth is not dynamically parameterized."
+            )
 
         # Select circuit and define weight shapes
         if circuit_type == 'strongly_entangling':
@@ -146,7 +157,8 @@ class TrainableQuanvLayer(nn.Module):
         # Initialize with variance-preserving strategy
         self._initialize_quantum_weights()
 
-        # Learnable gradient scaling factor for stability
+        # Learnable output gain. It also rescales gradients by the chain rule,
+        # but it is not an independent gradient-only operation.
         self.gradient_scale = nn.Parameter(torch.ones(1) * 0.1)
 
     def _initialize_quantum_weights(self):
@@ -172,7 +184,7 @@ class TrainableQuanvLayer(nn.Module):
         # Force float32 for quantum circuit (AMP float16 causes NaN)
         patches = patches.float()
 
-        # Quantum processing with gradient scaling
+        # Quantum processing with a learnable output gain
         processed_patches = self.qlayer(patches) * self.gradient_scale
 
         # Reshape back: (batch, channels*n_qubits, out_h, out_w)
@@ -194,14 +206,16 @@ class EnhancedQuanvNet(nn.Module):
     V7 Enhanced quantum-classical hybrid model.
 
     Key improvements over V4 (8.75% accuracy):
-    1. Trainable quantum parameters (vs fixed in V4)
+    1. Explicitly trainable V7 quantum parameters (historical V4 parameter-state
+       provenance is incomplete; current src/model.py is trainable)
     2. Residual connections around quantum layer for gradient flow
     3. Channel attention for quantum feature selection
     4. GroupNorm throughout (stable with small batch sizes)
     5. Learnable skip connection weight
 
     Architecture: 32x32 -> 16x16 -> 8x8 -> [Quantum 4x4] -> CNN -> 44 classes
-    Feature map: 8x8 (proven optimal in V4, avoids V6 gradient collapse)
+    Feature map: 8x8 (used by the trainable V7 case-study; historical
+    comparisons do not establish a controlled resolution optimum)
     """
     def __init__(self, n_qubits=4, num_classes=44, circuit_type='data_reuploading'):
         super(EnhancedQuanvNet, self).__init__()
@@ -219,11 +233,12 @@ class EnhancedQuanvNet(nn.Module):
         )
 
         # Trainable quantum layer on 8x8 feature map -> 4x4 output
-        # 16 quantum circuit evaluations per image (same as V4)
+        # 16 spatial patch positions per channel x 4 input channels =
+        # 64 circuit input instances per image.
         self.quanv = TrainableQuanvLayer(
             n_qubits=n_qubits,
             circuit_type=circuit_type,
-            n_layers=2
+            n_layers=3 if circuit_type == 'strongly_entangling' else 2
         )
 
         # Quantum output channels: 4 channels * 4 qubits = 16

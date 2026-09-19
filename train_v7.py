@@ -35,6 +35,10 @@ def main():
                         help='Override test dataset path')
     parser.add_argument('--result-json', type=str, default=None,
                         help='Optional top-level experiment JSON output path')
+    parser.add_argument('--seed', type=int, default=42,
+                        help='Training/model seed for deterministic V7 runs')
+    parser.add_argument('--split-seed', type=int, default=42,
+                        help='Train/validation split seed for deterministic V7 runs')
     args = parser.parse_args()
 
     # Environment info
@@ -58,6 +62,7 @@ def main():
     print(f"Test Path:       {config.TEST_PATH}")
     print(f"Drive Backup:    {args.drive_backup_path or 'disabled'}")
     print(f"Result JSON:     {args.result_json or 'auto'}")
+    print(f"Seed / Split:    {args.seed} / {args.split_seed}")
 
     if torch.cuda.is_available():
         print(f"GPU:             {torch.cuda.get_device_name(0)}")
@@ -94,6 +99,8 @@ def main():
         resume=args.resume,
         drive_backup_path=args.drive_backup_path,
         result_json_path=args.result_json,
+        train_seed=args.seed,
+        split_seed=args.split_seed,
     )
 
     elapsed = time.time() - start_time

@@ -12,6 +12,7 @@ import numpy as np
 from tqdm import tqdm
 import os
 import json
+import random
 import re
 import time
 from datetime import datetime
@@ -154,12 +155,15 @@ class EnhancedTrainer:
     """
     def __init__(self, model, train_loader, val_loader, device,
                  num_epochs=50, experiment_name="v7_enhanced",
-                 drive_backup_path=None):
+                 drive_backup_path=None, train_seed=config.RANDOM_SEED,
+                 split_seed=config.RANDOM_SEED):
         self.model = model.to(device)
         self.device = device
         self.num_epochs = num_epochs
         self.experiment_name = experiment_name
         self.drive_backup_path = drive_backup_path
+        self.train_seed = int(train_seed)
+        self.split_seed = int(split_seed)
 
         # Create experiment directory
         self.exp_dir = f"experiments/{experiment_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
@@ -318,7 +322,11 @@ class EnhancedTrainer:
             'val_acc': val_acc,
             'best_val_acc': self.best_val_acc,
             'patience_counter': self.patience_counter,
-            'history': self.history
+            'history': self.history,
+            'protocol_version': 'v7_enhanced_v2_deterministic',
+            'train_seed': self.train_seed,
+            'split_seed': self.split_seed,
+            'dataset_order': 'sorted_filenames',
         }
         path = 'models/checkpoint_latest_v7.pth'
         torch.save(checkpoint, path)
@@ -348,6 +356,24 @@ class EnhancedTrainer:
         print(f"\nResuming from checkpoint: {checkpoint_path}")
         checkpoint = torch.load(checkpoint_path, map_location=self.device, weights_only=False)
 
+        saved_train_seed = checkpoint.get('train_seed')
+        saved_split_seed = checkpoint.get('split_seed')
+        if saved_train_seed is None or saved_split_seed is None:
+            print(
+                "  WARNING: legacy checkpoint has no recorded seeds; "
+                "resume provenance is incomplete."
+            )
+        if saved_train_seed is not None and int(saved_train_seed) != self.train_seed:
+            raise ValueError(
+                f"Checkpoint train_seed={saved_train_seed} does not match requested "
+                f"train_seed={self.train_seed}."
+            )
+        if saved_split_seed is not None and int(saved_split_seed) != self.split_seed:
+            raise ValueError(
+                f"Checkpoint split_seed={saved_split_seed} does not match requested "
+                f"split_seed={self.split_seed}."
+            )
+
         self.model.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer.quantum_optimizer.load_state_dict(checkpoint['optimizer_quantum'])
         self.optimizer.classical_optimizer.load_state_dict(checkpoint['optimizer_classical'])
@@ -367,6 +393,25 @@ class EnhancedTrainer:
 
         print(f"  Resumed at epoch {start_epoch}, best_val_acc={self.best_val_acc:.2f}%")
         return start_epoch
+
+    def load_best_model(self, checkpoint_path=None):
+        """Restore the best-validation weights before final test evaluation."""
+        checkpoint_path = checkpoint_path or os.path.join(self.exp_dir, 'best_model.pth')
+        if not os.path.exists(checkpoint_path):
+            raise FileNotFoundError(
+                f"Best-validation checkpoint not found: {checkpoint_path}"
+            )
+        checkpoint = torch.load(
+            checkpoint_path,
+            map_location=self.device,
+            weights_only=False,
+        )
+        self.model.load_state_dict(checkpoint['model_state_dict'])
+        print(
+            "  Loaded best-validation checkpoint for final test: "
+            f"epoch={checkpoint.get('epoch')}, val_acc={checkpoint.get('val_acc'):.2f}%"
+        )
+        return checkpoint
 
     def train(self, train_loader, val_loader, target_accuracy=25.0, resume=False):
         """Full training loop with optional resume"""
@@ -442,7 +487,11 @@ class EnhancedTrainer:
             'optimizer_quantum': self.optimizer.quantum_optimizer.state_dict(),
             'optimizer_classical': self.optimizer.classical_optimizer.state_dict(),
             'val_acc': val_acc,
-            'history': self.history
+            'history': self.history,
+            'protocol_version': 'v7_enhanced_v2_deterministic',
+            'train_seed': self.train_seed,
+            'split_seed': self.split_seed,
+            'dataset_order': 'sorted_filenames',
         }
 
         # Save to experiment dir and as latest best
@@ -461,6 +510,10 @@ class EnhancedTrainer:
             'val_accuracy': val_acc,
             'v4_baseline': 8.75,
             'improvement_over_v4': val_acc - 8.75,
+            'protocol_version': 'v7_enhanced_v2_deterministic',
+            'train_seed': self.train_seed,
+            'split_seed': self.split_seed,
+            'dataset_order': 'sorted_filenames',
         }
         with open(os.path.join(self.exp_dir, 'metadata.json'), 'w') as f:
             json.dump(metadata, f, indent=2)
@@ -590,6 +643,8 @@ def _write_v7_result_json(
     num_epochs,
     target_accuracy,
     resume,
+    train_seed,
+    split_seed,
     best_val_acc,
     test_loss,
     test_acc,
@@ -608,7 +663,7 @@ def _write_v7_result_json(
     classical_params = sum(p.numel() for p in trainer.optimizer.classical_params)
     run_id = (
         "v7_trainable_quantum"
-        f"__v7_enhanced_v1__{_safe_artifact_label(circuit_type)}"
+        f"__v7_enhanced_v2_deterministic__{_safe_artifact_label(circuit_type)}"
         f"__{timestamp}__{_safe_artifact_label(platform_label)}"
     )
 
@@ -616,7 +671,7 @@ def _write_v7_result_json(
         "model": "V7_trainable_quantum",
         "source": "v7-enhanced-training",
         "family": "trainable-quantum-case-study",
-        "protocol_version": "v7_enhanced_v1",
+        "protocol_version": "v7_enhanced_v2_deterministic",
         "platform": platform_label,
         "run_id": run_id,
         "circuit_type": circuit_type,
@@ -638,6 +693,10 @@ def _write_v7_result_json(
         "target_accuracy": target_accuracy,
         "resume_used": bool(resume),
         "resume_start_epoch": trainer.resume_start_epoch if resume else 0,
+        "train_seed": int(train_seed),
+        "split_seed": int(split_seed),
+        "dataset_order": "sorted_filenames",
+        "test_checkpoint": "best_validation",
         "best_val_acc": round(float(best_val_acc), 2),
         "test_loss": round(float(test_loss), 4),
         "test_acc": round(float(test_acc), 2),
@@ -657,7 +716,9 @@ def _write_v7_result_json(
 def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
                           target_accuracy=60.0, resume=False,
                           drive_backup_path=None,
-                          result_json_path=None):
+                          result_json_path=None,
+                          train_seed=config.RANDOM_SEED,
+                          split_seed=config.RANDOM_SEED):
     """
     Main entry point for V7 enhanced training.
 
@@ -668,6 +729,8 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
         resume: If True, resume from latest checkpoint
         drive_backup_path: If set, checkpoints are also saved to Drive (survives restarts)
         result_json_path: Optional top-level experiment JSON path for aggregation
+        train_seed: Seed for model initialization, augmentation, and train shuffling
+        split_seed: Seed for the deterministic train/validation split
 
     Returns:
         (best_val_acc, test_acc) tuple
@@ -675,8 +738,20 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
     start_time = time.time()
     device = torch.device(config.DEVICE)
 
+    random.seed(train_seed)
+    np.random.seed(train_seed)
+    torch.manual_seed(train_seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(train_seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+    torch.use_deterministic_algorithms(True, warn_only=True)
+
     # Load data
-    train_loader, val_loader, test_loader = get_dataloaders()
+    train_loader, val_loader, test_loader = get_dataloaders(
+        train_seed=train_seed,
+        split_seed=split_seed,
+    )
 
     # Create V7 model
     model = create_enhanced_model(circuit_type=circuit_type, num_classes=config.NUM_CLASSES)
@@ -686,7 +761,9 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
         model, train_loader, val_loader, device,
         num_epochs=num_epochs,
         experiment_name=f"v7_{circuit_type}",
-        drive_backup_path=drive_backup_path
+        drive_backup_path=drive_backup_path,
+        train_seed=train_seed,
+        split_seed=split_seed,
     )
 
     # Train (with optional resume)
@@ -699,6 +776,12 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
 
     # Final test evaluation
     print("\nFinal evaluation on test set...")
+    best_checkpoint = (
+        'models/best_v7_model.pth'
+        if resume
+        else os.path.join(trainer.exp_dir, 'best_model.pth')
+    )
+    trainer.load_best_model(best_checkpoint)
     test_loss, test_acc = trainer.validate(test_loader)
     print(f"Test Accuracy: {test_acc:.2f}%")
     _write_v7_result_json(
@@ -708,6 +791,8 @@ def run_enhanced_training(circuit_type='data_reuploading', num_epochs=50,
         num_epochs=num_epochs,
         target_accuracy=target_accuracy,
         resume=resume,
+        train_seed=train_seed,
+        split_seed=split_seed,
         best_val_acc=best_acc,
         test_loss=test_loss,
         test_acc=test_acc,
