@@ -1,0 +1,120 @@
+{
+  "assessment_samples": 343,
+  "bootstrap_replicates": 1000,
+  "fraction_metrics": [
+    {
+      "accuracy": {
+        "mean": 59.54000647878198,
+        "sd": 2.3399711986218095
+      },
+      "balanced_accuracy": {
+        "mean": 47.503513380706366,
+        "sd": 4.067991197229387
+      },
+      "crossed_cells": 18,
+      "family": "analytic_fixed",
+      "fraction": 0.1,
+      "macro_f1": {
+        "mean": 45.211233296217145,
+        "sd": 4.5545797132049595
+      },
+      "training_count": 270
+    },
+    {
+      "accuracy": {
+        "mean": 68.05960479429868,
+        "sd": 1.4043467097168296
+      },
+      "balanced_accuracy": {
+        "mean": 57.92184930891071,
+        "sd": 2.2809047162190814
+      },
+      "crossed_cells": 18,
+      "family": "analytic_fixed",
+      "fraction": 0.25,
+      "macro_f1": {
+        "mean": 56.27708466163965,
+        "sd": 2.30012697890721
+      },
+      "training_count": 669
+    },
+    {
+      "accuracy": {
+        "mean": 76.19047619047619,
+        "sd": 1.2044263078584776
+      },
+      "balanced_accuracy": {
+        "mean": 71.49097065215486,
+        "sd": 2.154754636147473
+      },
+      "crossed_cells": 6,
+      "family": "analytic_fixed",
+      "fraction": 1.0,
+      "macro_f1": {
+        "mean": 71.13215262534187,
+        "sd": 2.2306875519996434
+      },
+      "training_count": 2688
+    },
+    {
+      "accuracy": {
+        "mean": 61.548428895367664,
+        "sd": 2.347082868950731
+      },
+      "balanced_accuracy": {
+        "mean": 49.51778464388113,
+        "sd": 3.148283393660693
+      },
+      "crossed_cells": 18,
+      "family": "rff",
+      "fraction": 0.1,
+      "macro_f1": {
+        "mean": 47.33230991644976,
+        "sd": 3.5933230741019613
+      },
+      "training_count": 270
+    },
+    {
+      "accuracy": {
+        "mean": 68.78846776805962,
+        "sd": 2.386342025120439
+      },
+      "balanced_accuracy": {
+        "mean": 58.531579491009325,
+        "sd": 2.9186207196819143
+      },
+      "crossed_cells": 18,
+      "family": "rff",
+      "fraction": 0.25,
+      "macro_f1": {
+        "mean": 57.25554237884952,
+        "sd": 3.0455525692407357
+      },
+      "training_count": 669
+    },
+    {
+      "accuracy": {
+        "mean": 77.2594752186589,
+        "sd": 1.3296506415150329
+      },
+      "balanced_accuracy": {
+        "mean": 72.81938152003941,
+        "sd": 2.521353056589415
+      },
+      "crossed_cells": 6,
+      "family": "rff",
+      "fraction": 1.0,
+      "macro_f1": {
+        "mean": 72.94393553243371,
+        "sd": 2.3526498876556534
+      },
+      "training_count": 2688
+    }
+  ],
+  "limitations": "Example bootstrap assumes independent examples; near-duplicate/writer groups remain unknown. Sparse/absent classes affect macro-F1 bootstrap; no test set used.",
+  "paired_image_plus_crossed_factor_bootstrap_95_interval": [
+    -3.621836617559747,
+    1.1315676936303056
+  ],
+  "status": "posthoc_sensitivity_not_confirmatory"
+}

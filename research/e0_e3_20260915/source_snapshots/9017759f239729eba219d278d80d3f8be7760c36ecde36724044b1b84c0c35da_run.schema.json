@@ -1,0 +1,345 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "New runs only. Nullable fields require explicit applicability in limitations. Semantic split/training checks also enforced by validate_run.",
+  "properties": {
+    "architecture": {
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "type": "object"
+    },
+    "augmentation": {
+      "type": "object"
+    },
+    "checkpoint_criterion": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "data": {
+      "properties": {
+        "evaluation_split": {
+          "enum": [
+            "validation",
+            "test",
+            "diagnostic"
+          ],
+          "type": "string"
+        },
+        "manifest": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "manifest_checksum": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "protocol_checksum": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "test_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "train_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "validation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "manifest",
+        "manifest_checksum",
+        "protocol_checksum",
+        "train_ids",
+        "validation_ids",
+        "test_ids",
+        "evaluation_split"
+      ],
+      "type": "object"
+    },
+    "epoch_metrics": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "experiment_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "final_metrics": {
+      "properties": {
+        "accuracy": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "balanced_accuracy": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "macro_f1": {
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "required": [
+        "accuracy",
+        "macro_f1",
+        "balanced_accuracy",
+        "class_support",
+        "per_class_f1",
+        "per_class_recall",
+        "confusion_matrix"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "framework_versions": {
+      "type": "object"
+    },
+    "git": {
+      "properties": {
+        "commit": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "source_hashes": {
+          "type": "object"
+        },
+        "status": {
+          "type": "string"
+        },
+        "tracked_diff_sha256": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "commit",
+        "dirty",
+        "status",
+        "tracked_diff_sha256",
+        "source_hashes"
+      ],
+      "type": "object"
+    },
+    "gradient_diagnostics": {
+      "type": "object"
+    },
+    "hardware": {
+      "type": "object"
+    },
+    "hyperparameters": {
+      "type": "object"
+    },
+    "kind": {
+      "enum": [
+        "training",
+        "diagnostic",
+        "replay"
+      ],
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "optimizer": {
+      "type": "object"
+    },
+    "parameter_counts": {
+      "properties": {
+        "frozen": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "trainable": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "trainable",
+        "frozen"
+      ],
+      "type": "object"
+    },
+    "precision": {
+      "properties": {
+        "amp": {
+          "type": "boolean"
+        },
+        "dtype": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "scaler": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dtype",
+        "amp",
+        "scaler"
+      ],
+      "type": "object"
+    },
+    "prediction_artifacts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "quantum": {
+      "properties": {
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "differentiation": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "backend",
+        "differentiation"
+      ],
+      "type": "object"
+    },
+    "runtime": {
+      "properties": {
+        "process_cpu_seconds": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "wall_seconds": {
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "required": [
+        "wall_seconds",
+        "process_cpu_seconds"
+      ],
+      "type": "object"
+    },
+    "scheduler": {
+      "type": "object"
+    },
+    "schema_version": {
+      "enum": [
+        1
+      ],
+      "type": "integer"
+    },
+    "seeds": {
+      "properties": {
+        "filter_bank_seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "model_init_seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "split_seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "subset_seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "train_seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "train_seed",
+        "split_seed",
+        "subset_seed",
+        "model_init_seed",
+        "filter_bank_seed"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "running",
+        "completed",
+        "failed",
+        "unsupported"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "kind",
+    "status",
+    "architecture",
+    "git",
+    "data",
+    "seeds",
+    "hyperparameters",
+    "parameter_counts",
+    "optimizer",
+    "scheduler",
+    "augmentation",
+    "precision",
+    "quantum",
+    "framework_versions",
+    "hardware",
+    "runtime",
+    "checkpoint_criterion",
+    "epoch_metrics",
+    "gradient_diagnostics",
+    "prediction_artifacts",
+    "final_metrics",
+    "limitations"
+  ],
+  "title": "Astra new-run schema v1",
+  "type": "object"
+}

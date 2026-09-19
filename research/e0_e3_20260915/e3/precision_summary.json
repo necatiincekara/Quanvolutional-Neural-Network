@@ -1,0 +1,2806 @@
+{
+  "cells": [
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.018263999999999836,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.019795167000211222
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017989000000000033,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.018105332999766688
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.018328999999999596,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.018363833999956114
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016339000000000325,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.016362875000140775
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01642100000000024,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01643500000000131
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016769000000000034,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.016805083000235754
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016891999999999907,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017183292000026995
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016691000000000233,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.0167260839998562
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016643000000000185,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.016716292000182875
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017055000000000042,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017101791000186495
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017903999999999698,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.022429416999784735
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017365999999999993,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017389874999935273
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016983000000000192,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01699170799975036
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017058999999999713,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01708612499987794
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017686000000000313,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01771637499996359
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01732800000000001,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017372750000049564
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017205000000000137,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017225500000222382
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017031999999999936,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.0170444589998624
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01739700000000033,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01743354200016256
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017243999999999815,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017287000000123953
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016976999999999798,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017235917000107293
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017540000000000333,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01760029199976998
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017212000000000227,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017284583000218845
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.016801000000000066,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01685808399997768
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017096,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017175292000047193
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01732699999999987,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017363292000027286
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01770000000000005,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01776695800026573
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.086198,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.08643512500020734
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017627999999999755,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017684375000044383
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017514999999999947,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017616624999845953
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017463999999999924,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01754908400016575
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01748599999999989,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017565165999712917
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017093000000000025,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017142459000297094
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017180000000000195,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01726250000001528
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017122999999999777,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017159708000235696
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.005181000000000324,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.005218624999997701
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.004853000000000218,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.0048532499999964784
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.005207000000000406,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.005218959000103496
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.005005999999999844,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.005031959000007191
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0048200000000000465,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.004820083000140585
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017854999999999954,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017889917000047717
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01780399999999993,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017947875000118074
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017525000000000013,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017627624999931868
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.017574999999999896,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.017606791999696725
+    },
+    {
+      "error": null,
+      "family": "analytic",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.01818799999999987,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.01824008399989907
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07684600000000019,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07761125000024549
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.08229400000000009,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.08263074999968012
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0778730000000003,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.0780434579996836
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.08099599999999985,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.08130295799992382
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07699100000000003,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07720941600018705
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07755599999999996,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07804762500018114
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07853399999999988,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07881579099966984
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07822299999999993,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07836370899985923
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07769699999999968,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07782104199986861
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07771499999999998,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07787533300006544
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.005545999999999829,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.007898875000137195
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.004929000000000183,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.004929875000016182
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.005222999999999978,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.005225833000167768
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.005226999999999649,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.005255500000203028
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.004998000000000058,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.004997457999706967
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07933199999999996,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07942599999978484
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0803849999999997,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.08048370899996371
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0785089999999995,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07860174999996161
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.15900800000000004,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.15935720900006345
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.08555099999999971,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.08582637500012424
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07809500000000025,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07818641700032458
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07747899999999941,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07759541700033878
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07698500000000053,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07704654100007247
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07834699999999994,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07842029200037359
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0786800000000003,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07900579199986169
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07939900000000044,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07952720899993437
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07748099999999969,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07755541699998503
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07771599999999967,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07789583300018421
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07813900000000018,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07839129200010575
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07714900000000036,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07723412499990445
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0784849999999997,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07867850000002363
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.08045900000000028,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.0806069169998409
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.08205000000000062,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.0821410419998756
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07930300000000035,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07943112500015559
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0777549999999998,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07784816699995645
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.02321300000000015,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.023231707999912032
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.023156000000000176,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.023202708000098937
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.10738599999999998,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.10766645800003971
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.023625000000000007,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.023644708000119863
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.02385100000000051,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.023873208000168233
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.08047499999999985,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.08068554100009351
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07932399999999973,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.0794573749999472
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07772100000000037,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07780141600005663
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.07828900000000072,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.07839162500022212
+    },
+    {
+      "error": null,
+      "family": "fixed",
+      "parameter_counts": {
+        "circuit_or_analytic": 12,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.10580199999999973,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.11230395799975668
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13140399999999985,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13163245900022957
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1325699999999994,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13287533399989115
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.12985799999999958,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13020208400030242
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13290300000000066,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13339954200000648
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13004599999999922,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float64",
+        "name": "float64_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13038504099995407
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1336820000000003,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13403591700034667
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1356010000000003,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13595041700000365
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1322000000000001,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.1324787080002352
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13556800000000013,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13592154100024345
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13558300000000045,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "name": "float32_reference",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13584166700002243
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.007964999999999556,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.007984374999978172
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.007939000000000362,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.007951792000312707
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.007878000000000718,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.00788879200035808
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.007580999999999172,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.007584625000163214
+    },
+    {
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.007976000000000205,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "inherit",
+        "dtype": "float16",
+        "name": "fp16_inherited_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "unsupported_or_execution_error",
+      "wall_seconds": 0.007975209000051109
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.2308469999999998,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.23144270799957667
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13333100000000098,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13349029199980578
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13414400000000093,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13434025000015026
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1331030000000002,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13341908300026262
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13471999999999973,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_scaled",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13491508300012356
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13626800000000117,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13681687500002226
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1381199999999989,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13849200000004203
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13254200000000083,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13271095800018884
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1345489999999998,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.1347703750002438
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1483439999999998,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "bfloat16",
+        "name": "bf16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.14863841699980185
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1375719999999987,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.1378728750000846
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13588500000000003,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13603287500018268
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13357099999999988,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13377045900006124
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13744299999999932,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.1377793329997985
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1362559999999995,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_boundary_unscaled",
+        "scaler": false,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13658150000037494
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13227400000000067,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13248383299969646
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13257300000000072,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13281800000004296
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13202399999999948,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13227179100022113
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13209600000000066,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13225650000003952
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.24359000000000108,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_correct",
+        "scaler": true,
+        "semantics": "correct"
+      },
+      "status": "completed",
+      "wall_seconds": 0.24431695800012676
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.04022800000000082,
+      "seed": 0,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.040417208000235405
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.04242200000000018,
+      "seed": 1,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.04261899999983143
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.041329999999998535,
+      "seed": 2,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.04161958299982871
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.04065899999999978,
+      "seed": 3,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.04073470900038956
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.0452400000000015,
+      "seed": 4,
+      "setting": {
+        "amp": false,
+        "boundary": "inherit",
+        "dtype": "float32",
+        "inject_inf_step": 2,
+        "name": "inf_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "parameter_corruption",
+      "wall_seconds": 0.04547758399985469
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13707400000000014,
+      "seed": 0,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13740816600011385
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1358239999999995,
+      "seed": 1,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.1361714579998079
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.1345489999999998,
+      "seed": 2,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13487116699980106
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13456500000000027,
+      "seed": 3,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.1348953330002587
+    },
+    {
+      "error": null,
+      "family": "v7",
+      "parameter_counts": {
+        "circuit_or_analytic": 24,
+        "classical": 35
+      },
+      "process_cpu_seconds": 0.13409300000000002,
+      "seed": 4,
+      "setting": {
+        "amp": true,
+        "boundary": "float32",
+        "dtype": "float16",
+        "name": "fp16_historical_direct",
+        "scaler": true,
+        "semantics": "historical_direct_after_unscale"
+      },
+      "status": "completed",
+      "wall_seconds": 0.13432224999996834
+    }
+  ],
+  "cuda_screen": "not_run_no_cuda_available",
+  "derivative_checks": [
+    {
+      "angle_jacobian_norm": 0.15339861906432178,
+      "backend": "default.qubit",
+      "circuit": "fixed",
+      "input_jacobian_norm": 1.0512643591628335,
+      "max_angle_gradient_difference": 0.0,
+      "max_input_gradient_difference": 0.0,
+      "method": "backprop",
+      "output_dtype": "torch.float64",
+      "status": "passed"
+    },
+    {
+      "angle_jacobian_norm": 0.1533986190643218,
+      "backend": "default.qubit",
+      "circuit": "fixed",
+      "input_jacobian_norm": 1.051264359162834,
+      "max_angle_gradient_difference": 3.5475095083725705e-16,
+      "max_input_gradient_difference": 2.220446049250313e-16,
+      "method": "parameter-shift",
+      "output_dtype": "torch.float64",
+      "status": "passed"
+    },
+    {
+      "angle_jacobian_norm": 0.1533986190643219,
+      "backend": "lightning.qubit",
+      "circuit": "fixed",
+      "input_jacobian_norm": 1.0512643591628335,
+      "max_angle_gradient_difference": 8.673617379884035e-17,
+      "max_input_gradient_difference": 2.3966289022792076e-16,
+      "method": "adjoint",
+      "output_dtype": "torch.float32",
+      "status": "passed"
+    },
+    {
+      "angle_jacobian_norm": 1.1929206175775615,
+      "backend": "default.qubit",
+      "circuit": "v7",
+      "input_jacobian_norm": 1.2483528702079731,
+      "max_angle_gradient_difference": 0.0,
+      "max_input_gradient_difference": 0.0,
+      "method": "backprop",
+      "output_dtype": "torch.float64",
+      "status": "passed"
+    },
+    {
+      "angle_jacobian_norm": 1.1929206175775622,
+      "backend": "default.qubit",
+      "circuit": "v7",
+      "input_jacobian_norm": 1.2483528702079734,
+      "max_angle_gradient_difference": 4.579669976578771e-16,
+      "max_input_gradient_difference": 6.661338147750939e-16,
+      "method": "parameter-shift",
+      "output_dtype": "torch.float64",
+      "status": "passed"
+    },
+    {
+      "angle_jacobian_norm": 1.1929206175775624,
+      "backend": "lightning.qubit",
+      "circuit": "v7",
+      "input_jacobian_norm": 1.2483528702079745,
+      "max_angle_gradient_difference": 5.551115123125783e-16,
+      "max_input_gradient_difference": 8.881784197001252e-16,
+      "method": "adjoint",
+      "output_dtype": "torch.float32",
+      "status": "passed"
+    }
+  ],
+  "device": "cpu",
+  "historical_causal_attribution": "partially_resolved; original overflow trigger on L4 remains unverified",
+  "status": "completed"
+}

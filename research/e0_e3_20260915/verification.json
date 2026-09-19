@@ -1,0 +1,21 @@
+{
+  "all_passed": true,
+  "changed_preexisting_files": [],
+  "e1_prediction_archives_verified": 27,
+  "e2_run_schemas_and_prediction_metrics_verified": 150,
+  "independent_checkpoint_replays": [
+    {
+      "raw_to_saved_logit_max_abs": 0.0,
+      "run": "pilot_analytic_fixed_b200_s400_t800_f010"
+    },
+    {
+      "raw_to_saved_logit_max_abs": 0.0,
+      "run": "pilot_rff_b200_s400_t800_f010"
+    }
+  ],
+  "protected_preexisting_files_verified": 4404,
+  "runtime": {
+    "process_cpu_seconds": 1.9080289999999998,
+    "wall_seconds": 2.4724986669998543
+  }
+}

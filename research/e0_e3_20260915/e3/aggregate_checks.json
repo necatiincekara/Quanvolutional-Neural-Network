@@ -1,0 +1,218 @@
+[
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "float64_reference",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "float32_reference",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "fp16_inherited_scaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "fp16_boundary_scaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "bf16_boundary_unscaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "fp16_boundary_unscaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "inf_correct",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "inf_historical_direct",
+    "statuses": {
+      "parameter_corruption": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "analytic",
+    "setting": "fp16_historical_direct",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "float64_reference",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "float32_reference",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "fp16_inherited_scaled",
+    "statuses": {
+      "unsupported_or_execution_error": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "fp16_boundary_scaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "bf16_boundary_unscaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "fp16_boundary_unscaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "inf_correct",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "inf_historical_direct",
+    "statuses": {
+      "parameter_corruption": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "fixed",
+    "setting": "fp16_historical_direct",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "float64_reference",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "float32_reference",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "fp16_inherited_scaled",
+    "statuses": {
+      "unsupported_or_execution_error": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "fp16_boundary_scaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "bf16_boundary_unscaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "fp16_boundary_unscaled",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "inf_correct",
+    "statuses": {
+      "completed": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "inf_historical_direct",
+    "statuses": {
+      "parameter_corruption": 5
+    }
+  },
+  {
+    "any_natural_nonfinite": false,
+    "family": "v7",
+    "setting": "fp16_historical_direct",
+    "statuses": {
+      "completed": 5
+    }
+  }
+]

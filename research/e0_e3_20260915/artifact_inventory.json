@@ -1,0 +1,4033 @@
+{
+  "created_or_modified_preexisting_files": [],
+  "excluded": "Interpreter bytecode and temporary library caches are runtime products, not deliverables.",
+  "files": [
+    {
+      "bytes": 35604,
+      "path": "research/ASTRA_E0_E3_EXECUTION_REPORT.md",
+      "purpose": "Execution report or command reproduction record",
+      "sha256": "eb2138442c3e9e05e89c54f9820552f12da0e8cea9bff0ebbe0f0ed6554c9476"
+    },
+    {
+      "bytes": 925,
+      "path": "research/configs/e2_pilot.json",
+      "purpose": "Prespecified E2/E3 experimental configuration",
+      "sha256": "8324f98f033fadbaceeba41793ccbc960ec67f13e1742ba70ae8824ad638201d"
+    },
+    {
+      "bytes": 2026,
+      "path": "research/configs/precision_screen.json",
+      "purpose": "Prespecified E2/E3 experimental configuration",
+      "sha256": "d7c286d1c5a9fcdca740f6d867f6db14c0cab07a641c2bfe0f1ba3cb155ea41b"
+    },
+    {
+      "bytes": 61104,
+      "path": "research/e0_e3_20260915/after_state.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "d83379276b9578319abd451dc6b37ea1ce6229361c44ebfc4591636d770d6e58"
+    },
+    {
+      "bytes": 790856,
+      "path": "research/e0_e3_20260915/before_state.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "107ad8ccef69a985ea559c11ecda82cfb2faee9024dca38a90f7c7338bf4e366"
+    },
+    {
+      "bytes": 1068027,
+      "path": "research/e0_e3_20260915/before_tracked.patch",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "f0c22cc21faf15b92fe4be579e65271a2b2b9a9006ef1955cdcb936034ae39eb"
+    },
+    {
+      "bytes": 2890,
+      "path": "research/e0_e3_20260915/commands.md",
+      "purpose": "Execution report or command reproduction record",
+      "sha256": "ed47001ad6e6de2f32605607133049a8aa22237653c59280792db9e76ebb7329"
+    },
+    {
+      "bytes": 2804628,
+      "path": "research/e0_e3_20260915/dataset_manifest.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "ffc368dd20b96d80c52c324cb9f016d8120650de48a4baed7edf05041debf2b6"
+    },
+    {
+      "bytes": 1354,
+      "path": "research/e0_e3_20260915/e0_checks.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "8211b94be4b9b3705eff4ef66208b7dbcf722c20723ed1d6b423d3dbe3fde89f"
+    },
+    {
+      "bytes": 173477,
+      "path": "research/e0_e3_20260915/e1/ablation_non_trainable_quantum_seed42_split42_predictions.npz",
+      "purpose": "Preserved first failed E1 bookkeeping attempt",
+      "sha256": "8e8ce25636355f923c9025c501e590e7b1dce530d90ba90c6141aa3d4dead738"
+    },
+    {
+      "bytes": 194,
+      "path": "research/e0_e3_20260915/e1/replay_results.json",
+      "purpose": "Preserved first failed E1 bookkeeping attempt",
+      "sha256": "8135d976a330e2cc2e824de3644660fdf4ddbb3d7e23c10af8d737ea7e57c198"
+    },
+    {
+      "bytes": 357204,
+      "path": "research/e0_e3_20260915/e1/run.json",
+      "purpose": "Preserved first failed E1 bookkeeping attempt",
+      "sha256": "56c6b17a6c6ac87e15bfffb53972ebc6f6ddb99d42fd38c78172d35b262cef2a"
+    },
+    {
+      "bytes": 174905,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac010_seed42_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "b6321a5c7b9ce1f7484b1463b70903a7103ddf4c6729dd1a9eb9a0ba5920e966"
+    },
+    {
+      "bytes": 175129,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac010_seed43_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "6845aa0b65adc55904f8825a912f38c1ad1047df133219e10680af60842929ae"
+    },
+    {
+      "bytes": 174655,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac010_seed44_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "ce6088ebad7eb0bf1f1e4a882116a564eaf345d3420cc3c5d4b2c73f32d78cdf"
+    },
+    {
+      "bytes": 175181,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac010_seed45_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "90ca33f0749ec71ae04b76527b7cd397310a128c606c7b2b2581c3555a4eeb1d"
+    },
+    {
+      "bytes": 175029,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac010_seed46_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "99dd9b5eaabb96b8b8526a042372cd5ecd123880ec635239f745891dd7e42441"
+    },
+    {
+      "bytes": 175201,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac010_seed47_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "b8d6e28e6514db9c1b641d457cc420913a857f45f429c9c55416a1de6d83fefe"
+    },
+    {
+      "bytes": 174675,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac025_seed42_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "12fc223b6a0e6707af19cf2622720db85e0e2b6d2a6a9c03c3bd97b570502ee9"
+    },
+    {
+      "bytes": 174233,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac025_seed43_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "033ae706861b486be72c99a74da260c1ec2fb72ebdb1c2893116ef67eb569c3f"
+    },
+    {
+      "bytes": 174301,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac025_seed44_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "087851f6979f2d3524f2acc8d7410fc9c1a01e9ea27102f3a2d1d6ec0026258f"
+    },
+    {
+      "bytes": 174667,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac025_seed45_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "aa9f4c517001d42e85cf9ae24a9ba24df607aebeea005d6865482a903785ee31"
+    },
+    {
+      "bytes": 174715,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac025_seed46_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "8eb788726e993a40343b426beca4606e9856fe5c2830dc5b705c0177f9f7596f"
+    },
+    {
+      "bytes": 174245,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac025_seed47_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "a622622e2ac051b686a26a845f028a2186dcbdc73d317899638b468885c54bb9"
+    },
+    {
+      "bytes": 173811,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac050_seed42_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "b855e1dff60485bb0a1b0f5e591322a5ad36ce562a1dac4f08b931f0938418fd"
+    },
+    {
+      "bytes": 173509,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac050_seed43_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "6714c90d26911add162281a2fbc9e062cc7cc8c830e47422686ed2ddf1567844"
+    },
+    {
+      "bytes": 173565,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac050_seed44_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "e806d24849492579065e3d1619069aa9e7124e0015340d562f4548ed6c6f82ce"
+    },
+    {
+      "bytes": 173905,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac050_seed45_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "1be5df2a8046768d1dc30c7ddfb157bab5f4a103683796fa83135a0705a45b65"
+    },
+    {
+      "bytes": 174313,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac050_seed46_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "5d5dcd64bba2a49011ce553e0946f3ea0890b455f8d5c63760595048260583b6"
+    },
+    {
+      "bytes": 173605,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac050_seed47_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "9ed6d3d99812edc42ccd7922e5be07b52c47a348da7b87f034c941c585078705"
+    },
+    {
+      "bytes": 173467,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac100_seed42_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "90e331fef8fa457f2de722b1a85b106efe6e2c19014ccbeeddebc9a132a9f02a"
+    },
+    {
+      "bytes": 172665,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac100_seed43_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "1456bc6eb5ef77653f2c3b9b912e358bd9ad9bce3cdf84155ed01ba38accde95"
+    },
+    {
+      "bytes": 172897,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac100_seed44_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "57a0d317b850f225cc42f8b874012cb74b4d6cd15aa3a47a320bf2d00d3c092a"
+    },
+    {
+      "bytes": 173411,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac100_seed45_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "43701b86781ee7f5be52445dfcf63fd1c1a31430386d25e0ca3b8eca0e6ad9e4"
+    },
+    {
+      "bytes": 173183,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac100_seed46_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "683603d67262904978a0c786e4f7f7d2660a2fd46a58de2f8c908da772661f8f"
+    },
+    {
+      "bytes": 172997,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_frac100_seed47_split42_fraction42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "514ad7eca7cc15e715c76238fcdab586ca9ec4561f006dc60d5b9db05fb3f6ef"
+    },
+    {
+      "bytes": 173477,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_seed42_split42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "8e8ce25636355f923c9025c501e590e7b1dce530d90ba90c6141aa3d4dead738"
+    },
+    {
+      "bytes": 172647,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_seed43_split42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "f086f33efa7bdfc6c842992fb903ce506206a5560ce260ffa384e4f48f555b81"
+    },
+    {
+      "bytes": 172651,
+      "path": "research/e0_e3_20260915/e1_verified/ablation_non_trainable_quantum_seed44_split42_predictions.npz",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "9b3394f026abaf146c9a74e9797ed77004167ad7bb3d3a7ba44ab90960fa8508"
+    },
+    {
+      "bytes": 933385,
+      "path": "research/e0_e3_20260915/e1_verified/replay_results.json",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "9f47c24f464c9692a49152b7c29adee4bb5c86c07e37d0c5864f5d692b1c669e"
+    },
+    {
+      "bytes": 365791,
+      "path": "research/e0_e3_20260915/e1_verified/run.json",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "b209e4005f3970533785a23032388d8938c9ea1522b20092047fa86c92086c67"
+    },
+    {
+      "bytes": 322400,
+      "path": "research/e0_e3_20260915/e1_verified/run_corrected.json",
+      "purpose": "E1 successful historical replay evidence, predictions or explicit metadata correction",
+      "sha256": "5eb882eb689539e5ef16e60011de6dc16ad07b2f625b8343929b0a08788ebf2d"
+    },
+    {
+      "bytes": 191972,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "546ffb0902bfc2460cee0fb66400ecb8f99874414df18420188152201a46844d"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d4096237859f69f4c9b1c84ca5c042afd4a16d5416dc2dad70fcde57310f36c6"
+    },
+    {
+      "bytes": 74611,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "66e34afb2e6f0fe9492ed730d917f02a6d70d2bc3915c502a3323eeaf0cbb2cb"
+    },
+    {
+      "bytes": 226782,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a1f711327234069d6013e3accb4340fd335155ce1e2730682f9b5fab6a1c34db"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "61d65c15bc5ea8956a3adcacc42631f7a4aa7c0704edecb63e6c02e2cbaa2ca6"
+    },
+    {
+      "bytes": 74635,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "d0a7b93785ef86a474637bcdc8dee7d2e6f9490c4210d47c0e810c7bde321ee9"
+    },
+    {
+      "bytes": 402353,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5c539518e43464e031ca77fc6f5052f387987581fb028672544e42ef53c82c75"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "8f1094ab3a9f4a3cffab0b2ba390a5cae06e10d66c84310c1d0c13eb8a2840ea"
+    },
+    {
+      "bytes": 74573,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b9eeb25b4adf6a9845bf00f6fd573199c8728d3647eb30e7d5d7ceaf577a48a6"
+    },
+    {
+      "bytes": 192400,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d93e5a31c1443cf0afb055293306d1e64b7b5ee24e39ff9a19438ca12cfed7bc"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "653ac2accda988872b677952314902123c7bb0a7715285571c14ec89ce2956c5"
+    },
+    {
+      "bytes": 74630,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "14f705bbe34dbe4de21bd38cb44fba7647e09f5149c2b1cf312c5ccac03d0ab9"
+    },
+    {
+      "bytes": 227292,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d44d16acc2437dbf5da46289c8ef8a167fb01a95a9485405bce8a4b52e3a4bc8"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "39accccc46589f76bc1ae2ce77c4e518287daebde8bebdfaec2cf0556ef1d5ce"
+    },
+    {
+      "bytes": 74617,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "2a879ff77aad32ed62e757fcf084450d4135a856086c97e6d63d0715abc9324e"
+    },
+    {
+      "bytes": 402770,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9330f90666579ec8d229b05c38ee0a995fd58534e522b7ae2d68a815efb420dc"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b60f02a8b18910ebbb7e54eee9277900298ff0a2e003f3fb13678c4a5154ace4"
+    },
+    {
+      "bytes": 74549,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s400_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "af94ac8a4250c62656fbc3946cd01044ca27a69069219b2c597c37f059bcd8ff"
+    },
+    {
+      "bytes": 192862,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "10cb7abca744be47fff0a9a4308e1ff1ded957cc2dc6dfcd3964dc87d6b243f4"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "eaf50dde057b5c3daa9e72c11f84646bfe22171beb72465ee3c0d72be4e22b5c"
+    },
+    {
+      "bytes": 74653,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "3a3ba9fe4b852974d0415771dedc4699674e8dd33156a8ac5b9831abd178bb8b"
+    },
+    {
+      "bytes": 227819,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a22390698fc006d8013bbf878dde0ca5140be9a2a9ba8c664a981441312c14ca"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "31da3c79424cf22273865a60df95fbbff6938da80e6b3041783d36f691dce7f9"
+    },
+    {
+      "bytes": 74622,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a795bf145f0ffef794bcabcc67add3d5b48dcb3832cacb6f826126a542553533"
+    },
+    {
+      "bytes": 403341,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0ba37da374dc799ae35d7df1c64e5d403b982bae8b638a078796309c9f1086f7"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "8ef11ee5d254b56e6279ae8ad775886bded38bccfc9636aad0cf5d1a6b0c5a87"
+    },
+    {
+      "bytes": 74573,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b9eeb25b4adf6a9845bf00f6fd573199c8728d3647eb30e7d5d7ceaf577a48a6"
+    },
+    {
+      "bytes": 193377,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "621411bbd767191ad86a3eafa32e0eb368a5b653db66a959b279fa216e94ccb4"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "259b4a0e2bdf5c8e77d3dc64ee8d98102d00d55f910f276b4437d23f8d592534"
+    },
+    {
+      "bytes": 74676,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "6c50696cef6a3bc31c384bf65d7491c47dd68f353ca963083ca38cfb876719fa"
+    },
+    {
+      "bytes": 228246,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "65c2e5105b408d76f8641dd48a1af058a73acfdfbdda7a1fd0a528f57ae08b65"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d706de7182c7d8d04dc96999292ddce3a0ffae9fad13bf32941ac41b03dbfaed"
+    },
+    {
+      "bytes": 74619,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9ee03491244880f02ba4bb3d62cb804e8e3d1eacc00fa8b694b9e38d2a1dff7a"
+    },
+    {
+      "bytes": 403759,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "4666a0bc1f75d4039bf446339177b25c74b7921ca0de92d5e41587fbbda646d8"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7a6b7048ea51d47fe21deafda36efa164ab617329f72ebc3582590bb7ffa4c8c"
+    },
+    {
+      "bytes": 74549,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s401_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "af94ac8a4250c62656fbc3946cd01044ca27a69069219b2c597c37f059bcd8ff"
+    },
+    {
+      "bytes": 193847,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "3f4f27d1cde1522d61a8e5b3fff9bc43adbcfa83296bcde1b9cbc7f341466b2a"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "1f43ed49f96139edf15d56b4d9b1300a78e1a61f9a631b940c35a0b0f4ab0dd0"
+    },
+    {
+      "bytes": 74668,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "8cc070c7fff98f7caafd44a39727a1f3e50cac204645f0f25102842fdb1f0ae7"
+    },
+    {
+      "bytes": 228759,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6cce0d7557e236c7f8ad8207958f38bb906dd2298407cac36213c5f4aba27260"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "ac16f5d780bc5633089cfa13176055e70176a005ae5352757ad103fbe626b66b"
+    },
+    {
+      "bytes": 74663,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "6ce0d6f8a3da69c48706a0ab0685449bcd805c4f960b36cd064763cb23ee51fa"
+    },
+    {
+      "bytes": 404332,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "da72883be013a4e278141a456d3db6041f4c9a6038a56d764421784b6e8c8a5c"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3112fce00bc23e150113ebf4723baa3880ef11a08a10c3c2d766fb92fe68ab28"
+    },
+    {
+      "bytes": 74573,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b9eeb25b4adf6a9845bf00f6fd573199c8728d3647eb30e7d5d7ceaf577a48a6"
+    },
+    {
+      "bytes": 194457,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "39b7bce0d64ba427d391fb0789d4cf4da5d616eb0a5218803a96b7232fbe72ed"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "a4466dcf5698e5b0c03e5fec635e8bd6a708280bcb63f5f00fca2ecc4c1f8be6"
+    },
+    {
+      "bytes": 74604,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "4b75c81ea5461362e34a8c405948ab7e6f2d9a60a99e96a8bd9a790636cab14a"
+    },
+    {
+      "bytes": 229128,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "4a832f955a9e899e7815cf18bc83fa6128d006bef6c1b4109402e5d10eed2682"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "ee78d338de67cd8263c586a958a150a384da5e518abe6d4513734bba4493b127"
+    },
+    {
+      "bytes": 74626,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "c7bd727d22892337e22368043795b3c5be1f17abac64080aa271f9d654baa368"
+    },
+    {
+      "bytes": 404749,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "42c7e955cee26a87a426c030278c0427601cf13c80697114153589e9c5b4ce2c"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "bd18a69861c342ba69768e7265bf3254bf77ec79ade24a9c72c35841de601c31"
+    },
+    {
+      "bytes": 74549,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b200_s402_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "af94ac8a4250c62656fbc3946cd01044ca27a69069219b2c597c37f059bcd8ff"
+    },
+    {
+      "bytes": 194950,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d73c8edacfb41e2fd465d02a1a004cb815159d92c0ef449d97341ec45973e85a"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "38970f961753ce4f88ba02d68f21502af08ce7b65034bdb377b236665504b6d1"
+    },
+    {
+      "bytes": 74616,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "749eab5dcbbf0b1b25b0983e09804f89bf7c114f474ed6a1c06083fec39c9e5f"
+    },
+    {
+      "bytes": 229857,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "39c01121cfd76bd869c922d0272ddfdb5a8f69f54855a2ba9733cfd3b455989f"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "73cc707901bb80d57cdb01a816f127beb7b2f92cf3c0eecf7ee0ebaa11ac6294"
+    },
+    {
+      "bytes": 74597,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "40078742b5c580559b90d966a4cfce969858ff6708b5db49d52e5f2727144a28"
+    },
+    {
+      "bytes": 405371,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "fa39aa1ee96f6c14709d43686a280a8354879f175d170b6d9e4d7edc322d635f"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "50a2158da3022f866109f23056bf7be83fa887b9e317a554eefbf9e833baa305"
+    },
+    {
+      "bytes": 74521,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "97df2991892ecb22125de73b6ee3368ebfc1a4ee3ba1dc3d772cbc33819c9356"
+    },
+    {
+      "bytes": 195386,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6cbd1dcc1c6a9d33b31880db775f5a039db0a0006f140000fdf5e795158e015f"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7345e8cf7e8b03d4de8eb4b871bcaf00acc3c8b4ff44fd9287ad916b674a8d5c"
+    },
+    {
+      "bytes": 74663,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "f0c4a59138ec10dd7e01f112820ecef4e5568a44734333dbee9e9d20182c4211"
+    },
+    {
+      "bytes": 230450,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "49b3e15ea525d1549551794ba733e75f4a5e582913eabf639f66a5eef65be349"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "c2f9648bee196a39feacc0977606e3c19223c947d52759aa61943cc55d4aa09a"
+    },
+    {
+      "bytes": 74594,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "c09f2c4d8227ac5fcf4b22358bcca6b8dd198fef96e8a2e9ece65ea59c67791a"
+    },
+    {
+      "bytes": 405861,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5e1a526191acee2db526a82bdb4793fa88b371e92d5f55ccc34d803cefb6cc7f"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "388f94269ac21c145ac9844aa6a84756bc3a85dbf988f6dce290a640b1d24abe"
+    },
+    {
+      "bytes": 74532,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s400_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "3e9c2ca0cd549e2b104c12403694797ec3fc8a86e0ba96b5f433f5336e2a1bd0"
+    },
+    {
+      "bytes": 195922,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "c05b99e5f152ea26668aca13617b3f22816faa87ae254fb69fb654b89979d061"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3aed4e8a23b3695dabb08512c34df2419d216bf69241e2991dbbde6a8626c632"
+    },
+    {
+      "bytes": 74598,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "bd1a458c9a3e70a6fe66ac4ed9b3969afcf8ffef1ab6f62dfd4425de3752203c"
+    },
+    {
+      "bytes": 230900,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9b0ffd344be5a9ba853747c27117186a778e1b5c02b45b688a869014a47534dd"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "5d61f5992d1891ece89d53ec3ee27410e593fa420f7c91fc11f1dfbd3be43d49"
+    },
+    {
+      "bytes": 74561,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "c6f6f6499517070b98e1ad7686200d7153d8931ab4feb0abbf16b51cb8ce2f8f"
+    },
+    {
+      "bytes": 406361,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0ffa452407b4eadccbf544674840c568d9cf1e275b927b43bd88d4110ef0cd0b"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f7395795a3d29700b41c033c2f91b78c8003624c9cf3f6e00700d7b54c5e8064"
+    },
+    {
+      "bytes": 74521,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "97df2991892ecb22125de73b6ee3368ebfc1a4ee3ba1dc3d772cbc33819c9356"
+    },
+    {
+      "bytes": 196473,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "428fc6ca5978e624facd024bd323b09c9d9c7e319b24e00c350597b18efba9f9"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3ed7fa02f4241a7fed11c4a2dae500deca39a3e56ed9a7d6d87ef71beee5b8ee"
+    },
+    {
+      "bytes": 74648,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "4fad55246001673873bf8689f6ae9d2fb568087bd249edb878d2ee1d6c86602a"
+    },
+    {
+      "bytes": 231365,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "7af7304fe411640aa4d03b20f53b778e1f973d405b62b7b6cde2a5cb0b1fc05e"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "eb1c86fcb39ba0d62585073680fee2e33e3ee2bb52ce4c9565913b025343e34d"
+    },
+    {
+      "bytes": 74543,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "c98ccc0c0054fd0c4effee1f125ad55a207b5bf5f8514ba48d10a3def33edd97"
+    },
+    {
+      "bytes": 406849,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "acdde7e54f9e8b5f77d4b073c22688302f9360568103adc021862d816a8c0460"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3c8e65a1c6d6536f9e2ac65b22b6dc6a1da3eafb9ba60f41da126ee909dd9fa0"
+    },
+    {
+      "bytes": 74532,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s401_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "3e9c2ca0cd549e2b104c12403694797ec3fc8a86e0ba96b5f433f5336e2a1bd0"
+    },
+    {
+      "bytes": 196997,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "60be4b48e027f006b1c03e476fbdb9aafe22beaa07c59f1f4b86c7edf00913f8"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4b03c8ecde266986a16b67530a1e44a5bcf32e1ef1ea10833189bbe0e028e41b"
+    },
+    {
+      "bytes": 74637,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "f9be33dceac638ab38b57d9643bc84975992f7b1bf7296f5dca9456a7cefecab"
+    },
+    {
+      "bytes": 231784,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "7322fc556ffad213df6acb84210f87c2c76e792d46254faa470fbb3584449f14"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "a49281b08c3f026ddc1e63b0f32c2570e2359774e90934c96677ad36cac3292d"
+    },
+    {
+      "bytes": 74622,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "8502dfb1ca1be93505936d22536e769e71fa7e0448d72efa58638cd86cc4166d"
+    },
+    {
+      "bytes": 407351,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "ef209775921edcd6a424dc0b05e461bbde00c1b2f9f2c7aed834ef971113804d"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "38a5431a79b937a4b3ee50d90c7b8a4f73a4f56a372229b2e6244317a37c1bc2"
+    },
+    {
+      "bytes": 74521,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "97df2991892ecb22125de73b6ee3368ebfc1a4ee3ba1dc3d772cbc33819c9356"
+    },
+    {
+      "bytes": 197431,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a3ce338259f100a28b3d01e29fd04dc1cd74021d7adebc6ce38e824c90fd49b3"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "aebb2b62c26d7363f6bcf64b256b0de0617fa2f70f9d4a11bdbe8b76539403a0"
+    },
+    {
+      "bytes": 74578,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "0d4f86996aea49682c84c2b93e2bee6789d7fc931c9b73f79d22f3c80a6e6a64"
+    },
+    {
+      "bytes": 232364,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5299419387f1cb27bee1676ec1398ccbab45c5da6127ff4418212b2c8be635d3"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "16ce967973f835f8824e68234d9fc410da2d31497008e626c95846887a66d8c1"
+    },
+    {
+      "bytes": 74601,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b7ad6dae7737fd14069d25324e3534721c6e60bfdeb3ccd313c3a7c4988161a4"
+    },
+    {
+      "bytes": 407840,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "84bd0155e04f9473b4cd285ad7b79978f18b3a407fe14d2a87c2140df27bba9e"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "04cfa60baa89703a2edbb54fe00d1bb253986ad2c55408b083bcd07245c7ba0b"
+    },
+    {
+      "bytes": 74532,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b201_s402_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "3e9c2ca0cd549e2b104c12403694797ec3fc8a86e0ba96b5f433f5336e2a1bd0"
+    },
+    {
+      "bytes": 197955,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a0a56682043a02057629f40bfc24f37cd9574a6d89838c312070f52b95a23ba9"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "0f883e691c4bef4c5b821b551a1c7d3bdb87a43ebc019a6f6bf8260dd78f4dfa"
+    },
+    {
+      "bytes": 74624,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "f7c0c2cbb56deee531d429fdf5a0ce828cd237d12d8cbab2895b4d02f62e68a9"
+    },
+    {
+      "bytes": 232973,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "19f742382a4f0095ecae185501523c6dd90fcb306b59d52e3ce157503cfbc44b"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d66254714418939ab6b1fff00c92f87884bffb0c9b410b8c6d5033050378a024"
+    },
+    {
+      "bytes": 74606,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "5c202ebbcd5abb6a041f60f03b4d5e1ab33a607f66859e6bff23ed0093f12bdd"
+    },
+    {
+      "bytes": 408203,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "06b028dfff9af40d788835a6efb2ba1b2f1a6389aea3a49b3a6c83e0c49d3bac"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "314dec7e795b41ffea63630aff9d1291c5bf670b9c7812edc06634094f0926b8"
+    },
+    {
+      "bytes": 74531,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a02b279a8d81d5080bdd1eea47f5c27cf3654a5c23f79946695a81355f42e3d3"
+    },
+    {
+      "bytes": 198371,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d228de076793f94777f77ebdfffde24c701835c2dcd3e40e9d7ab12006c1a1fe"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "07df716dc15e7a6c7b943b7d7f791abca1517e0d709f09e323f70dfb4d569da0"
+    },
+    {
+      "bytes": 74617,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "11e44d522ffb820a3f82eddc1e05bbdb46987f6df685087abd2bda48026ac9e1"
+    },
+    {
+      "bytes": 233376,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8397f643833a53010e37080c1097e310080e32c8a8def55cbb0ce1b766c13b64"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4000b6d5fafaec6d6124d54e5d35d6bf2ab162c0f6e57f29706fdcbc4bfecbca"
+    },
+    {
+      "bytes": 74594,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "222874293272dfccaa293c65ddf048fc8502f6c175b853c3e6f29e7e74fd914d"
+    },
+    {
+      "bytes": 408842,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "66a626c73c163900cdce79afc88377224c43c775fe666ce717d40eb4604f47f9"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d68369804bd01069fb1f8501ce249155bd31f22de52a9d9ab70024eaa5c5a409"
+    },
+    {
+      "bytes": 74504,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s400_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "75b0f54117782c82992a6e52b101ea6b47a0584e51c2c126377faa0327da5535"
+    },
+    {
+      "bytes": 198960,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "43e3f45e5cc346fa7339afdef02b74032e1b9dfe4db1fdb9117c2d8707843f77"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "92f1761a6140912cee5b1009e13d87df3b5df92fd12e7b2d6099e11efd6c6ab5"
+    },
+    {
+      "bytes": 74704,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "598e96018ef9fabf5796fd12c7e139a0422f4626076ecf86f5717760899c5e52"
+    },
+    {
+      "bytes": 233785,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "26090f446640ac62cd1eb3d563e531efaa34500fd1e8e3048d797a805353ac8a"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "15df9b5b79f286ba11e4ae079641fcff6076835c2087be07b04dc7226a18a8b6"
+    },
+    {
+      "bytes": 74633,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "7d991443c8ea83a05f380b8f231b24e02735d847b04c5bc76c9d237f25fd086b"
+    },
+    {
+      "bytes": 409193,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "eb3622fc0ea8ed7478d15e7aa9bfcdf65da82d599c18b15ff844f0f729169a18"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "35a902d97dfdb84eac59c1d56f4677335ccf93d0d3ddbe14830d613107f4e506"
+    },
+    {
+      "bytes": 74531,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a02b279a8d81d5080bdd1eea47f5c27cf3654a5c23f79946695a81355f42e3d3"
+    },
+    {
+      "bytes": 199425,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6113f80c627584148005c4307abb9b04bff42f0a6872258a11f598cd4645f2a8"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "dea6780ca39cc89271ecc7bd115d02a6b2cece86836278cb8ff452d304ad763e"
+    },
+    {
+      "bytes": 74686,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "344005502745d11751ad0b4c7f7f3107251e2e843ad93e52aa898ed76e3e26ab"
+    },
+    {
+      "bytes": 234322,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "11f764e82e444caf62c9431ab56ffcb0f9b9c7340e62119a13526a01475f805e"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3e9eb958360899a9e3effcb181d6f93d0223c46d55ea4aafa8477e5b574af048"
+    },
+    {
+      "bytes": 74556,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "369ae34ee42c49d03b57d219e3411d976f9a8a1d28185d0062075b49f9e4e447"
+    },
+    {
+      "bytes": 409832,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "97bd98ff6b5f134a25e08e569556bb8c5ab49038ae85432e5a459107360c083a"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "0652284d241bc2bbf2fee94c086c82ed71cdde053c93dcbd190a2c3318c2c2a8"
+    },
+    {
+      "bytes": 74504,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s401_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "75b0f54117782c82992a6e52b101ea6b47a0584e51c2c126377faa0327da5535"
+    },
+    {
+      "bytes": 199997,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "3637e0afee455afa8cebbbbb545f47414edc75304992c1dd28d710835cda5659"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "285ade4185d3b878d7a23d23ef94a5fd23b5aa28de65fd0fa49ea638ff549c7f"
+    },
+    {
+      "bytes": 74653,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "d8e2782960a84f8f514e265a8723ad05da4de24017fef14098e0b8bd424acbc8"
+    },
+    {
+      "bytes": 234836,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "888ed620baf8ee12ef31c7415e192adebd13f64c503764164c14a0726018d559"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "c51e4523a534ded3855260fd6511008591707aabddec09114ca9aefaebeef194"
+    },
+    {
+      "bytes": 74576,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "39c4b7ef5032416d16df099e8217d5d8fdaa622801bccf7016c13f0cc89eb4e2"
+    },
+    {
+      "bytes": 410184,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "982b95157542ec60cbb4406d8cfb7acdfb6abd894d34a3da8178493d15e6c8f1"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "18601ceebb86009f4254fd58af57f94987bb088796d76e74c987c6f7cf9b775a"
+    },
+    {
+      "bytes": 74531,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a02b279a8d81d5080bdd1eea47f5c27cf3654a5c23f79946695a81355f42e3d3"
+    },
+    {
+      "bytes": 200489,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6480fa9ada9570e536458fb37bb0e667fa775ad01fad00a6f35b3d2a0c495c4c"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "993b061519600b1db5262e32ab0cd532d90139ef693a57213115e24ad568a9ad"
+    },
+    {
+      "bytes": 74576,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "3ac4b5b010eee0a705c80168e7028947c6418de28f98af10b828797806427060"
+    },
+    {
+      "bytes": 235318,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "aace0abc08ffa9dd2a2aeab8c54b9a480c9efa891bf03855c40759547ff98dd3"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b0b24d0e8afd9a0fa926ee5febbca6eb14e7016557175e9996139e139da2475c"
+    },
+    {
+      "bytes": 74618,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "731b66f649c6926e9e4e4c51349b5e488f5e2a00aefcc6efef022bb574ee9a31"
+    },
+    {
+      "bytes": 410823,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "53917a3ca3301b7f79827338ee28c8b2032203c415370f7d96dafad0f36d7421"
+    },
+    {
+      "bytes": 50948,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f46fc2909d8db612a5c506f9710823814ce0b1a52e8601e128d689d9ed6bcbad"
+    },
+    {
+      "bytes": 74504,
+      "path": "research/e0_e3_20260915/e2/pilot_analytic_fixed_b202_s402_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "75b0f54117782c82992a6e52b101ea6b47a0584e51c2c126377faa0327da5535"
+    },
+    {
+      "bytes": 200711,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a7b12dc3f7bc99b27e8ba1b645fd884dce9d1a670269f1aaca694e4530f7478f"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "263a9a28a1efdd2c00c6cd3c1f6e230d16f0788a4242f3be4f023c9a9ec2aece"
+    },
+    {
+      "bytes": 74644,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "fa66f6194a6a43c87f650608c68b356718fe28147918614f13f485900ec83cd3"
+    },
+    {
+      "bytes": 235563,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d518f2d534136524390472f475fb95dc8e2b3d553fff48fdb3c17c829d9e9904"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "277662bc9fe1b81f9a0cfcf9bba77b5e66286d0afad499f91660ac32ea67416e"
+    },
+    {
+      "bytes": 74652,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "6c72c886a39864cc143ece8bacdac0a9b54511f8953ee1446feefdf25026be73"
+    },
+    {
+      "bytes": 411170,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "65aef0fde4b7647287664b499ce984de35c080f800ce1ffab5a3333bfca592b9"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "a97ed2ed46f04226f30fd4781aa7459cc1656988e6896fd19666e4de0fe22c12"
+    },
+    {
+      "bytes": 74525,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "aa80b7f11be37e05a14f290cea8f025c94be398054f99be5186b119c36f6fb79"
+    },
+    {
+      "bytes": 201106,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "b93a144770a55305ba38eda2ca6e8c7a968f6ca821585a73c92f1f57b5884292"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4120e7b074d05431517be896e61df59a2f59deeb033b896aac819d074a5973c9"
+    },
+    {
+      "bytes": 74686,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "821bda728e5d22f37fdefab48eb87df3938bb2262fff0220030340d022287d7f"
+    },
+    {
+      "bytes": 235957,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "58ca073304873db4af0ababcd908ba1b5197ec0f88f42127e5260da9e92a44f6"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "9c33812b32c9469cafdcd778f12c18b7cd497e4a1b8ac77b49a01749e7c4b3fd"
+    },
+    {
+      "bytes": 74608,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "1e9e1bab18a33882b963e1ef5d83461a119c931e07cc878457951c85291a446f"
+    },
+    {
+      "bytes": 411599,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8c8a8cf2cb4feb14b92bc542d4747804c860d6893af28726fdfd042c28c8784d"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "8ff9bcbfc50e4f2a11a3012ccf3c1355fa505f2b77a1b82b3c2da5e6034f9542"
+    },
+    {
+      "bytes": 74572,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s400_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "578ad4ffa1c51aa0c18b8ddbab603f2b8e9ad8352161e529299a8a51f4516dea"
+    },
+    {
+      "bytes": 201535,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "ef3073a75dbdf2b4d9cd71f8851d2d2928145fbfad55bcfaf7c0266b48347d5b"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "8cfb52e23b4921b763a4fa1084e06e16793a4cc269a1524b0f45013431b38836"
+    },
+    {
+      "bytes": 74631,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "d1e326cc930752312c73d96cc23b20dee4431c619393acfd46e9d4e4ec71a97b"
+    },
+    {
+      "bytes": 236504,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e42ac791ceb7b7b1c24be3f4074f19307985adf06e92c346d7ddd3521cf804e0"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4a5d9e80ec560fff72fa146360a93f87003220e1276593cd9a64a1a0b04970e0"
+    },
+    {
+      "bytes": 74645,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "449717fcae6c540e7fe3c70714b69f46cb3a8bf908a2cf3bc6f1bfe9d7f24c70"
+    },
+    {
+      "bytes": 412028,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5707f91b6cf79739a160263d131982a596bae64615f6fb0800b7cf42f3094379"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b4e0d8fa0f67ecfafa945181a89ac65c9521716bb71837851c09b9362950fbf1"
+    },
+    {
+      "bytes": 74525,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "aa80b7f11be37e05a14f290cea8f025c94be398054f99be5186b119c36f6fb79"
+    },
+    {
+      "bytes": 201971,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e77547668cc099fe98b0ea219d72a6d12a614b8dc12ab43a5f94ff234eae38c9"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f72f07ceb247f759cbbd01f1278b7cb1bd1f2169ac7cf7a5138aad80773fab40"
+    },
+    {
+      "bytes": 74647,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "8051adc024c138b64e64191587b306f77ec0d6b26ac06aa5bcef02b104c0857b"
+    },
+    {
+      "bytes": 236835,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "da503f15bc2b0c83cea4e8ffeda2bf6a42f9c0f3f8c4f332c3f51e7baf43c341"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b0f917f62aaa1cf1d7c8c0e1970a352b9fbd6e5153d7c24bfdee36ccc1d3c7db"
+    },
+    {
+      "bytes": 74596,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "fa1e6546d589b83269f5e2a1dd74ca6470a51dac4d46e4a111cf6e45e8812c3e"
+    },
+    {
+      "bytes": 412457,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "3e5618c3201eecf289298ee71d744dfaa0ae57d41b2e988f1a6c059b310fa1d9"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "0b8fd668be45e5d882030bd4e5a065a23c49eac2a85921bcd9d929ed09ffc957"
+    },
+    {
+      "bytes": 74572,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s401_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "578ad4ffa1c51aa0c18b8ddbab603f2b8e9ad8352161e529299a8a51f4516dea"
+    },
+    {
+      "bytes": 202468,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "797d969034a5c391f54a5029d568e5d4505f7718ed0034dd3dec9135310e54e9"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7a3b6ae8129219605cfdd6f887bdff387f6296d3261f083de0f56268ec068c75"
+    },
+    {
+      "bytes": 74659,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9943ee260f760cb815a45877ee9f93fb3ce09f8447d7b0b8fe467fb8cbc4e347"
+    },
+    {
+      "bytes": 237295,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a9c75a0ad533e5dfae80bbdb4a31e4ba3b2e3de8200500c86668e888f8a8f4cf"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "230c2c6c3f28202b9860c4ea798a3e0ce685b0c62e30f5b148ed3601b996fa5e"
+    },
+    {
+      "bytes": 74645,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9e24662b50b88a9a38f59ba27a34cda48f7b0de0433baf0f6a418263fde87aeb"
+    },
+    {
+      "bytes": 412886,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0fc49ee3dc0d300598800342caa2cf36027f582a65908883cecc6ba33d81454c"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "dec8b176b0fd0df0e0f7259f5c5d607c56c40a7d22b9dc3730e69b21685c1994"
+    },
+    {
+      "bytes": 74525,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "aa80b7f11be37e05a14f290cea8f025c94be398054f99be5186b119c36f6fb79"
+    },
+    {
+      "bytes": 202883,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6d531478d58e9c97ab77aed1174b7f3c2ab17a3eb2a4cf830d7d201fb61ba1da"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b5bd2f31968afded5b0a46eff199ae2049104ac0990a25507adfec3d6a873c9b"
+    },
+    {
+      "bytes": 74664,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "dc2911b749bf37b9548ec931e0dfcaa62e4bd126201fe1e2208fa26cb6201fd6"
+    },
+    {
+      "bytes": 237718,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "52819632a7e3467cb6f7b15d9a332577c2d39dfbc14aba9236f4cb01e6395a64"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "981d20486c56fcae9259c95d26835fc9ab546d533d15b5ab980532c24ca4b62b"
+    },
+    {
+      "bytes": 74670,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "975c04a9ec22fb2573746be33c90df5affc069dbd70ff9b93812c2f21da1de7a"
+    },
+    {
+      "bytes": 413316,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9f0cfc449673172cfbe106f7053c9db92886733456f6f799d5461394c9acfde8"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "c79fd3a62dc1ebce363a7fe82599616beeaf276bab82e7002914b0f10be24c1b"
+    },
+    {
+      "bytes": 74572,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b200_s402_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "578ad4ffa1c51aa0c18b8ddbab603f2b8e9ad8352161e529299a8a51f4516dea"
+    },
+    {
+      "bytes": 203425,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "336c22fd3545f0563f2b5478967438696e1dfbd25ed4a4d8543eee065b3a847c"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b3ed663eedb9d77fb4eec1df9332e84f116ddaa33b893c0bafa7364bcf966656"
+    },
+    {
+      "bytes": 74641,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a8e420a185d9aa5a702071789e0b7f721302d099bec7683d7dcd23deab1a71fd"
+    },
+    {
+      "bytes": 238329,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "1414929788ce7a43bd8ee71821ceb2b95d1e23abf09545d3202b7ccea2df4d79"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f3075fb405b9fece4abd80e6f4a3d288cb7660ce3fb26383fd8e9d95db4cbed4"
+    },
+    {
+      "bytes": 74602,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "34a892e4eea74334d871337d77782f1df70f0a8cfa28c7b5d2557986eb4ec77a"
+    },
+    {
+      "bytes": 413864,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "de6943db034f49654fdb36f717f9fb04c18177dcde16dcf0657ef8b07d091f6f"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b6656692bb3bc61d295b9c25c921609c9ce761dda2c01a850218a7611512588c"
+    },
+    {
+      "bytes": 74521,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9ec5999784ae621caf2667af9ea1dada1e3feb3673087128100e355b077631da"
+    },
+    {
+      "bytes": 203868,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "58a665447d8e4e869aac615a4a33866f85827aa331d97055cd8832a735375acb"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f14a29fede11a75902bb1aaa9b11614949beb4dc4ee6dd7bbc21e86345b8540b"
+    },
+    {
+      "bytes": 74687,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "50c8b606d97bab88654cdd0dbfd3062286339725fa77c7d7bc6c62f0d9675522"
+    },
+    {
+      "bytes": 238843,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "f7948ceec3ef451a66e5cb8e9d928ded100f74270a6179352359bdcd991e8f75"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "53afb660806bad4c2978ca1a808fae6a28770a21b2ab2246a0393708ecd32c44"
+    },
+    {
+      "bytes": 74587,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "d4145366588f192bb6e95c9a4dddcfc04bb0edd024d8c059c6df0ff7a1887324"
+    },
+    {
+      "bytes": 414312,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0391dd5e6e5b022582baea913ca035fa03c392ab4d61349568fb33836bb04ac5"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "43e414f7b421555933dec52131333fe7fdf3a0176ea6af388a3f9a56ec7777d4"
+    },
+    {
+      "bytes": 74538,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s400_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b1362fb01d41be29f195bf5bd01eaa4058bd87c06ce9d8eb4bd50556298a4495"
+    },
+    {
+      "bytes": 204393,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "19e6b74cd7350b0eee79e620bd142fcf1d90d8fc9cbce252b2c29d595e652f54"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "9355bbf5d692a964c19a5f79f9521deab10d6b8d7b869735bbec618f88b930c5"
+    },
+    {
+      "bytes": 74611,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "c26034a1b5ea0970e83069fb4de97d19a021ed7ac946bbfa8a7010914993be42"
+    },
+    {
+      "bytes": 239261,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e5e006f061109c2dce0d310b9249d565a8e5c15aa4ad72fba75f0bb8a9b7d52b"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "ee4ac4f0e065e28227225c2fe255cad90f0acf8e4260020603b42e61a07177c2"
+    },
+    {
+      "bytes": 74622,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "69ea97feb4d3d44d5ddffdaaba0b59c76a4f9f962fc095488cf68ba7b31a777c"
+    },
+    {
+      "bytes": 414720,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "c029c9e7ac034383131be251314bb1e006e9dfa7ec4bae5b57139d12880639e1"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "30e606c0d8e3acc3e44af2223436d717b2b5a920dd6de1fdd4e4c9ad816e512f"
+    },
+    {
+      "bytes": 74521,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9ec5999784ae621caf2667af9ea1dada1e3feb3673087128100e355b077631da"
+    },
+    {
+      "bytes": 204763,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "cd6b45276b273116edc51815ed9a6e1ef105bc5e2cedd2bf41b366ae1ba682d2"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7cf507a5746d9d16f6f4a2b83861f09d8cd4e9c47b4df2492f690aa80a8d45a2"
+    },
+    {
+      "bytes": 74611,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "5f284370109d01fd40d06b20e91e60ed8b48ce246d7fc4b48a76b56dbcc0f662"
+    },
+    {
+      "bytes": 239622,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a20edc53692dd7c1a85c9bd4fdba6f796f03365594e645652ba4d54f9b9975ce"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "6db329dfcf96a0ce65834dc5c98b30dd6ee8e3ed6b45480ae494aeb80d34007f"
+    },
+    {
+      "bytes": 74627,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "cb2b4e252727bce99f6d66b8083469a8ec050fd070e593e133aa2784fb7765e5"
+    },
+    {
+      "bytes": 415169,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "554cc49d00d0f5b0599e84148969f62b0811694b80b592e612717d654801bc73"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "6cadb1db6e18eb69f3e47777936d9a9362cf522fbb4c883ee6fc1fdca87ddd27"
+    },
+    {
+      "bytes": 74538,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s401_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b1362fb01d41be29f195bf5bd01eaa4058bd87c06ce9d8eb4bd50556298a4495"
+    },
+    {
+      "bytes": 205116,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "2a8ce1908420be0d3bcef41d8e168a258331b1854ab75b874be29162d3bc85ae"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "92aa901b41e6186ba278808c3fdcf9853a642133d292ed7065c9491bae3f2ec4"
+    },
+    {
+      "bytes": 74679,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "68526c83df024db18695c02dc05c3b26cd0d6908d8767b8400e75eb98a5a5d29"
+    },
+    {
+      "bytes": 239993,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "4d67b3daef47d38abdbeb5973ad2ba7cfdaf39e21eafbce4417a907dc0a4b487"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b06de4a13ca9b930570f4015252788da9d1fbd34e22d1c599a3e0f0f3126be60"
+    },
+    {
+      "bytes": 74638,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "2900ae3edb42f648feb33e01ca895409be5b1ef68cb8b20c2065bad3d789895f"
+    },
+    {
+      "bytes": 415580,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "bbe60ccabba5862c1db926af44cfa2c4d4dd49004d83f9d26b7dcf737f6b108a"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "03160690c4d8dbd99d04d3c6d69e6255412f50ab0b3bf7850ffe2de9031de9c1"
+    },
+    {
+      "bytes": 74521,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9ec5999784ae621caf2667af9ea1dada1e3feb3673087128100e355b077631da"
+    },
+    {
+      "bytes": 205636,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "7ec9f7803f83f2ed460a2762caf93bce3e061242c5af01a43d7bc83bd00ffda6"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "5e570eef2f1eaa1353037ec8819b2ebf48cc3672047aa3c788da933a1e70c52a"
+    },
+    {
+      "bytes": 74627,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "1bec54d673a33bb83858310cdd927ad00dbeddd426a81dccdf2d6c4a80506857"
+    },
+    {
+      "bytes": 240552,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "81d5b072ca9776bf9d5d345d621e6e20e3422289dfdd51da033297173bf58bcb"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "a9c160e6a584b02a8f3ea725ac7b7c1d1cd261297316277c6dca9ceb4c54645e"
+    },
+    {
+      "bytes": 74639,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "df49a3682c6e6234ce60eb616dd158f7565d20e9e3629a420f34a61a681cfadb"
+    },
+    {
+      "bytes": 416027,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "773ef9cb3442fe36d18579808ed632d8ebb8013fd13c60edd8521b77f387469e"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3bcdca12e46f518e30b215e1893aca7ae4c4a1c0db908efefbb10c7df9e0a95a"
+    },
+    {
+      "bytes": 74538,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b201_s402_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b1362fb01d41be29f195bf5bd01eaa4058bd87c06ce9d8eb4bd50556298a4495"
+    },
+    {
+      "bytes": 206025,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e3d04c11d6267720256c71d21665eca168d247c802625961ea399bb77e9d2bf0"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "16a1f80d7bbf8e97581423a0a222224177aefc2b9c587620e85a6fdd54740858"
+    },
+    {
+      "bytes": 74703,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "93f9dd899e2634fb1a7c91a70f2df3aff458b81df1ccb3e4aa9aa17065fd6352"
+    },
+    {
+      "bytes": 240887,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "fb0a47625afe6f1a1bb61c28312348db88d754273f1ef2230408687e8897f20d"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3df73c87ae4e875bd55272baf9db0e66bd7e27fd946cfb6ddee8eb404f09e3da"
+    },
+    {
+      "bytes": 74656,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "7ef19c0115b70abd713a444a5932061741d009b863b4680c7ca6b12a021269ac"
+    },
+    {
+      "bytes": 416482,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "096a95fde1ab6b2f873b99600328f49f1e29d59f41a276c9a4448b65ced1b1b8"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "6a6c6e882bd82e084d25140ce81836c2a2085f6c8e2cdc31eb4b32a282e84245"
+    },
+    {
+      "bytes": 74538,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "36b17193cd075c08358616c14aa8504de7d030a5160c7a287771267d6031548d"
+    },
+    {
+      "bytes": 206466,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "c9b5fb3e56bad61196d04c4094ee047e5ce189e3ad72723321c421516732a740"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "1a2a097beb492c25c66a097cbebf2374763cc74c3c1da95619db95fb0f6405f4"
+    },
+    {
+      "bytes": 74703,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a49dbcf228657a4f6bbf09b2059f3535fb5a399a66b1f1e19b55d89a998ca296"
+    },
+    {
+      "bytes": 241368,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "35a890c914d22c8247527d9e47f3edd079310487e1200d95b8dceab90967811c"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f20eae36b166e5f4245a62f1ac3a81a525c4328de08a3d4e0fc4301f7dc6d97f"
+    },
+    {
+      "bytes": 74630,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a905a6d5de9efbe32fb58febe147a8a8ac75af2acbc7b4c38dfec7ec900139d5"
+    },
+    {
+      "bytes": 416789,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "f791a03c66e2f6cca73ac6030533f7e4638239e479d983c4c78a2e7b7c8b4732"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "23e96476e23f497d959dbacd54de926d9ce4bcf6e7ef1461076be537f19ea3bf"
+    },
+    {
+      "bytes": 74545,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s400_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "73f9871040cbec5f784b02c44515027f6a74f134ef2daa514e0f23410cf5cf61"
+    },
+    {
+      "bytes": 206811,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "29d79e4b373697e42ea19264b0cb10b7f323c1c11f9a7040ac7927738c1f8c14"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d0a4f5666c521d2543225451cd90a2137bbc755395151cb04d36dd7e2d8339c1"
+    },
+    {
+      "bytes": 74657,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9317cf323850f1f675a15f5ebd04826716e271580c71124f3da408b425d53865"
+    },
+    {
+      "bytes": 241774,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "fbd0114ebe89df08bc61de134caaaa2a0da9f62d1240131754d381777c2af319"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "0addd83df05bce6030412a37dc6e5c491293517806111bd6741ecc8429ba4219"
+    },
+    {
+      "bytes": 74671,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "49a6492ac3da096c0c003f888dd8cb402758eaf7a86ce0310674c78973cee3be"
+    },
+    {
+      "bytes": 417340,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d84c0fa34739a032e1f86172cf5f57c97d3bb3587cba3c886eeb09cb903599eb"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "8a46249b95bb57a32e39e0cdf561c5503d011c2ed517cc12ed2459dbf2d974df"
+    },
+    {
+      "bytes": 74538,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "36b17193cd075c08358616c14aa8504de7d030a5160c7a287771267d6031548d"
+    },
+    {
+      "bytes": 207394,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "54889762b45330ba51bd2c59c16c7aaec0db2e0acdd09dbca20a1ea432953de4"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "be24de79d5cd9fe9082a9118f67142ad541b5ba7c876a17ad4cd9a603cebf197"
+    },
+    {
+      "bytes": 74614,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "2c84620d1be6a471727e0d0b420da8afd627a0309a2cb142b2e4e8aaaccb78b1"
+    },
+    {
+      "bytes": 242248,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "f742aec042e12f6d1dc03e9a1efe3b28db345900f7d47242c035ee89cce3b9cd"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "375e1f369fe5bee990a57e83311f56f8d90c4a680e700879d0a047465d83587a"
+    },
+    {
+      "bytes": 74659,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "bd20f279231cd666c9ec6e48d6871882ffad63a1ce8041a01dc8c15876fa9bd1"
+    },
+    {
+      "bytes": 417649,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "69bdbd58cb245e74a56d07a20d675388ee57b21aecb7c23b1e2cb4949a6e7f7f"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4dced68d6bedee77e4c6bb0fee583b926f9382424b5b9d8df15580a54deeeb0e"
+    },
+    {
+      "bytes": 74545,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s401_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "73f9871040cbec5f784b02c44515027f6a74f134ef2daa514e0f23410cf5cf61"
+    },
+    {
+      "bytes": 207741,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "725b00df71b4308d5587c59b7eedcb90ccc03c787a842ab63656df9d01c099cf"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "5fc39137decb0f4929cb882ec81fbd1f78560f8c2c7427ceeb40f8402aec1236"
+    },
+    {
+      "bytes": 74662,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b5154215e4e51fc1c519474c894622019460adbeedfba0feaf7c615e63ad00a1"
+    },
+    {
+      "bytes": 242660,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0882167b6b7f3781c4dcbca7f4ef7429ef2ec4d7de3b6cd252c05c405ebac29b"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d644af4c4ac452985a7f9885a7479631697adb511057149bd44959a9710b2437"
+    },
+    {
+      "bytes": 74660,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b4253809e7f0d5cdf4635446ced9599b6eb81620c7a40a03e4d0c9dbc783a845"
+    },
+    {
+      "bytes": 418197,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "cfb9b6c0e98de9b1564e6f341c155c187e67222483578975da7adde9a5281f9c"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d52f2bc30b8f8861a1b92086a295ec8ad970ad277ebe312347fec495fb08e6ae"
+    },
+    {
+      "bytes": 74538,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t800_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "36b17193cd075c08358616c14aa8504de7d030a5160c7a287771267d6031548d"
+    },
+    {
+      "bytes": 208235,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "2053c7d5fb79f38cff4f12d1e78e03c07fb0b1488e388d56d6b82b1c35fa0f2c"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "8a2a17bd6144afc5594d8efdb339c56cdda68724fd2f8323a673105183defce0"
+    },
+    {
+      "bytes": 74707,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9a9363bba0773ecdb213faa74c820d29a208354ba6e8ad1a52bfe8d887a5b426"
+    },
+    {
+      "bytes": 243137,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9d0a4cae42a464bb0ebed27e3df8e77fd288797b8e3ebffe0e03a3ec1203e382"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "831d48079c71ed46c015ff994222c8cf3f88462568c3ebcd282182979a7802f9"
+    },
+    {
+      "bytes": 74675,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "cb0188465b2201c30d1877d9c231439e3f66e4efcb54d19f344058c38009d64f"
+    },
+    {
+      "bytes": 418507,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "1a62ad76ad04f5005702c206a3467861615d051e8bbd8b042021c82b4b4c3fe4"
+    },
+    {
+      "bytes": 50973,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "016151943058f41835203248630c2abb8a454fb29ea2507acd7ed9509f422e39"
+    },
+    {
+      "bytes": 74545,
+      "path": "research/e0_e3_20260915/e2/pilot_rff_b202_s402_t801_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "73f9871040cbec5f784b02c44515027f6a74f134ef2daa514e0f23410cf5cf61"
+    },
+    {
+      "bytes": 8511,
+      "path": "research/e0_e3_20260915/e2/pilot_summary.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9c69647bfdeddef503c441346d16fdeb14741abe81c9b903a87758e4e2bc69d1"
+    },
+    {
+      "bytes": 185429,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "dce359012a9226fba6d066ce8a70a4623474c53c36e4a53e40eb5e204b8763a2"
+    },
+    {
+      "bytes": 50959,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "76522bc49027c765d11a7a58522ebcb3a534ffd3944bd021b94d98bedad02209"
+    },
+    {
+      "bytes": 70646,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "0c5b419a162d8a1faf8500751e6d6156e14355decb86bc0089586c63105b51a6"
+    },
+    {
+      "bytes": 220298,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "ba745f9dfd40bc313ffdce2fb38ad78d973e9968691f38d81866e0f271cb2599"
+    },
+    {
+      "bytes": 50959,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "ea06d637136c71b8a04185e6050bbbcf0f6d1632b205d88f83be1b2690adfd25"
+    },
+    {
+      "bytes": 70682,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "2b89e67f9055ca71b6b1911026a332da25a3112ff962d4b0af0f14503d378d5a"
+    },
+    {
+      "bytes": 395728,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "1a3b1cc9d04ff272ba1c2348fa6a3b2087dd08d42629075292d4c64b5fa87e7a"
+    },
+    {
+      "bytes": 50959,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "5d2783e56b475488d0884a08a8ef75343a2e0d745e0137d16ccd1fb433a7c23f"
+    },
+    {
+      "bytes": 70660,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "aa626a9cb9d7b3dd50e212e292f666b1020248d3370d940dc5d8d1c1d015d5a4"
+    },
+    {
+      "bytes": 185878,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0b70d8b1148b0e33c165d1bd53fb03d6e71bfd651a75c967ec0b5b176a0ac826"
+    },
+    {
+      "bytes": 50959,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "569b3a0938a2ab5e516bacbb570fb4f423519a3390f19fd98e5c5cfadae12a20"
+    },
+    {
+      "bytes": 70715,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "5d93a036c5387c5f2ce8f9f8bb8187636a2791abc79f3d7147eb57c46cc1bf42"
+    },
+    {
+      "bytes": 220732,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "79d45c9980d468d5ca35d698432ed7dba3ecd542789606dc48e8220b947c96ed"
+    },
+    {
+      "bytes": 50959,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "fa6c913d5d8a35ede4b857517368cdbdfc8a3ab40a6ffaf20dcf3d2523f4bc7f"
+    },
+    {
+      "bytes": 70726,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "1492cddc74567341722d5e8298f686c7c90b4ed015810a7d7d8a27a240ef08d9"
+    },
+    {
+      "bytes": 396207,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "48c8f4dbd7bb433610e71ad5d2a10959e8d9f7ebacdeed71782f873ed0f7437a"
+    },
+    {
+      "bytes": 50959,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "6cb042f5a93f2a940be2dcb995a0f6308af1672f45489b074ab2ca96438139ee"
+    },
+    {
+      "bytes": 70600,
+      "path": "research/e0_e3_20260915/e2/screen_analytic_fixed_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "0ba5ce5e25bf5d12ccfa70693c8474a507ac8def05822b5a5a5218b8f09d3fa1"
+    },
+    {
+      "bytes": 190822,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "56df1ddc778496b03a78ba6f7db939f9d8d1bda7bea918899a732d918cb0b1fd"
+    },
+    {
+      "bytes": 51093,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7f66cbd4950a78adbc33b5ae7688b13961d703d3164339b838cc34f7c9393314"
+    },
+    {
+      "bytes": 70656,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "def25b96e9ee0dd06996f1ef0349ff074a228a5f0cb1c52fb299f1348cbc2b2e"
+    },
+    {
+      "bytes": 225460,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "c64be411e85124d0ece8ac5d47afb38a41acfbd5c50b62f37935cd8d102a9919"
+    },
+    {
+      "bytes": 51093,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "51fc01afa4a8c3ff2926027187c0d408e274a6812519a62a5063345b9e161be6"
+    },
+    {
+      "bytes": 70612,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "22378d9a16605fd4d3079c35026961795006b58e001ef96f50fb6d80413ce958"
+    },
+    {
+      "bytes": 401278,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "48d0efa2d2653d9115eb3daf6f6fc33b117a36eff980a9587294cbd8093649fc"
+    },
+    {
+      "bytes": 51093,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "6aef4c39b61bf7a9459cadbe7f9794c739c81a721596e4e3c0c5c0b4982f2bd7"
+    },
+    {
+      "bytes": 70654,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "e94ddf884ea2e2e037a299837fb305a5256216320fcf6fd31a91db70f2d88386"
+    },
+    {
+      "bytes": 191181,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5610f7debf12dc87007e639349d3b5bcb07fc4899830ec4a85b5fec8ec2c6d60"
+    },
+    {
+      "bytes": 51093,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "82929ba08d6ef128a92512eb5b19f5b127ec23ecfc3b9a036f89afd9f5dc442e"
+    },
+    {
+      "bytes": 70642,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "fdf751d06ccd8e4760076d7fdb6baccebde971d1af957e20f3eb6207b86ae710"
+    },
+    {
+      "bytes": 225884,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "d8bb76d1e21fd6487643c1e49c7b7c6bc67d2ec6a8d7a008adb9f0686e76519c"
+    },
+    {
+      "bytes": 51093,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f89ecf341753cc953cb7319f24ecb3275541dedf151b1f98a5e6ea4890a63354"
+    },
+    {
+      "bytes": 70640,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "8e45477f8cede2d34a5287dda1b81cf055e4107ec27f6ef0d647a952347179d9"
+    },
+    {
+      "bytes": 401728,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e45efd54dfe6ecb97b2d783bf52386a417dcdbd60d90d9307491876b9a52d620"
+    },
+    {
+      "bytes": 51093,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b2887c2bc60ce06de6bdfc6edfd519610df52cbf7fd9d592b96e6693814b7e5a"
+    },
+    {
+      "bytes": 70587,
+      "path": "research/e0_e3_20260915/e2/screen_learned_conv_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "c75082a135f4c81e9237b8cff918beb97f3e41605461bf5dbb1b3c10903d730b"
+    },
+    {
+      "bytes": 187350,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "4c7aa018c9649d9ed4d1d83093490fa0a384fb17bae713d59c53e2fe8ed3de9d"
+    },
+    {
+      "bytes": 51069,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d9e5cc4fbe912fb265f3cded51596025f06340d733cf553058c2dd551c806024"
+    },
+    {
+      "bytes": 70777,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "e263256fb0f529ddc38f937f61baa755505fcd0f7d3d93e823aa119aae5f8993"
+    },
+    {
+      "bytes": 222119,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0c7dc5dc984444e96ee9244e6aae23a135d17d614e214c1338de2252df7a86d9"
+    },
+    {
+      "bytes": 51069,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "86d0f859baebbd371b3807bcf2990029aab92bc14b6f4cd45321f94ab808775e"
+    },
+    {
+      "bytes": 70658,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "836448eeeedbfae75af2da69b629be341cf99fde126074a3ec95ad844e6ac958"
+    },
+    {
+      "bytes": 397763,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9fd974656cd0bf9feec5af7414d05455cf6d8bf3820418f0d670a034151196c2"
+    },
+    {
+      "bytes": 51069,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7cd767cc06811525268c87e8f2d64e0d298124522eff9336726539e36daf0241"
+    },
+    {
+      "bytes": 70695,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "9a0f38d65fe70dd345e077d01fcb8ad3ccd3241985677c85b162fd3c578a52ce"
+    },
+    {
+      "bytes": 187811,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "2fcbbe61429a655c35593a9fb606f497d9167dc712e836653393158465a2ee3a"
+    },
+    {
+      "bytes": 51069,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "bb5414af1e34f356968c04c7126451e5e355b46e4f9ab3ec42e66cfb565d5a1c"
+    },
+    {
+      "bytes": 70744,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "0d4ae9afac5c6ef3ee0d073e61a4ce823b0088eee3e0f25215d98610faf987ce"
+    },
+    {
+      "bytes": 222630,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5a79d06b36092c360ba0f41de1074672b8487c0ec91307648ef8e95f87cba35c"
+    },
+    {
+      "bytes": 51069,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "b15a674cb6a9b7ffe3c143c125408751834bb6ccc793c514f560e9367f3e2e61"
+    },
+    {
+      "bytes": 70721,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "ddbd1b4062e2758b146b36742d7d535a2ca8e579dc55263019e607c78a5efebd"
+    },
+    {
+      "bytes": 398258,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "0738688601e2eaa3e31e8696892e71deae31ca5b60230411e6379e8e150f4f5e"
+    },
+    {
+      "bytes": 51069,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "a6c2ebfe3ecd36688ace772199892217426f18e2f9283d6d49b5f63eb95cacca"
+    },
+    {
+      "bytes": 70679,
+      "path": "research/e0_e3_20260915/e2/screen_orthogonal_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "92fef637d165d6d698881a09a393e346a54d2ae87a58e3024730d89db1fc6f21"
+    },
+    {
+      "bytes": 189759,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "9ea6fcd53379497a65116e54d14f0537a58340c7e448d51a84d9c3efd4f0ef90"
+    },
+    {
+      "bytes": 50531,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "1136c1acc96d4b082db04caa60e3a8c5e7cdaeccd8d2d44b05e2eaa9ba8f35af"
+    },
+    {
+      "bytes": 70817,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "8c9b1d674d93d89bfa6423f1b4159a8a71637d9a590958e699c2d9ef1946a33b"
+    },
+    {
+      "bytes": 224620,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a30c964eb129f11108f654dc5d06f295d0af076a85a89202bc33e60986aba5b9"
+    },
+    {
+      "bytes": 50531,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "2d8d1107be006f8eaeea919f66b1d0b5a918c2397308146bffae1df76f3e7b87"
+    },
+    {
+      "bytes": 70764,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "17cc103eeab56be7d4f27d135e205c840f066438ee5c33e202a6d96c2a56d924"
+    },
+    {
+      "bytes": 400320,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e30a25bf0346fb93aeedfc227cd999f92aa91e1dd390e4635483671d92fdb90d"
+    },
+    {
+      "bytes": 50531,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "e8b893afe8e2747328a7590dfff89cf3c301c3d1fdeeca74020964c89ca03040"
+    },
+    {
+      "bytes": 70714,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "d248fb10fb1e12b94755370b8d1e92e13889ac40ebdbf1888123e7ba8cdd24d3"
+    },
+    {
+      "bytes": 190265,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "59dad725f04cd5131bb781274bbdb16971a0b422614017a6da92f8000ea9a8aa"
+    },
+    {
+      "bytes": 50531,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "6901327cbc7feb01776a631b143e1888f48b532645318aac418ac8c6f9954aa1"
+    },
+    {
+      "bytes": 70835,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "dca69c7460cdc0fa752054684b8a5775f7ac9c1c89a6416b10dec1dad6b5023c"
+    },
+    {
+      "bytes": 225096,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6aea88fc4fe9ab53b97d09a634975939eb6f222672c6ee791ec465a7591ba34c"
+    },
+    {
+      "bytes": 50531,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f8c50b188f3829f591ac8a6dee9a4a787db6619d308583e34a9e17c1a2ce83a9"
+    },
+    {
+      "bytes": 70791,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "2df27bc53fdb0789821bbd951345153643982a1f4c47cce2d939ab5655d144fb"
+    },
+    {
+      "bytes": 400780,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "5d103d85241f9d40f07948070f22f6bdd09e1aff6257b99e674c87b55e056434"
+    },
+    {
+      "bytes": 50531,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "58f772a9aa5053d03723aa1914191051b8ae8f59058bb0eb1b5d827bdad2ae1f"
+    },
+    {
+      "bytes": 70698,
+      "path": "research/e0_e3_20260915/e2/screen_polynomial_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "49533996abbfffd3e750426ad056e7678022122a810906fec9119a22d94b0060"
+    },
+    {
+      "bytes": 186400,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8340fda56f2914481eca0ac87270dd46b2d88f4712111a897f84e8302d8f6ae4"
+    },
+    {
+      "bytes": 51081,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "79a1aa7948aed3e9432114bb3a6fe6267a7bba9aa6cc00c44ea571bab062b15d"
+    },
+    {
+      "bytes": 70730,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "775bd65e285cefaa30908059b181f669cca3d3b7efd0544fa2ad5b8d45c55c0e"
+    },
+    {
+      "bytes": 221267,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "378bc321ff2732721eca9d3b95cdcc40ca7458b5b04be554c63a933e7261d0f4"
+    },
+    {
+      "bytes": 51081,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4d298648493827472400ecfe2c97e832350571e04fd79ea0c02a014f2d8766b2"
+    },
+    {
+      "bytes": 70666,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "a89ca73f378447c998ef832caaf3c539aee7d45f9399bdcd431cc32b6f6287fb"
+    },
+    {
+      "bytes": 396959,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "6597d36d08f7e05cbf6c886b7bef5182bc40d6c25b2eab25fff2b42783ea5c8a"
+    },
+    {
+      "bytes": 51081,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "363e07cc7e14602291bab6234af0fd42ecb8cd9dfefcc8985f261f836a590b79"
+    },
+    {
+      "bytes": 70670,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "7be6e1534101904aed4b1538e43e202b6c10040573a1d2480da07354c6e8cb0a"
+    },
+    {
+      "bytes": 186880,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8074912e98793ed56332c3391b147ff7387ceab390119072fa11692eafb6a510"
+    },
+    {
+      "bytes": 51081,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "e1a7bf342188e0b31073962926d287b5c6b7bf489577c83b360adb4a655224cd"
+    },
+    {
+      "bytes": 70768,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "2d33c9dff78251461333b2cfd607d546ae8b16b5311e6a57530d8e46c657fa0f"
+    },
+    {
+      "bytes": 221748,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "b756b4e217257b4f93d39b69555f61a31332b2da60b173ba48cdeb33593a408d"
+    },
+    {
+      "bytes": 51081,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "174e9c3a7edaa7ba2c80f897c2bd57c2519e877dc5dd8aa93045caa11314b86b"
+    },
+    {
+      "bytes": 70704,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "10e59cc8acceeb371afa0e3f227f69107e60ec060f52d4a3a857e7c9efcd0128"
+    },
+    {
+      "bytes": 397462,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8a0b6b8feb1c6cfb690ac34fa7030d55eb05891644f20084f5307d9b7a0a5dd5"
+    },
+    {
+      "bytes": 51081,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "10db8327a8cb5bcba454f850aa66d29d88715ff60e87cdc6b287d1ed3881ebdc"
+    },
+    {
+      "bytes": 70677,
+      "path": "research/e0_e3_20260915/e2/screen_random_conv_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "14e17e4384c22035814e7af6c161c65f4a4d6338204f70486e14c4ba940f82d5"
+    },
+    {
+      "bytes": 189197,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8d26166fe0a1076e4f37298e2eea6a157495348301c9060ffb49ae90d758308f"
+    },
+    {
+      "bytes": 52375,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "a4302d3cd6ab7e03434149dfd257dd80d06fe0138bca84d2085a6cc1ad2b2726"
+    },
+    {
+      "bytes": 70744,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "760d8562df1d18b2b3871606115a9b9aed331aa0338f1cfcad50fce384cc1e0b"
+    },
+    {
+      "bytes": 223952,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "f5dcb2f46bd7dece48e72c31f81c12c38b709446b703f854af19d772228a2089"
+    },
+    {
+      "bytes": 52375,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7a0f643beac8dce69a0286661b1543e485cf87829c09a11bd02de66f388e32de"
+    },
+    {
+      "bytes": 70695,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "fecbc8dcf48d06516931bb397faaddf48d3b8ba23a19ae0b74fc2919e75a44ad"
+    },
+    {
+      "bytes": 399483,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "b594d4c483f3d2336c0401275926b2e8b181b994d58ab5bc71e9275816f8b388"
+    },
+    {
+      "bytes": 52375,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7fb2d2c48d90db3ca2923c6fd0eb59882c15d821dc3b62b70d1b9207ece8078b"
+    },
+    {
+      "bytes": 70691,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "052ad32f47ed3bedd5553e0d0e5db6fceb9ad40d95a3ec0e230270df307a08a3"
+    },
+    {
+      "bytes": 189620,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "a9641544a77ac4715b7c0f0d2867d5c180aaa20d7e1f4f838bec28a48e335e6b"
+    },
+    {
+      "bytes": 52375,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "4a7c3d3b896c9add93289d1192b5239b2931fabab1533a83286379dff127ed46"
+    },
+    {
+      "bytes": 70729,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "95ae85e0717d498d3678585d1a8c8145bc4ea5d778f2788e58c1dd6ee8f23f13"
+    },
+    {
+      "bytes": 224240,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "4be7ebee2b605f460979af2da89e63348d54177855277a92d79f67d3cf650a40"
+    },
+    {
+      "bytes": 52375,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "1ff90877d2b7a6053eee1b25c072f03597b28968a4ae8b676e2f8889d38ebc22"
+    },
+    {
+      "bytes": 70713,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "5280b0dc4dd34f1037f051656862937bb5ab4f67caaa9535ef579ffe5eec92fb"
+    },
+    {
+      "bytes": 399988,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "4215d15b4b3a9a24f2bd6eaab464c796512163709b65921a9f21eeb7c06b4fb7"
+    },
+    {
+      "bytes": 52375,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d4df26e710bd0cf07cb2f4d7216239ed2d4efed2e662316533a5ac503055575a"
+    },
+    {
+      "bytes": 70650,
+      "path": "research/e0_e3_20260915/e2/screen_random_mlp_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "e5118d1a6467ba5d4f091448b965e782560566acb4aaf4b143ed3b1851700ab5"
+    },
+    {
+      "bytes": 188252,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8398aa7c04c891dcc16f9c939f18eeadd9cf027ac04272d5becac11693bcddab"
+    },
+    {
+      "bytes": 50985,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "3036d2733865b761e9ea5e2fb222a99a792d14d89c27c19ffd80c64a65cd4559"
+    },
+    {
+      "bytes": 70731,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "5e4a7842e9f7ae4a9daee62b855cbe12d3bd98c2919cab16d56a8eda911d1571"
+    },
+    {
+      "bytes": 223101,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "e6ad7b307988304cb9b3eb6d3deeecd197cc7bdf12c7bab2829fbd1487bf672d"
+    },
+    {
+      "bytes": 50985,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "2ead17b11adc1da92b32ba925eb0b7676e0c80086dd1ec666211efdf4b9188e2"
+    },
+    {
+      "bytes": 70733,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "6ec8f716ab249448234f959b0f4fdfd05c67bd0fa58aae37118413d8fb3dd7a9"
+    },
+    {
+      "bytes": 398605,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "fb37d684a41cf3aa4a351bf3f77cec1113470ab814c4282cbfb2a9a4761712b8"
+    },
+    {
+      "bytes": 50985,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "7d617f25a446cbd952df686a13d3d18ff83d7bff0af9ac4b990b858ac5c0ba3d"
+    },
+    {
+      "bytes": 70696,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b100_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "ed295680046dabc11ec067fd093d5fa8dec4bee97a20ec82d5eb7f1949f1ea43"
+    },
+    {
+      "bytes": 188663,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f010.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "8a79393996f4c104369ed065cc5f49bdf87fc7da541c3ed7f4bddcadeed0e6e9"
+    },
+    {
+      "bytes": 50985,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f010.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "f57173574115bdd570a21f8285ef4886536a06f766d07ed75ef8267e5fb364e5"
+    },
+    {
+      "bytes": 70764,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f010_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "d310c7b38df7a0a04cd61dc45d802e16ccdda147f9b70212cc642812151e8b34"
+    },
+    {
+      "bytes": 223282,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f025.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "157d97d801b8cbe3d631ea635e714fa674d983a5d47f5e513a3fc737fcb06a37"
+    },
+    {
+      "bytes": 50985,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f025.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "d1754a8b100fe8fda0d19d560c99910853d9ce0a03bd440b51ae5aa2ca81979f"
+    },
+    {
+      "bytes": 70734,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f025_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "b72c9350bebfafcd6c0fa176032c4536b0270bce297d66b797324f05ac3e647a"
+    },
+    {
+      "bytes": 398965,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f100.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "78e311f63af180eddff8ea3ad70d1b9ff8104ae92e2dfae77d67dee5f6d69b00"
+    },
+    {
+      "bytes": 50985,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f100.pth",
+      "purpose": "E2 best tuning-selected readout/map checkpoint and normalization",
+      "sha256": "bd6cdb7fb483af7978c46b2ebc0646e396626b3f9c3bed3596b266d98b707192"
+    },
+    {
+      "bytes": 70651,
+      "path": "research/e0_e3_20260915/e2/screen_rff_b101_s300_t700_f100_predictions.npz",
+      "purpose": "E2 ID-keyed targets and logits; validation only",
+      "sha256": "30702e8600d9c1003cbbf22c9ce7b28980f7c06ddfbe6af4dece6e5a97fe68f8"
+    },
+    {
+      "bytes": 461,
+      "path": "research/e0_e3_20260915/e2/screen_selection.json",
+      "purpose": "E2 complete schema-validated training run record",
+      "sha256": "7910f7818ad9a7c55e5f1c6ccf1d1f2ed38dbbdbcd87b22d52337c71499b7cec"
+    },
+    {
+      "bytes": 2952,
+      "path": "research/e0_e3_20260915/e2/secondary_uncertainty.json",
+      "purpose": "E2 design partition, selection, pilot result or secondary uncertainty",
+      "sha256": "c82b13dfd3e957e0579d506fe6a5e02e61e4772deb9318e322a7960043387cb4"
+    },
+    {
+      "bytes": 56948,
+      "path": "research/e0_e3_20260915/e2/validation_partition.json",
+      "purpose": "E2 design partition, selection, pilot result or secondary uncertainty",
+      "sha256": "b39a5df40e6b7810e5d2089f95dc75a2422e4d624c5b5b22987e616835b1b53e"
+    },
+    {
+      "bytes": 4161,
+      "path": "research/e0_e3_20260915/e3/aggregate_checks.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "da18e8249b1910247cdb870f966b33f07ce79fb578777ba1fc0e308c58213f07"
+    },
+    {
+      "bytes": 350657,
+      "path": "research/e0_e3_20260915/e3/analytic_bf16_boundary_unscaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "0c9e1692af0c7108ce9a886d907224a220f8ecea04610652be04cb3535e5720d"
+    },
+    {
+      "bytes": 351613,
+      "path": "research/e0_e3_20260915/e3/analytic_bf16_boundary_unscaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7f2cb20dbbb07303568ce7a007731f567f87891959ba10573832f1f73c07d343"
+    },
+    {
+      "bytes": 351095,
+      "path": "research/e0_e3_20260915/e3/analytic_bf16_boundary_unscaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "17130b31b4782198f7f5cf65f30709ba7c4818583c40821d2d91995e0c27a27d"
+    },
+    {
+      "bytes": 351041,
+      "path": "research/e0_e3_20260915/e3/analytic_bf16_boundary_unscaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "e8f8b2a6f5284c1313e95b611d73a0c577463edace870bd02b51e985c2ffe241"
+    },
+    {
+      "bytes": 350601,
+      "path": "research/e0_e3_20260915/e3/analytic_bf16_boundary_unscaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7753601c1b78d302225359777449df4e3c9d1c7c7c3e35ace2cafc35f17538e0"
+    },
+    {
+      "bytes": 361134,
+      "path": "research/e0_e3_20260915/e3/analytic_float32_reference_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "4128c3b66783bde10b6bcb07d22e7065272ee7df7f8b4a3cac2f3b002b9ce3bf"
+    },
+    {
+      "bytes": 361136,
+      "path": "research/e0_e3_20260915/e3/analytic_float32_reference_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "29239a86e0ba09964a621fe0c81b9f5235da3a9af1f0382acd052292cb6acd74"
+    },
+    {
+      "bytes": 361316,
+      "path": "research/e0_e3_20260915/e3/analytic_float32_reference_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "f49620d5ad74c9de14960e044f23e6db04d48e88eebf7ac2825151b3cf325d89"
+    },
+    {
+      "bytes": 361807,
+      "path": "research/e0_e3_20260915/e3/analytic_float32_reference_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "168fc0436ab80884928669a1cbb1e4d424f1d95be184affb436b173f350237ac"
+    },
+    {
+      "bytes": 361250,
+      "path": "research/e0_e3_20260915/e3/analytic_float32_reference_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8dd8fc3838436f01cdae61407fc7dfbe6003311d7e9c47f28e17823468c6e933"
+    },
+    {
+      "bytes": 361349,
+      "path": "research/e0_e3_20260915/e3/analytic_float64_reference_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "e955ee8472c1ed2ce50ef9ed54fe309a4d1581e8028a7f858b08aecc300d03bc"
+    },
+    {
+      "bytes": 360985,
+      "path": "research/e0_e3_20260915/e3/analytic_float64_reference_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "17de8e8155afce71b53d894f7c4f9856e7ff178d62389677ddc1a5775a917536"
+    },
+    {
+      "bytes": 361264,
+      "path": "research/e0_e3_20260915/e3/analytic_float64_reference_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "6127607b70c3f0ae684c54f4eaa16c1fc89e9829933f818c77c625666b895d8b"
+    },
+    {
+      "bytes": 361742,
+      "path": "research/e0_e3_20260915/e3/analytic_float64_reference_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "5dcdc8089f44c577c9325498bef223dbb0117ea0e7d4739afedca56c77bc3025"
+    },
+    {
+      "bytes": 361077,
+      "path": "research/e0_e3_20260915/e3/analytic_float64_reference_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "2790a7f295dafafa417f8fbe787ed59d55860c686ac6d41aac5e5bfb725fa318"
+    },
+    {
+      "bytes": 349305,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_scaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "944619f66c98183be838367e605e58bce6315a3bfcbce46a7a5b82d70e0b25e9"
+    },
+    {
+      "bytes": 350072,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_scaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "37b99cb9b67cef4f70ce5446a42ea842390b05bf8a139f5363c1f581e40dab78"
+    },
+    {
+      "bytes": 349345,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_scaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d5bc59d3cb597c64a3217286c76528148558163e5ae286da5f45a6b5f39b3080"
+    },
+    {
+      "bytes": 349420,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_scaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "13771751d11cf96180887fa1fa52fd9045a8d9026322fb016e510561851c2c7d"
+    },
+    {
+      "bytes": 349126,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_scaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d176049a10a0f9a8260a8e902a78ebe4a7a6bf7306a0ea03297d591a260ff89e"
+    },
+    {
+      "bytes": 355129,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_unscaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "a6c68e83ffd08e0011e41bcb69501dc217d2a97e4502cf5fe4b5c1f609f0344d"
+    },
+    {
+      "bytes": 356133,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_unscaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b4892ead138de3c3f8536852931da2a82425a492634de8382a7e3d0115b7c072"
+    },
+    {
+      "bytes": 355397,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_unscaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8ed66775f2a24c33a28aa33b7de5764df16aa12acd2037d3d9559a3d460efc71"
+    },
+    {
+      "bytes": 355546,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_unscaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b041c484f0b50583f49b57856d95bc0c60e7f6d8ecef4d9c8f7d82f7edaf3924"
+    },
+    {
+      "bytes": 354857,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_boundary_unscaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "79d5a3611051f10e451393f2df195af679909eaa350e998a95a2d30a032a229c"
+    },
+    {
+      "bytes": 349332,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_historical_direct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "473e7799f178c9295e86523d11ec685a3bfa1a3fd5313ab0e594d6cd9ee007d0"
+    },
+    {
+      "bytes": 350097,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_historical_direct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "c45a950afbfff482a9100084556b18033ef08170856574037068fe7aac38d382"
+    },
+    {
+      "bytes": 349373,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_historical_direct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "5d3e76f7aed10a72cf3a7ec9c63e1750f6ce868795cc1bc0b2f1a23932e61dec"
+    },
+    {
+      "bytes": 349448,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_historical_direct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "a60856d3a84173be328f69daf9840df92fbfb88cfaf4a8eec783c1b2d23dbcb9"
+    },
+    {
+      "bytes": 349150,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_historical_direct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7aef584c48f0d49a94578abaf351881eff4af0b3d5f07fd49392b1a82ba86332"
+    },
+    {
+      "bytes": 342385,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_inherited_scaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "086d803a3bc596b6eea73e2508d1ff2a59a116a14fbac14f424cce4deb9a1678"
+    },
+    {
+      "bytes": 343121,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_inherited_scaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "ae961507255b7a89b3ffed473417bef67985dd488a83ea20db53af1cdf959106"
+    },
+    {
+      "bytes": 342447,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_inherited_scaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "09eafabdfd9be30bb77f9f6e8a3cf146f6e30edb684e0c7b5b26f1698cf63266"
+    },
+    {
+      "bytes": 342997,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_inherited_scaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "c8ae5e08e0b556d55ebd6c95f89c6c112e71cc00ee71842bae33ff47141a8081"
+    },
+    {
+      "bytes": 342379,
+      "path": "research/e0_e3_20260915/e3/analytic_fp16_inherited_scaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "93d63d490777d9ef4cdd3bb933654a600292c322d9d4bf6c6f9a4f6a0dd993ea"
+    },
+    {
+      "bytes": 358340,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_correct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "6e72aff10bb1a455cdbd6e21df74c16a3bc52ba5e62e213cb43c72cc0a0e9851"
+    },
+    {
+      "bytes": 358127,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_correct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "9146ee870d81f63505f38af838d96f3c70bfe0bd5ca519d2ff4c4b4ecfdb4268"
+    },
+    {
+      "bytes": 358156,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_correct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "dfcdf5b9471acd9bb7ecf1c57822f0746d05390c65fba081841b6abad6417917"
+    },
+    {
+      "bytes": 358673,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_correct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "cd90701717de85519800422b4e1a08c0a2ae0aae862619f5b8a353cb117009d6"
+    },
+    {
+      "bytes": 358233,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_correct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "100b5161650aeb7e4910191dcd867400f170afd681827b420f3941270ebb56b0"
+    },
+    {
+      "bytes": 107747,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_historical_direct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "9a721a2b73f9301f7aa3be929c683841518850e9a7d4899edbaa7fca5053d6e9"
+    },
+    {
+      "bytes": 107772,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_historical_direct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "1978055105b8480832d3d628e5bbd5738242c91b2352e8cac9d0d1645fb06123"
+    },
+    {
+      "bytes": 107790,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_historical_direct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "ecfb7f34f8659fc1e385f352e9ae07eef1e5d61499396e93713ce3daf3603974"
+    },
+    {
+      "bytes": 107852,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_historical_direct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "2e9ab2ea649e7b96b2b723e9caba40b1580daf606baccc290d566ff1f2c810db"
+    },
+    {
+      "bytes": 107703,
+      "path": "research/e0_e3_20260915/e3/analytic_inf_historical_direct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "261c31e3c1b5b20551206beac269ac8e386d8c2f4e77d981c4dd28cae5f8e706"
+    },
+    {
+      "bytes": 353856,
+      "path": "research/e0_e3_20260915/e3/fixed_bf16_boundary_unscaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "bb99fe31702eb2a6c59d04542414445bd71c09f3628b9a23ba6fb5694677e0e3"
+    },
+    {
+      "bytes": 354710,
+      "path": "research/e0_e3_20260915/e3/fixed_bf16_boundary_unscaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "6113cc0c64878c3daef5669848f42b249c8789d5d7ca3ce1b2c39e4b1999b3e7"
+    },
+    {
+      "bytes": 354088,
+      "path": "research/e0_e3_20260915/e3/fixed_bf16_boundary_unscaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "a509e95949a7fa24625ac281f9ad0e33ac21674474ff1798cb59b56d7a5208a2"
+    },
+    {
+      "bytes": 354138,
+      "path": "research/e0_e3_20260915/e3/fixed_bf16_boundary_unscaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8d4d5f6fafe73744db8515d6c4c501f2b8cf41d2ee5274660a98c8369bcc4dc3"
+    },
+    {
+      "bytes": 353667,
+      "path": "research/e0_e3_20260915/e3/fixed_bf16_boundary_unscaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b726887e8d87245d979dd11dd7cbde26db20c99406810706842485b590a9fc61"
+    },
+    {
+      "bytes": 364277,
+      "path": "research/e0_e3_20260915/e3/fixed_float32_reference_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "72116932d8081f265a36008f409940c1ce2f5209e4c16834917c606050b43c94"
+    },
+    {
+      "bytes": 364258,
+      "path": "research/e0_e3_20260915/e3/fixed_float32_reference_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "4c71f4578a6501e2a86b6606d318c0e0e5714975eeb6f9da2966b72b5cad49aa"
+    },
+    {
+      "bytes": 364505,
+      "path": "research/e0_e3_20260915/e3/fixed_float32_reference_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "f15b7e010228c6ebe1727ea41108ec1ee179d48796cf3ccc6a4752f305e6cd34"
+    },
+    {
+      "bytes": 364876,
+      "path": "research/e0_e3_20260915/e3/fixed_float32_reference_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "536ef886ff39d900810c9ab3852b2acacf4946cc5a4771b7f17e691494df23db"
+    },
+    {
+      "bytes": 364065,
+      "path": "research/e0_e3_20260915/e3/fixed_float32_reference_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "c495156eaa3ed113e5b5d1581138ec458b7fd210290531be522f03d754a90c87"
+    },
+    {
+      "bytes": 364370,
+      "path": "research/e0_e3_20260915/e3/fixed_float64_reference_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8dae5436efb36ec4de782dd674e8b2921d4bacd078b1455c7fa963a384feeb74"
+    },
+    {
+      "bytes": 364171,
+      "path": "research/e0_e3_20260915/e3/fixed_float64_reference_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7dae6632f262abc9f230612bdd2c03d9ecdd9af2cd04c63fd7532080c46ad9bc"
+    },
+    {
+      "bytes": 364238,
+      "path": "research/e0_e3_20260915/e3/fixed_float64_reference_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "f48a0d8c3d8bc7804a03932e1b641e237f380f3a52b120d72220b48e259508c6"
+    },
+    {
+      "bytes": 364839,
+      "path": "research/e0_e3_20260915/e3/fixed_float64_reference_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "f04277d9f39fa39466291ba7e0bd690cc37dcccbccb883bb8f947fc98c7172ff"
+    },
+    {
+      "bytes": 364422,
+      "path": "research/e0_e3_20260915/e3/fixed_float64_reference_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "9cbf2d99c27b6284d50d80a7c2803c5baedadbf46e866a3e9b732c37b373f9d8"
+    },
+    {
+      "bytes": 352248,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_scaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "17d7b735b3f791e0f9f3bebd4de189a73485846a61f515bcbfde21c9c719653a"
+    },
+    {
+      "bytes": 352920,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_scaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8a201b24f2471b4751e7f1fa105b922feced18220721c165f87cbea9ca04ebb2"
+    },
+    {
+      "bytes": 352179,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_scaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "6cb0d1947a0e342034acf0811bd90e206f816a34413701ce6f5e4a41c60c610c"
+    },
+    {
+      "bytes": 352238,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_scaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "92a0150f81c2eff9abd5de251436c91a6a0f64ea531e9da7ab8ce29febf573b7"
+    },
+    {
+      "bytes": 351947,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_scaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "a9ac0ee452126b77c5534b7e2b3140d32871c6390a2fa779cdf9943490903fe7"
+    },
+    {
+      "bytes": 358201,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_unscaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d2beadbe439b3be3b70cd1299bf102e604b20bc409c6253cb5fd3133f90169dc"
+    },
+    {
+      "bytes": 359147,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_unscaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "16691e6a6d8d2a703ae8c74accc984fb564bb032c8a082fd418d2c3363d31c97"
+    },
+    {
+      "bytes": 358379,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_unscaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "6ef13ff03ab05db99996f987ed3939e3f7c095f52db3df9c6403ef7e7ae845d5"
+    },
+    {
+      "bytes": 358625,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_unscaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "70eb059bf84c4936945158edaf5122d8cb60950ddfa8a39060ccbc4ff090a9fe"
+    },
+    {
+      "bytes": 357773,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_boundary_unscaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "001cf7086ecbd5173678e97283dd42905588c4f5af0e9dcd4bf5856b1d3e928a"
+    },
+    {
+      "bytes": 352274,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_historical_direct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "3555335b3b0f1e53ad6f3f5e5d46999d5ef4a6a2553760ada5b7f4a23fcc7352"
+    },
+    {
+      "bytes": 352946,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_historical_direct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "9459a592939a2e0e4d209fb87cb7c2bdd7f0b0b98b63a944f6189253ff3a3b5e"
+    },
+    {
+      "bytes": 352206,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_historical_direct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "2080b73333d7e4f07ed835eb3211027bfb7ac64f5a4039230789cd1249c578b4"
+    },
+    {
+      "bytes": 352264,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_historical_direct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d0aea423606433718f85b5a229a3ec4d896f3f3a01380ab9321aa30b0d49f642"
+    },
+    {
+      "bytes": 351973,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_historical_direct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "1739ac69272a5ba24df65a17379042b5b8f3cce21919d3919a00f8e5e00590a2"
+    },
+    {
+      "bytes": 546,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_inherited_scaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "517e31c7687cd131eee925710605e11d41d7e70577afda00d725300f12fb5601"
+    },
+    {
+      "bytes": 546,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_inherited_scaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "fdd8602d1f33853359ef9730f705fcd5bdcb5556139206c24f27acaaa9175528"
+    },
+    {
+      "bytes": 546,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_inherited_scaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "005eb6ddb08e364736d65ea45c66013da2100b2b453e08bed9bc8b6e139fce0a"
+    },
+    {
+      "bytes": 546,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_inherited_scaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "3856aef1f80619bbed2ccb2c5407d7ba90a39de97fcde1e016082a53102df4e7"
+    },
+    {
+      "bytes": 546,
+      "path": "research/e0_e3_20260915/e3/fixed_fp16_inherited_scaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "c46bf59678750371349668bbe4958e56824899914f3ef1aadcafbf4e5fa2b596"
+    },
+    {
+      "bytes": 361265,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_correct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "ad3cf8177a10a4bff72a3f78f318c8e581a8068cdbe666792a16b961d328c0f8"
+    },
+    {
+      "bytes": 360972,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_correct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d7feb37d4e90da67111fe68ab76cdf386eb35cbd542a3b4366ead4d0e3dc265e"
+    },
+    {
+      "bytes": 361200,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_correct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "37d953a58b5d13aa4c7a385735aaea0e8334eaf3f5df49b3a3b2374485718f57"
+    },
+    {
+      "bytes": 361460,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_correct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "af6e16de6ca059d2712000162958a2f8272b647b13ab226806556f6451d85379"
+    },
+    {
+      "bytes": 361083,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_correct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "bbe6fd992b769450ac61775b68958f8c2687294b73ea1c49bbceb0681b47b32c"
+    },
+    {
+      "bytes": 108689,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_historical_direct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "0064ac6cf46d569b97a72d0f8dc6fc309481cd21e5530b296a1e1061a04aed7d"
+    },
+    {
+      "bytes": 108637,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_historical_direct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "655e94b11ce0610d3fcf78ec4a480f10dd3c48306624c7b53c7b1cf373b5b0d4"
+    },
+    {
+      "bytes": 108737,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_historical_direct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "cc9946e712fb9d4212c5e2feb036d1636e73ce01faacd0dcf4a0a969ccf6113f"
+    },
+    {
+      "bytes": 108684,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_historical_direct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8198de877d86cdf0753a052e7f19798f2da6e0fa906e6fb4a8dba6691044a4a7"
+    },
+    {
+      "bytes": 108544,
+      "path": "research/e0_e3_20260915/e3/fixed_inf_historical_direct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "3e68f3d1bd70c8eb49a5c2ccd411fa46eab7595766aa87f05e708ebda3d5c71e"
+    },
+    {
+      "bytes": 1191,
+      "path": "research/e0_e3_20260915/e3/operator_probe.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "976011562cecb87f770c67ec23ee325a0a1462672cf4ccb870a0165c2709cf9e"
+    },
+    {
+      "bytes": 72273,
+      "path": "research/e0_e3_20260915/e3/precision_summary.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "4da4029e8308f739ec81e47d46618a3754ff01a0bfd990cf7001eab80bc6adb0"
+    },
+    {
+      "bytes": 152279,
+      "path": "research/e0_e3_20260915/e3/run.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "bf97eaa85d072ab8810dc86bbe794708749303a9362d079cbc2a6e1e17d829dc"
+    },
+    {
+      "bytes": 80784,
+      "path": "research/e0_e3_20260915/e3/scaling_stress.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "5a73c1406013587aad5a6e7a746f8df67e36e1b016d6534cc13f474ffec8ee85"
+    },
+    {
+      "bytes": 160661,
+      "path": "research/e0_e3_20260915/e3/scaling_stress_run.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "5e950f9303cad7c4b58a24598e328c4b5ea3ebe06f2da58556b0dce62184d4f3"
+    },
+    {
+      "bytes": 385435,
+      "path": "research/e0_e3_20260915/e3/v7_bf16_boundary_unscaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "86251f1253aadf28c94604f5aef523832e77a5bfca19311f34134f56e97d0d6b"
+    },
+    {
+      "bytes": 386955,
+      "path": "research/e0_e3_20260915/e3/v7_bf16_boundary_unscaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b016b72b0666e2a29ff7b5892541f3f33827fbfe6eb7a0034ca98bc743523f22"
+    },
+    {
+      "bytes": 386933,
+      "path": "research/e0_e3_20260915/e3/v7_bf16_boundary_unscaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "6e04967d1d09663774be2f58b8028b2d336810adda1d353a3889f11fa54f3e27"
+    },
+    {
+      "bytes": 385813,
+      "path": "research/e0_e3_20260915/e3/v7_bf16_boundary_unscaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b86b3752612b3b539d1b4d4a55856e4a4ec6307cf0bf464f5ac3a840e92972bb"
+    },
+    {
+      "bytes": 386147,
+      "path": "research/e0_e3_20260915/e3/v7_bf16_boundary_unscaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d7518a76df075edf251c17b3a2b5800257128ce0fad81b95cdc449a7ecab28e9"
+    },
+    {
+      "bytes": 395972,
+      "path": "research/e0_e3_20260915/e3/v7_float32_reference_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "dcc856d6c2c7323a25b39cb5d0b7faa964c918a6782ea65a0614255ad7158c3a"
+    },
+    {
+      "bytes": 396363,
+      "path": "research/e0_e3_20260915/e3/v7_float32_reference_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8f1a13b7d1582c8ad2006c44fc06e6ab7e32cb4e91c9483598c45aa5a4335800"
+    },
+    {
+      "bytes": 396955,
+      "path": "research/e0_e3_20260915/e3/v7_float32_reference_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "07516f61d7cd2e22a15b02dd9a6a15e66a3f202c8a851cd24f5117af2d6bafaa"
+    },
+    {
+      "bytes": 396535,
+      "path": "research/e0_e3_20260915/e3/v7_float32_reference_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "f0b6a5beacbd0e358c35ac3e36e0b6603343847d8ebb2b1c690fdafca1e430a4"
+    },
+    {
+      "bytes": 396583,
+      "path": "research/e0_e3_20260915/e3/v7_float32_reference_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "fa2abd2216d6ca97090c47a96352167084ff81c60a0049306f6845ff2aee9e65"
+    },
+    {
+      "bytes": 395942,
+      "path": "research/e0_e3_20260915/e3/v7_float64_reference_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "4a954a680d62a443a7765e3e00b38cf87061d4fd7f51cf8691e4d274b3899683"
+    },
+    {
+      "bytes": 396287,
+      "path": "research/e0_e3_20260915/e3/v7_float64_reference_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8c20fd0c88327276574e6c1efc75a9bd4c222cf15e3af9bd9eb4e184dade9c2d"
+    },
+    {
+      "bytes": 397103,
+      "path": "research/e0_e3_20260915/e3/v7_float64_reference_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "0460a7eac5cd6a568dde5969c40987508a836ede8d7f33106fc932587f7f41d7"
+    },
+    {
+      "bytes": 396454,
+      "path": "research/e0_e3_20260915/e3/v7_float64_reference_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b4616c71cba4037c2e5417abb58052638804e54d8439310d038338c7a887e23e"
+    },
+    {
+      "bytes": 396513,
+      "path": "research/e0_e3_20260915/e3/v7_float64_reference_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "3f4970ef9831368733a336eaf40fca4fe3033fea00f7ec6d5aa0ae62b11397d9"
+    },
+    {
+      "bytes": 383372,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_scaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "eb9d0d4d538c3ecb2532b5f2fa8b43e9459463fe06026747526e75af0e14a031"
+    },
+    {
+      "bytes": 384819,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_scaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7c168d64624b7c97e64944a3f06fce614c41578406afa94becef5f88425d84f6"
+    },
+    {
+      "bytes": 384616,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_scaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7390b66c3e0a09f8c9002a3a4783f23933d0ade48eab066d34ad8df5f5a8650d"
+    },
+    {
+      "bytes": 383029,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_scaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "616aebdddac6d6f36f059dadec94fb88c17e6b11182b2f3462c3fde4aaa88a32"
+    },
+    {
+      "bytes": 383986,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_scaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "fabed3de4e653cd5ed3e3f6f46ecd06a7f74d8c498fb5fc3702daa7ef6bab8e3"
+    },
+    {
+      "bytes": 389816,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_unscaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "5bcdc76afe377ddbe152722db203766748ea20aa8577e3ed9ef17c6eefb22788"
+    },
+    {
+      "bytes": 391323,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_unscaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "da99039afd79eaafe44a34732e13998411bb8271d6a4be5a401f6cc17976f146"
+    },
+    {
+      "bytes": 391127,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_unscaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "8915c6584edcfea817093159c25c0d41248c2e96bf43b2ebcf98b20de5958e86"
+    },
+    {
+      "bytes": 389938,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_unscaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "39608b50a4c618fb6a71debac099a6b3ab2a305877612da5b4fd4ee6137be83a"
+    },
+    {
+      "bytes": 390172,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_boundary_unscaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d8d74c50384364a0697d0f75d3cccfddc7caf4ec2d08e8844e791efb5c8ec735"
+    },
+    {
+      "bytes": 383399,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_historical_direct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "143a9e4d4dec5c074846b18aaac865db1101de99bf67483675bb50bdefcd9a3a"
+    },
+    {
+      "bytes": 384843,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_historical_direct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d0634517a294c5ad4828d2dc58ca3ba36243b4a11540953c31d1cfa73e6aa858"
+    },
+    {
+      "bytes": 384641,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_historical_direct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "3ec22950fc243d99abe35aeb03e07e21b28cca356f6e75743d38feeaa3f9847e"
+    },
+    {
+      "bytes": 383055,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_historical_direct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b755b399b99e5da33755676d0a9708a8dbb14b077d51c866680b2acbdb3e5973"
+    },
+    {
+      "bytes": 384012,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_historical_direct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "1b876e1de72200178ab8968b5ed867c0a87b206ba0c5abf99676c913574d3d3e"
+    },
+    {
+      "bytes": 543,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_inherited_scaled_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "42847e7ac3fffaea57ba2ea226e8325266df2ed0a94b9495c8785a8c232c5e7e"
+    },
+    {
+      "bytes": 543,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_inherited_scaled_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "11104bf9472551dd8b4ad4ebea533a508b0d1ca2e1b27790b948bc1dc551df2d"
+    },
+    {
+      "bytes": 542,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_inherited_scaled_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "9859d2e29a3c310f73b59dad849c5240ff3e2cf8a5f16f746cde2abf81e99663"
+    },
+    {
+      "bytes": 543,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_inherited_scaled_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "69051f2290dd157e6abd2584b3bbe9d1e519bbf4812253bd6b01110684103f04"
+    },
+    {
+      "bytes": 543,
+      "path": "research/e0_e3_20260915/e3/v7_fp16_inherited_scaled_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "73f65610b7848576a6cc8c8f8537acaf56c975f266926f30de3d544ca6ffef9d"
+    },
+    {
+      "bytes": 392208,
+      "path": "research/e0_e3_20260915/e3/v7_inf_correct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "cfaddbe1b3a7becb15eb11d01f3feacdbfcf48461aa9eb523eb8346a2f9ff776"
+    },
+    {
+      "bytes": 392754,
+      "path": "research/e0_e3_20260915/e3/v7_inf_correct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "90bd861d50b46907977d0acaa694d2b174581c66054c2784bbc13ea265359a06"
+    },
+    {
+      "bytes": 393258,
+      "path": "research/e0_e3_20260915/e3/v7_inf_correct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "d9498ec0e5e68d727f678285284ce68d2261165eb0e62af79538b59d5b57d306"
+    },
+    {
+      "bytes": 392598,
+      "path": "research/e0_e3_20260915/e3/v7_inf_correct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "f75a2e8450d636b0e73dd628658a89686144284a089b5b06f600e341a71e593f"
+    },
+    {
+      "bytes": 392629,
+      "path": "research/e0_e3_20260915/e3/v7_inf_correct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "0ced7cab7c359a5f35c29b89b0662d19cbdd1df2f7f000f3603e5cf1f2f9ee0b"
+    },
+    {
+      "bytes": 117943,
+      "path": "research/e0_e3_20260915/e3/v7_inf_historical_direct_seed0.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "00c0f11edce0e098cdd8c0289159e55fb161489946a61e0ee469fea77c50191d"
+    },
+    {
+      "bytes": 118181,
+      "path": "research/e0_e3_20260915/e3/v7_inf_historical_direct_seed1.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "0d62bb614c576d5b4683a5f8cb0f977dd9e78ff00bc252028885a396488600a0"
+    },
+    {
+      "bytes": 118351,
+      "path": "research/e0_e3_20260915/e3/v7_inf_historical_direct_seed2.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "7b357a65af8213e5197105a4ef64daa698d917f65bbdd6dcaff2494f0625b11a"
+    },
+    {
+      "bytes": 118080,
+      "path": "research/e0_e3_20260915/e3/v7_inf_historical_direct_seed3.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "a709e5245e4a494760769f1dedf1220b90cbca054eca0555610bbeab977a7997"
+    },
+    {
+      "bytes": 118114,
+      "path": "research/e0_e3_20260915/e3/v7_inf_historical_direct_seed4.json",
+      "purpose": "E3 numerical diagnostic trace, aggregate, primitive probe or scaling stress",
+      "sha256": "b0d23bdb1594ec20616bcb4bcddd9bee939d2151d750da33bac15b03b3183b33"
+    },
+    {
+      "bytes": 576578,
+      "path": "research/e0_e3_20260915/historical_membership.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "56b17b5a159772309619d26c7e7b9937a0cc56fd14696e8616c9f7aa7a197a5b"
+    },
+    {
+      "bytes": 911103,
+      "path": "research/e0_e3_20260915/protocol.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "1d61327af289b0c703eaf78be824676dfef959212af537371df39319a5764160"
+    },
+    {
+      "bytes": 3217,
+      "path": "research/e0_e3_20260915/source_snapshots/0c39ee973a547aed437fb219d39ed63887131dfad317c178e3af6e4f8fa7e69e_test_research_foundation.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "0c39ee973a547aed437fb219d39ed63887131dfad317c178e3af6e4f8fa7e69e"
+    },
+    {
+      "bytes": 13495,
+      "path": "research/e0_e3_20260915/source_snapshots/2bd862d424b81c25b5500fb98146f67bc9d209107d3e0c3316975d0ef2aec337_trainable_quantum_model.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "2bd862d424b81c25b5500fb98146f67bc9d209107d3e0c3316975d0ef2aec337"
+    },
+    {
+      "bytes": 10185,
+      "path": "research/e0_e3_20260915/source_snapshots/3ad249b525d183d27fc500b6ea2243f944ae3ea6f5e8c77f11a4ec3cee5c1821_replay_quantum_features.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "3ad249b525d183d27fc500b6ea2243f944ae3ea6f5e8c77f11a4ec3cee5c1821"
+    },
+    {
+      "bytes": 8173,
+      "path": "research/e0_e3_20260915/source_snapshots/546ea0fb240b5f8962f95de2d35190e16534a900bd287b87a904e37c4d0c85a7_verify_research_execution.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "546ea0fb240b5f8962f95de2d35190e16534a900bd287b87a904e37c4d0c85a7"
+    },
+    {
+      "bytes": 2481,
+      "path": "research/e0_e3_20260915/source_snapshots/5f4e00ddb68777639ef2d28e8e66576647ae4448f014327823bad0a8d65c54d2_build_research_dataset_manifest.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "5f4e00ddb68777639ef2d28e8e66576647ae4448f014327823bad0a8d65c54d2"
+    },
+    {
+      "bytes": 10089,
+      "path": "research/e0_e3_20260915/source_snapshots/72559edc083b5b5927161e715ce2ab76fa6ede15b5a74a8c5975b85f106fda45_replay_quantum_features.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "72559edc083b5b5927161e715ce2ab76fa6ede15b5a74a8c5975b85f106fda45"
+    },
+    {
+      "bytes": 8506,
+      "path": "research/e0_e3_20260915/source_snapshots/78cb9f2a7c8513fb8120e38f0696eadd01ff845517c3da3f77b6ac1322b691e1_ablation_models.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "78cb9f2a7c8513fb8120e38f0696eadd01ff845517c3da3f77b6ac1322b691e1"
+    },
+    {
+      "bytes": 925,
+      "path": "research/e0_e3_20260915/source_snapshots/8324f98f033fadbaceeba41793ccbc960ec67f13e1742ba70ae8824ad638201d_e2_pilot.json",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "8324f98f033fadbaceeba41793ccbc960ec67f13e1742ba70ae8824ad638201d"
+    },
+    {
+      "bytes": 13753,
+      "path": "research/e0_e3_20260915/source_snapshots/852dd09b18b7a59c02c09c94dc0b482ee19c4064551f9a774c48af89c87aca57_train_ablation_local.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "852dd09b18b7a59c02c09c94dc0b482ee19c4064551f9a774c48af89c87aca57"
+    },
+    {
+      "bytes": 13798,
+      "path": "research/e0_e3_20260915/source_snapshots/8a5349920d3b460d0dbef1f5afbbe0b05b4dc21b44749bc0c286e9fb2d2d05a8_diagnose_hybrid_precision.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "8a5349920d3b460d0dbef1f5afbbe0b05b4dc21b44749bc0c286e9fb2d2d05a8"
+    },
+    {
+      "bytes": 6719,
+      "path": "research/e0_e3_20260915/source_snapshots/9017759f239729eba219d278d80d3f8be7760c36ecde36724044b1b84c0c35da_run.schema.json",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "9017759f239729eba219d278d80d3f8be7760c36ecde36724044b1b84c0c35da"
+    },
+    {
+      "bytes": 4433,
+      "path": "research/e0_e3_20260915/source_snapshots/c176d31cf85f5e6e30278f56bccae7ac7684b97252533f740cc640e701fb8224_stress_hybrid_scaling.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "c176d31cf85f5e6e30278f56bccae7ac7684b97252533f740cc640e701fb8224"
+    },
+    {
+      "bytes": 13503,
+      "path": "research/e0_e3_20260915/source_snapshots/cbd26b66cbe02f927fc782d92a1a4a1a369c69cd0e266bcba705fb3fefa86d7e_research_protocol.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "cbd26b66cbe02f927fc782d92a1a4a1a369c69cd0e266bcba705fb3fefa86d7e"
+    },
+    {
+      "bytes": 1207,
+      "path": "research/e0_e3_20260915/source_snapshots/cddf4924321dd62f82d74bf002717d47cfa0c5a722f88d10842ca10173bcc40a_classical_quantum_controls.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "cddf4924321dd62f82d74bf002717d47cfa0c5a722f88d10842ca10173bcc40a"
+    },
+    {
+      "bytes": 2026,
+      "path": "research/e0_e3_20260915/source_snapshots/d7c286d1c5a9fcdca740f6d867f6db14c0cab07a641c2bfe0f1ba3cb155ea41b_precision_screen.json",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "d7c286d1c5a9fcdca740f6d867f6db14c0cab07a641c2bfe0f1ba3cb155ea41b"
+    },
+    {
+      "bytes": 2054,
+      "path": "research/e0_e3_20260915/source_snapshots/eb5d60030fab6639e559246e22aae54d3c3e5ae915958c3cae9fed56512a9fef_research_feature_maps.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "eb5d60030fab6639e559246e22aae54d3c3e5ae915958c3cae9fed56512a9fef"
+    },
+    {
+      "bytes": 11880,
+      "path": "research/e0_e3_20260915/source_snapshots/f51646bef5c1829fb8562775248469d5831d4b49d6739a487258d679c73e7ae4_run_feature_probe.py",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "f51646bef5c1829fb8562775248469d5831d4b49d6739a487258d679c73e7ae4"
+    },
+    {
+      "bytes": 2644,
+      "path": "research/e0_e3_20260915/source_snapshots/index.json",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "f5102b97cf81d7b57daf063b62b3448d0b4d42298ca472ec4d73c3b17187bb3d"
+    },
+    {
+      "bytes": 2449,
+      "path": "research/e0_e3_20260915/source_snapshots/supplement_index.json",
+      "purpose": "Exact executed source/config version or snapshot index",
+      "sha256": "0ee2217b40d4673a84a8f696795b98644a898081fbb4dee4ccd93a849c7a5a4b"
+    },
+    {
+      "bytes": 563,
+      "path": "research/e0_e3_20260915/verification.json",
+      "purpose": "E0 provenance/data record or before/after verification",
+      "sha256": "de019187fc800833fa305af32586ab7c63d68e432f936c8f8515fa896a6576bd"
+    },
+    {
+      "bytes": 6719,
+      "path": "research/schemas/run.schema.json",
+      "purpose": "New research run schema",
+      "sha256": "9017759f239729eba219d278d80d3f8be7760c36ecde36724044b1b84c0c35da"
+    },
+    {
+      "bytes": 2481,
+      "path": "scripts/build_research_dataset_manifest.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "5f4e00ddb68777639ef2d28e8e66576647ae4448f014327823bad0a8d65c54d2"
+    },
+    {
+      "bytes": 13869,
+      "path": "scripts/diagnose_hybrid_precision.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "d987e152745d16c2dde36a6631f0421de5ec1638fb86a0f2db36e8d9d237a6d5"
+    },
+    {
+      "bytes": 10689,
+      "path": "scripts/replay_quantum_features.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "b30c08a84a6e390d9142275171b43c70a15b4523ae0ecba206b4ea11ee9f9812"
+    },
+    {
+      "bytes": 11957,
+      "path": "scripts/run_feature_probe.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "132679f6d20140bbda3fc4edf4852deeee5755f46f99ff8165c1ee805a28e187"
+    },
+    {
+      "bytes": 4499,
+      "path": "scripts/stress_hybrid_scaling.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "beac13903f2029c7b13361a8cda8bea66baf8602fb4a7c9a403d5873000c9c47"
+    },
+    {
+      "bytes": 3431,
+      "path": "scripts/test_research_foundation.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "88f000e1744c63ecb991f9a232d115559e9cd7511800906d09b7a15d3882f120"
+    },
+    {
+      "bytes": 8173,
+      "path": "scripts/verify_research_execution.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "546ea0fb240b5f8962f95de2d35190e16534a900bd287b87a904e37c4d0c85a7"
+    },
+    {
+      "bytes": 1207,
+      "path": "src/classical_quantum_controls.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "cddf4924321dd62f82d74bf002717d47cfa0c5a722f88d10842ca10173bcc40a"
+    },
+    {
+      "bytes": 2054,
+      "path": "src/research_feature_maps.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "eb5d60030fab6639e559246e22aae54d3c3e5ae915958c3cae9fed56512a9fef"
+    },
+    {
+      "bytes": 13723,
+      "path": "src/research_protocol.py",
+      "purpose": "Additive E0\u2013E3 implementation or integrity test",
+      "sha256": "17062e3862fbc1dfa917500d805b076e9581b8237c299d38ee9659eef151f352"
+    },
+    {
+      "bytes": null,
+      "path": "research/e0_e3_20260915/artifact_inventory.json",
+      "purpose": "Complete new-artifact inventory; self-hash intentionally omitted",
+      "sha256": null
+    }
+  ],
+  "new_deliverable_count": 671
+}

@@ -1,0 +1,42 @@
+{
+  "device": "cpu",
+  "probes": [
+    {
+      "dtype": "torch.float16",
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "operation": "pennylane_RZ_matrix",
+      "status": "unsupported"
+    },
+    {
+      "dtype": "torch.float16",
+      "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+      "operation": "torch_complex_exp",
+      "status": "unsupported"
+    },
+    {
+      "dtype": "torch.float32",
+      "operation": "pennylane_RZ_matrix",
+      "output_dtype": "torch.complex64",
+      "status": "supported"
+    },
+    {
+      "dtype": "torch.float32",
+      "operation": "torch_complex_exp",
+      "output_dtype": "torch.complex64",
+      "status": "supported"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "operation": "pennylane_RZ_matrix",
+      "output_dtype": "torch.complex64",
+      "status": "supported"
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "operation": "torch_complex_exp",
+      "output_dtype": "torch.complex64",
+      "status": "supported"
+    }
+  ],
+  "purpose": "Reduce inherited-float16 exception to primitive operation; no inference about CUDA support"
+}

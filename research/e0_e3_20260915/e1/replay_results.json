@@ -1,0 +1,7 @@
+{
+  "banks": [],
+  "checkpoints": [],
+  "fixed_map_irreducible_quantum_claims_closed": false,
+  "scope": "current fixed RX/Rot/forward-CNOT-chain/Z expectation map only",
+  "status": "failed"
+}

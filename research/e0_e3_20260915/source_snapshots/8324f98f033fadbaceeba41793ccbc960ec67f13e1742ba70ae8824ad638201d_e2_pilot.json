@@ -1,0 +1,40 @@
+{
+  "augmentation": "none for all arms; no placement confound",
+  "batch_size": 128,
+  "bootstrap_seed": 20260915,
+  "cpu_cap_seconds": 72000,
+  "epochs": 40,
+  "fractions": [
+    0.1,
+    0.25,
+    1.0
+  ],
+  "lr": 0.003,
+  "meaningful_margin_points": 2.0,
+  "pilot_bank_seeds": [
+    200,
+    201,
+    202
+  ],
+  "planned_fit_count": 150,
+  "purpose": "E2 exploratory validation pilot; no final test or powered confirmation",
+  "readout_init_offset": 10000,
+  "screen_bank_seeds": [
+    100,
+    101
+  ],
+  "screen_subset_seed": 300,
+  "screen_train_seed": 700,
+  "selection": "mean tuning macro-F1 log-count ALC; two screen banks; independent assessment validation partition; exactly one selected classical family vs analytic map",
+  "stop": "no powered confirmation in this task regardless of result",
+  "subset_seeds": [
+    400,
+    401,
+    402
+  ],
+  "train_seeds": [
+    800,
+    801
+  ],
+  "weight_decay": 0.0001
+}

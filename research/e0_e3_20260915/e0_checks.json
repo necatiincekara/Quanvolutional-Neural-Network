@@ -1,0 +1,51 @@
+{
+  "conflicting_label_groups": 5,
+  "counts": {
+    "test": {
+      "raw": 466,
+      "valid": 466
+    },
+    "train": {
+      "raw": 3428,
+      "valid": 3427
+    }
+  },
+  "cross_split_duplicate_groups": {
+    "byte_sha256": 15,
+    "pixel_sha256": 15
+  },
+  "duplicate_groups": {
+    "byte_sha256": 72,
+    "pixel_sha256": 72
+  },
+  "invalid_records": [
+    {
+      "byte_sha256": "8282ef7026d603c72249480d4ac6481c480d89fe1f2717827860a51fc4aec817",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [
+        "unknown_label_code"
+      ],
+      "label": null,
+      "label_code": "00",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "train",
+      "pixel_sha256": "0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+      "record_id": "9f0adea5883661ef2f24f67158b004fcb0a0c1cdc636e579b0f0ca051e245724",
+      "relative_path": "train/TBMM-007-00000000000000000000000000000000000.png",
+      "sample_id": "pixel-sha256:0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+      "valid": false
+    }
+  ],
+  "manifest_rebuild_identical": true,
+  "new_protocol_counts": {
+    "test": 458,
+    "train": 2688,
+    "validation": 668
+  },
+  "passed": true,
+  "process_cpu_seconds": 0.5694079999999999,
+  "wall_seconds": 0.6532383329999902
+}

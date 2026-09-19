@@ -1,0 +1,43 @@
+[
+  {
+    "original_path": "scripts/replay_quantum_features.py",
+    "purpose": "first failed bookkeeping attempt",
+    "sha256": "72559edc083b5b5927161e715ce2ab76fa6ede15b5a74a8c5975b85f106fda45",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/72559edc083b5b5927161e715ce2ab76fa6ede15b5a74a8c5975b85f106fda45_replay_quantum_features.py"
+  },
+  {
+    "original_path": "scripts/stress_hybrid_scaling.py",
+    "sha256": "c176d31cf85f5e6e30278f56bccae7ac7684b97252533f740cc640e701fb8224",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/c176d31cf85f5e6e30278f56bccae7ac7684b97252533f740cc640e701fb8224_stress_hybrid_scaling.py"
+  },
+  {
+    "original_path": "scripts/verify_research_execution.py",
+    "sha256": "546ea0fb240b5f8962f95de2d35190e16534a900bd287b87a904e37c4d0c85a7",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/546ea0fb240b5f8962f95de2d35190e16534a900bd287b87a904e37c4d0c85a7_verify_research_execution.py"
+  },
+  {
+    "original_path": "scripts/build_research_dataset_manifest.py",
+    "sha256": "5f4e00ddb68777639ef2d28e8e66576647ae4448f014327823bad0a8d65c54d2",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/5f4e00ddb68777639ef2d28e8e66576647ae4448f014327823bad0a8d65c54d2_build_research_dataset_manifest.py"
+  },
+  {
+    "original_path": "scripts/test_research_foundation.py",
+    "sha256": "0c39ee973a547aed437fb219d39ed63887131dfad317c178e3af6e4f8fa7e69e",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/0c39ee973a547aed437fb219d39ed63887131dfad317c178e3af6e4f8fa7e69e_test_research_foundation.py"
+  },
+  {
+    "original_path": "research/schemas/run.schema.json",
+    "sha256": "9017759f239729eba219d278d80d3f8be7760c36ecde36724044b1b84c0c35da",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/9017759f239729eba219d278d80d3f8be7760c36ecde36724044b1b84c0c35da_run.schema.json"
+  },
+  {
+    "original_path": "research/configs/e2_pilot.json",
+    "sha256": "8324f98f033fadbaceeba41793ccbc960ec67f13e1742ba70ae8824ad638201d",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/8324f98f033fadbaceeba41793ccbc960ec67f13e1742ba70ae8824ad638201d_e2_pilot.json"
+  },
+  {
+    "original_path": "research/configs/precision_screen.json",
+    "sha256": "d7c286d1c5a9fcdca740f6d867f6db14c0cab07a641c2bfe0f1ba3cb155ea41b",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/d7c286d1c5a9fcdca740f6d867f6db14c0cab07a641c2bfe0f1ba3cb155ea41b_precision_screen.json"
+  }
+]

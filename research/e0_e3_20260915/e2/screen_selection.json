@@ -1,0 +1,14 @@
+{
+  "assessment_not_evaluated_yet": true,
+  "scores_macro_f1_log_count_alc": {
+    "analytic_fixed": 52.18676112382042,
+    "learned_conv": 52.50833512235694,
+    "orthogonal": 52.684865462006854,
+    "polynomial": 52.99308036191221,
+    "random_conv": 51.484216393358615,
+    "random_mlp": 52.922759866997694,
+    "rff": 55.03883643396763
+  },
+  "selected_classical": "rff",
+  "selection_rule": "largest mean tuning ALC across both predeclared screen banks"
+}

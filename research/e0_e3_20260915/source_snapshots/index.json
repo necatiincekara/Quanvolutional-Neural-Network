@@ -1,0 +1,47 @@
+[
+  {
+    "original_path": "scripts/run_feature_probe.py",
+    "sha256": "f51646bef5c1829fb8562775248469d5831d4b49d6739a487258d679c73e7ae4",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/f51646bef5c1829fb8562775248469d5831d4b49d6739a487258d679c73e7ae4_run_feature_probe.py"
+  },
+  {
+    "original_path": "src/research_feature_maps.py",
+    "sha256": "eb5d60030fab6639e559246e22aae54d3c3e5ae915958c3cae9fed56512a9fef",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/eb5d60030fab6639e559246e22aae54d3c3e5ae915958c3cae9fed56512a9fef_research_feature_maps.py"
+  },
+  {
+    "original_path": "src/research_protocol.py",
+    "sha256": "cbd26b66cbe02f927fc782d92a1a4a1a369c69cd0e266bcba705fb3fefa86d7e",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/cbd26b66cbe02f927fc782d92a1a4a1a369c69cd0e266bcba705fb3fefa86d7e_research_protocol.py"
+  },
+  {
+    "original_path": "scripts/diagnose_hybrid_precision.py",
+    "sha256": "8a5349920d3b460d0dbef1f5afbbe0b05b4dc21b44749bc0c286e9fb2d2d05a8",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/8a5349920d3b460d0dbef1f5afbbe0b05b4dc21b44749bc0c286e9fb2d2d05a8_diagnose_hybrid_precision.py"
+  },
+  {
+    "original_path": "src/classical_quantum_controls.py",
+    "sha256": "cddf4924321dd62f82d74bf002717d47cfa0c5a722f88d10842ca10173bcc40a",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/cddf4924321dd62f82d74bf002717d47cfa0c5a722f88d10842ca10173bcc40a_classical_quantum_controls.py"
+  },
+  {
+    "original_path": "src/trainable_quantum_model.py",
+    "sha256": "2bd862d424b81c25b5500fb98146f67bc9d209107d3e0c3316975d0ef2aec337",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/2bd862d424b81c25b5500fb98146f67bc9d209107d3e0c3316975d0ef2aec337_trainable_quantum_model.py"
+  },
+  {
+    "original_path": "scripts/replay_quantum_features.py",
+    "sha256": "3ad249b525d183d27fc500b6ea2243f944ae3ea6f5e8c77f11a4ec3cee5c1821",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/3ad249b525d183d27fc500b6ea2243f944ae3ea6f5e8c77f11a4ec3cee5c1821_replay_quantum_features.py"
+  },
+  {
+    "original_path": "src/ablation_models.py",
+    "sha256": "78cb9f2a7c8513fb8120e38f0696eadd01ff845517c3da3f77b6ac1322b691e1",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/78cb9f2a7c8513fb8120e38f0696eadd01ff845517c3da3f77b6ac1322b691e1_ablation_models.py"
+  },
+  {
+    "original_path": "train_ablation_local.py",
+    "sha256": "852dd09b18b7a59c02c09c94dc0b482ee19c4064551f9a774c48af89c87aca57",
+    "snapshot": "research/e0_e3_20260915/source_snapshots/852dd09b18b7a59c02c09c94dc0b482ee19c4064551f9a774c48af89c87aca57_train_ablation_local.py"
+  }
+]

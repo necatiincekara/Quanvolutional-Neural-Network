@@ -1,0 +1,22 @@
+{
+  "error": "NotImplementedError('\"exp_vml_cpu\" not implemented for \\'ComplexHalf\\'')",
+  "family": "v7",
+  "parameter_counts": {
+    "circuit_or_analytic": 24,
+    "classical": 35
+  },
+  "process_cpu_seconds": 0.007580999999999172,
+  "seed": 3,
+  "setting": {
+    "amp": true,
+    "boundary": "inherit",
+    "dtype": "float16",
+    "name": "fp16_inherited_scaled",
+    "scaler": true,
+    "semantics": "correct"
+  },
+  "status": "unsupported_or_execution_error",
+  "steps": [],
+  "wall_seconds": 0.007584625000163214,
+  "warnings": []
+}

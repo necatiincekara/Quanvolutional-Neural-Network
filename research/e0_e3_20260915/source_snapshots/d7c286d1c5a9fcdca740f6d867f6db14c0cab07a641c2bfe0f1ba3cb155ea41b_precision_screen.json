@@ -1,0 +1,95 @@
+{
+  "cpu_cap_seconds": 7200,
+  "cuda": "explicitly untested if unavailable",
+  "device": "cpu",
+  "families": [
+    "analytic",
+    "fixed",
+    "v7"
+  ],
+  "purpose": "isolate update semantics vs interface vs conditioning; not full OCR training",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "settings": [
+    {
+      "amp": false,
+      "boundary": "inherit",
+      "dtype": "float64",
+      "name": "float64_reference",
+      "scaler": false,
+      "semantics": "correct"
+    },
+    {
+      "amp": false,
+      "boundary": "inherit",
+      "dtype": "float32",
+      "name": "float32_reference",
+      "scaler": false,
+      "semantics": "correct"
+    },
+    {
+      "amp": true,
+      "boundary": "inherit",
+      "dtype": "float16",
+      "name": "fp16_inherited_scaled",
+      "scaler": true,
+      "semantics": "correct"
+    },
+    {
+      "amp": true,
+      "boundary": "float32",
+      "dtype": "float16",
+      "name": "fp16_boundary_scaled",
+      "scaler": true,
+      "semantics": "correct"
+    },
+    {
+      "amp": true,
+      "boundary": "float32",
+      "dtype": "bfloat16",
+      "name": "bf16_boundary_unscaled",
+      "scaler": false,
+      "semantics": "correct"
+    },
+    {
+      "amp": true,
+      "boundary": "float32",
+      "dtype": "float16",
+      "name": "fp16_boundary_unscaled",
+      "scaler": false,
+      "semantics": "correct"
+    },
+    {
+      "amp": false,
+      "boundary": "inherit",
+      "dtype": "float32",
+      "inject_inf_step": 2,
+      "name": "inf_correct",
+      "scaler": true,
+      "semantics": "correct"
+    },
+    {
+      "amp": false,
+      "boundary": "inherit",
+      "dtype": "float32",
+      "inject_inf_step": 2,
+      "name": "inf_historical_direct",
+      "scaler": true,
+      "semantics": "historical_direct_after_unscale"
+    },
+    {
+      "amp": true,
+      "boundary": "float32",
+      "dtype": "float16",
+      "name": "fp16_historical_direct",
+      "scaler": true,
+      "semantics": "historical_direct_after_unscale"
+    }
+  ],
+  "steps": 10
+}
