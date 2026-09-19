@@ -1,0 +1,199 @@
+{
+  "unique_valid_content_count": 3819,
+  "exhaustive_pair_count": 7290471,
+  "threshold_5": {
+    "pairs": 3,
+    "content_ids": 6,
+    "cross_historical_pairs": 0,
+    "cross_protocol_pairs": 2,
+    "protocol_pair_counts": {
+      "train/validation": 2,
+      "train/train": 1
+    },
+    "cross_protocol_affected_ids": {
+      "train": 2,
+      "validation": 2,
+      "test": 0
+    }
+  },
+  "threshold_10": {
+    "pairs": 4,
+    "content_ids": 8,
+    "cross_historical_pairs": 1,
+    "cross_protocol_pairs": 3,
+    "protocol_pair_counts": {
+      "train/validation": 2,
+      "train/train": 1,
+      "test/train": 1
+    },
+    "cross_protocol_affected_ids": {
+      "train": 3,
+      "validation": 2,
+      "test": 1
+    }
+  },
+  "pairs": [
+    {
+      "sample_ids": [
+        "pixel-sha256:cd6429856da32896a6d905197acc38f86c5da9b842bc722da0537b79a0b81238",
+        "pixel-sha256:f6e823cd4d8e0b5e790319f7d9e6e5ee1b1a3c6d8e70b1444f4b774479224567"
+      ],
+      "representatives": [
+        "train/talik_01-07.png",
+        "train/talik_01007.png"
+      ],
+      "record_ids": [
+        [
+          "4a417bfb22b02eeb097b51a5f0854060eaf7452bfad3f425d50eaa73ba76374d"
+        ],
+        [
+          "9924a50638aa027a4df62599c730a6b9aca21df3c915e2c9f2fd0ad0514173d4"
+        ]
+      ],
+      "labels": [
+        [
+          "07"
+        ],
+        [
+          "07"
+        ]
+      ],
+      "rmse_gray": 3.4641016151377544,
+      "max_abs_gray": 64.0,
+      "different_pixels": 3,
+      "ink_iou": 1.0,
+      "historical_cross_split": false,
+      "protocol_splits": [
+        "validation",
+        "train"
+      ],
+      "protocol_cross_split": true,
+      "review_status": "contact sheet generated; see separate manual review",
+      "pair_id": "ND0001"
+    },
+    {
+      "sample_ids": [
+        "pixel-sha256:4cc1c43c3cd87f5fa9aba7e8c67e61510998c695097cf778f88e18cd076e1c5a",
+        "pixel-sha256:b48e87dad387bc4eff30cba939c71927eef4ea08fef3548485aa7d8ecb087c68"
+      ],
+      "representatives": [
+        "train/talik_010030.png",
+        "train/talik_01-030.png"
+      ],
+      "record_ids": [
+        [
+          "35aaa236a8516799f926eeee465096f9120a5bb1900458cb613c0dccf65df635"
+        ],
+        [
+          "b16f848540733c7fd62f4f126069457893aaadff4ad74801f1eb3c2e8bdb3948"
+        ]
+      ],
+      "labels": [
+        [
+          "30"
+        ],
+        [
+          "30"
+        ]
+      ],
+      "rmse_gray": 4.9466884440502215,
+      "max_abs_gray": 143.0,
+      "different_pixels": 3,
+      "ink_iou": 0.9986486486486487,
+      "historical_cross_split": false,
+      "protocol_splits": [
+        "validation",
+        "train"
+      ],
+      "protocol_cross_split": true,
+      "review_status": "contact sheet generated; see separate manual review",
+      "pair_id": "ND0002"
+    },
+    {
+      "sample_ids": [
+        "pixel-sha256:ce8fc3cbee0ec65a32e676af517c888a752f01315da8e0d61e5136a606e7f648",
+        "pixel-sha256:f25aa300b6222ad392f424fe3db377f3e27d46b0ff241f419f3bcfafacfe4033"
+      ],
+      "representatives": [
+        "train/96442c43-451f-4b91-9753-1a28fe935c2c032.png",
+        "train/96442c43-451f-4b91-9753-1a28fe935c2c0032.png"
+      ],
+      "record_ids": [
+        [
+          "04931651369966861ad6bbf9ca551261d802e96ce70c529100d03424dfe822fb"
+        ],
+        [
+          "823fd0080dad45649412b2de70849edb20508889b6ddcc87e3c5339df6bf0310"
+        ]
+      ],
+      "labels": [
+        [
+          "32"
+        ],
+        [
+          "32"
+        ]
+      ],
+      "rmse_gray": 4.9466884440502215,
+      "max_abs_gray": 143.0,
+      "different_pixels": 3,
+      "ink_iou": 0.9989035087719298,
+      "historical_cross_split": false,
+      "protocol_splits": [
+        "train",
+        "train"
+      ],
+      "protocol_cross_split": false,
+      "review_status": "contact sheet generated; see separate manual review",
+      "pair_id": "ND0003"
+    },
+    {
+      "sample_ids": [
+        "pixel-sha256:aa0509bc07fecd2219a7e4ee536b5a0602a9053a7064906dd66144b4979d4262",
+        "pixel-sha256:c4c088173abc451d51f7bee51b5553832f531c703f2f3707ee20e8e9fe095d00"
+      ],
+      "representatives": [
+        "train/cd020bb4-0ec2-42ea-8de1-2951b561a920012.png",
+        "test/888f4efd-6568-4e93-bc6c-fdb6c8f563a4012.png"
+      ],
+      "record_ids": [
+        [
+          "6412b0d33f5a81eca3cf257955a7accf2ccc43b76cf20269c8ef92480a0310e0"
+        ],
+        [
+          "1665f5697319f77ac4c5f27754e7adebcf4871379c3f21e8c3a054d065557869"
+        ]
+      ],
+      "labels": [
+        [
+          "12"
+        ],
+        [
+          "12"
+        ]
+      ],
+      "rmse_gray": 7.358694899572885,
+      "max_abs_gray": 143.0,
+      "different_pixels": 15,
+      "ink_iou": 0.995418098510882,
+      "historical_cross_split": true,
+      "protocol_splits": [
+        "train",
+        "test"
+      ],
+      "protocol_cross_split": true,
+      "review_status": "contact sheet generated; see separate manual review",
+      "pair_id": "ND0004"
+    }
+  ],
+  "review_order": [
+    "ND0004",
+    "ND0001",
+    "ND0002",
+    "ND0003"
+  ],
+  "matrix_independent_check_max_mse_error": 0.0048828125,
+  "checked_matrix_distances": 60,
+  "cpu_seconds": 0.08017299999999994,
+  "wall_seconds": 0.13237150000350084
+}

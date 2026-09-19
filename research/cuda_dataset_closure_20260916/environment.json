@@ -1,0 +1,27 @@
+{
+  "python": "3.13.7",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "torch": "2.10.0",
+  "cuda_runtime": null,
+  "cuda_available": false,
+  "cuda_device_count": 0,
+  "nvidia_smi": null,
+  "gpu_model": null,
+  "nvidia_driver": null,
+  "mps_available": false,
+  "versions": {
+    "pennylane": "0.44.0",
+    "pennylane-lightning": "0.44.0",
+    "pennylane-lightning-gpu": null,
+    "numpy": "2.4.2",
+    "opencv-python": null,
+    "Pillow": "12.1.1"
+  },
+  "part_a_status": "BLOCKED_NO_CUDA",
+  "cuda_autocast_fp16": "not tested; no CUDA",
+  "cuda_bfloat16_operations": "not tested",
+  "quantum_backend_executed": null,
+  "differentiation_executed": null,
+  "numerical_experiments_executed": 0,
+  "gpu_seconds": 0
+}

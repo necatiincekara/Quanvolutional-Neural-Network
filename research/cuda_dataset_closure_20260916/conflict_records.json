@@ -1,0 +1,386 @@
+{
+  "annotation_layer_only": true,
+  "label_map": {
+    "01": "elif",
+    "02": "be",
+    "03": "te",
+    "04": "se",
+    "05": "cim",
+    "06": "ha",
+    "07": "hı",
+    "08": "dal",
+    "09": "zel",
+    "10": "ra",
+    "11": "ze",
+    "12": "sin",
+    "13": "şın",
+    "14": "şad",
+    "15": "dad",
+    "16": "tı",
+    "17": "zı",
+    "18": "ayn",
+    "19": "ğayn",
+    "20": "fe",
+    "21": "kaf",
+    "22": "kef",
+    "23": "lam",
+    "24": "mim",
+    "25": "nun",
+    "26": "he",
+    "27": "vav",
+    "28": "ye",
+    "29": "pe",
+    "30": "çim",
+    "31": "je",
+    "32": "gef",
+    "33": "nef",
+    "34": "1",
+    "35": "2",
+    "36": "3",
+    "37": "4",
+    "38": "5",
+    "39": "6",
+    "40": "7",
+    "41": "8",
+    "42": "9",
+    "43": "0",
+    "44": "lamelif"
+  },
+  "groups": [
+    {
+      "group_id": "C1",
+      "sample_id": "pixel-sha256:2f1d67862d224f1bcff1f4e0a633976107725fe5125c426356e0e252bc9f1186",
+      "records": [
+        {
+          "byte_sha256": "62a95af5f804199741cbb56a578229352f8525daa7e5478f9774180ee06d0250",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 10,
+          "label_code": "11",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "train",
+          "pixel_sha256": "2f1d67862d224f1bcff1f4e0a633976107725fe5125c426356e0e252bc9f1186",
+          "record_id": "daff3cedf2b4fadb29c7d3e39147a34cdec96b7046a03b144988ed370e9d67ca",
+          "relative_path": "train/TBMM-005-000011.png",
+          "sample_id": "pixel-sha256:2f1d67862d224f1bcff1f4e0a633976107725fe5125c426356e0e252bc9f1186",
+          "valid": true,
+          "filename": "TBMM-005-000011.png",
+          "class_name": "ze",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        },
+        {
+          "byte_sha256": "62a95af5f804199741cbb56a578229352f8525daa7e5478f9774180ee06d0250",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 8,
+          "label_code": "09",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "test",
+          "pixel_sha256": "2f1d67862d224f1bcff1f4e0a633976107725fe5125c426356e0e252bc9f1186",
+          "record_id": "fd1186cfaef89b007356666d127a676498bcd7fe8dbac77cce3ff23b805c8629",
+          "relative_path": "test/TBMM-005-00009.png",
+          "sample_id": "pixel-sha256:2f1d67862d224f1bcff1f4e0a633976107725fe5125c426356e0e252bc9f1186",
+          "valid": true,
+          "filename": "TBMM-005-00009.png",
+          "class_name": "zel",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        }
+      ],
+      "exact_pixel_identity_verified": true,
+      "exact_byte_identity": true,
+      "cross_historical_split": true,
+      "in_current_protocol": false,
+      "visual_status": "contact sheet generated; see separate manual review",
+      "decision": "quarantine; insufficient evidence for corrected class",
+      "corrected_label": null,
+      "confidence": {
+        "identity_conflict": "high",
+        "label_adjudication": "insufficient",
+        "quarantine": "high"
+      },
+      "rationale": "Same pixels and bytes carry incompatible valid source labels; no crop-to-source annotation or independent authoritative label is available."
+    },
+    {
+      "group_id": "C2",
+      "sample_id": "pixel-sha256:4a2a5f5f28586824a0c6aeeb598cc286d8b058adfc217148ccde69adab663231",
+      "records": [
+        {
+          "byte_sha256": "56751f75fbdc6e4aa842f1d437d779ddf96a7012f78c15f080b6784afcbbd939",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 33,
+          "label_code": "34",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "train",
+          "pixel_sha256": "4a2a5f5f28586824a0c6aeeb598cc286d8b058adfc217148ccde69adab663231",
+          "record_id": "d29a86491997e0dcf3f8612ff517ab1497bcd966975c1b787db70f19240f9a22",
+          "relative_path": "train/TBMM-005-00000034.png",
+          "sample_id": "pixel-sha256:4a2a5f5f28586824a0c6aeeb598cc286d8b058adfc217148ccde69adab663231",
+          "valid": true,
+          "filename": "TBMM-005-00000034.png",
+          "class_name": "1",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        },
+        {
+          "byte_sha256": "56751f75fbdc6e4aa842f1d437d779ddf96a7012f78c15f080b6784afcbbd939",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 0,
+          "label_code": "01",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "train",
+          "pixel_sha256": "4a2a5f5f28586824a0c6aeeb598cc286d8b058adfc217148ccde69adab663231",
+          "record_id": "907ba5197526695378c0c276472ad96cc857121eb9e50e80bdf94849986a9383",
+          "relative_path": "train/TBMM-005-00001.png",
+          "sample_id": "pixel-sha256:4a2a5f5f28586824a0c6aeeb598cc286d8b058adfc217148ccde69adab663231",
+          "valid": true,
+          "filename": "TBMM-005-00001.png",
+          "class_name": "elif",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        }
+      ],
+      "exact_pixel_identity_verified": true,
+      "exact_byte_identity": true,
+      "cross_historical_split": false,
+      "in_current_protocol": false,
+      "visual_status": "contact sheet generated; see separate manual review",
+      "decision": "quarantine; insufficient evidence for corrected class",
+      "corrected_label": null,
+      "confidence": {
+        "identity_conflict": "high",
+        "label_adjudication": "insufficient",
+        "quarantine": "high"
+      },
+      "rationale": "Same pixels and bytes carry incompatible valid source labels; no crop-to-source annotation or independent authoritative label is available."
+    },
+    {
+      "group_id": "C3",
+      "sample_id": "pixel-sha256:53dae2c717851b9ed2c0a15e1233c42aff1366ee6b8353282aeb3a8262e607dd",
+      "records": [
+        {
+          "byte_sha256": "4014fd45da49be56620dc53f654978b01dcce23043ae5461c5155db6242ab006",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 23,
+          "label_code": "24",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "train",
+          "pixel_sha256": "53dae2c717851b9ed2c0a15e1233c42aff1366ee6b8353282aeb3a8262e607dd",
+          "record_id": "9fdd57544e510584e887aba0509bdd69972c9b41746086ac0497831990d683d4",
+          "relative_path": "train/TBMM-005-00000000000000024.png",
+          "sample_id": "pixel-sha256:53dae2c717851b9ed2c0a15e1233c42aff1366ee6b8353282aeb3a8262e607dd",
+          "valid": true,
+          "filename": "TBMM-005-00000000000000024.png",
+          "class_name": "mim",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        },
+        {
+          "byte_sha256": "4014fd45da49be56620dc53f654978b01dcce23043ae5461c5155db6242ab006",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 25,
+          "label_code": "26",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "test",
+          "pixel_sha256": "53dae2c717851b9ed2c0a15e1233c42aff1366ee6b8353282aeb3a8262e607dd",
+          "record_id": "618e9f1f2ca14bbb5d6c7ebae068e8c29939ef5ced7e6097e6013869b0eb02b9",
+          "relative_path": "test/TBMM-005-00000026.png",
+          "sample_id": "pixel-sha256:53dae2c717851b9ed2c0a15e1233c42aff1366ee6b8353282aeb3a8262e607dd",
+          "valid": true,
+          "filename": "TBMM-005-00000026.png",
+          "class_name": "he",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        }
+      ],
+      "exact_pixel_identity_verified": true,
+      "exact_byte_identity": true,
+      "cross_historical_split": true,
+      "in_current_protocol": false,
+      "visual_status": "contact sheet generated; see separate manual review",
+      "decision": "quarantine; insufficient evidence for corrected class",
+      "corrected_label": null,
+      "confidence": {
+        "identity_conflict": "high",
+        "label_adjudication": "insufficient",
+        "quarantine": "high"
+      },
+      "rationale": "Same pixels and bytes carry incompatible valid source labels; no crop-to-source annotation or independent authoritative label is available."
+    },
+    {
+      "group_id": "C4",
+      "sample_id": "pixel-sha256:8d403dd561c402f297cabcfdc1dce3a60ff7bb2b318a192d313fafbbb8169156",
+      "records": [
+        {
+          "byte_sha256": "24d9a4f4eb8137b721b2a12ae79aafffc7e469bbd3df0dede8d2f61cf644f7cc",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 34,
+          "label_code": "35",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "train",
+          "pixel_sha256": "8d403dd561c402f297cabcfdc1dce3a60ff7bb2b318a192d313fafbbb8169156",
+          "record_id": "74b3295fb6b0e8f01ddcb3bad032b8f45b6f0f1082fb74963c92d5f7979b30cb",
+          "relative_path": "train/TBMM-005-000035.png",
+          "sample_id": "pixel-sha256:8d403dd561c402f297cabcfdc1dce3a60ff7bb2b318a192d313fafbbb8169156",
+          "valid": true,
+          "filename": "TBMM-005-000035.png",
+          "class_name": "2",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        },
+        {
+          "byte_sha256": "24d9a4f4eb8137b721b2a12ae79aafffc7e469bbd3df0dede8d2f61cf644f7cc",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 1,
+          "label_code": "02",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "test",
+          "pixel_sha256": "8d403dd561c402f297cabcfdc1dce3a60ff7bb2b318a192d313fafbbb8169156",
+          "record_id": "f162bee0d43fea111630bbcdde0c2e2a6d3e0e41b0522d1b0999b19d7484c0f5",
+          "relative_path": "test/TBMM-005-000002.png",
+          "sample_id": "pixel-sha256:8d403dd561c402f297cabcfdc1dce3a60ff7bb2b318a192d313fafbbb8169156",
+          "valid": true,
+          "filename": "TBMM-005-000002.png",
+          "class_name": "be",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        }
+      ],
+      "exact_pixel_identity_verified": true,
+      "exact_byte_identity": true,
+      "cross_historical_split": true,
+      "in_current_protocol": false,
+      "visual_status": "contact sheet generated; see separate manual review",
+      "decision": "quarantine; insufficient evidence for corrected class",
+      "corrected_label": null,
+      "confidence": {
+        "identity_conflict": "high",
+        "label_adjudication": "insufficient",
+        "quarantine": "high"
+      },
+      "rationale": "Same pixels and bytes carry incompatible valid source labels; no crop-to-source annotation or independent authoritative label is available."
+    },
+    {
+      "group_id": "C5",
+      "sample_id": "pixel-sha256:d64a2e31bf2ba0bb0f732ce558858e5b3fac28f094f20aa34fb85527cf38238b",
+      "records": [
+        {
+          "byte_sha256": "62f39cc0d3f804e0f718bb3893fb63f9d0eef07e08d9144c7ae243e280cdb08a",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 37,
+          "label_code": "38",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "train",
+          "pixel_sha256": "d64a2e31bf2ba0bb0f732ce558858e5b3fac28f094f20aa34fb85527cf38238b",
+          "record_id": "5297b26a4785179721ac7ddb0684d8216bc3f2b212d785514cebf9f52598e2af",
+          "relative_path": "train/TBMM-005-000038.png",
+          "sample_id": "pixel-sha256:d64a2e31bf2ba0bb0f732ce558858e5b3fac28f094f20aa34fb85527cf38238b",
+          "valid": true,
+          "filename": "TBMM-005-000038.png",
+          "class_name": "5",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        },
+        {
+          "byte_sha256": "62f39cc0d3f804e0f718bb3893fb63f9d0eef07e08d9144c7ae243e280cdb08a",
+          "decoded_shape": [
+            32,
+            32
+          ],
+          "exclusion_reasons": [],
+          "label": 25,
+          "label_code": "26",
+          "original_source": "repository set; writer/source identity unverified",
+          "original_split": "test",
+          "pixel_sha256": "d64a2e31bf2ba0bb0f732ce558858e5b3fac28f094f20aa34fb85527cf38238b",
+          "record_id": "5e2afe0a242a7ee8b68921f34b26f919d949013310a187ef555db3a04d477304",
+          "relative_path": "test/TBMM-005-0000026.png",
+          "sample_id": "pixel-sha256:d64a2e31bf2ba0bb0f732ce558858e5b3fac28f094f20aa34fb85527cf38238b",
+          "valid": true,
+          "filename": "TBMM-005-0000026.png",
+          "class_name": "he",
+          "png_metadata": {
+            "format": "PNG",
+            "mode": "L",
+            "info": {}
+          }
+        }
+      ],
+      "exact_pixel_identity_verified": true,
+      "exact_byte_identity": true,
+      "cross_historical_split": true,
+      "in_current_protocol": false,
+      "visual_status": "contact sheet generated; see separate manual review",
+      "decision": "quarantine; insufficient evidence for corrected class",
+      "corrected_label": null,
+      "confidence": {
+        "identity_conflict": "high",
+        "label_adjudication": "insufficient",
+        "quarantine": "high"
+      },
+      "rationale": "Same pixels and bytes carry incompatible valid source labels; no crop-to-source annotation or independent authoritative label is available."
+    }
+  ]
+}

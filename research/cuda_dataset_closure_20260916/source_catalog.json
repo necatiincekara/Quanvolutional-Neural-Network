@@ -1,0 +1,66 @@
+{
+  "access_date": "2026-09-16",
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "original uploader metadata",
+      "url": "https://www.kaggle.com/datasets/alpbintuuzun/ottoman-turkish-characters",
+      "api_url": "https://www.kaggle.com/api/v1/datasets/view/alpbintuuzun/ottoman-turkish-characters",
+      "saved": "kaggle_metadata.json",
+      "establishes": "Version 1, source authors, counts/styles, 32x32 images, filename last-two-digit rule, 44-code mapping, original split and uploader GPL 2 license label.",
+      "does_not_establish": "Crop/page/writer mapping, independent annotation review, complete upstream rights chain, duplicate fixes."
+    },
+    {
+      "id": "S2",
+      "kind": "original release archive inventory",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/alpbintuuzun/ottoman-turkish-characters?datasetVersionNumber=1",
+      "saved": "source_archive_inventory.json",
+      "establishes": "Same archive hash as August verification; contains 3894 PNG entries and no metadata sidecar or license text file. Archive read in memory, not repackaged."
+    },
+    {
+      "id": "S3",
+      "kind": "dataset authors publication",
+      "url": "https://dergipark.org.tr/en/pub/jeps/article/888164",
+      "pdf_url": "https://dergipark.org.tr/en/download/article-file/1607142",
+      "doi": "10.7240/jeps.888164",
+      "saved": "primary_publication_access.json",
+      "reviewed": "Section III, printed pages 583–584 visually checked; summary and release-count discrepancy in report section 9.",
+      "does_not_establish": "Any crop-specific label adjudication or mapping from filenames to source pages/writers."
+    },
+    {
+      "id": "S4",
+      "kind": "author public repository listing; auxiliary bounded search",
+      "url": "https://api.github.com/users/alpbintug/repos?per_page=100",
+      "saved": "author_repository_listing.json",
+      "establishes": "Listing inspected for dataset/parser source; no matching parser repository identified.",
+      "does_not_establish": "Absence of all public/private original code. The image-cropper repository is not verified to generate this dataset."
+    },
+    {
+      "id": "S5",
+      "kind": "primary PyTorch documentation",
+      "url": "https://docs.pytorch.org/docs/2.10/notes/amp_examples.html",
+      "establishes": "Correct multi-optimizer GradScaler stepping and unscale-before-clipping semantics."
+    }
+  ],
+  "searches": [
+    "\"Ottoman Turkish Characters\" \"Özer\"",
+    "\"alpbintuuzun\" \"ottoman\" dataset",
+    "\"TBMM-005\" Ottoman dataset",
+    "\"Alp Bintuğ Uzun\" \"github\"",
+    "\"Alperen Özer\" \"Osmanlıca\" github",
+    "\"Ottoman Document Parser\" github",
+    "\"ottoman-turkish-characters\" \"label\"",
+    "\"ottoman-turkish-characters\" \"license\""
+  ],
+  "failed_accesses": [
+    "Kaggle webpage returned no readable text through web tool; public API succeeded.",
+    "Web PDF screenshot timed out twice; publisher PDF was successfully fetched separately and pages rendered locally."
+  ],
+  "repository_evidence": [
+    "experiments/submission_artifact_manifest_20260728.json dataset_source",
+    "Necati Incekara Master Thesis.pdf section 5.2",
+    "src/config.py TAGS",
+    "research/e0_e3_20260915/dataset_manifest.json"
+  ],
+  "rights_conclusion": "Uploader license label verified. Full chain of permissions for the original source scans/mixed images and redistribution conditions beyond that label remain unresolved. No new redistribution package created."
+}

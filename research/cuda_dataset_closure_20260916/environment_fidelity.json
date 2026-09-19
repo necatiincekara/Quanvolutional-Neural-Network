@@ -1,0 +1,134 @@
+{
+  "comparison_scope": "Later captured L4 environments are proxies, not verified copies of the original failing run. All statuses refer only to the stated captured detail.",
+  "columns": [
+    "field",
+    "historical_environment",
+    "current_environment",
+    "match_status",
+    "likely_relevance"
+  ],
+  "rows": [
+    {
+      "field": "GPU",
+      "historical_environment": "L4 captured March 5 and April 27; exact failed invocation not captured",
+      "current_environment": "No exposed GPU; CUDA device_count=0",
+      "match_status": "different",
+      "likely_relevance": "Cannot reproduce CUDA kernels or hardware range behavior"
+    },
+    {
+      "field": "CUDA runtime",
+      "historical_environment": "April: torch cu128 and nvidia-cuda-runtime-cu12 12.8.90; March failed run unknown",
+      "current_environment": null,
+      "match_status": "different",
+      "likely_relevance": "CUDA operation support and rounding depend on this"
+    },
+    {
+      "field": "NVIDIA driver",
+      "historical_environment": "580.82.07 in March 5 and April 27 notebook outputs",
+      "current_environment": null,
+      "match_status": "different",
+      "likely_relevance": "No NVIDIA stack locally"
+    },
+    {
+      "field": "Driver CUDA compatibility",
+      "historical_environment": "nvidia-smi reports 13.0 in both notebooks; this is NOT the installed PyTorch CUDA runtime",
+      "current_environment": null,
+      "match_status": "different",
+      "likely_relevance": "Separates driver capability from CUDA 12.8 package runtime"
+    },
+    {
+      "field": "PyTorch",
+      "historical_environment": "April 27: 2.10.0+cu128; exact failed-run version unknown",
+      "current_environment": "2.10.0 CPU build",
+      "match_status": "close match",
+      "likely_relevance": "Core version matches later run; backend does not"
+    },
+    {
+      "field": "PennyLane",
+      "historical_environment": "April 27 installation: 0.44.1; exact failed run unknown",
+      "current_environment": "0.44.0",
+      "match_status": "close match",
+      "likely_relevance": "Patch and backend/interface differences could matter"
+    },
+    {
+      "field": "pennylane-lightning",
+      "historical_environment": "April 27: 0.44.0; exact failed run unknown",
+      "current_environment": "0.44.0",
+      "match_status": "exact match",
+      "likely_relevance": "Package version only; no same-device execution"
+    },
+    {
+      "field": "pennylane-lightning-gpu",
+      "historical_environment": "April 27: 0.44.0; exact failed run unknown",
+      "current_environment": "not installed",
+      "match_status": "different",
+      "likely_relevance": "Historical GPU adjoint path is unavailable"
+    },
+    {
+      "field": "cuStateVec",
+      "historical_environment": "April 27: custatevec-cu12 1.13.1; exact failed run unknown",
+      "current_environment": "not installed",
+      "match_status": "different",
+      "likely_relevance": "Quantum GPU simulation dependency"
+    },
+    {
+      "field": "Python",
+      "historical_environment": "April 27: 3.12 from package paths/cp312 wheel; patch unknown",
+      "current_environment": "3.13.7",
+      "match_status": "different",
+      "likely_relevance": "ABI/environment difference"
+    },
+    {
+      "field": "OS/environment",
+      "historical_environment": "Colab /content paths; Linux x86_64 wheel; exact OS release/kernel unknown",
+      "current_environment": "macOS 26.6.2 arm64",
+      "match_status": "different",
+      "likely_relevance": "Not a CUDA reproduction environment"
+    },
+    {
+      "field": "Quantum backend",
+      "historical_environment": "lightning.gpu in April run output and older configured source",
+      "current_environment": "none executed; CPU default.qubit/lightning.qubit evidence retained from E3",
+      "match_status": "different",
+      "likely_relevance": "Installed lightning.qubit is not lightning.gpu"
+    },
+    {
+      "field": "Differentiation",
+      "historical_environment": "adjoint in pre-fix V7 source; exact failure runtime configuration not archived",
+      "current_environment": "none executed",
+      "match_status": "unknown",
+      "likely_relevance": "No CUDA adjoint-versus-backprop comparison this stage"
+    },
+    {
+      "field": "AMP/autocast",
+      "historical_environment": "Pre-fix code requests CUDA float16 autocast; observed boundary dtypes in failed run absent",
+      "current_environment": "CUDA autocast not executable/tested",
+      "match_status": "unknown",
+      "likely_relevance": "Source intent is not evidence of actual tensor dtype"
+    },
+    {
+      "field": "GradScaler",
+      "historical_environment": "Pre-fix constructor defaults; state/initial scale at first nonfinite unknown; source unscales both then direct steps",
+      "current_environment": "No numerical run",
+      "match_status": "unknown",
+      "likely_relevance": "Optimizer bypass is source-verified; initiating scale not known"
+    },
+    {
+      "field": "fp16/bfloat16 operations",
+      "historical_environment": "No failed-run primitive capability trace or first-nonfinite tensor trace",
+      "current_environment": "Not probed: CUDA unavailable",
+      "match_status": "unknown",
+      "likely_relevance": "CPU ComplexHalf failure is not CUDA evidence"
+    },
+    {
+      "field": "Code identity",
+      "historical_environment": "April 27 cede472 captured; failed-run dirty source unknown; pre-126d396 source is a reconstruction anchor",
+      "current_environment": "95d6fb85f27c394e4b33b2cd5e5321c0c61e724a + dirty worktree",
+      "match_status": "different",
+      "likely_relevance": "Current code includes post-failure fixes"
+    }
+  ],
+  "contradictory_documentation": "docs/EXPERIMENTS.md March 2 configuration says A100 80GB, while March 5 notebook captures L4. Do not identify the exact failed invocation from these alone.",
+  "primary_evidence": "historical_environment_extract.json plus pre-126d396 Git sources",
+  "classification": "N5 — unresolved"
+}

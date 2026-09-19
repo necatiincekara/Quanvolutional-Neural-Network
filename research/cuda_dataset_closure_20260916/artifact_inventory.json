@@ -1,0 +1,200 @@
+{
+  "completion_date": "2026-09-17",
+  "preexisting_files_modified": [],
+  "files": [
+    {
+      "path": "research/ASTRA_CUDA_DATASET_CLOSURE_REPORT.md",
+      "purpose": "Required 17-section final scientific report",
+      "bytes": 32705,
+      "sha256": "b1fd06bc38a8763ed4da24817256832745cb234ff4c70295b9735791df48727c"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/adjudication_review.json",
+      "purpose": "Visual adjudication, confidence, null corrected labels and foreground-statistic addendum",
+      "bytes": 9922,
+      "sha256": "9e19734a868cc83643c05a9ca4739c653f04d759f2540d26f56587c964d7e2fc"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/artifact_inventory.json",
+      "purpose": "Complete new-deliverable index; self hash intentionally null",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/author_repository_listing.json",
+      "purpose": "Bounded original-author repository metadata search response",
+      "bytes": 204449,
+      "sha256": "60473c37fd52af8901c9e421a90ebd88024c0f8fd15d0478c2cea7cf0815a8bb"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/before_state.json",
+      "purpose": "Starting worktree and 5075 protected-file hashes",
+      "bytes": 969636,
+      "sha256": "5d0a1f69ec1412fa477b983e1529ab784921c3978c6404aa1d8d3c425c3ec2ec"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/before_tracked.patch",
+      "purpose": "Preserved pre-existing tracked changes",
+      "bytes": 1068027,
+      "sha256": "f0c22cc21faf15b92fe4be579e65271a2b2b9a9006ef1955cdcb936034ae39eb"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/commands.md",
+      "purpose": "Reproduction commands, access methods, failed attempts and scope boundary",
+      "bytes": 4548,
+      "sha256": "51882d234868623758d429dc4eab9cf7313aa9ff9c6a67bb38832df477ee1dce"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/conflict_contact_sheet.png",
+      "purpose": "Five identity-conflict groups for visual inspection",
+      "bytes": 32566,
+      "sha256": "bb5a83d49018b4f3d396603fb7e46f8b02cff3e241a946498fc83e81ae25b1b5"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/conflict_records.json",
+      "purpose": "Every conflicting-content occurrence, identity, label and initial quarantine proposal",
+      "bytes": 14412,
+      "sha256": "7e54d7487084f5f6b8cbe664007ef8012619f846c41a8651c029ecee58c63a6f"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/cuda_handoff.json",
+      "purpose": "Static unexecuted minimum CUDA diagnostic specification",
+      "bytes": 2996,
+      "sha256": "cab9b82daf50faf52bd63b70d76860e455d6b07f28f6f7dccf019681bfb637f3"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/environment.json",
+      "purpose": "CUDA availability and installed version probe",
+      "bytes": 718,
+      "sha256": "8cc074c0ffca6d24af6208dd69c171d0a3b57b9b787037a0358e1297624213de"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/environment_fidelity.json",
+      "purpose": "Qualified historical/current environment comparison",
+      "bytes": 5988,
+      "sha256": "7e4a94c835bf6981f58a1cd5da5646a84b63bf3ed638cebf02d192510fe1cae1"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/executed_investigator_source.py",
+      "purpose": "Exact executed investigator snapshot",
+      "bytes": 14448,
+      "sha256": "2d90b7e48d617b434e8a94129314ded5f18112ff4dea127181286d7e7d39a59b"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/filename_grouping.json",
+      "purpose": "Explicitly provisional filename-prefix inventory, not writer assignments",
+      "bytes": 326904,
+      "sha256": "56fc7e8bc8d3ab60375fd584c9f3a0f56ff407d783f3c9b062177629062963d4"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/final_verification.json",
+      "purpose": "Completed integrity/evidence checks and completion worktree state",
+      "bytes": 63321,
+      "sha256": "12c79d3c6b1bfa21bb5f25cd01973b7f8340907f73b9b99c96dcdd00c467bfaf"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/historical_config.txt",
+      "purpose": "Pre-fix Git config snapshot",
+      "bytes": 2319,
+      "sha256": "d069932423c46cbea1c09e0f5ab35165f2b9206f9b92c5a9caaded866673fc83"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/historical_enhanced_training.txt",
+      "purpose": "Pre-fix Git trainer snapshot",
+      "bytes": 21973,
+      "sha256": "66c1b638263fd61e9c3273af0691a16e7f866335fd87a437c99f68868cd0c06d"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/historical_environment_extract.json",
+      "purpose": "Notebook output excerpts with cell/output indexes",
+      "bytes": 14716,
+      "sha256": "1d31d86eb626af9ad775674db32b0bb30966d87320093e84f3986cfc7600928b"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/historical_trainable_quantum_model.txt",
+      "purpose": "Pre-fix Git circuit/model snapshot",
+      "bytes": 12377,
+      "sha256": "3bf2e23218174a51ed0aa70f803c5e721a98db7b28abb0c2fbfd0fc00cd60b85"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/invalid_contact_sheet.png",
+      "purpose": "Invalid raster and bounded visual comparison set",
+      "bytes": 36126,
+      "sha256": "d35995d6ac740584115f1e8caa49cbaab8fe6a658cbb1cd49c62cd6e0afde6e8"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/invalid_sample.json",
+      "purpose": "Invalid 00 identity, metadata, filename neighbors and nearest valid rasters",
+      "bytes": 14385,
+      "sha256": "0d2e9b632a744ea246c1af4f7d3a41fd0e3573b0d975aab9ece11361aef59b2c"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/investigation_config.json",
+      "purpose": "Pre-execution thresholds, cap and source hashes",
+      "bytes": 1036,
+      "sha256": "b5cca3a2db99e27cb655127839aebe3836c2e3127a03f64114dac6069be5efcd"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/investigation_runtime.json",
+      "purpose": "Measured CPU/wall time; zero GPU and training runs",
+      "bytes": 128,
+      "sha256": "b1c3af5d9884b938ca72e1581d9c644636423a19326a6d19e9a3a8c43ad1ee4d"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/kaggle_metadata.json",
+      "purpose": "Original uploader release description, class map and license label",
+      "bytes": 7661,
+      "sha256": "23fba4d1989a89d9d4baac27f6d6a3d6051d5e1e2b36bcd08b7900f1a6a61ffc"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/kaggle_search_response.json",
+      "purpose": "Original Kaggle dataset discovery response",
+      "bytes": 4502,
+      "sha256": "8252fb3b6b9d6c7cab255e4e8a33aa84e720736f4e4f2e06bf25635609278e66"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/near_duplicate_queue.json",
+      "purpose": "Four conservative aligned-distance review candidates and counts",
+      "bytes": 5215,
+      "sha256": "dc7444067cc614a2c033a6920c7d04996804bda09324ce879099a44d1ae4e37b"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/near_duplicate_review_1.png",
+      "purpose": "Visual review of all four candidate pairs",
+      "bytes": 26292,
+      "sha256": "bdc81ceb69a6aa47d959002ae9d1821863fe91a7e5d3cc2d0f24c37dc5bc4a02"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/primary_publication_access.json",
+      "purpose": "Publisher PDF retrieval identity and access record",
+      "bytes": 339,
+      "sha256": "bb2db58320bd335d1f331724e6e0a80ac16f4a00daf8c70e45c1de234e8ef3ae"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/source_archive_inventory.json",
+      "purpose": "Original release ZIP hash and complete 3894-entry inventory, without repackaged images",
+      "bytes": 338662,
+      "sha256": "539f3d1f357f0dff1d9a3458be1ee7edcf962806be890b07ad06446b937f60f4"
+    },
+    {
+      "path": "research/cuda_dataset_closure_20260916/source_catalog.json",
+      "purpose": "Exact primary-source URLs, access date, scope and failures",
+      "bytes": 3497,
+      "sha256": "965916625942141adb101157e62164e8028c579dcbe3bbf48f6a51b3eb70c6b5"
+    },
+    {
+      "path": "scripts/investigate_dataset_closure.py",
+      "purpose": "Read-only data/environment diagnostic entrypoint",
+      "bytes": 14448,
+      "sha256": "2d90b7e48d617b434e8a94129314ded5f18112ff4dea127181286d7e7d39a59b"
+    },
+    {
+      "path": "scripts/verify_dataset_closure.py",
+      "purpose": "This final preservation/evidence verifier",
+      "bytes": 10605,
+      "sha256": "695d168a8206d868655041e774b11c32455d62a8fd233b9455ccfd31bef82c15"
+    }
+  ],
+  "temporary_reading_intermediates": "Publisher PDF/renderings and thesis text in /private/tmp are not deliverables; source URL/hash retained",
+  "runtime_exclusions": "Interpreter bytecode and library caches"
+}

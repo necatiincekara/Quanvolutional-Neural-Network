@@ -1,0 +1,331 @@
+{
+  "date": "2026-09-16",
+  "reviewer": "Codex visual inspection; not independent expert adjudication",
+  "conflicts": [
+    {
+      "group_id": "C1",
+      "sample_id": "pixel-sha256:2f1d67862d224f1bcff1f4e0a633976107725fe5125c426356e0e252bc9f1186",
+      "visual_review": "inspected both original file rasters enlarged 4x, 2026-09-16; no Ottoman expert validation",
+      "observation": "Curved lower stroke with a separated mark above; identical ze/zel labels cannot be resolved without context.",
+      "outcome": "insufficient evidence; retain content-level quarantine",
+      "corrected_label": null,
+      "confidence": "high identity/conflict and quarantine; insufficient corrected-class confidence",
+      "source_evidence": [
+        "kaggle_metadata.json: author label map and filename rule confirmed",
+        "source_archive_inventory.json: original version-1 archive identity matches prior verified archive",
+        "primary_publication_access.json: aggregate source history, no per-crop ground truth"
+      ]
+    },
+    {
+      "group_id": "C2",
+      "sample_id": "pixel-sha256:4a2a5f5f28586824a0c6aeeb598cc286d8b058adfc217148ccde69adab663231",
+      "visual_review": "inspected both original file rasters enlarged 4x, 2026-09-16; no Ottoman expert validation",
+      "observation": "Single slanted upright stroke; numeral 1 versus elif is visually/contextually ambiguous.",
+      "outcome": "insufficient evidence; retain content-level quarantine",
+      "corrected_label": null,
+      "confidence": "high identity/conflict and quarantine; insufficient corrected-class confidence",
+      "source_evidence": [
+        "kaggle_metadata.json: author label map and filename rule confirmed",
+        "source_archive_inventory.json: original version-1 archive identity matches prior verified archive",
+        "primary_publication_access.json: aggregate source history, no per-crop ground truth"
+      ]
+    },
+    {
+      "group_id": "C3",
+      "sample_id": "pixel-sha256:53dae2c717851b9ed2c0a15e1233c42aff1366ee6b8353282aeb3a8262e607dd",
+      "visual_review": "inspected both original file rasters enlarged 4x, 2026-09-16; no Ottoman expert validation",
+      "observation": "Low-resolution broad white connected form; mim/he source conflict remains unresolved.",
+      "outcome": "insufficient evidence; retain content-level quarantine",
+      "corrected_label": null,
+      "confidence": "high identity/conflict and quarantine; insufficient corrected-class confidence",
+      "source_evidence": [
+        "kaggle_metadata.json: author label map and filename rule confirmed",
+        "source_archive_inventory.json: original version-1 archive identity matches prior verified archive",
+        "primary_publication_access.json: aggregate source history, no per-crop ground truth"
+      ]
+    },
+    {
+      "group_id": "C4",
+      "sample_id": "pixel-sha256:8d403dd561c402f297cabcfdc1dce3a60ff7bb2b318a192d313fafbbb8169156",
+      "visual_review": "inspected both original file rasters enlarged 4x, 2026-09-16; no Ottoman expert validation",
+      "observation": "Forked upper form with descending stroke; apparent numeral resemblance is not authoritative label evidence for 2/be.",
+      "outcome": "insufficient evidence; retain content-level quarantine",
+      "corrected_label": null,
+      "confidence": "high identity/conflict and quarantine; insufficient corrected-class confidence",
+      "source_evidence": [
+        "kaggle_metadata.json: author label map and filename rule confirmed",
+        "source_archive_inventory.json: original version-1 archive identity matches prior verified archive",
+        "primary_publication_access.json: aggregate source history, no per-crop ground truth"
+      ]
+    },
+    {
+      "group_id": "C5",
+      "sample_id": "pixel-sha256:d64a2e31bf2ba0bb0f732ce558858e5b3fac28f094f20aa34fb85527cf38238b",
+      "visual_review": "inspected both original file rasters enlarged 4x, 2026-09-16; no Ottoman expert validation",
+      "observation": "Looped form; numeral 5/he ambiguity requires original word/page context.",
+      "outcome": "insufficient evidence; retain content-level quarantine",
+      "corrected_label": null,
+      "confidence": "high identity/conflict and quarantine; insufficient corrected-class confidence",
+      "source_evidence": [
+        "kaggle_metadata.json: author label map and filename rule confirmed",
+        "source_archive_inventory.json: original version-1 archive identity matches prior verified archive",
+        "primary_publication_access.json: aggregate source history, no per-crop ground truth"
+      ]
+    }
+  ],
+  "invalid": {
+    "sample_id": "pixel-sha256:0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+    "visual_status": "inspected native raster enlarged 4x alongside five nearest valid rasters",
+    "observation": "Curved white stroke on black background; nearby valid records include dal (08) and ra (10). Similarity alone cannot supply the missing label.",
+    "decision": "retain invalid/quarantined; insufficient evidence",
+    "corrected_label": null,
+    "zero_digit_code": "43; 00 is not a valid zero label",
+    "exact_duplicate_found": false,
+    "closest_valid_rmse": 46.05396588175116,
+    "foreground_pixels_ge128": 275
+  },
+  "near_duplicates": [
+    {
+      "pair_id": "ND0001",
+      "visual_review": "inspected enlarged native pixels, 2026-09-16",
+      "foreground_iou_ge128": 1.0,
+      "changed_pixel_coordinates_y_x": [
+        [
+          8,
+          12
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          12,
+          12
+        ]
+      ],
+      "changed_pixel_values_a_b": [
+        [
+          191,
+          255
+        ],
+        [
+          0,
+          64
+        ],
+        [
+          191,
+          255
+        ]
+      ],
+      "decision": "review before a new protocol; no automatic exclusion",
+      "assessment": "Near-identical raster; likely related crop/rendering; source identity unverified"
+    },
+    {
+      "pair_id": "ND0002",
+      "visual_review": "inspected enlarged native pixels, 2026-09-16",
+      "foreground_iou_ge128": 0.9964912280701754,
+      "changed_pixel_coordinates_y_x": [
+        [
+          0,
+          7
+        ],
+        [
+          6,
+          13
+        ],
+        [
+          7,
+          13
+        ]
+      ],
+      "changed_pixel_values_a_b": [
+        [
+          207,
+          64
+        ],
+        [
+          255,
+          207
+        ],
+        [
+          64,
+          16
+        ]
+      ],
+      "decision": "review before a new protocol; no automatic exclusion",
+      "assessment": "Near-identical raster; likely related crop/rendering; source identity unverified"
+    },
+    {
+      "pair_id": "ND0003",
+      "visual_review": "inspected enlarged native pixels, 2026-09-16",
+      "foreground_iou_ge128": 0.9911504424778761,
+      "changed_pixel_coordinates_y_x": [
+        [
+          4,
+          20
+        ],
+        [
+          5,
+          20
+        ],
+        [
+          15,
+          11
+        ]
+      ],
+      "changed_pixel_values_a_b": [
+        [
+          159,
+          207
+        ],
+        [
+          207,
+          255
+        ],
+        [
+          48,
+          191
+        ]
+      ],
+      "decision": "review before a new protocol; no automatic exclusion",
+      "assessment": "Near-identical raster; likely related crop/rendering; source identity unverified"
+    },
+    {
+      "pair_id": "ND0004",
+      "visual_review": "inspected enlarged native pixels, 2026-09-16",
+      "foreground_iou_ge128": 0.9741935483870968,
+      "changed_pixel_coordinates_y_x": [
+        [
+          12,
+          23
+        ],
+        [
+          13,
+          6
+        ],
+        [
+          13,
+          7
+        ],
+        [
+          13,
+          23
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          15,
+          28
+        ],
+        [
+          16,
+          28
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          17,
+          28
+        ],
+        [
+          18,
+          12
+        ],
+        [
+          18,
+          13
+        ],
+        [
+          18,
+          23
+        ],
+        [
+          19,
+          12
+        ],
+        [
+          19,
+          13
+        ]
+      ],
+      "changed_pixel_values_a_b": [
+        [
+          55,
+          99
+        ],
+        [
+          0,
+          93
+        ],
+        [
+          99,
+          120
+        ],
+        [
+          164,
+          200
+        ],
+        [
+          72,
+          215
+        ],
+        [
+          223,
+          255
+        ],
+        [
+          242,
+          239
+        ],
+        [
+          128,
+          103
+        ],
+        [
+          195,
+          146
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          249,
+          166
+        ],
+        [
+          134,
+          120
+        ],
+        [
+          80,
+          49
+        ],
+        [
+          159,
+          58
+        ],
+        [
+          18,
+          0
+        ]
+      ],
+      "decision": "review before a new protocol; no automatic exclusion",
+      "assessment": "Near-identical simple horizontal stroke across different UUID prefixes; same source plausible but glyph simplicity prevents certain source identity"
+    }
+  ],
+  "measurement_note": "The raw investigator fields ink_iou and ink_pixels_below_128 measure pixels <128 (predominantly black background), not white foreground. They did not determine candidate selection. Correct foreground measures are provided here; raw evidence retained unchanged.",
+  "source_label_map_exact_match": true,
+  "source_label_codes_verified": 44,
+  "numerical_metric_verification": "four queue RMSE values independently recomputed in float64",
+  "cpu_seconds": 0.008023000000000002,
+  "wall_seconds": 0.008364332999917679
+}

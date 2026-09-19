@@ -1,0 +1,18 @@
+{
+  "scope": "diagnostic only; no training, label or split mutation",
+  "manifest": "research/e0_e3_20260915/dataset_manifest.json",
+  "manifest_sha256": "ffc368dd20b96d80c52c324cb9f016d8120650de48a4baed7edf05041debf2b6",
+  "protocol_sha256": "1d61327af289b0c703eaf78be824676dfef959212af537371df39319a5764160",
+  "script_sha256": "2d90b7e48d617b434e8a94129314ded5f18112ff4dea127181286d7e7d39a59b",
+  "access_date": "2026-09-16",
+  "near_duplicate_method": "Exhaustive aligned native 32x32 grayscale L2 on distinct valid-label content groups; float32 BLAS shortlist with 1 MSE unit guard then float64 verification.",
+  "thresholds_gray_0_255": {
+    "tight_rmse": 5.0,
+    "broad_rmse": 10.0
+  },
+  "review_limit_pairs": 24,
+  "review_rule": "tight cross-protocol pairs first, then lowest RMSE cross-historical pairs; not automatic removal",
+  "cpu_budget_seconds": 120,
+  "threads": 1,
+  "limitations": "No alignment correction, rotations, learned representations or writer inference. Pixel similarity is not shared source identity."
+}

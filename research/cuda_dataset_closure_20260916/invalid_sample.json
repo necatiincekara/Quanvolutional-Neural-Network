@@ -1,0 +1,362 @@
+{
+  "record": {
+    "byte_sha256": "8282ef7026d603c72249480d4ac6481c480d89fe1f2717827860a51fc4aec817",
+    "decoded_shape": [
+      32,
+      32
+    ],
+    "exclusion_reasons": [
+      "unknown_label_code"
+    ],
+    "label": null,
+    "label_code": "00",
+    "original_source": "repository set; writer/source identity unverified",
+    "original_split": "train",
+    "pixel_sha256": "0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+    "record_id": "9f0adea5883661ef2f24f67158b004fcb0a0c1cdc636e579b0f0ca051e245724",
+    "relative_path": "train/TBMM-007-00000000000000000000000000000000000.png",
+    "sample_id": "pixel-sha256:0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+    "valid": false
+  },
+  "png_metadata": {
+    "format": "PNG",
+    "mode": "L",
+    "info": {}
+  },
+  "pixel_distribution": {
+    "min": 0.0,
+    "max": 255.0,
+    "mean": 71.7392578125,
+    "std": 104.60943629495935,
+    "ink_pixels_below_128": 749
+  },
+  "exact_other_matches": [],
+  "filename_neighbors": [
+    {
+      "byte_sha256": "ac82b86f50407fb406263b779c5678b9ec8c1e46c103979d32be3291c6eaba55",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [],
+      "label": 13,
+      "label_code": "14",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "test",
+      "pixel_sha256": "faa4b6071a1c171b055092df3889a42e6e4b1b239876afe7f5c59e3e2a4c00ae",
+      "record_id": "7cb4d047a6152109749e90e326b2dd5bd2c13a8b9a8cafaa1c466650d0a6da4b",
+      "relative_path": "test/TBMM-007-000000014.png",
+      "sample_id": "pixel-sha256:faa4b6071a1c171b055092df3889a42e6e4b1b239876afe7f5c59e3e2a4c00ae",
+      "valid": true
+    },
+    {
+      "byte_sha256": "710198a100a9f75a7f1d6cf8a720e7b1dd20e0f4f6d010b99c86c41e8e950fa0",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [],
+      "label": 13,
+      "label_code": "14",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "test",
+      "pixel_sha256": "3ae43481efeb3f49856c25a0b409196de720a7965db440854d522273e2a3237a",
+      "record_id": "c8f5db303415f67e883f309e547fd05b99e1b208d6d82f9269929d8261351a73",
+      "relative_path": "test/TBMM-007-00000014.png",
+      "sample_id": "pixel-sha256:3ae43481efeb3f49856c25a0b409196de720a7965db440854d522273e2a3237a",
+      "valid": true
+    },
+    {
+      "byte_sha256": "114c658eabc99934a64a34a59ceb2c2f99c5948243dfd1e9da258afeadef768c",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [],
+      "label": 16,
+      "label_code": "17",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "test",
+      "pixel_sha256": "708a36f875706249cf0f300d7accb83ca32ade6c52bf5e3fc5be40b230de8f8b",
+      "record_id": "4c2724899104149b98a83979e1cedeaec1e701f6154af3d51d3b295ea46651b9",
+      "relative_path": "test/TBMM-007-00000017.png",
+      "sample_id": "pixel-sha256:708a36f875706249cf0f300d7accb83ca32ade6c52bf5e3fc5be40b230de8f8b",
+      "valid": true
+    },
+    {
+      "byte_sha256": "8282ef7026d603c72249480d4ac6481c480d89fe1f2717827860a51fc4aec817",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [
+        "unknown_label_code"
+      ],
+      "label": null,
+      "label_code": "00",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "train",
+      "pixel_sha256": "0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+      "record_id": "9f0adea5883661ef2f24f67158b004fcb0a0c1cdc636e579b0f0ca051e245724",
+      "relative_path": "train/TBMM-007-00000000000000000000000000000000000.png",
+      "sample_id": "pixel-sha256:0160416bafc67499e3b46655f57b7801937fbe2c76604f6a89e1c1255ac25d37",
+      "valid": false
+    },
+    {
+      "byte_sha256": "9def6b3b92816044401301ae518a2163bef524c0bdf6c7f24392d3b6ae7aa786",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [],
+      "label": 7,
+      "label_code": "08",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "train",
+      "pixel_sha256": "9cc3616c8f7fe74bfa00b9c39567443d03e7a56470d7d046771376fc325dd58c",
+      "record_id": "9f6ece7fafcd1de816401fbf9709cb9a97c4774a618d0c5241ea4f434ae833d3",
+      "relative_path": "train/TBMM-007-00000000000000000000000000000000000000008.png",
+      "sample_id": "pixel-sha256:9cc3616c8f7fe74bfa00b9c39567443d03e7a56470d7d046771376fc325dd58c",
+      "valid": true
+    },
+    {
+      "byte_sha256": "7f9d949eb69ea32ce92cd0120a6febf3d5df3fb49fe671061a8ca0c1a56a705c",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [],
+      "label": 9,
+      "label_code": "10",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "train",
+      "pixel_sha256": "7822dff03b6aa461c7bdf674d5fe0254700bfab65609b0374530c69fd7a2827f",
+      "record_id": "bf8e6c67e9fb289e91b3b8cc385543b20257bc9b0d2b9f6965aa28e45a3f4fb6",
+      "relative_path": "train/TBMM-007-0000000000000000000000000000000000000010.png",
+      "sample_id": "pixel-sha256:7822dff03b6aa461c7bdf674d5fe0254700bfab65609b0374530c69fd7a2827f",
+      "valid": true
+    },
+    {
+      "byte_sha256": "2da2f7fa63a7635c798b908999b3056556521edfdc21e9beba7f0e12df3c6b79",
+      "decoded_shape": [
+        32,
+        32
+      ],
+      "exclusion_reasons": [],
+      "label": 7,
+      "label_code": "08",
+      "original_source": "repository set; writer/source identity unverified",
+      "original_split": "train",
+      "pixel_sha256": "967a581ae8e111d39ac5f52cf4f8164afa4fb65f8cdd85b722033a8b4f778a8c",
+      "record_id": "2a70bbfa1b1fbd170fb24d19af8cb99dde7d011877a79d93019baa04f6dca6a1",
+      "relative_path": "train/TBMM-007-000000000000000000000000000000000000008.png",
+      "sample_id": "pixel-sha256:967a581ae8e111d39ac5f52cf4f8164afa4fb65f8cdd85b722033a8b4f778a8c",
+      "valid": true
+    }
+  ],
+  "nearest_valid_by_aligned_rmse": [
+    {
+      "rmse_gray": 46.05396588175116,
+      "record": {
+        "byte_sha256": "e9cfb6d1b80b17cb35b83858de8578cd4fa6f297a8e6a8730152cb1181665c73",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 7,
+        "label_code": "08",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "c76b6057f02b1d9ac4b54ce0e6220a746b37d6a20dcfe8bd44c14e62b9b63b79",
+        "record_id": "19fc2d9c0c993cab55295d887a4246a26381579dcaeaa03de650fbcdbeba22ca",
+        "relative_path": "train/TBMM-007-0000000000000000000000000008.png",
+        "sample_id": "pixel-sha256:c76b6057f02b1d9ac4b54ce0e6220a746b37d6a20dcfe8bd44c14e62b9b63b79",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 46.374126086779256,
+      "record": {
+        "byte_sha256": "e1b9199962cbc9130d5b546602fc902b3e1fd1d19b0aa43685170a91a40dff2e",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 7,
+        "label_code": "08",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "c7c4b6fda4a13ce93fb63ba8dfd6f8e10782c9affaed324cb27d7f55380deedf",
+        "record_id": "3cefc6a54fa35c908313bf01e0e8c157db79cbdee89ff1e6c8d1966f65e5e2ea",
+        "relative_path": "train/TBMM-007-0000000000000000000000000000008.png",
+        "sample_id": "pixel-sha256:c7c4b6fda4a13ce93fb63ba8dfd6f8e10782c9affaed324cb27d7f55380deedf",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 50.80212071114748,
+      "record": {
+        "byte_sha256": "271b3242c242faa59e74ced9f14ec6c73baed1700fce5dcc64716a3e38639de0",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 9,
+        "label_code": "10",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "660d8f310c21371837eceb5418f7a3f96e96ba28456b1317c73ba983b445053d",
+        "record_id": "c06ede9b6969880855a6a827271c377136ca46103ac679d944258cdb9291e17b",
+        "relative_path": "train/TBMM-007-00800000000000000000000000000000000000010.png",
+        "sample_id": "pixel-sha256:660d8f310c21371837eceb5418f7a3f96e96ba28456b1317c73ba983b445053d",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 54.6632714186363,
+      "record": {
+        "byte_sha256": "b45151a9ea67bf187984f9ec5fa1ced1ee818f77d775663da68e12a14f63b02a",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 9,
+        "label_code": "10",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "f292bb6e99753fc1900db35395c7a69caf17d2f08e1758d09750a6c37e4be734",
+        "record_id": "2325287b92c3ec2374cb9bf808a6b253b93346545b78cc21def6c2c9371c54f7",
+        "relative_path": "train/TBMM-007-008000000000000000000000000000000000010.png",
+        "sample_id": "pixel-sha256:f292bb6e99753fc1900db35395c7a69caf17d2f08e1758d09750a6c37e4be734",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 56.131828997125155,
+      "record": {
+        "byte_sha256": "2e4e28e574cb8efc680ee7c4afd760bdc9b16db6de0a17352bf9e4540c414109",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 7,
+        "label_code": "08",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "0787aaa893d6cf1d78e4357aebb277fd2b4c9bc75d95904ff500f5d52c05f0e3",
+        "record_id": "09f7fe602539f86a839c9e1418ae343559789db6b194a1160bf2491837a8efcf",
+        "relative_path": "train/TBMM-008-008000008.png",
+        "sample_id": "pixel-sha256:0787aaa893d6cf1d78e4357aebb277fd2b4c9bc75d95904ff500f5d52c05f0e3",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 57.61683103703292,
+      "record": {
+        "byte_sha256": "53d7cbdb490b8b033ee8081ca8bb7db1424985289d4ad7349ca82546361d6600",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 7,
+        "label_code": "08",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "36e0a0c23c75ce28e7f2d71c2c91d9746105c05f0e2e393eff833506956b85ab",
+        "record_id": "f669ecd049ff9f7a0b12a87cb69b0b7ad06751c0980e3330680e63e12ef05666",
+        "relative_path": "train/TBMM-007-00000000000008.png",
+        "sample_id": "pixel-sha256:36e0a0c23c75ce28e7f2d71c2c91d9746105c05f0e2e393eff833506956b85ab",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 59.49681582866431,
+      "record": {
+        "byte_sha256": "4721a0ea72e47962e5f49497eddba99c398c29e18d960ad6109c7c44b5038d85",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 9,
+        "label_code": "10",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "54bb53397b3dcea0175f86f3df16b88381a6cea164389a5bc5b9fd595db6da1d",
+        "record_id": "1e4e042bbf0d7aa8f8cf386c89d9920b320a32b2cfe647bdc0780eb1c6a794fa",
+        "relative_path": "train/TBMM-007-00800000000000000000000000000000000010.png",
+        "sample_id": "pixel-sha256:54bb53397b3dcea0175f86f3df16b88381a6cea164389a5bc5b9fd595db6da1d",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 60.484889641959334,
+      "record": {
+        "byte_sha256": "f83d774eb5c2b0699ef0d8bf4ca58b6cfb2d868a83682947a86bbc968fddee29",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 9,
+        "label_code": "10",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "2b7c5c8aaa250e84e875b0b3ddb64ecd36acff2bd93996edf512adcf8a9c85e5",
+        "record_id": "4bf0e8554cb1ecce50b84c2a7c52876e5013d76317b44e75253ba8bc68aa979d",
+        "relative_path": "train/TBMM-007-00800000000000000000000000010.png",
+        "sample_id": "pixel-sha256:2b7c5c8aaa250e84e875b0b3ddb64ecd36acff2bd93996edf512adcf8a9c85e5",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 60.895795023650855,
+      "record": {
+        "byte_sha256": "01931b7b561e17fdfcce1036ec91934998448c0d8201dc7968f792f13af9dfa1",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 7,
+        "label_code": "08",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "62db205e29acaba7d3b8da9e2b951b586596b51fa57f54a4e8673f1da89c158a",
+        "record_id": "bfdef6c9f3e0d6b256496335ef8f2acc16263c0bbdce07845275f49ca3580767",
+        "relative_path": "train/TBMM-007-0000000000000000000000000000000000008.png",
+        "sample_id": "pixel-sha256:62db205e29acaba7d3b8da9e2b951b586596b51fa57f54a4e8673f1da89c158a",
+        "valid": true
+      }
+    },
+    {
+      "rmse_gray": 62.3310685723821,
+      "record": {
+        "byte_sha256": "b5d1af672441120a0ad445b6b922a234e1c0289648c79567a373012f8656f4e7",
+        "decoded_shape": [
+          32,
+          32
+        ],
+        "exclusion_reasons": [],
+        "label": 7,
+        "label_code": "08",
+        "original_source": "repository set; writer/source identity unverified",
+        "original_split": "train",
+        "pixel_sha256": "7ea4b398427c0c83b2b252533250c9aa4f5116da30a376ea4b2be31656f81f24",
+        "record_id": "ffd73b770230ee461c73efb2ddaf22d6a9f2400099d9b6e9bdd8649c9f235038",
+        "relative_path": "train/TBMM-008-0000000000000000008.png",
+        "sample_id": "pixel-sha256:7ea4b398427c0c83b2b252533250c9aa4f5116da30a376ea4b2be31656f81f24",
+        "valid": true
+      }
+    }
+  ],
+  "decision": "retain invalid/quarantined; insufficient evidence",
+  "corrected_label": null,
+  "confidence": "high for retaining quarantine; no justified class assignment"
+}

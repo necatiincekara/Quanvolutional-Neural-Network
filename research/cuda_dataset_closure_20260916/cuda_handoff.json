@@ -1,0 +1,71 @@
+{
+  "status": "PREPARATION_ONLY_NOT_EXECUTED",
+  "blocker": "No CUDA device/runtime. Do not substitute CPU or infer original L4 initiating failure.",
+  "budget": {
+    "target_gpu_minutes": 30,
+    "hard_gpu_minutes": 120
+  },
+  "existing_diagnostics": [
+    "scripts/diagnose_hybrid_precision.py",
+    "scripts/stress_hybrid_scaling.py"
+  ],
+  "required_adaptation": "Existing diagnostics contain CPU-specific contexts and GradScaler construction. Port device handling and add boundary/optimizer-state tracing on the available CUDA host before execution; no untested CUDA runner is claimed here.",
+  "controls": [
+    "analytic fixed map",
+    "fixed-Q",
+    "V7 data-reuploading"
+  ],
+  "input_identity": "reuse first 8 protocol training IDs, patch 117 and E3 deterministic inputs; archive exact tensors",
+  "first_matrix": [
+    "float32 no AMP reference",
+    "fp16 autocast inherited Q input dtype",
+    "fp16 autocast disabled explicitly within float32 quantum region"
+  ],
+  "semantics": [
+    "scaled backward; unscale each optimizer; inspect/clip finite gradients; scaler.step each; scaler.update once",
+    "historical unscale each; custom clipping/direct optimizer.step each; scaler.update once"
+  ],
+  "evidence_order": [
+    "A normal/default scale 65536: report stable if stable",
+    "B controlled scale stress 2**18, 2**20, 2**22, 2**24 only until first naturally nonfinite gradient; stop stress on localization",
+    "C one artificial Inf case per optimizer semantics only as protection control"
+  ],
+  "seed_policy": "one deterministic seed initially; add replication only if needed to establish mechanism, no accuracy selection",
+  "optional_bfloat16": "only after CUDA support probe and only to separate range from Q-interface issue",
+  "trace_tensors": [
+    "inputs",
+    "stem output",
+    "Q input",
+    "circuit output",
+    "post-Q output",
+    "logits",
+    "loss",
+    "scaled loss",
+    "head gradients",
+    "post-Q gradients",
+    "Q-output gradients",
+    "Q-input gradients",
+    "Q parameter gradients",
+    "stem gradients",
+    "optimizer state",
+    "parameter updates"
+  ],
+  "trace_fields": [
+    "dtype",
+    "min",
+    "max",
+    "mean",
+    "std",
+    "finite_count",
+    "nan_count",
+    "positive_inf_count",
+    "negative_inf_count",
+    "norm",
+    "update_norm",
+    "clipping_fraction",
+    "scale",
+    "optimizer_step_skipped"
+  ],
+  "trace_rule": "Retain scaled and unscaled parameter gradients separately; divide activation-hook gradients by recorded scale for comparison because unscale_ does not change retained intermediate .grad. Finite-only summaries must retain explicit nonfinite counts. Localize graph boundary first, then primitive operation; do not call a downstream NaN its origin.",
+  "escalation_gate": "Only if tiny CUDA paths pass valid semantics and are inexpensive, one real V7 batch then several updates; no OCR optimization, no full run. Reaching this gate requires available CUDA and future explicit stage authorization."
+}
