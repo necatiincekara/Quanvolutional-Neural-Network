@@ -1,0 +1,16 @@
+# Reproduction environment used for the July 28, 2026 local evidence audit.
+# Python 3.13.7; macOS 26.5.2; Apple Silicon arm64.
+# This lock covers checkpoint inference, aggregation, statistics, and model smoke tests.
+# GPU V7 training additionally requires a CUDA-compatible PennyLane Lightning build;
+# the legacy April 2026 Colab environment was not captured exactly and is disclosed
+# as a provenance limitation in the manuscript.
+
+torch==2.10.0
+torchvision==0.25.0
+pennylane==0.44.0
+numpy==2.4.2
+scipy==1.17.1
+scikit-learn==1.8.0
+matplotlib==3.10.8
+Pillow==12.1.1
+tqdm==4.67.3

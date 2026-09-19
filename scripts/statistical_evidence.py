@@ -4,9 +4,11 @@
 from __future__ import annotations
 
 import argparse
+import itertools
 import json
 import math
 from pathlib import Path
+from statistics import mean
 from typing import Any
 
 try:
@@ -264,6 +266,122 @@ def low_data_outputs(low_data: dict[str, Any]) -> tuple[list[dict[str, Any]], li
     return intervals, comparisons
 
 
+def load_low_data_seed_records(low_data_dir: str) -> dict[tuple[str, str, float, int], dict[str, Any]]:
+    records = {}
+    for path in sorted(Path(low_data_dir).glob("*.json")):
+        data = read_json(str(path))
+        if not isinstance(data, dict) or data.get("benchmark_axis") != "low-data-scaling":
+            continue
+        model = data.get("model")
+        seed = data.get("train_seed")
+        fraction = data.get("train_fraction")
+        family = data.get("family")
+        if model is None or seed is None or fraction is None or family is None:
+            continue
+        records[(str(family), str(model), float(fraction), int(seed))] = data
+    return records
+
+
+def exact_sign_flip_p(differences: list[float]) -> float | None:
+    if not differences:
+        return None
+    observed = abs(sum(differences) / len(differences))
+    extreme = 0
+    total = 0
+    for signs in itertools.product((-1.0, 1.0), repeat=len(differences)):
+        permuted = abs(sum(sign * value for sign, value in zip(signs, differences)) / len(differences))
+        total += 1
+        if permuted >= observed - 1e-12:
+            extreme += 1
+    return extreme / total
+
+
+def holm_adjust(values: list[float | None]) -> list[float | None]:
+    valid = [(index, value) for index, value in enumerate(values) if value is not None]
+    ordered = sorted(valid, key=lambda item: item[1])
+    adjusted = [None] * len(values)
+    running = 0.0
+    count = len(ordered)
+    for rank, (index, value) in enumerate(ordered):
+        candidate = min(1.0, (count - rank) * value)
+        running = max(running, candidate)
+        adjusted[index] = running
+    return adjusted
+
+
+def paired_low_data_comparisons(low_data_dir: str) -> list[dict[str, Any]]:
+    records = load_low_data_seed_records(low_data_dir)
+    rows = []
+    for fraction in (0.10, 0.25, 0.50, 1.00):
+        quantum_by_seed = {
+            seed: record
+            for (family, model, row_fraction, seed), record in records.items()
+            if family == "current-local"
+            and model == "non_trainable_quantum"
+            and row_fraction == fraction
+        }
+        classical_by_seed = {
+            seed: record
+            for (family, model, row_fraction, seed), record in records.items()
+            if family == "current-local"
+            and model == "classical_conv"
+            and row_fraction == fraction
+        }
+        seeds = sorted(set(quantum_by_seed) & set(classical_by_seed))
+        differences = [
+            float(quantum_by_seed[seed]["test_acc"])
+            - float(classical_by_seed[seed]["test_acc"])
+            for seed in seeds
+        ]
+        if not differences:
+            continue
+        diff_mean = mean(differences)
+        diff_std = math.sqrt(
+            sum((value - diff_mean) ** 2 for value in differences) / (len(differences) - 1)
+        ) if len(differences) > 1 else 0.0
+        half_width = (
+            t_critical(len(differences) - 1) * diff_std / math.sqrt(len(differences))
+            if len(differences) > 1
+            else None
+        )
+        paired_t = None
+        paired_p = None
+        if len(differences) > 1 and diff_std > 0:
+            paired_t = diff_mean / (diff_std / math.sqrt(len(differences)))
+            if stats is not None:
+                paired_p = float(2.0 * stats.t.sf(abs(paired_t), len(differences) - 1))
+        rows.append(
+            {
+                "family": "current-local",
+                "train_fraction": fraction,
+                "left_model": "non_trainable_quantum",
+                "right_model": "classical_conv",
+                "seeds": seeds,
+                "runs": len(seeds),
+                "paired_differences_quantum_minus_classical": [round(value, 2) for value in differences],
+                "difference_left_minus_right": round(diff_mean, 2),
+                "difference_std": round(diff_std, 2),
+                "difference_ci_low": round(diff_mean - half_width, 2) if half_width is not None else None,
+                "difference_ci_high": round(diff_mean + half_width, 2) if half_width is not None else None,
+                "paired_t": round(paired_t, 3) if paired_t is not None else None,
+                "paired_t_p_two_sided": round(paired_p, 4) if paired_p is not None else None,
+                "exact_sign_flip_p_two_sided": round(exact_sign_flip_p(differences), 4),
+                "test_status": "exploratory-paired",
+                "caveat": (
+                    "paired seeds, small n; local seed 42 and Colab seeds 43-47 differ "
+                    "by one available training image"
+                ),
+            }
+        )
+
+    paired_adjusted = holm_adjust([row["paired_t_p_two_sided"] for row in rows])
+    sign_flip_adjusted = holm_adjust([row["exact_sign_flip_p_two_sided"] for row in rows])
+    for row, paired_p, sign_p in zip(rows, paired_adjusted, sign_flip_adjusted):
+        row["paired_t_p_holm"] = round(paired_p, 4) if paired_p is not None else None
+        row["exact_sign_flip_p_holm"] = round(sign_p, 4) if sign_p is not None else None
+    return rows
+
+
 def p_text(value: float | None) -> str:
     if value is None:
         return "-"
@@ -291,9 +409,11 @@ def to_markdown(report: dict[str, Any]) -> str:
         "## Method Notes",
         "",
         "- 95% confidence intervals use the Student t distribution around the reported mean test accuracy.",
-        "- Pairwise rows use two-sided Welch tests and standardized mean differences from summary statistics.",
-        "- Because most multi-seed groups have only `n=3`, p-values are descriptive reviewer aids rather than definitive inferential evidence.",
-        "- Low-data current-local tests are approximate because seed-43 and seed-44 raw JSON files are Drive-backed remote artifacts; the local repository currently stores the confirmed aggregate summary and Drive manifest.",
+            "- Full-data pairwise rows use two-sided Welch tests and standardized mean differences from summary statistics.",
+            "- Full-data groups have `n=3`; their Welch p-values are descriptive reviewer aids rather than definitive inferential evidence.",
+            "- Low-data current-local rows use the paired seed design (`n=6`, seeds 42--47); paired t and exact sign-flip tests are primary, with Holm correction across four fractions.",
+            "- Seed 42 used the local 3,427-image parser state, while Colab seeds 43--47 used 3,428 loaded images. Training subset sizes therefore differ by one image; the low-data analysis is near-matched and exploratory.",
+            "- Byte-original Drive JSON for seeds 43--47 was reconciled into the canonical low-data directory on August 9, 2026; the former notebook reconstructions remain documented in a superseded provenance manifest.",
         "- Thesis-faithful low-data rows are seed-42 pilot evidence only, so no confidence interval or significance test is reported for that axis.",
         "",
         "## Full-Data Test Accuracy Intervals",
@@ -364,21 +484,26 @@ def to_markdown(report: dict[str, Any]) -> str:
             "",
             "Positive differences mean `non_trainable_quantum` has higher mean test accuracy than `classical_conv`.",
             "",
-            "| Fraction | Quantum Test | Classical Test | Difference | 95% CI | Welch p | Interpretation |",
-            "|---:|---:|---:|---:|---:|---:|---|",
+            "| Fraction | Seeds | Q-C Difference | Paired 95% CI | Paired p | Exact sign-flip p | Holm p | Interpretation |",
+            "|---:|---|---:|---:|---:|---:|---:|---|",
         ]
     )
     for row in report["low_data_comparisons"]:
         diff = row.get("difference_left_minus_right")
         lines.append(
-            "| {fraction:.2f} | {qtest} | {ctest} | {diff} | {ci} | {p} | {interp} |".format(
-                fraction=float(row["label"].split()[-1]),
-                qtest=metric_text(row["left_test_acc_mean"], row["left_test_acc_std"]),
-                ctest=metric_text(row["right_test_acc_mean"], row["right_test_acc_std"]),
+            "| {fraction:.2f} | {seeds} | {diff} | {ci} | {paired_p} | {exact_p} | {holm_p} | {interp} |".format(
+                fraction=float(row["train_fraction"]),
+                seeds=",".join(str(seed) for seed in row["seeds"]),
                 diff=f"{diff:.2f}" if diff is not None else "-",
                 ci=comparison_ci_text(row),
-                p=p_text(row.get("welch_p_two_sided")),
-                interp="quantum higher on mean test accuracy" if diff and diff > 0 else "no quantum mean lead",
+                paired_p=p_text(row.get("paired_t_p_two_sided")),
+                exact_p=p_text(row.get("exact_sign_flip_p_two_sided")),
+                holm_p=p_text(row.get("paired_t_p_holm")),
+                interp=(
+                    "quantum mean higher; CI crosses zero"
+                    if diff and diff > 0 and row.get("difference_ci_low", 0) <= 0
+                    else "no quantum mean lead"
+                ),
             )
         )
 
@@ -389,7 +514,7 @@ def to_markdown(report: dict[str, Any]) -> str:
             "",
             "- Full-data RQ1 remains classical-favored: the largest and most stable leads belong to `resnet18_cifar_gray` and `thesis_cnniiii`.",
             "- Current-local full-data differences among `classical_conv`, `param_linear`, and `non_trainable_quantum` are small relative to the low `n=3` uncertainty.",
-            "- The May 2026 low-data result supports a narrow current-local signal for `non_trainable_quantum`, strongest at the 25% fraction and weakest at full data.",
+            "- The May 2026 low-data result supports only a narrow exploratory current-local signal: the largest mean gap is at 10%, but every paired 95% interval crosses zero.",
             "- No row in this report supports a generic quantum-advantage claim.",
             "",
         ]
@@ -402,21 +527,24 @@ def main() -> None:
     parser.add_argument("--benchmark-summary", default="experiments/benchmark_summary.json")
     parser.add_argument("--low-data-summary", default="experiments/low_data_summary.json")
     parser.add_argument("--experiments-dir", default="experiments")
+    parser.add_argument("--low-data-dir", default="experiments/low_data")
     parser.add_argument("--json-out", default="experiments/statistical_evidence_2026-05-17.json")
     parser.add_argument("--md-out", default="docs/STATISTICAL_EVIDENCE_2026-05-17.md")
-    parser.add_argument("--generated-date", default="May 17, 2026")
+    parser.add_argument("--generated-date", default="August 9, 2026")
     args = parser.parse_args()
 
     benchmark_rows = read_json(args.benchmark_summary)
     low_data = read_json(args.low_data_summary)
     seed_index = load_seed_index(args.experiments_dir)
-    low_intervals, low_comparisons = low_data_outputs(low_data)
+    low_intervals, _ = low_data_outputs(low_data)
+    low_comparisons = paired_low_data_comparisons(args.low_data_dir)
     report = {
         "generated_date": args.generated_date,
         "methods": {
             "ci": "Student t 95% confidence interval for means",
-            "pairwise": "two-sided Welch tests from summary statistics",
-            "caveat": "small-n descriptive analysis; most multi-seed rows have n=3",
+            "full_data_pairwise": "two-sided Welch tests from summary statistics",
+            "low_data_pairwise": "paired t and exact sign-flip tests across matched train seeds, Holm-adjusted across four fractions",
+            "caveat": "small-n exploratory analysis; low-data training subset sizes differ by one image between local seed 42 and Colab seeds 43-47",
         },
         "full_data_intervals": full_data_intervals(benchmark_rows, seed_index),
         "full_data_comparisons": full_data_comparisons(benchmark_rows),

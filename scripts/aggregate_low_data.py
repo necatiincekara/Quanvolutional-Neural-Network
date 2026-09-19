@@ -87,6 +87,11 @@ def summarize(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
         val_vals = [item["best_val_acc"] for item in items if item.get("best_val_acc") is not None]
         train_sizes = [item.get("dataset_sizes", {}).get("train") for item in items]
         protocol_versions = sorted({item.get("protocol_version") for item in items if item.get("protocol_version")})
+        sources = sorted({item.get("source") for item in items if item.get("source")})
+        artifact_statuses = sorted(
+            {item.get("artifact_status", "original") for item in items}
+        )
+        unique_train_sizes = sorted({size for size in train_sizes if size is not None})
         test_mean, test_std = metric(test_vals)
         val_mean, val_std = metric(val_vals)
         rows.append(
@@ -96,13 +101,16 @@ def summarize(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "train_fraction": fraction,
                 "runs": len(items),
                 "seeds": sorted(item.get("train_seed") for item in items),
-                "train_size": train_sizes[0] if train_sizes else None,
+                "train_size": unique_train_sizes[0] if len(unique_train_sizes) == 1 else None,
+                "train_sizes": unique_train_sizes,
                 "best_val_acc_mean": val_mean,
                 "best_val_acc_std": val_std,
                 "test_acc_mean": test_mean,
                 "test_acc_std": test_std,
                 "total_params": items[0].get("total_params"),
-                "source": items[0].get("source", "unknown"),
+                "source": sources[0] if len(sources) == 1 else "mixed",
+                "sources": sources,
+                "artifact_statuses": artifact_statuses,
                 "protocol_version": protocol_versions[0] if len(protocol_versions) == 1 else "mixed",
                 "protocol_versions": protocol_versions,
             }
@@ -198,13 +206,20 @@ def to_markdown(summary_rows: list[dict[str, Any]], comparisons: list[dict[str, 
         lines.append("| Model | Fraction | Runs | Seeds | Train Size | Best Val | Test | Params |")
         lines.append("|---|---:|---:|---|---:|---:|---:|---:|")
         for row in sorted(families[family], key=lambda item: (item["model"], item["train_fraction"])):
+            train_sizes = row.get("train_sizes", [])
+            if len(train_sizes) == 1:
+                train_size_text = str(train_sizes[0])
+            elif train_sizes:
+                train_size_text = f"{min(train_sizes)}–{max(train_sizes)}"
+            else:
+                train_size_text = "-"
             lines.append(
                 "| {model} | {fraction:.2f} | {runs} | {seeds} | {train_size} | {val} | {test} | {params} |".format(
                     model=row["model"],
                     fraction=row["train_fraction"],
                     runs=row["runs"],
                     seeds=",".join(str(seed) for seed in row["seeds"]),
-                    train_size=row["train_size"],
+                    train_size=train_size_text,
                     val=fmt(row["best_val_acc_mean"], row["best_val_acc_std"]),
                     test=fmt(row["test_acc_mean"], row["test_acc_std"]),
                     params=row["total_params"],
@@ -212,7 +227,7 @@ def to_markdown(summary_rows: list[dict[str, Any]], comparisons: list[dict[str, 
             )
         lines.append("")
 
-    lines.append("## Colab Decision Signals")
+    lines.append("## Exploratory Follow-up Signals")
     lines.append("")
     if not comparisons:
         lines.append("No paired comparison rows are complete yet.")
@@ -247,7 +262,11 @@ def to_markdown(summary_rows: list[dict[str, Any]], comparisons: list[dict[str, 
             )
         ]
         if confirmed_rows:
-            lines.append("Decision: low-data confirmation is complete for the flagged multi-seed rows.")
+            lines.append(
+                "Decision: the planned multi-seed grid is complete; these heuristic "
+                "signals remain exploratory and must be interpreted with the paired "
+                "statistics report."
+            )
         elif any(row["colab_signal"] for row in comparisons):
             lines.append("Decision: Colab follow-up is justified for the flagged model pair/fraction rows only.")
         else:
